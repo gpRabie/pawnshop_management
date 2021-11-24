@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include pawnshop_management *.css
+recursive-include pawnshop_management *.csv
+recursive-include pawnshop_management *.html
+recursive-include pawnshop_management *.ico
+recursive-include pawnshop_management *.js
+recursive-include pawnshop_management *.json
+recursive-include pawnshop_management *.md
+recursive-include pawnshop_management *.png
+recursive-include pawnshop_management *.py
+recursive-include pawnshop_management *.svg
+recursive-include pawnshop_management *.txt
+recursive-exclude pawnshop_management *.pyc

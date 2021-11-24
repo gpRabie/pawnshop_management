@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2021-11-08 18:29:13.597773",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pawn_ticket",
+  "pawn_type",
+  "item_series",
+  "date_loan_granted",
+  "maturity_date",
+  "expiry_date",
+  "column_break_6",
+  "customers_tracking_no",
+  "customers_full_name",
+  "section_break_9",
+  "items",
+  "section_break_11",
+  "desired_principal",
+  "interest",
+  "net_proceeds",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "pawn_ticket",
+   "fieldtype": "Data",
+   "label": "Pawn Ticket"
+  },
+  {
+   "fieldname": "pawn_type",
+   "fieldtype": "Select",
+   "label": "Pawn Type",
+   "options": "Jewelry\nNon Jewelry"
+  },
+  {
+   "fieldname": "date_loan_granted",
+   "fieldtype": "Date",
+   "label": "Date Loan Granted"
+  },
+  {
+   "fieldname": "maturity_date",
+   "fieldtype": "Date",
+   "label": "Maturity Date"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "customers_tracking_no.customer_name",
+   "fieldname": "customers_full_name",
+   "fieldtype": "Data",
+   "label": "Customer's Full Name"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Data",
+   "label": "Item(s)"
+  },
+  {
+   "fieldname": "section_break_11",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "desired_principal",
+   "fieldtype": "Currency",
+   "label": "Desired Principal"
+  },
+  {
+   "fieldname": "interest",
+   "fieldtype": "Currency",
+   "label": "Interest"
+  },
+  {
+   "fieldname": "net_proceeds",
+   "fieldtype": "Currency",
+   "label": "Net Proceeds"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Sangla",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "A\nB"
+  },
+  {
+   "fieldname": "customers_tracking_no",
+   "fieldtype": "Link",
+   "label": "Customer's Tracking No",
+   "options": "Customer"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2021-11-15 12:20:30.149776",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Sangla",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2021-11-09 09:44:32.773700",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "gadget_interest_rate",
+  "column_break_2",
+  "jewelry_interest_rate",
+  "section_break_4",
+  "a_series_current_count",
+  "column_break_6",
+  "b_series_current_count",
+  "section_break_8",
+  "jewelry_inventory_count",
+  "non_jewelry_inventory_count",
+  "column_break_11",
+  "jewelry_count",
+  "non_jewelry_count"
+ ],
+ "fields": [
+  {
+   "default": "7",
+   "fieldname": "gadget_interest_rate",
+   "fieldtype": "Percent",
+   "label": "Gadget Interest Rate"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "jewelry_interest_rate",
+   "fieldtype": "Percent",
+   "label": "Jewelry Interest Rate"
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "a_series_current_count",
+   "fieldtype": "Int",
+   "label": "A Series Current Count"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "b_series_current_count",
+   "fieldtype": "Int",
+   "label": "B Series Current Count"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "jewelry_inventory_count",
+   "fieldtype": "Int",
+   "label": "Jewelry Inventory Count"
+  },
+  {
+   "fieldname": "non_jewelry_inventory_count",
+   "fieldtype": "Int",
+   "label": "Non Jewelry Inventory Count"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "jewelry_count",
+   "fieldtype": "Int",
+   "label": "Jewelry Count"
+  },
+  {
+   "fieldname": "non_jewelry_count",
+   "fieldtype": "Int",
+   "label": "Non Jewelry Count"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2021-11-09 10:28:43.192155",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Pawnshop Management Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,125 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:item_no",
+ "creation": "2021-11-09 08:59:14.514824",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_no",
+  "new_batch",
+  "type",
+  "weightg",
+  "karat",
+  "karat_category",
+  "column_break_6",
+  "additional_for_stone",
+  "color",
+  "colors_if_multi",
+  "section_break_10",
+  "appraisal_value",
+  "section_break_12",
+  "comments"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_no",
+   "fieldtype": "Data",
+   "label": "Item No",
+   "unique": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Earrings\nBracelet\nNecklace\nRing\nBangles\nPendant\nEarcuff\nGold Coin"
+  },
+  {
+   "fieldname": "weightg",
+   "fieldtype": "Float",
+   "label": "Weight(g)"
+  },
+  {
+   "fieldname": "karat",
+   "fieldtype": "Select",
+   "label": "Karat",
+   "options": "10KT\n14KTC\n14KT\n18KTC\n21KT\n22KT\n23KT\n24KT(Bars and Coins)"
+  },
+  {
+   "fieldname": "karat_category",
+   "fieldtype": "Select",
+   "label": "Karat Category",
+   "options": "Defective\nRegular\nSagad\n3.4g and Below"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "additional_for_stone",
+   "fieldtype": "Small Text",
+   "label": "Additional for Stone"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Select",
+   "label": "Color",
+   "options": "Yellow Gold\nWhite Gold\nRose Gold\nMulti Colored"
+  },
+  {
+   "fieldname": "colors_if_multi",
+   "fieldtype": "Small Text",
+   "label": "Colors if Multi"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "appraisal_value",
+   "fieldtype": "Currency",
+   "label": "Appraisal Value"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Small Text",
+   "label": "Comments"
+  },
+  {
+   "default": "0",
+   "fieldname": "new_batch",
+   "fieldtype": "Check",
+   "label": "New Batch"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-11-10 14:53:08.933490",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Jewelry Items",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
