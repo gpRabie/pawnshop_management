@@ -15,10 +15,8 @@
   "b_series_current_count",
   "section_break_8",
   "jewelry_inventory_count",
-  "non_jewelry_inventory_count",
-  "column_break_11",
-  "jewelry_count",
-  "non_jewelry_count"
+  "column_break_10",
+  "non_jewelry_inventory_count"
  ],
  "fields": [
   {
@@ -61,34 +59,26 @@
    "fieldtype": "Section Break"
   },
   {
+   "default": "0",
    "fieldname": "jewelry_inventory_count",
    "fieldtype": "Int",
    "label": "Jewelry Inventory Count"
   },
   {
+   "default": "0",
    "fieldname": "non_jewelry_inventory_count",
    "fieldtype": "Int",
    "label": "Non Jewelry Inventory Count"
   },
   {
-   "fieldname": "column_break_11",
+   "fieldname": "column_break_10",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "jewelry_count",
-   "fieldtype": "Int",
-   "label": "Jewelry Count"
-  },
-  {
-   "fieldname": "non_jewelry_count",
-   "fieldtype": "Int",
-   "label": "Non Jewelry Count"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2021-11-09 10:28:43.192155",
+ "modified": "2021-11-29 17:02:38.744492",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management Settings",
@@ -103,6 +93,14 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Employee",
+   "share": 1
   }
  ],
  "sort_field": "modified",

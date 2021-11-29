@@ -8,9 +8,8 @@
  "engine": "InnoDB",
  "field_order": [
   "item_no",
-  "new_batch",
   "type",
-  "weightg",
+  "weight",
   "karat",
   "karat_category",
   "column_break_6",
@@ -27,30 +26,33 @@
    "fieldname": "item_no",
    "fieldtype": "Data",
    "label": "Item No",
+   "reqd": 1,
    "unique": 1
   },
   {
    "fieldname": "type",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Type",
-   "options": "Earrings\nBracelet\nNecklace\nRing\nBangles\nPendant\nEarcuff\nGold Coin"
-  },
-  {
-   "fieldname": "weightg",
-   "fieldtype": "Float",
-   "label": "Weight(g)"
+   "options": "Earrings\nBracelet\nNecklace\nRing\nBangles\nPendant\nEarcuff\nGold Coin",
+   "reqd": 1
   },
   {
    "fieldname": "karat",
    "fieldtype": "Select",
    "label": "Karat",
-   "options": "10KT\n14KTC\n14KT\n18KTC\n21KT\n22KT\n23KT\n24KT(Bars and Coins)"
+   "options": "10KT\n14KTC\n14KT\n18KTC\n21KT\n22KT\n23KT\n24KT(Bars and Coins)",
+   "reqd": 1
   },
   {
    "fieldname": "karat_category",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Karat Category",
-   "options": "Defective\nRegular\nSagad\n3.4g and Below"
+   "options": "Defective\nRegular\nSagad\n3.4g and Below",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_6",
@@ -65,7 +67,8 @@
    "fieldname": "color",
    "fieldtype": "Select",
    "label": "Color",
-   "options": "Yellow Gold\nWhite Gold\nRose Gold\nMulti Colored"
+   "options": "Yellow Gold\nWhite Gold\nRose Gold\nMulti Colored",
+   "reqd": 1
   },
   {
    "fieldname": "colors_if_multi",
@@ -79,7 +82,8 @@
   {
    "fieldname": "appraisal_value",
    "fieldtype": "Currency",
-   "label": "Appraisal Value"
+   "label": "Appraisal Value",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_12",
@@ -91,15 +95,15 @@
    "label": "Comments"
   },
   {
-   "default": "0",
-   "fieldname": "new_batch",
-   "fieldtype": "Check",
-   "label": "New Batch"
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight(g)",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-10 14:53:08.933490",
+ "modified": "2021-11-29 13:28:24.127885",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Items",

@@ -16,6 +16,7 @@
   "customers_tracking_no",
   "customers_full_name",
   "section_break_9",
+  "inventory_tracking_no",
   "items",
   "section_break_11",
   "desired_principal",
@@ -27,7 +28,8 @@
   {
    "fieldname": "pawn_ticket",
    "fieldtype": "Data",
-   "label": "Pawn Ticket"
+   "label": "Pawn Ticket",
+   "read_only": 1
   },
   {
    "fieldname": "pawn_type",
@@ -66,14 +68,16 @@
   },
   {
    "fieldname": "items",
-   "fieldtype": "Data",
-   "label": "Item(s)"
+   "fieldtype": "Table",
+   "label": "Item(s)",
+   "options": "Jewelry Batch List"
   },
   {
    "fieldname": "section_break_11",
    "fieldtype": "Section Break"
   },
   {
+   "default": "0.00",
    "fieldname": "desired_principal",
    "fieldtype": "Currency",
    "label": "Desired Principal"
@@ -100,20 +104,32 @@
   {
    "fieldname": "item_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Series",
-   "options": "A\nB"
+   "options": "A\nB",
+   "read_only": 1
   },
   {
    "fieldname": "customers_tracking_no",
    "fieldtype": "Link",
    "label": "Customer's Tracking No",
    "options": "Customer"
+  },
+  {
+   "fieldname": "inventory_tracking_no",
+   "fieldtype": "Data",
+   "label": "Inventory Tracking No"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2021-11-15 12:20:30.149776",
+ "links": [
+  {
+   "link_doctype": "Jewelry Batch",
+   "link_fieldname": "inventory_tracking_no"
+  }
+ ],
+ "modified": "2021-11-29 17:32:39.106883",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Sangla",
