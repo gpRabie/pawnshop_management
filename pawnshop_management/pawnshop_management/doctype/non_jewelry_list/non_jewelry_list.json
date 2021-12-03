@@ -10,7 +10,8 @@
   "type",
   "brand",
   "category",
-  "appraisal_value"
+  "suggested_appraisal_value",
+  "final_appraisal_value"
  ],
  "fields": [
   {
@@ -39,15 +40,20 @@
   },
   {
    "fetch_from": "item_no.appraisal_value",
-   "fieldname": "appraisal_value",
+   "fieldname": "suggested_appraisal_value",
    "fieldtype": "Currency",
-   "label": "Appraisal Value"
+   "label": "Suggested Appraisal Value"
+  },
+  {
+   "fieldname": "final_appraisal_value",
+   "fieldtype": "Currency",
+   "label": "Final Appraisal Value"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-12-01 12:13:03.763122",
+ "modified": "2021-12-03 14:41:57.823438",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry List",

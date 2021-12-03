@@ -29,29 +29,38 @@
   {
    "fieldname": "pawn_ticket",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Pawn Ticket",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "pawn_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Pawn Type",
-   "options": "Jewelry\nNon Jewelry"
+   "options": "Jewelry\nNon Jewelry",
+   "reqd": 1
   },
   {
    "fieldname": "date_loan_granted",
    "fieldtype": "Date",
-   "label": "Date Loan Granted"
+   "in_list_view": 1,
+   "label": "Date Loan Granted",
+   "reqd": 1
   },
   {
    "fieldname": "maturity_date",
    "fieldtype": "Date",
-   "label": "Maturity Date"
+   "in_list_view": 1,
+   "label": "Maturity Date",
+   "reqd": 1
   },
   {
    "fieldname": "expiry_date",
    "fieldtype": "Date",
-   "label": "Expiry Date"
+   "label": "Expiry Date",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_6",
@@ -75,17 +84,22 @@
    "default": "0.00",
    "fieldname": "desired_principal",
    "fieldtype": "Currency",
-   "label": "Desired Principal"
+   "label": "Desired Principal",
+   "reqd": 1
   },
   {
    "fieldname": "interest",
    "fieldtype": "Currency",
-   "label": "Interest"
+   "label": "Interest",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "net_proceeds",
    "fieldtype": "Currency",
-   "label": "Net Proceeds"
+   "label": "Net Proceeds",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "amended_from",
@@ -108,7 +122,8 @@
    "fieldname": "customers_tracking_no",
    "fieldtype": "Link",
    "label": "Customer's Tracking No",
-   "options": "Customer"
+   "options": "Customer",
+   "reqd": 1
   },
   {
    "fieldname": "inventory_tracking_no",
@@ -137,7 +152,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2021-12-01 16:41:40.114108",
+ "modified": "2021-12-03 15:14:54.170525",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Sangla",

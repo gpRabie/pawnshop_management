@@ -5,4 +5,8 @@
 from frappe.model.document import Document
 
 class NonJewelryItems(Document):
-	pass
+	def before_save(self):
+		doc = frappe.get_doc('Pawnshop Management Settings')
+		if self.item_no != frappe.db.exists('Jewelry Items', self.item_no):
+			doc.non_jewelry_count += 1
+		doc.save()

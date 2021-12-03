@@ -49,14 +49,48 @@ frappe.ui.form.on('Sangla', {
 
 });
 
+frappe.ui.form.on('Jewelry List', {
+	item_no: function(frm, cdt, cdn){
+		let table_length = parseInt(frm.doc.jewelry_items.length)
+		if (frm.doc.jewelry_items.length > 1) {
+			for (let index = 0; index < table_length - 1; index++) {
+				if (frm.doc.jewelry_items[table_length-1].item_no == frm.doc.jewelry_items[index].item_no) {
+					// console.log("Pasok!");
+				}
+				// console.log(frm.doc.jewelry_items[index].item_no);
+				// console.log(frm.doc.jewelry_items[table_length - 1].item_no);
+			}
+		}
+	},
+
+	suggested_appraisal_value: function(frm, cdt, cdn){
+		set_total_appraised_amount(frm,cdt, cdn);
+	},
+
+	jewelry_items_remove: function(frm, cdt, cdn){ //calculate appraisal value when removing items
+		set_total_appraised_amount(frm, cdt, cdn);
+	}
+
+});
+
+frappe.ui.form.on('Non Jewelry List', {
+	suggested_appraisal_value: function(frm, cdt, cdn){
+		set_total_appraised_amount(frm,cdt, cdn);
+	},
+
+	non_jewelry_items_remove: function(frm, cdt, cdn){
+		set_total_appraised_amount(frm, cdt, cdn);
+	}
+	
+
+});
+
 
 function set_series(frm) {
 	if (cur_frm.doc.desired_principal >= 1500 && cur_frm.doc.desired_principal <= 10000 && cur_frm.doc.pawn_type == 'Jewelry') {
 		cur_frm.set_value('item_series', 'A');
-		console.log(cur_frm.doc.item_series);
 	} else if ((cur_frm.doc.desired_principal < 1500 || cur_frm.doc.desired_principal > 10000) && cur_frm.doc.pawn_type == 'Jewelry') {
 		cur_frm.set_value('item_series', 'B');
-		console.log(cur_frm.doc.item_series);
 	}
 }
 
@@ -100,4 +134,43 @@ function show_tracking_no(frm){
 	});
 	
 }
+
+
+function set_total_appraised_amount(frm, cdt, cdn) { // Calculate Principal Amount
+	let temp_principal = 0.00;
+	if (cur_frm.doc.pawn_type == 'Jewelry') {
+		$.each(cur_frm.doc.jewelry_items, function(index, item){
+			temp_principal += parseFloat(item.suggested_appraisal_value);
+		});
+		cur_frm.set_value('desired_principal', temp_principal)
+		set_item_interest(frm, temp_principal)
+	} else {
+		$.each(cur_frm.doc.non_jewelry_items, function(index, item){
+			temp_principal += parseFloat(item.suggested_appraisal_value);
+		});
+		cur_frm.set_value('desired_principal', temp_principal);
+		set_item_interest(frm, temp_principal)
+	}
+}
+
+function set_item_interest(frm, temp_principal) {
+	var interest = 0.00;
+	var net_proceeds = 0.00;
+	if (cur_frm.doc.pawn_type == 'Jewelry') {
+		frappe.db.get_single_value('Pawnshop Management Settings', 'jewelry_interest_rate').then(value => {
+			interest = parseFloat(value)/100 * temp_principal;
+			cur_frm.set_value('interest', interest);
+			net_proceeds = temp_principal - interest;
+			cur_frm.set_value('net_proceeds', net_proceeds)
+		});
+	} else {
+		frappe.db.get_single_value('Pawnshop Management Settings', 'gadget_interest_rate').then(value => {
+			interest = parseFloat(value)/100 * temp_principal;
+			cur_frm.set_value('interest', interest);
+			net_proceeds = temp_principal - interest;
+			cur_frm.set_value('net_proceeds', net_proceeds)
+		});
+	}
+}
+
 
