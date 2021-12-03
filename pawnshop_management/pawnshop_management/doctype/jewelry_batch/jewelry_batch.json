@@ -21,12 +21,12 @@
    "fieldname": "items",
    "fieldtype": "Table",
    "label": "Item(s)",
-   "options": "Jewelry Batch List"
+   "options": "Jewelry List"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-29 13:30:38.360710",
+ "modified": "2021-12-01 16:25:39.454049",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Batch",

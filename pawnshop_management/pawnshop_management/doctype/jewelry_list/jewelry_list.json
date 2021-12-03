@@ -10,10 +10,13 @@
   "type",
   "weight",
   "karat",
+  "karat_category",
   "additional_for_stone",
   "color",
   "colors_if_multi",
-  "appraisal_value"
+  "suggested_appraisal_value",
+  "final_appraisal_value",
+  "comments"
  ],
  "fields": [
   {
@@ -25,14 +28,16 @@
   {
    "fetch_from": "item_no.type",
    "fieldname": "type",
-   "fieldtype": "Data",
-   "label": "Type"
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Earrings\nBracelet\nNecklace\nRing\nBangles\nPendant\nEarcuff\nGold Coin"
   },
   {
    "fetch_from": "item_no.karat",
    "fieldname": "karat",
-   "fieldtype": "Data",
-   "label": "Karat"
+   "fieldtype": "Select",
+   "label": "Karat",
+   "options": "10KT\n14KTC\n14KT\n18KTC\n21KT\n22KT\n23KT\n24KT(Bars and Coins)"
   },
   {
    "fetch_from": "item_no.additional_for_stone",
@@ -43,8 +48,9 @@
   {
    "fetch_from": "item_no.color",
    "fieldname": "color",
-   "fieldtype": "Data",
-   "label": "Color"
+   "fieldtype": "Select",
+   "label": "Color",
+   "options": "Yellow Gold\nWhite Gold\nRose Gold\nMulti Colored"
   },
   {
    "fetch_from": "item_no.colors_if_multi",
@@ -53,25 +59,42 @@
    "label": "Colors if Multi"
   },
   {
-   "fetch_from": "item_no.appraisal_value",
-   "fieldname": "appraisal_value",
-   "fieldtype": "Currency",
-   "label": "Appraisal Value"
-  },
-  {
    "fetch_from": "item_no.weight",
    "fieldname": "weight",
    "fieldtype": "Float",
    "label": "Weight(g)"
+  },
+  {
+   "fetch_from": "item_no.karat_category",
+   "fieldname": "karat_category",
+   "fieldtype": "Select",
+   "label": "Karat Category",
+   "options": "Defective\nRegular\nSagad\n3.4g and Below"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Small Text",
+   "label": "Comments"
+  },
+  {
+   "fetch_from": "item_no.appraisal_value",
+   "fieldname": "suggested_appraisal_value",
+   "fieldtype": "Currency",
+   "label": "Suggested Appraisal Value"
+  },
+  {
+   "fieldname": "final_appraisal_value",
+   "fieldtype": "Currency",
+   "label": "Final Appraisal Value"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-11-25 17:25:10.270337",
+ "modified": "2021-12-03 12:17:20.474248",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
- "name": "Jewelry Batch List",
+ "name": "Jewelry List",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

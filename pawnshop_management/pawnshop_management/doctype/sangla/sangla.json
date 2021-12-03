@@ -17,7 +17,8 @@
   "customers_full_name",
   "section_break_9",
   "inventory_tracking_no",
-  "items",
+  "jewelry_items",
+  "non_jewelry_items",
   "section_break_11",
   "desired_principal",
   "interest",
@@ -67,12 +68,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "items",
-   "fieldtype": "Table",
-   "label": "Item(s)",
-   "options": "Jewelry Batch List"
-  },
-  {
    "fieldname": "section_break_11",
    "fieldtype": "Section Break"
   },
@@ -119,6 +114,19 @@
    "fieldname": "inventory_tracking_no",
    "fieldtype": "Data",
    "label": "Inventory Tracking No"
+  },
+  {
+   "fieldname": "jewelry_items",
+   "fieldtype": "Table",
+   "label": "Item(s)",
+   "options": "Jewelry List"
+  },
+  {
+   "fieldname": "non_jewelry_items",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Item(s)",
+   "options": "Non Jewelry List"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -129,7 +137,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2021-11-29 17:32:39.106883",
+ "modified": "2021-12-01 16:41:40.114108",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Sangla",

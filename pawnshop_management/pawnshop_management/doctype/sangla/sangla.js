@@ -2,10 +2,12 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Sangla', {
-	refresh: function(frm) {
-		show_pawn_ticket();
-		show_inventory_tracking_no();
+	onload: function(frm){
+		show_tracking_no();
 	},
+
+	// refresh: function(frm) {
+	// },
 
 	date_loan_granted: function(frm){
 		let default_maturity_date = frappe.datetime.add_days(cur_frm.doc.date_loan_granted, 30);
@@ -20,15 +22,19 @@ frappe.ui.form.on('Sangla', {
 		() => {
 			// action to perform if Yes is selected
 			if (frm.doc.pawn_type == 'Jewelry') {
-				set_series()
-				show_inventory_tracking_no();
+				set_series();
+				show_tracking_no();
+				frm.clear_table('non_jewelry_items');
+				frm.set_df_property('jewelry_items', 'hidden', false);
+				frm.set_df_property('non_jewelry_items', 'hidden', true);
 			}
 			else if (frm.doc.pawn_type == 'Non Jewelry'){
 				frm.set_value('item_series', 'B');
-				show_inventory_tracking_no();
+				show_tracking_no();
+				frm.clear_table('jewelry_items');
+				frm.set_df_property('jewelry_items', 'hidden', true);
+				frm.set_df_property('non_jewelry_items', 'hidden', false);
 			}
-			frm.clear_table('pawn_items');
-			frm.refresh();
 		}, () => {
 			// action to perform if No is selected
 		})
@@ -36,7 +42,8 @@ frappe.ui.form.on('Sangla', {
 
 	desired_principal: function(frm) {
 		set_series();
-		frm.refresh();
+		show_tracking_no();
+		frm.refresh_fields('pawn_ticket');
 	}
 
 
@@ -46,58 +53,51 @@ frappe.ui.form.on('Sangla', {
 function set_series(frm) {
 	if (cur_frm.doc.desired_principal >= 1500 && cur_frm.doc.desired_principal <= 10000 && cur_frm.doc.pawn_type == 'Jewelry') {
 		cur_frm.set_value('item_series', 'A');
+		console.log(cur_frm.doc.item_series);
 	} else if ((cur_frm.doc.desired_principal < 1500 || cur_frm.doc.desired_principal > 10000) && cur_frm.doc.pawn_type == 'Jewelry') {
 		cur_frm.set_value('item_series', 'B');
+		console.log(cur_frm.doc.item_series);
 	}
 }
 
-function show_pawn_ticket(frm){
+function show_tracking_no(frm){
 	frappe.call({
 		method: 'frappe.client.get_value',
 		args: {
 			'doctype': 'Pawnshop Management Settings',
 			'fieldname': [
 				'a_series_current_count',
-				'b_series_current_count'
+				'b_series_current_count',
+				'non_jewelry_inventory_count',
+				'jewelry_inventory_count'
 			]
 		},
 
 		callback: function(value){
-			let previous_ticket_no = value.message;
+			let tracking_no = value.message;
 			if (cur_frm.doc.item_series == 'A') {
-				let new_ticket_no = parseInt(previous_ticket_no.a_series_current_count) + 1;
+				let new_ticket_no = parseInt(tracking_no.a_series_current_count) + 1;
 				cur_frm.set_value('pawn_ticket', new_ticket_no + cur_frm.doc.item_series);
 			} else if (cur_frm.doc.item_series == 'B'){
-				let new_ticket_no = parseInt(previous_ticket_no.b_series_current_count) + 1;
+				let new_ticket_no = parseInt(tracking_no.b_series_current_count) + 1;
 				cur_frm.set_value('pawn_ticket', new_ticket_no + cur_frm.doc.item_series);
 			}
+
+			if (cur_frm.doc.pawn_type == 'Jewelry') {
+				let jewelry_count = parseInt(tracking_no.jewelry_inventory_count)
+				jewelry_count++;
+				cur_frm.set_value('inventory_tracking_no', jewelry_count + 'J')
+			} else if (cur_frm.doc.pawn_type == 'Non Jewelry'){
+				let non_jewelry_count = parseInt(tracking_no.non_jewelry_inventory_count)
+				non_jewelry_count++;
+				cur_frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ')
+			}
+		},
+
+		error: function(value){
+			console.error('Error! Check show_tracking_no block');
 		}
 	});
 	
 }
 
-function show_inventory_tracking_no(frm) {
-	frappe.call({
-		method: 'frappe.client.get_value',
-		args: {
-			'doctype': 'Pawnshop Management Settings',
-			'fieldname': [
-				'jewelry_inventory_count',
-				'non_jewelry_inventory_count'
-			]
-		},
-
-		callback: function(value){
-			let inventory = value.message;
-			if (cur_frm.doc.pawn_type == 'Jewelry') {
-				let jewelry_count = parseInt(inventory.jewelry_inventory_count)
-				jewelry_count++;
-				cur_frm.set_value('inventory_tracking_no', jewelry_count + 'J')
-			} else if (cur_frm.doc.pawn_type == 'Non Jewelry'){
-				let non_jewelry_count = parseInt(inventory.non_jewelry_inventory_count)
-				non_jewelry_count++;
-				cur_frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ')
-			}
-		}
-	});
-}

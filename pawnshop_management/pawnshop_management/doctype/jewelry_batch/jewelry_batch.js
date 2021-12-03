@@ -2,16 +2,7 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Jewelry Batch', {
-	refresh: function(frm) {
+	// refresh: function(frm) {
 
-	}
+	// }
 });
-
-function show_inventory_tracking_no(frm) {
-	frappe.call({
-		method: 'frappe.client.get_value',
-		args: {
-			'doctype': 'Pawnshop Management Settings',
-		}
-	})
-}
