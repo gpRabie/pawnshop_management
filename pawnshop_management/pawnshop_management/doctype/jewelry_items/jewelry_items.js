@@ -24,7 +24,7 @@ function show_item_no(frm) {
 			let jewelry_count = parseInt(data.message.jewelry_count)
 			jewelry_count++
 			jewelry_inventory_count++
-			
+			cur_frm.set_value('batch_number', jewelry_inventory_count)
 			cur_frm.set_value('item_no', '1-' + jewelry_inventory_count + '-' + jewelry_count)
 		},
 

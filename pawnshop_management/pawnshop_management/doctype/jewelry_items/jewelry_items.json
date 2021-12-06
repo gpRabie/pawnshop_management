@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "item_no",
+  "batch_number",
   "type",
   "weight",
   "karat",
@@ -99,11 +100,17 @@
    "fieldtype": "Float",
    "label": "Weight(g)",
    "reqd": 1
+  },
+  {
+   "fieldname": "batch_number",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Batch Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-29 13:28:24.127885",
+ "modified": "2021-12-06 10:37:14.012897",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Items",

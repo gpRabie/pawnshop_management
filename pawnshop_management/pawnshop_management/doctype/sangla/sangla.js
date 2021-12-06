@@ -55,6 +55,13 @@ frappe.ui.form.on('Jewelry List', {
 		if (frm.doc.jewelry_items.length > 1) {
 			for (let index = 0; index < table_length - 1; index++) {
 				if (frm.doc.jewelry_items[table_length-1].item_no == frm.doc.jewelry_items[index].item_no) {
+					console.log(frm.doc.jewelry_items.pop(table_length-1));
+					frm.refresh_field('jewelry_items');
+					frappe.msgprint({
+						title:__('Notification'),
+						indicator:'red',
+						message: __('Added item is already in the list. Item removed.')
+					})
 					// console.log("Pasok!");
 				}
 				// console.log(frm.doc.jewelry_items[index].item_no);
@@ -108,7 +115,10 @@ function show_tracking_no(frm){
 		},
 
 		callback: function(value){
+			items_filter(cur_frm.doc.pawn_type, jewelry_count, non_jewelry_count) // filters items with the same batch
 			let tracking_no = value.message;
+			let jewelry_count = parseInt(tracking_no.jewelry_inventory_count)
+			let non_jewelry_count = parseInt(tracking_no.non_jewelry_inventory_count)
 			if (cur_frm.doc.item_series == 'A') {
 				let new_ticket_no = parseInt(tracking_no.a_series_current_count) + 1;
 				cur_frm.set_value('pawn_ticket', new_ticket_no + cur_frm.doc.item_series);
@@ -118,14 +128,13 @@ function show_tracking_no(frm){
 			}
 
 			if (cur_frm.doc.pawn_type == 'Jewelry') {
-				let jewelry_count = parseInt(tracking_no.jewelry_inventory_count)
 				jewelry_count++;
 				cur_frm.set_value('inventory_tracking_no', jewelry_count + 'J')
 			} else if (cur_frm.doc.pawn_type == 'Non Jewelry'){
-				let non_jewelry_count = parseInt(tracking_no.non_jewelry_inventory_count)
 				non_jewelry_count++;
 				cur_frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ')
 			}
+
 		},
 
 		error: function(value){
@@ -170,6 +179,26 @@ function set_item_interest(frm, temp_principal) {
 			net_proceeds = temp_principal - interest;
 			cur_frm.set_value('net_proceeds', net_proceeds)
 		});
+	}
+}
+
+function items_filter(pawn_type, jewelry_batch, non_jewelry_batch){
+	if (pawn_type == 'Jewelry') {
+		cur_frm.set_query("sangla", "jewelry_items", function(){
+			return {
+				"filters": {
+					"batch_number": jewelry_batch
+				}
+			}
+		})
+	} else if (pawn_type == 'Non Jewelry'){
+		cur_frm.set_query("sangla", "non_jewelry_items", function(){
+			return {
+				"filters": {
+					"batch_number": non_jewelry_batch
+				}
+			}
+		})
 	}
 }
 
