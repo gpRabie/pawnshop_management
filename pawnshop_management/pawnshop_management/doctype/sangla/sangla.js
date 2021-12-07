@@ -4,7 +4,7 @@
 frappe.ui.form.on('Sangla', {
 	onload: function(frm){
 		show_tracking_no();
-		frm.set_value('interest', 500);
+		// frm.set_value('interest', 500);
 	},
 
 	// refresh: function(frm) {
@@ -177,6 +177,7 @@ function set_item_interest(frm, temp_principal) {
 		frappe.db.get_single_value('Pawnshop Management Settings', 'jewelry_interest_rate').then(value => {
 			interest = parseFloat(value)/100 * temp_principal;
 			cur_frm.set_value('interest', interest);
+			console.log(interest);
 			net_proceeds = temp_principal - interest;
 			cur_frm.set_value('net_proceeds', net_proceeds)
 		});
