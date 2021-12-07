@@ -137,7 +137,7 @@ function show_tracking_no(frm){
 				cur_frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ')
 			}
 
-			items_filter(cur_frm.doc.pawn_type, jewelry_count, non_jewelry_count) // filters items with the same batch
+			// items_filter(cur_frm.doc.pawn_type, jewelry_count, non_jewelry_count) // filters items with the same batch
 
 		},
 
