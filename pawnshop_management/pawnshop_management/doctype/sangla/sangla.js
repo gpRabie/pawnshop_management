@@ -6,9 +6,11 @@ frappe.ui.form.on('Sangla', {
 		show_tracking_no();
 	},
 
-	// refresh: function(frm) {
-	// 	show_tracking_no()
-	// },
+	refresh: function(frm) {
+		frm.add_custom_button('Click me', () => {
+				frappe.msgprint(__('Hi'));
+			}, 'Set Status');
+	},
 
 	date_loan_granted: function(frm){
 		let default_maturity_date = frappe.datetime.add_days(cur_frm.doc.date_loan_granted, 30);
@@ -184,6 +186,7 @@ function set_item_interest(frm, temp_principal) {
 			cur_frm.set_value('net_proceeds', net_proceeds)
 		});
 	}
+	deb
 }
 
 function items_filter(pawn_type, jewelry_batch, non_jewelry_batch){
