@@ -182,14 +182,14 @@ function set_item_interest(frm, temp_principal) {
 			interest = parseFloat(value)/100 * temp_principal;
 			cur_frm.set_value('interest', interest);
 			net_proceeds = temp_principal - interest;
-			cur_frm.set_value('net_proceeds', net_proceeds)
+			// cur_frm.set_value('net_proceeds', net_proceeds)
 		});
 	} else {
 		frappe.db.get_single_value('Pawnshop Management Settings', 'gadget_interest_rate').then(value => {
 			interest = parseFloat(value)/100 * temp_principal;
 			cur_frm.set_value('interest', interest);
 			net_proceeds = temp_principal - interest;
-			cur_frm.set_value('net_proceeds', net_proceeds)
+			// cur_frm.set_value('net_proceeds', net_proceeds)
 		});
 	}
 	deb
