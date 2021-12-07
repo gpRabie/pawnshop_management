@@ -187,7 +187,6 @@ function set_item_interest(frm, temp_principal) {
 			cur_frm.set_value('net_proceeds', net_proceeds)
 		});
 	}
-	deb
 }
 
 // function items_filter(pawn_type, jewelry_batch, non_jewelry_batch){
