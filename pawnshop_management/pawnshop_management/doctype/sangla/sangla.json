@@ -91,6 +91,7 @@
    "fieldname": "interest",
    "fieldtype": "Currency",
    "label": "Interest",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -151,7 +152,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2021-12-07 10:00:38.638059",
+ "modified": "2021-12-07 10:48:35.104548",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Sangla",

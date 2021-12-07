@@ -47,7 +47,7 @@ frappe.ui.form.on('Sangla', {
 		set_series();
 		show_tracking_no();
 		frm.refresh_fields('pawn_ticket');
-		// set_item_interest(frm, frm.doc.desired_principal);
+		set_item_interest(frm, frm.doc.desired_principal);
 	}
 
 
@@ -158,13 +158,13 @@ function set_total_appraised_amount(frm, cdt, cdn) { // Calculate Principal Amou
 			temp_principal += parseFloat(item.suggested_appraisal_value);
 		});
 		cur_frm.set_value('desired_principal', temp_principal)
-		set_item_interest(frm, temp_principal)
+		// set_item_interest(frm, temp_principal)
 	} else {
 		$.each(cur_frm.doc.non_jewelry_items, function(index, item){
 			temp_principal += parseFloat(item.suggested_appraisal_value);
 		});
 		cur_frm.set_value('desired_principal', temp_principal);
-		set_item_interest(frm, temp_principal)
+		// set_item_interest(frm, temp_principal)
 	}
 }
 
