@@ -6,11 +6,11 @@ frappe.ui.form.on('Sangla', {
 		show_tracking_no();
 	},
 
-	refresh: function(frm) {
-		frm.add_custom_button('Click me', () => {
-				frappe.msgprint(__('Hi'));
-			}, 'Set Status');
-	},
+	// refresh: function(frm) {
+	// 	frm.add_custom_button('Click me', () => {
+	// 			frappe.msgprint(__('Hi'));
+	// 		}, 'Set Status');
+	// },
 
 	date_loan_granted: function(frm){
 		let default_maturity_date = frappe.datetime.add_days(cur_frm.doc.date_loan_granted, 30);
@@ -47,7 +47,7 @@ frappe.ui.form.on('Sangla', {
 		set_series();
 		show_tracking_no();
 		frm.refresh_fields('pawn_ticket');
-		set_item_interest(frm, frm.doc.desired_principal);
+		// set_item_interest(frm, frm.doc.desired_principal);
 	}
 
 
