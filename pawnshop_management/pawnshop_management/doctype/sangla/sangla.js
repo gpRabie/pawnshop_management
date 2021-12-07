@@ -175,7 +175,7 @@ function set_item_interest(frm, temp_principal) {
 	var net_proceeds = 0.00;
 	if (cur_frm.doc.pawn_type == 'Jewelry') {
 		frappe.db.get_single_value('Pawnshop Management Settings', 'jewelry_interest_rate').then(value => {
-			interest = parseFloat(value)/100 * temp_principal;
+			interest = parseFloat(value)/100 * parseFloat(temp_principal);
 			cur_frm.set_value('interest', interest);
 			console.log(cur_frm.doc.pawn_type);
 			console.log(interest);
