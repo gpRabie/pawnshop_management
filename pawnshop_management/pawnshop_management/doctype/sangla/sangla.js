@@ -48,6 +48,12 @@ frappe.ui.form.on('Sangla', {
 		show_tracking_no();
 		frm.refresh_fields('pawn_ticket');
 		set_item_interest(frm, frm.doc.desired_principal);
+	},
+
+	interest: function(frm){
+		let total = parseInt(frm.doc.desired_principal) - parseInt(frm.doc.interest);
+		frm.set_value('net_proceeds', total);
+		frm.refresh()
 	}
 
 
