@@ -50,11 +50,6 @@ frappe.ui.form.on('Sangla', {
 		set_item_interest(frm, frm.doc.desired_principal);
 	},
 
-	interest: function(frm){
-		let total = parseInt(frm.doc.desired_principal) - parseInt(frm.doc.interest);
-		frm.set_value('net_proceeds', total);
-		frm.refresh()
-	}
 
 
 });
@@ -164,13 +159,13 @@ function set_total_appraised_amount(frm, cdt, cdn) { // Calculate Principal Amou
 			temp_principal += parseFloat(item.suggested_appraisal_value);
 		});
 		cur_frm.set_value('desired_principal', temp_principal)
-		// set_item_interest(frm, temp_principal)
+		set_item_interest(frm, temp_principal)
 	} else {
 		$.each(cur_frm.doc.non_jewelry_items, function(index, item){
 			temp_principal += parseFloat(item.suggested_appraisal_value);
 		});
 		cur_frm.set_value('desired_principal', temp_principal);
-		// set_item_interest(frm, temp_principal)
+		set_item_interest(frm, temp_principal)
 	}
 }
 
@@ -182,37 +177,37 @@ function set_item_interest(frm, temp_principal) {
 			interest = parseFloat(value)/100 * temp_principal;
 			cur_frm.set_value('interest', interest);
 			net_proceeds = temp_principal - interest;
-			// cur_frm.set_value('net_proceeds', net_proceeds)
+			cur_frm.set_value('net_proceeds', net_proceeds)
 		});
 	} else {
 		frappe.db.get_single_value('Pawnshop Management Settings', 'gadget_interest_rate').then(value => {
 			interest = parseFloat(value)/100 * temp_principal;
 			cur_frm.set_value('interest', interest);
 			net_proceeds = temp_principal - interest;
-			// cur_frm.set_value('net_proceeds', net_proceeds)
+			cur_frm.set_value('net_proceeds', net_proceeds)
 		});
 	}
 	deb
 }
 
-function items_filter(pawn_type, jewelry_batch, non_jewelry_batch){
-	if (pawn_type == 'Jewelry') {
-		cur_frm.set_query("sangla", "jewelry_items", function(){
-			return {
-				"filters": {
-					"batch_number": jewelry_batch
-				}
-			}
-		})
-	} else if (pawn_type == 'Non Jewelry'){
-		cur_frm.set_query("sangla", "non_jewelry_items", function(){
-			return {
-				"filters": {
-					"batch_number": non_jewelry_batch
-				}
-			}
-		})
-	}
-}
+// function items_filter(pawn_type, jewelry_batch, non_jewelry_batch){
+// 	if (pawn_type == 'Jewelry') {
+// 		cur_frm.set_query("sangla", "jewelry_items", function(){
+// 			return {
+// 				"filters": {
+// 					"batch_number": jewelry_batch
+// 				}
+// 			}
+// 		})
+// 	} else if (pawn_type == 'Non Jewelry'){
+// 		cur_frm.set_query("sangla", "non_jewelry_items", function(){
+// 			return {
+// 				"filters": {
+// 					"batch_number": non_jewelry_batch
+// 				}
+// 			}
+// 		})
+// 	}
+// }
 
 
