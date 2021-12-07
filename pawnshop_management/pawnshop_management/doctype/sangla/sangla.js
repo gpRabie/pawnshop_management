@@ -7,6 +7,7 @@ frappe.ui.form.on('Sangla', {
 	},
 
 	// refresh: function(frm) {
+	// 	show_tracking_no()
 	// },
 
 	date_loan_granted: function(frm){
@@ -44,6 +45,7 @@ frappe.ui.form.on('Sangla', {
 		set_series();
 		show_tracking_no();
 		frm.refresh_fields('pawn_ticket');
+		set_item_interest(frm, frm.doc.desired_principal);
 	}
 
 
@@ -115,7 +117,6 @@ function show_tracking_no(frm){
 		},
 
 		callback: function(value){
-			items_filter(cur_frm.doc.pawn_type, jewelry_count, non_jewelry_count) // filters items with the same batch
 			let tracking_no = value.message;
 			let jewelry_count = parseInt(tracking_no.jewelry_inventory_count)
 			let non_jewelry_count = parseInt(tracking_no.non_jewelry_inventory_count)
@@ -134,6 +135,8 @@ function show_tracking_no(frm){
 				non_jewelry_count++;
 				cur_frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ')
 			}
+
+			items_filter(cur_frm.doc.pawn_type, jewelry_count, non_jewelry_count) // filters items with the same batch
 
 		},
 
