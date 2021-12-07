@@ -4,6 +4,7 @@
 frappe.ui.form.on('Sangla', {
 	onload: function(frm){
 		show_tracking_no();
+		frm.set_value('interest', 500);
 	},
 
 	// refresh: function(frm) {
