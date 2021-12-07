@@ -63,7 +63,8 @@ frappe.ui.form.on('Jewelry List', {
 						title:__('Notification'),
 						indicator:'red',
 						message: __('Added item is already in the list. Item removed.')
-					})
+					});
+					set_total_appraised_amount(frm, cdt, cdn);
 					// console.log("Pasok!");
 				}
 				// console.log(frm.doc.jewelry_items[index].item_no);
