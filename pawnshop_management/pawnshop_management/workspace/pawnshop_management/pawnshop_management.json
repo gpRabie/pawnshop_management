@@ -1,0 +1,57 @@
+{
+ "category": "Modules",
+ "charts": [],
+ "creation": "2021-12-08 14:58:37.143819",
+ "developer_mode_only": 0,
+ "disable_user_customization": 1,
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "extends_another_page": 0,
+ "hide_custom": 0,
+ "icon": "income",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "label": "Pawnshop Management",
+ "links": [],
+ "modified": "2021-12-08 16:50:49.397125",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Pawnshop Management",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 0,
+ "shortcuts": [
+  {
+   "doc_view": "New",
+   "label": "Sangla",
+   "link_to": "Sangla",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "Dashboard",
+   "label": "Pawnshop Management Settings",
+   "link_to": "Pawnshop Management Settings",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "Dashboard",
+   "label": "Jewelry Items",
+   "link_to": "Jewelry Items",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Non Jewelry Items",
+   "link_to": "Non Jewelry Items",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Jewelry Batch",
+   "link_to": "Jewelry Batch",
+   "type": "DocType"
+  }
+ ],
+ "shortcuts_label": "Tools"
+}

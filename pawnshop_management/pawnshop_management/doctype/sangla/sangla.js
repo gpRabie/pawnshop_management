@@ -4,7 +4,6 @@
 frappe.ui.form.on('Sangla', {
 	onload: function(frm){
 		show_tracking_no();
-		// frm.set_value('interest', 500);
 	},
 
 	// refresh: function(frm) {
@@ -49,9 +48,7 @@ frappe.ui.form.on('Sangla', {
 		show_tracking_no();
 		frm.refresh_fields('pawn_ticket');
 		set_item_interest(frm, frm.doc.desired_principal);
-	},
-
-
+	}
 
 });
 
@@ -175,7 +172,7 @@ function set_item_interest(frm, temp_principal) {
 	var net_proceeds = 0.00;
 	if (cur_frm.doc.pawn_type == 'Jewelry') {
 		frappe.db.get_single_value('Pawnshop Management Settings', 'jewelry_interest_rate').then(value => {
-			interest = parseFloat(value)/100 * parseFloat(temp_principal);
+			interest = (parseFloat(value)/100) * (parseFloat(temp_principal));
 			cur_frm.set_value('interest', interest);
 			console.log(cur_frm.doc.pawn_type);
 			console.log(interest);
@@ -191,6 +188,11 @@ function set_item_interest(frm, temp_principal) {
 		});
 	}
 }
+
+
+// function get_date(frm) {
+// 	frappe.call()
+// }
 
 // function items_filter(pawn_type, jewelry_batch, non_jewelry_batch){
 // 	if (pawn_type == 'Jewelry') {
