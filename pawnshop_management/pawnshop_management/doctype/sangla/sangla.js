@@ -4,6 +4,8 @@
 frappe.ui.form.on('Sangla', {
 	onload: function(frm){
 		show_tracking_no();
+		let today = frappe.datetime.now_datetime().split(" ");
+		frm.set_value('date_loan_granted', today[0]);
 	},
 
 	// refresh: function(frm) {

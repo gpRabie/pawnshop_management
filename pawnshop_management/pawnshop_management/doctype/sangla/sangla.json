@@ -48,18 +48,24 @@
    "fieldname": "date_loan_granted",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Date Loan Granted"
+   "label": "Date Loan Granted",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "maturity_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Maturity Date"
+   "label": "Maturity Date",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "expiry_date",
    "fieldtype": "Date",
-   "label": "Expiry Date"
+   "label": "Expiry Date",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "column_break_6",
@@ -151,7 +157,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2021-12-08 18:18:15.043907",
+ "modified": "2021-12-09 09:06:15.709326",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Sangla",
