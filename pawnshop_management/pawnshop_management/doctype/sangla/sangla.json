@@ -157,7 +157,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2021-12-09 13:18:54.716965",
+ "modified": "2021-12-09 15:17:41.376062",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Sangla",
@@ -182,7 +182,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Employee",
+   "role": "Main Appraiser",
    "select": 1,
    "share": 1
   }
