@@ -1,4 +1,5 @@
 {
+ "cards_label": "Items",
  "category": "Modules",
  "charts": [],
  "creation": "2021-12-08 14:58:37.143819",
@@ -13,8 +14,27 @@
  "is_default": 0,
  "is_standard": 1,
  "label": "Pawnshop Management",
- "links": [],
- "modified": "2021-12-08 16:50:49.397125",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Jewlery Items",
+   "link_to": "Jewelry Items",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Non Jewel Items",
+   "link_to": "Non Jewelry Items",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2021-12-09 14:39:37.757871",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
