@@ -174,12 +174,6 @@ user_data_fields = [
 # ]
 
 fixtures = [
-	"Category",
-	{
-		"dt": "Workflow State"
-	},
-	{
-		"dt": "Workflow"
-	}
+	"Workflow State"
 ]
 
