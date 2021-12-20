@@ -4,6 +4,43 @@
 frappe.ui.form.on('Jewelry Items', {
 	onload: function(frm) {
 		show_item_no();
+		frm.set_value('main_appraiser', frappe.user_info().fullname);
+		// frm.disable_save();
+	},
+
+	refresh: function(frm){
+		frm.add_custom_button('Get Password', () => {
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.passwords.validate_user',
+				args: {
+					doctype: "User",
+					name: "gprabiemosessantillan@gmail.com"
+				},
+				callback: function(pwd){
+					console.log(pwd);
+				}
+			})
+		});
+	},
+
+	assistant_appraiser: function(frm){
+		frappe.prompt({
+			label: 'Password',
+			fieldname: 'password',
+			fieldtype: 'Password'
+		}, (password) => {
+			console.log(password);
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.passwords.get_password',
+				args: {
+					usr: frm.doc.assistant_appraiser,
+					password: password
+				},
+				callback: function(pwd){
+					console.log(pwd);
+				}
+			})
+		})
 	}
 
 });

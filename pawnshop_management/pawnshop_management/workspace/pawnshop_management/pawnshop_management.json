@@ -18,6 +18,24 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Pawn Tickets",
+   "link_to": "Pawn Ticket",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Jewelry Batch",
+   "link_to": "Jewelry Batch",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Jewlery Items",
    "link_to": "Jewelry Items",
    "link_type": "DocType",
@@ -27,14 +45,14 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Non Jewel Items",
+   "label": "Non Jewelry Items",
    "link_to": "Non Jewelry Items",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2021-12-09 14:39:37.757871",
+ "modified": "2021-12-16 12:59:47.761712",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -44,8 +62,8 @@
  "shortcuts": [
   {
    "doc_view": "New",
-   "label": "Sangla",
-   "link_to": "Sangla",
+   "label": "Pawn Ticket",
+   "link_to": "Pawn Ticket",
    "type": "DocType"
   },
   {
@@ -61,15 +79,9 @@
    "type": "DocType"
   },
   {
-   "doc_view": "",
+   "doc_view": "Dashboard",
    "label": "Non Jewelry Items",
    "link_to": "Non Jewelry Items",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "",
-   "label": "Jewelry Batch",
-   "link_to": "Jewelry Batch",
    "type": "DocType"
   }
  ],

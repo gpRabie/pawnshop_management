@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "field:pawn_ticket",
- "creation": "2021-11-08 18:29:13.597773",
+ "creation": "2021-12-14 12:52:10.280584",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -30,6 +30,7 @@
   {
    "fieldname": "pawn_ticket",
    "fieldtype": "Data",
+   "in_global_search": 1,
    "in_list_view": 1,
    "label": "Pawn Ticket",
    "read_only": 1,
@@ -43,6 +44,14 @@
    "label": "Pawn Type",
    "options": "Jewelry\nNon Jewelry",
    "reqd": 1
+  },
+  {
+   "fieldname": "item_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "A\nB",
+   "read_only": 1
   },
   {
    "fieldname": "date_loan_granted",
@@ -72,6 +81,13 @@
    "fieldtype": "Column Break"
   },
   {
+   "fieldname": "customers_tracking_no",
+   "fieldtype": "Link",
+   "label": "Customer's Tracking No",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
    "fetch_from": "customers_tracking_no.customer_name",
    "fieldname": "customers_full_name",
    "fieldtype": "Data",
@@ -80,6 +96,24 @@
   {
    "fieldname": "section_break_9",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "inventory_tracking_no",
+   "fieldtype": "Data",
+   "label": "Inventory Tracking No"
+  },
+  {
+   "fieldname": "jewelry_items",
+   "fieldtype": "Table",
+   "label": "Item(s)",
+   "options": "Jewelry List"
+  },
+  {
+   "fieldname": "non_jewelry_items",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Item(s)",
+   "options": "Non Jewelry List"
   },
   {
    "fieldname": "section_break_11",
@@ -116,37 +150,13 @@
    "read_only": 1
   },
   {
-   "fieldname": "item_series",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "label": "Series",
-   "options": "A\nB",
-   "read_only": 1
-  },
-  {
-   "fieldname": "customers_tracking_no",
+   "fieldname": "amended_from",
    "fieldtype": "Link",
-   "label": "Customer's Tracking No",
-   "options": "Customer",
-   "reqd": 1
-  },
-  {
-   "fieldname": "inventory_tracking_no",
-   "fieldtype": "Data",
-   "label": "Inventory Tracking No"
-  },
-  {
-   "fieldname": "jewelry_items",
-   "fieldtype": "Table",
-   "label": "Item(s)",
-   "options": "Jewelry List"
-  },
-  {
-   "fieldname": "non_jewelry_items",
-   "fieldtype": "Table",
-   "hidden": 1,
-   "label": "Item(s)",
-   "options": "Non Jewelry List"
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Sangla",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -157,10 +167,10 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2021-12-14 15:50:51.274240",
+ "modified": "2021-12-16 12:53:36.625515",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
- "name": "Sangla",
+ "name": "Pawn Ticket",
  "owner": "Administrator",
  "permissions": [
   {
@@ -184,22 +194,7 @@
    "report": 1,
    "role": "Main Appraiser",
    "select": 1,
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Assistant Appraiser",
-   "select": 1,
-   "share": 1,
-   "submit": 1,
-   "write": 1
+   "share": 1
   }
  ],
  "sort_field": "modified",

@@ -20,13 +20,21 @@
   "section_break_10",
   "appraisal_value",
   "section_break_12",
-  "comments"
+  "appraisers_section",
+  "main_appraiser",
+  "column_break_16",
+  "assistant_appraiser",
+  "section_break_18",
+  "comments",
+  "amended_from"
  ],
  "fields": [
   {
    "fieldname": "item_no",
    "fieldtype": "Data",
+   "in_global_search": 1,
    "label": "Item No",
+   "read_only": 1,
    "reqd": 1,
    "unique": 1
   },
@@ -106,11 +114,47 @@
    "fieldtype": "Int",
    "hidden": 1,
    "label": "Batch Number"
+  },
+  {
+   "fieldname": "appraisers_section",
+   "fieldtype": "Section Break",
+   "label": "Appraisers"
+  },
+  {
+   "fieldname": "main_appraiser",
+   "fieldtype": "Data",
+   "label": "Main Appraiser",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Jewelry Items",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "assistant_appraiser",
+   "fieldtype": "Link",
+   "label": "Assistant Appraiser",
+   "options": "User",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-06 14:09:25.257235",
+ "modified": "2021-12-20 12:08:24.506533",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Items",
