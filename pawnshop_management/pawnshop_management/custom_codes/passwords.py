@@ -16,6 +16,8 @@ def validate_user(doctype, name, fieldname='password', raise_exception=True):
                         and fieldname=%(fieldname)s and encrypted=0""", {
                             'doctype': doctype, 'name': name, 'fieldname': fieldname})
     password = encode(auth[0][0])
+    while len(password) % 4 != 0:
+        password += "="
     return decrypt(password)
     
     
