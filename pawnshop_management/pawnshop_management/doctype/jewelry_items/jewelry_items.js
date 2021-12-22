@@ -14,10 +14,10 @@ frappe.ui.form.on('Jewelry Items', {
 				method: 'pawnshop_management.pawnshop_management.custom_codes.passwords.validate_user',
 				args: {
 					doctype: "User",
-					name: "gprabiemosessantillan@gmail.com"
+					name: "jappraiser@gmail.com"
 				},
 				callback: function(pwd){
-					console.log(pwd);
+					console.log(pwd.message);
 				}
 			})
 		});

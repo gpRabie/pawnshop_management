@@ -11,7 +11,3 @@ class JewelryItems(Document):
 		if self.item_no != frappe.db.exists('Jewelry Items', self.item_no):
 			doc.jewelry_count += 1
 		doc.save(ignore_permissions=True)
-
-	def validate(self):
-		login_manager = LoginManager()
-		login_manager.check_password(user=self.assistant_appraiser, pwd = self.password)
