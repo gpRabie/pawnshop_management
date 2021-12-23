@@ -6,25 +6,17 @@ frappe.ui.form.on('Jewelry Items', {
 		show_item_no();
 		frm.set_value('main_appraiser', frappe.user_info().fullname);
 		frm.disable_save();
-		// frm.disable_save();
 	},
 
-	// refresh: function(frm){
-	// 	frm.add_custom_button('Get Password', () => {
-	// 		frappe.call({
-	// 			method: 'pawnshop_management.pawnshop_management.custom_codes.passwords.check_password',
-	// 			args: {
-	// 				// doctype: "User",
-	// 				// name: "jappraiser@gmail.com"
-	// 				user: "gprabiemosessantillan@gmail.com",
-	// 				pwd: "wertyou1234"
-	// 			},
-	// 			callback: function(pwd){
-	// 				console.log(pwd.message);
-	// 			}
-	// 		})
-	// 	});
-	// },
+	refresh: function(frm){
+		frm.set_query('assistant_appraiser', function() {
+			return {
+				"filters": {
+					"role_profile_name": "Assistant Appraiser"
+				}
+			};
+		});
+	},
 
 	assistant_appraiser: function(frm){
 		if (frm.doc.assistant_appraiser != null) {
@@ -41,6 +33,11 @@ frappe.ui.form.on('Jewelry Items', {
 					},
 					callback: function(usr){
 						if (frm.doc.assistant_appraiser == usr.message) {
+							frappe.msgprint({
+								title: __('Approved!'),
+								indicator: 'green',
+								message: __('Appraisal Approved')
+							});
 							frm.set_df_property('type', 'read_only', 1);
 							frm.set_df_property('weight', 'read_only', 1);
 							frm.set_df_property('karat', 'read_only', 1);
@@ -49,7 +46,16 @@ frappe.ui.form.on('Jewelry Items', {
 							frm.set_df_property('color', 'read_only', 1);
 							frm.set_df_property('colors_if_multi', 'read_only', 1);
 							frm.set_df_property('appraisal_value', 'read_only', 1);
+							frm.set_df_property('assistant_appraiser', 'read_only', 1);
 							frm.enable_save();
+						} else {
+							frm.set_value('assistant_appraiser', null);
+							frm.refresh_field('assistant_appraiser');
+							frappe.msgprint({
+								title: __('Password Invalid'),
+								indicator: 'red',
+								message: __(usr.message)
+							});
 						}
 					}
 				})
