@@ -177,7 +177,7 @@ fixtures = [
 	"Workflow State",
 	"Role",
 	"Role Profile",
-	"Role Permissions Manager",
+	"Custom DocPerm", # Role Permissions Manager
 	"Workspace"
 ]
 

@@ -1,0 +1,31 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2021-12-09 10:16:52.935721",
+  "name": "Assistant Appraiser",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Assistant Appraiser",
+  "roles": []
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2021-12-09 15:18:08.576762",
+  "name": "Main Appraiser",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Main Appraiser",
+  "roles": [
+   {
+    "parent": "Main Appraiser",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Main Appraiser"
+   }
+  ]
+ }
+]
