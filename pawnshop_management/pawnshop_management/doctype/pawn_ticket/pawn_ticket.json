@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "field:pawn_ticket",
- "creation": "2021-12-14 12:52:10.280584",
+ "creation": "2021-12-29 18:47:01.735616",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -24,13 +24,13 @@
   "desired_principal",
   "interest",
   "net_proceeds",
+  "amended_from",
   "amended_from"
  ],
  "fields": [
   {
    "fieldname": "pawn_ticket",
    "fieldtype": "Data",
-   "in_global_search": 1,
    "in_list_view": 1,
    "label": "Pawn Ticket",
    "read_only": 1,
@@ -154,7 +154,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Sangla",
+   "options": "Pawn Ticket",
    "print_hide": 1,
    "read_only": 1
   }
@@ -167,7 +167,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2021-12-16 12:53:36.625515",
+ "modified": "2021-12-29 18:47:01.735616",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket",
@@ -194,7 +194,22 @@
    "report": 1,
    "role": "Main Appraiser",
    "select": 1,
-   "share": 1
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Assistant Appraiser",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
   }
  ],
  "sort_field": "modified",

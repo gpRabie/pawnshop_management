@@ -3,7 +3,6 @@
 
 import frappe
 from frappe.model.document import Document
-from frappe.auth import LoginManager
 
 class JewelryItems(Document):	
 	def before_save(self):

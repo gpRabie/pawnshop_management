@@ -3,13 +3,8 @@
 
 import frappe
 from frappe.model.document import Document
-from frappe.utils import today
 
-
-class Sangla(Document):
-	# def autoname(self):
-	# 	self.name = self.pawn_ticket
-		
+class PawnTicket(Document):
 	def before_save(self):
 		settings = frappe.get_doc('Pawnshop Management Settings')
 		if self.pawn_ticket != frappe.db.exists('Pawn Ticket', self.pawn_ticket):
@@ -25,5 +20,3 @@ class Sangla(Document):
 			elif self.item_series == 'B':
 				settings.b_series_current_count += 1
 		settings.save(ignore_permissions=True)
-
-

@@ -101,8 +101,8 @@ frappe.ui.form.on('Jewelry List', {
 	jewelry_items_remove: function(frm, cdt, cdn){ //calculate appraisal value when removing items
 		set_total_appraised_amount(frm, cdt, cdn);
 	}
-
 });
+
 
 frappe.ui.form.on('Non Jewelry List', {
 	suggested_appraisal_value: function(frm, cdt, cdn){
@@ -231,5 +231,3 @@ function set_item_interest(frm, temp_principal) {
 // 		})
 // 	}
 // }
-
-
