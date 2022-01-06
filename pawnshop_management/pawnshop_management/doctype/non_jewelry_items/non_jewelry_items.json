@@ -1,25 +1,44 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:item_no",
  "creation": "2021-11-09 09:05:50.586749",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "item_no",
+  "originating_branch",
   "type",
   "brand",
+  "model",
+  "model_number",
   "column_break_4",
+  "ram",
+  "internal_memory",
+  "disk_type",
+  "color",
   "category",
+  "accessories_section",
+  "charger",
+  "case_box_or_bag",
+  "section_break_6",
   "appraisal_value",
   "section_break_7",
+  "main_appraiser",
+  "column_break_9",
+  "assistant_appraiser",
+  "section_break_11",
   "comments"
  ],
  "fields": [
   {
    "fieldname": "item_no",
    "fieldtype": "Data",
-   "label": "Item No"
+   "label": "Item No",
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "type",
@@ -29,9 +48,10 @@
   },
   {
    "fieldname": "brand",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "Brand",
-   "options": "--Please Select Type--"
+   "options": "Brands",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_4",
@@ -50,17 +70,102 @@
   },
   {
    "fieldname": "section_break_7",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Appraisers"
   },
   {
    "fieldname": "comments",
    "fieldtype": "Small Text",
    "label": "Comments"
+  },
+  {
+   "fieldname": "main_appraiser",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Main Appraiser",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assistant_appraiser",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assistant Appraiser",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_11",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Link",
+   "label": "Model",
+   "options": "Models"
+  },
+  {
+   "fieldname": "ram",
+   "fieldtype": "Select",
+   "label": "RAM",
+   "options": "2 GB\n3 GB\n4 GB\n6 GB\n8 GB\n12 GB"
+  },
+  {
+   "fieldname": "internal_memory",
+   "fieldtype": "Select",
+   "label": "Internal Memory",
+   "options": "No SD Card\n32 GB\n64 GB\n128 GB\n237 GB\n256 GB"
+  },
+  {
+   "fieldname": "disk_type",
+   "fieldtype": "Select",
+   "label": "Disk Type",
+   "options": "N/A\nHDD\nSSD"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Data",
+   "label": "Color"
+  },
+  {
+   "fieldname": "accessories_section",
+   "fieldtype": "Section Break",
+   "label": "Accessories"
+  },
+  {
+   "default": "0",
+   "fieldname": "charger",
+   "fieldtype": "Check",
+   "label": "Charger"
+  },
+  {
+   "default": "0",
+   "fieldname": "case_box_or_bag",
+   "fieldtype": "Check",
+   "label": "Case, Box or Bag"
+  },
+  {
+   "fieldname": "model_number",
+   "fieldtype": "Data",
+   "label": "Model Number"
+  },
+  {
+   "fieldname": "originating_branch",
+   "fieldtype": "Data",
+   "label": "Originating Branch"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-09 09:05:50.586749",
+ "modified": "2022-01-06 20:06:38.904230",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry Items",
@@ -79,7 +184,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

@@ -82,7 +82,7 @@ function show_item_no(frm) {
 			jewelry_count++
 			jewelry_inventory_count++
 			cur_frm.set_value('batch_number', jewelry_inventory_count)
-			cur_frm.set_value('item_no', '1-' + jewelry_inventory_count + '-' + jewelry_count)
+			cur_frm.set_value('item_no', '1-' + jewelry_inventory_count + 'J' + '-' + jewelry_count)
 		},
 
 		// error: function(data){

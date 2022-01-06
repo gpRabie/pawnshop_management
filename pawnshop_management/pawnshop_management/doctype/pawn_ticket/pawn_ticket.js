@@ -8,16 +8,37 @@ frappe.ui.form.on('Pawn Ticket', {
 		frm.set_value('date_loan_granted', today[0]);
 	},
 
-	// before_save: function(frm){
-
-	// },
-
-	// refresh: function(frm) {
-	// 	frm.add_custom_button('Click me', () => {
-	// 			frappe.msgprint(__('Hi'));
-	// 		}, 'Set Status');
-	// },
-
+	refresh: function(frm){
+		// frm.set_query('jewelry_items', 'jewelry_list', function(){
+		// 	return {
+		// 		"filters": {
+		// 			"batch_number": 1
+		// 		}
+		// 	};
+		// });
+		// frappe.call({
+		// 	method: 'frappe.client.get_value',
+		// 	args: {
+		// 		'doctype': 'Pawnshop Management Settings',
+		// 		'fieldname': [
+		// 			'jewelery_inventory_count',
+		// 			'non_jewelery_inventory_count'
+		// 		]
+		// 	},
+		// 	callback: function(data){
+		// 		let batch_number = data.message;
+		// 		let jewelry_batch = batch_number.jewelry_inventory_count;
+		// 		let non_jewelry_batch = batch_number.non_jewelry_inventory_count
+		// 		frm.set_query('jewelry_items', 'jewelry_list', function(){
+		// 			return {
+		// 				"filters": {
+		// 					"batch_number": null_checker(jewelry_batch)
+		// 				}
+		// 			};
+		// 		});
+		// 	}
+		// })
+	},
 
 	date_loan_granted: function(frm){
 		let default_maturity_date = frappe.datetime.add_days(cur_frm.doc.date_loan_granted, 30);
@@ -28,6 +49,7 @@ frappe.ui.form.on('Pawn Ticket', {
 	},
 
 	pawn_type: function(frm){
+		let previous_pawn_type = frm.doc.pawn_type;
 		frappe.confirm('Pawn item list will be cleared, are you sure you want to proceed?', 
 		() => {
 			// action to perform if Yes is selected
@@ -46,7 +68,7 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.set_df_property('non_jewelry_items', 'hidden', false);
 			}
 		}, () => {
-			// action to perform if No is selected
+			frm.set_value('pawn_type', previous_pawn_type);
 		})
 	},
 
@@ -207,27 +229,9 @@ function set_item_interest(frm, temp_principal) {
 	}
 }
 
-
-// function get_date(frm) {
-// 	frappe.call()
-// }
-
-// function items_filter(pawn_type, jewelry_batch, non_jewelry_batch){
-// 	if (pawn_type == 'Jewelry') {
-// 		cur_frm.set_query("sangla", "jewelry_items", function(){
-// 			return {
-// 				"filters": {
-// 					"batch_number": jewelry_batch
-// 				}
-// 			}
-// 		})
-// 	} else if (pawn_type == 'Non Jewelry'){
-// 		cur_frm.set_query("sangla", "non_jewelry_items", function(){
-// 			return {
-// 				"filters": {
-// 					"batch_number": non_jewelry_batch
-// 				}
-// 			}
-// 		})
-// 	}
-// }
+function null_checker(number) {
+	if (number == null) {
+		number = 0;
+	}
+	return parseInt(number)
+}
