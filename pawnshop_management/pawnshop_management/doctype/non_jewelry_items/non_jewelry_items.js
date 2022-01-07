@@ -13,7 +13,10 @@ frappe.ui.form.on('Non Jewelry Items', {
 			frappe.call({
 				method: 'pawnshop_management.pawnshop_management.custom_codes.import_gadgets_info.update_gadgets_data',
 				callback: (r) =>{
-					console.log(r.message);
+					frappe.show_alert({
+						message:__('Update Successful'),
+						indicator:'green'
+					}, 5)
 				}
 			})
 		})
