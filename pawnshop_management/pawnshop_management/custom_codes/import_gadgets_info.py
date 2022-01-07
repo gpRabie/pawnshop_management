@@ -22,3 +22,5 @@ def update_gadgets_data():
 			new_brand = frappe.new_doc('Brands')
 			new_brand.brand = str(cellphones[entry_no][0]).title()
 			new_brand.save(ignore_permissions=True)
+
+		# if frappe.db.exists()

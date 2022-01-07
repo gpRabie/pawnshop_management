@@ -54,13 +54,18 @@ frappe.ui.form.on('Non Jewelry Items', {
 								indicator: 'green',
 								message: __('Appraisal Approved')
 							});
+							frm.set_df_property('originating_branch', 'read_only', 1);
 							frm.set_df_property('type', 'read_only', 1);
-							frm.set_df_property('weight', 'read_only', 1);
-							frm.set_df_property('karat', 'read_only', 1);
-							frm.set_df_property('karat_category', 'read_only', 1);
-							frm.set_df_property('additional_for_stone', 'read_only', 1);
+							frm.set_df_property('brand', 'read_only', 1);
+							frm.set_df_property('model', 'read_only', 1);
+							frm.set_df_property('model_number', 'read_only', 1);
+							frm.set_df_property('ram', 'read_only', 1);
+							frm.set_df_property('internal_memory', 'read_only', 1);
+							frm.set_df_property('disk_type', 'read_only', 1);
 							frm.set_df_property('color', 'read_only', 1);
-							frm.set_df_property('colors_if_multi', 'read_only', 1);
+							frm.set_df_property('category', 'read_only', 1);
+							frm.set_df_property('charger', 'read_only', 1);
+							frm.set_df_property('case_box_or_bag', 'read_only', 1);
 							frm.set_df_property('appraisal_value', 'read_only', 1);
 							frm.set_df_property('assistant_appraiser', 'read_only', 1);
 							frm.enable_save();
