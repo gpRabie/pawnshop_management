@@ -9,7 +9,8 @@
   "item_no",
   "type",
   "brand",
-  "category",
+  "model",
+  "model_number",
   "suggested_appraisal_value"
  ],
  "fields": [
@@ -23,31 +24,41 @@
    "fetch_from": "item_no.type",
    "fieldname": "type",
    "fieldtype": "Data",
-   "label": "Type"
+   "label": "Type",
+   "read_only": 1
   },
   {
    "fetch_from": "item_no.brand",
    "fieldname": "brand",
    "fieldtype": "Data",
-   "label": "Brand"
-  },
-  {
-   "fetch_from": "item_no.category",
-   "fieldname": "category",
-   "fieldtype": "Data",
-   "label": "Category"
+   "label": "Brand",
+   "read_only": 1
   },
   {
    "fetch_from": "item_no.appraisal_value",
    "fieldname": "suggested_appraisal_value",
    "fieldtype": "Currency",
-   "label": "Appraisal Value"
+   "label": "Appraisal Value",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "item_no.model",
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "item_no.model_number",
+   "fieldname": "model_number",
+   "fieldtype": "Data",
+   "label": "Model Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-12-14 16:11:05.202461",
+ "modified": "2022-01-12 13:40:12.002038",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry List",

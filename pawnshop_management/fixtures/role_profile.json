@@ -2,13 +2,20 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2021-12-09 10:16:52.935721",
+  "modified": "2022-01-04 14:15:32.761257",
   "name": "Assistant Appraiser",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "role_profile": "Assistant Appraiser",
-  "roles": []
+  "roles": [
+   {
+    "parent": "Assistant Appraiser",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Assistant Appraiser"
+   }
+  ]
  },
  {
   "docstatus": 0,
