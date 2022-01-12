@@ -2,42 +2,21 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Pawn Ticket', {
-	onload: function(frm){
+	// onload: function(frm){
+		
+	// },
+
+	refresh: function(frm){
 		show_tracking_no();
 		let today = frappe.datetime.now_datetime().split(" ");
 		frm.set_value('date_loan_granted', today[0]);
-	},
-
-	refresh: function(frm){
-		// frm.set_query('jewelry_items', 'jewelry_list', function(){
-		// 	return {
-		// 		"filters": {
-		// 			"batch_number": 1
-		// 		}
-		// 	};
-		// });
-		// frappe.call({
-		// 	method: 'frappe.client.get_value',
-		// 	args: {
-		// 		'doctype': 'Pawnshop Management Settings',
-		// 		'fieldname': [
-		// 			'jewelery_inventory_count',
-		// 			'non_jewelery_inventory_count'
-		// 		]
-		// 	},
-		// 	callback: function(data){
-		// 		let batch_number = data.message;
-		// 		let jewelry_batch = batch_number.jewelry_inventory_count;
-		// 		let non_jewelry_batch = batch_number.non_jewelry_inventory_count
-		// 		frm.set_query('jewelry_items', 'jewelry_list', function(){
-		// 			return {
-		// 				"filters": {
-		// 					"batch_number": null_checker(jewelry_batch)
-		// 				}
-		// 			};
-		// 		});
-		// 	}
-		// })
+		frm.set_query('jewelry_list', 'jewelry_items', () => {
+			return {
+				"filters": {
+					"item_no": "1-1J-1"
+				}
+			};
+		});
 	},
 
 	date_loan_granted: function(frm){

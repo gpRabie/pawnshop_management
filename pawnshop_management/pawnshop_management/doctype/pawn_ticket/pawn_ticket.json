@@ -23,7 +23,8 @@
   "section_break_11",
   "desired_principal",
   "interest",
-  "net_proceeds"
+  "net_proceeds",
+  "amended_from"
  ],
  "fields": [
   {
@@ -105,7 +106,8 @@
    "fieldname": "jewelry_items",
    "fieldtype": "Table",
    "label": "Item(s)",
-   "options": "Jewelry List"
+   "options": "Jewelry List",
+   "reqd": 1
   },
   {
    "fieldname": "non_jewelry_items",
@@ -138,6 +140,15 @@
    "label": "Net Proceeds",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Pawn Ticket",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -148,7 +159,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-01-06 10:45:04.243294",
+ "modified": "2022-01-10 09:26:09.727755",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket",

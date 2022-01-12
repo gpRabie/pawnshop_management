@@ -9,14 +9,16 @@
  "field_order": [
   "model",
   "type",
-  "brand"
+  "brand",
+  "defective",
+  "minimum",
+  "maximumu"
  ],
  "fields": [
   {
    "fieldname": "brand",
    "fieldtype": "Link",
    "in_global_search": 1,
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Brand",
    "options": "Brands"
@@ -24,7 +26,6 @@
   {
    "fieldname": "model",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Model",
    "reqd": 1,
    "unique": 1
@@ -32,13 +33,33 @@
   {
    "fieldname": "type",
    "fieldtype": "Select",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
    "label": "Type",
-   "options": "Cellphone\nTablets\nLaptop\nCamera"
+   "options": "Cellphone\nTablet\nLaptop\nCamera"
+  },
+  {
+   "fieldname": "defective",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Defective"
+  },
+  {
+   "fieldname": "minimum",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Minimum"
+  },
+  {
+   "fieldname": "maximumu",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Maximum"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-06 19:41:13.718555",
+ "modified": "2022-01-12 11:04:15.656082",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Models",

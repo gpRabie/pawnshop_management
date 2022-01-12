@@ -178,6 +178,8 @@ fixtures = [
 	"Role",
 	"Role Profile",
 	"Custom DocPerm", # Role Permissions Manager
-	"Workspace"
+	"Workspace",
+	"Print Settings", # Print Option will only be available after submit
+	"Workflow"
 ]
 

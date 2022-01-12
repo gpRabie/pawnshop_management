@@ -51,7 +51,7 @@
    "fieldname": "karat",
    "fieldtype": "Select",
    "label": "Karat",
-   "options": "10KT\n14KTC\n14KT\n18KTC\n21KT\n22KT\n23KT\n24KT(Bars and Coins)",
+   "options": "10KT\n14KTC\n14KT\n18KT\n18KTC\n21KT\n22KT\n23KT\n24KT(Bars and Coins)",
    "reqd": 1
   },
   {
@@ -154,7 +154,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-04 14:04:42.593082",
+ "modified": "2022-01-10 14:18:15.930639",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Items",

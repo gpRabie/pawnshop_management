@@ -2,7 +2,7 @@
  "cards_label": "Items",
  "category": "Modules",
  "charts": [],
- "creation": "2021-12-08 14:58:37.143819",
+ "creation": "2021-12-29 18:43:52.649815",
  "developer_mode_only": 0,
  "disable_user_customization": 1,
  "docstatus": 0,
@@ -50,9 +50,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Gadgets Price List",
+   "link_to": "Models",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2021-12-16 12:59:47.761712",
+ "modified": "2022-01-12 11:32:19.215551",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -82,6 +91,12 @@
    "doc_view": "Dashboard",
    "label": "Non Jewelry Items",
    "link_to": "Non Jewelry Items",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "Dashboard",
+   "label": "Gadgets Price List",
+   "link_to": "Models",
    "type": "DocType"
   }
  ],

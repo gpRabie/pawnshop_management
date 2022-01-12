@@ -6,6 +6,11 @@ frappe.ui.form.on('Non Jewelry Items', {
 		show_item_no();
 		frm.set_value('main_appraiser', frappe.user_info().fullname);
 		frm.disable_save();
+		frm.set_df_property('disk_type', 'hidden', 1);
+		frm.set_df_property('internet_connection_capability', 'hidden', 1);
+		frm.set_df_property('bag', 'hidden', 1);
+		frm.set_df_property('extra_battery', 'hidden', 1);
+		frm.set_df_property('extra_lens', 'hidden', 1);
 	},
 
 	refresh: function(frm){
@@ -17,6 +22,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 						message:__('Update Successful'),
 						indicator:'green'
 					}, 5)
+					console.log(r.message);
 				}
 			})
 		})
@@ -37,7 +43,48 @@ frappe.ui.form.on('Non Jewelry Items', {
 		});
 	},
 
-	assitant_appraiser: function(frm){
+	type: function(frm){
+		if (frm.doc.type == "Cellphone") {
+			unhide_hidden_fields();
+			frm.set_df_property('disk_type', 'hidden', 1);
+			frm.set_df_property('internet_connection_capability', 'hidden', 1);
+			frm.set_df_property('bag', 'hidden', 1);
+			frm.set_df_property('extra_battery', 'hidden', 1);
+			frm.set_df_property('extra_lens', 'hidden', 1);
+		} else if (frm.doc.type == "Tablet") {
+			unhide_hidden_fields();
+			frm.set_df_property('disk_type', 'hidden', 1);
+			frm.set_df_property('bag', 'hidden', 1);
+			frm.set_df_property('extra_battery', 'hidden', 1);
+			frm.set_df_property('extra_lens', 'hidden', 1);
+		} else if (frm.doc.type == "Laptop") {
+			unhide_hidden_fields();
+			frm.set_df_property('internet_connection_capability', 'hidden', 1);
+			frm.set_df_property('charger', 'hidden', 1);
+			frm.set_df_property('pin', 'hidden', 1);
+			frm.set_df_property('sim_card', 'hidden', 1);
+			frm.set_df_property('sd_card', 'hidden', 1);
+			frm.set_df_property('bag', 'hidden', 1);
+			frm.set_df_property('extra_battery', 'hidden', 1);
+			frm.set_df_property('extra_lens', 'hidden', 1);
+		} else if (frm.doc.type == "Camera") {
+			unhide_hidden_fields();
+			frm.set_df_property('model_number', 'hidden', 1);
+			frm.set_df_property('ram', 'hidden', 1);
+			frm.set_df_property('internal_memory', 'hidden', 1);
+			frm.set_df_property('disk_type', 'hidden', 1);
+			frm.set_df_property('internet_connection_capability', 'hidden', 1);
+			frm.set_df_property('charger', 'hidden', 1);
+			frm.set_df_property('case', 'hidden', 1);
+			frm.set_df_property('box', 'hidden', 1);
+			frm.set_df_property('earphones', 'hidden', 1);
+			frm.set_df_property('pin', 'hidden', 1);
+			frm.set_df_property('manual', 'hidden', 1);
+			frm.set_df_property('sim_card', 'hidden', 1);
+		}
+	},
+
+	assistant_appraiser: function(frm){
 		if (frm.doc.assistant_appraiser != null) {
 			frappe.prompt({
 				label: 'Password',
@@ -86,7 +133,6 @@ frappe.ui.form.on('Non Jewelry Items', {
 			})
 		}
 	}
-
 });
 
 function show_item_no(frm) {
@@ -105,7 +151,7 @@ function show_item_no(frm) {
 			let non_jewelry_count = parseInt(data.message.non_jewelry_count)
 			non_jewelry_count++
 			non_jewelry_inventory_count++
-			
+			cur_frm.set_value('batch_number', non_jewelry_inventory_count)
 			cur_frm.set_value('item_no', '1-' + non_jewelry_inventory_count + 'NJ' + '-' + non_jewelry_count)
 		},
 
@@ -113,4 +159,23 @@ function show_item_no(frm) {
 			console.error('Error! Check show_item_no block');
 		}
 	})
+}
+
+function unhide_hidden_fields() {
+	cur_frm.set_df_property('model_number', 'hidden', 0);
+	cur_frm.set_df_property('ram', 'hidden', 0);
+	cur_frm.set_df_property('internal_memory', 'hidden', 0);
+	cur_frm.set_df_property('disk_type', 'hidden', 0);
+	cur_frm.set_df_property('internet_connection_capability', 'hidden', 0);
+	cur_frm.set_df_property('charger', 'hidden', 0);
+	cur_frm.set_df_property('case', 'hidden', 0);
+	cur_frm.set_df_property('box', 'hidden', 0);
+	cur_frm.set_df_property('earphones', 'hidden', 0);
+	cur_frm.set_df_property('pin', 'hidden', 0);
+	cur_frm.set_df_property('manual', 'hidden', 0);
+	cur_frm.set_df_property('sim_card', 'hidden', 0);
+	cur_frm.set_df_property('sd_card', 'hidden', 0);
+	cur_frm.set_df_property('bag', 'hidden', 0);
+	cur_frm.set_df_property('extra_battery', 'hidden', 0);
+	cur_frm.set_df_property('extra_lens', 'hidden', 0);
 }

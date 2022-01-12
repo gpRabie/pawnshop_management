@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "item_no",
+  "batch_number",
   "type",
   "weight",
   "karat",
@@ -29,7 +30,8 @@
    "fieldname": "type",
    "fieldtype": "Select",
    "label": "Type",
-   "options": "Earrings\nBracelet\nNecklace\nRing\nBangles\nPendant\nEarcuff\nGold Coin"
+   "options": "Earrings\nBracelet\nNecklace\nRing\nBangles\nPendant\nEarcuff\nGold Coin",
+   "read_only": 1
   },
   {
    "fetch_from": "item_no.karat",
@@ -61,7 +63,8 @@
    "fetch_from": "item_no.weight",
    "fieldname": "weight",
    "fieldtype": "Float",
-   "label": "Weight(g)"
+   "label": "Weight(g)",
+   "read_only": 1
   },
   {
    "fetch_from": "item_no.karat_category",
@@ -80,12 +83,19 @@
    "fieldname": "suggested_appraisal_value",
    "fieldtype": "Currency",
    "label": "Appraisal Value"
+  },
+  {
+   "fetch_from": "item_no.batch_number",
+   "fieldname": "batch_number",
+   "fieldtype": "Int",
+   "label": "Batch Number",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-12-15 08:56:27.713572",
+ "modified": "2022-01-12 11:39:39.542393",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry List",

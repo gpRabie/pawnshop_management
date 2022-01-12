@@ -8,20 +8,34 @@
  "engine": "InnoDB",
  "field_order": [
   "item_no",
-  "originating_branch",
+  "batch_number",
   "type",
   "brand",
   "model",
   "model_number",
+  "color",
   "column_break_4",
   "ram",
   "internal_memory",
   "disk_type",
-  "color",
+  "internet_connection_capability",
+  "videocard",
   "category",
   "accessories_section",
   "charger",
-  "case_box_or_bag",
+  "case",
+  "box",
+  "earphones",
+  "others",
+  "column_break_20",
+  "pin",
+  "manual",
+  "sim_card",
+  "sd_card",
+  "column_break_25",
+  "bag",
+  "extra_battery",
+  "extra_lens",
   "section_break_6",
   "appraisal_value",
   "section_break_7",
@@ -147,25 +161,105 @@
    "label": "Charger"
   },
   {
-   "default": "0",
-   "fieldname": "case_box_or_bag",
-   "fieldtype": "Check",
-   "label": "Case, Box or Bag"
-  },
-  {
    "fieldname": "model_number",
    "fieldtype": "Data",
    "label": "Model Number"
   },
   {
-   "fieldname": "originating_branch",
+   "fieldname": "internet_connection_capability",
+   "fieldtype": "Select",
+   "label": "Internet Connection Capability",
+   "options": "Wifi Only\nWifi with Cellular Data"
+  },
+  {
+   "fieldname": "videocard",
    "fieldtype": "Data",
-   "label": "Originating Branch"
+   "hidden": 1,
+   "label": "Videocard"
+  },
+  {
+   "default": "0",
+   "fieldname": "case",
+   "fieldtype": "Check",
+   "label": "Case"
+  },
+  {
+   "default": "0",
+   "fieldname": "box",
+   "fieldtype": "Check",
+   "label": "Box"
+  },
+  {
+   "default": "0",
+   "fieldname": "earphones",
+   "fieldtype": "Check",
+   "label": "Earphones"
+  },
+  {
+   "fieldname": "others",
+   "fieldtype": "Data",
+   "label": "Others"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "pin",
+   "fieldtype": "Check",
+   "label": "Pin"
+  },
+  {
+   "default": "0",
+   "fieldname": "manual",
+   "fieldtype": "Check",
+   "label": "Manual"
+  },
+  {
+   "default": "0",
+   "fieldname": "sim_card",
+   "fieldtype": "Check",
+   "label": "Sim Card"
+  },
+  {
+   "default": "0",
+   "fieldname": "sd_card",
+   "fieldtype": "Check",
+   "label": "SD Card"
+  },
+  {
+   "fieldname": "column_break_25",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "bag",
+   "fieldtype": "Check",
+   "label": "Bag"
+  },
+  {
+   "default": "0",
+   "fieldname": "extra_battery",
+   "fieldtype": "Check",
+   "label": "Extra Battery"
+  },
+  {
+   "default": "0",
+   "fieldname": "extra_lens",
+   "fieldtype": "Check",
+   "label": "Extra Lens"
+  },
+  {
+   "fieldname": "batch_number",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Batch Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-06 20:06:38.904230",
+ "modified": "2022-01-10 15:19:24.146201",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry Items",
