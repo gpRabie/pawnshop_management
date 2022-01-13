@@ -2,21 +2,60 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Pawn Ticket', {
-	// onload: function(frm){
-		
-	// },
+	validate: function(frm){
+		let temp_principal = 0.0;
+		if (frm.doc.type == "Jewelry") {
+			$.each(frm.doc.jewelry_items, function(index, item){
+				temp_principal += parseFloat(item.suggested_appraisal_value);
+			});
+		} else {
+			$.each(frm.doc.non_jewelry_items, function(index, item){
+				temp_principal += parseFloat(item.suggested_appraisal_value);
+			});
+		}
 
+		if (frm.doc.desired_principal > temp_principal) {
+			frappe.msgprint({
+				title: __('Principal Amount Invalid'),
+				indicator: 'red',
+				message: __('Principal amount should not be more than the total appraisal amount of items in the list')
+			});
+			frm.set_value('desired_principal', temp_principal)
+		}
+	},
 	refresh: function(frm){
 		show_tracking_no();
 		let today = frappe.datetime.now_datetime().split(" ");
 		frm.set_value('date_loan_granted', today[0]);
-		frm.set_query('jewelry_list', 'jewelry_items', () => {
-			return {
-				"filters": {
-					"item_no": "1-1J-1"
-				}
-			};
-		});
+		frappe.call({
+			method: 'frappe.client.get_value',
+			args: {
+				'doctype': 'Pawnshop Management Settings',
+				'fieldname': [
+					'non_jewelry_inventory_count',
+					'jewelry_inventory_count'
+				]
+			},
+			callback: function(r){
+				let inventory_count = r.message
+				frm.set_query('item_no', 'jewelry_items', function(){
+					return {
+						"filters": {
+							"batch_number": String(parseInt(inventory_count.jewelry_inventory_count) + 1)
+						}
+					};
+				});
+
+				frm.set_query('item_no', 'non_jewelry_items', function(){
+					return {
+						"filters": {
+							"batch_number": String(parseInt(inventory_count.non_jewelry_inventory_count) + 1)
+						}
+					};
+				});
+			}
+
+		})
 	},
 
 	date_loan_granted: function(frm){
@@ -36,6 +75,7 @@ frappe.ui.form.on('Pawn Ticket', {
 				set_series();
 				show_tracking_no();
 				frm.clear_table('non_jewelry_items');
+				frm.set_value('desired_principal', 0);
 				frm.set_df_property('jewelry_items', 'hidden', false);
 				frm.set_df_property('non_jewelry_items', 'hidden', true);
 			}
@@ -43,6 +83,7 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.set_value('item_series', 'B');
 				show_tracking_no();
 				frm.clear_table('jewelry_items');
+				frm.set_value('desired_principal', 0);
 				frm.set_df_property('jewelry_items', 'hidden', true);
 				frm.set_df_property('non_jewelry_items', 'hidden', false);
 			}
@@ -52,23 +93,10 @@ frappe.ui.form.on('Pawn Ticket', {
 	},
 
 	desired_principal: function(frm, cdt, cdn) {
-		let temp_principal = 0.0;
-		$.each(frm.doc.jewelry_items, function(index, item){
-			temp_principal += parseFloat(item.suggested_appraisal_value);
-		});
-		if (frm.doc.desired_principal <= temp_principal) {
-			set_series();
-			show_tracking_no();
-			frm.refresh_fields('pawn_ticket');
-			set_item_interest(frm, frm.doc.desired_principal);
-		} else {
-			frappe.msgprint({
-				title: __('Principal Amount Invalid'),
-				indicator: 'red',
-				message: __('Principal amount should not be more than the total appraisal amount of items in the list')
-			});
-		}
-		set_total_appraised_amount(frm, cdt, cdn);
+		set_series();
+		show_tracking_no();
+		frm.refresh_fields('pawn_ticket');
+		set_item_interest()
 	}
 
 });
@@ -106,6 +134,26 @@ frappe.ui.form.on('Jewelry List', {
 
 
 frappe.ui.form.on('Non Jewelry List', {
+	item_no: function(frm, cdt, cdn){
+		let table_length = parseInt(frm.doc.non_jewelry_items.length)
+		if (frm.doc.non_jewelry_items.length > 1) {
+			for (let index = 0; index < table_length - 1; index++) {
+				if (frm.doc.non_jewelry_items[table_length-1].item_no == frm.doc.non_jewelry_items[index].item_no) {
+					console.log(frm.doc.non_jewelry_items.pop(table_length-1));
+					frm.refresh_field('jewelry_items');
+					frappe.msgprint({
+						title:__('Notification'),
+						indicator:'red',
+						message: __('Added item is already in the list. Item removed.')
+					});
+					set_total_appraised_amount(frm, cdt, cdn);
+					// console.log("Pasok!");
+				}
+				// console.log(frm.doc.jewelry_items[index].item_no);
+				// console.log(frm.doc.jewelry_items[table_length - 1].item_no);
+			}
+		}
+	},
 	suggested_appraisal_value: function(frm, cdt, cdn){
 		set_total_appraised_amount(frm,cdt, cdn);
 	},
@@ -173,36 +221,41 @@ function show_tracking_no(frm){ //Sets inventory tracking number
 
 function set_total_appraised_amount(frm, cdt, cdn) { // Calculate Principal Amount
 	let temp_principal = 0.00;
+	var interest = 0.00;
+	var net_proceeds = 0.00;
 	if (cur_frm.doc.pawn_type == 'Jewelry') {
 		$.each(cur_frm.doc.jewelry_items, function(index, item){
 			temp_principal += parseFloat(item.suggested_appraisal_value);
 		});
 		cur_frm.set_value('desired_principal', temp_principal)
-		set_item_interest(frm, temp_principal)
+		set_item_interest()
 	} else {
 		$.each(cur_frm.doc.non_jewelry_items, function(index, item){
 			temp_principal += parseFloat(item.suggested_appraisal_value);
 		});
 		cur_frm.set_value('desired_principal', temp_principal);
-		set_item_interest(frm, temp_principal)
+		set_item_interest()
 	}
+	return temp_principal
 }
 
-function set_item_interest(frm, temp_principal) {
+function set_item_interest() {
+	var principal = parseFloat(cur_frm.doc.desired_principal);
 	var interest = 0.00;
 	var net_proceeds = 0.00;
+
 	if (cur_frm.doc.pawn_type == 'Jewelry') {
 		frappe.db.get_single_value('Pawnshop Management Settings', 'jewelry_interest_rate').then(value => {
-			interest = (parseFloat(value)/100) * (parseFloat(temp_principal));
+			interest = (parseFloat(value)/100) * (parseFloat(principal));
 			cur_frm.set_value('interest', interest);
-			net_proceeds = temp_principal - interest;
+			net_proceeds = principal - interest;
 			cur_frm.set_value('net_proceeds', net_proceeds)
 		});
 	} else {
 		frappe.db.get_single_value('Pawnshop Management Settings', 'gadget_interest_rate').then(value => {
-			interest = parseFloat(value)/100 * temp_principal;
+			interest = parseFloat(value)/100 * principal;
 			cur_frm.set_value('interest', interest);
-			net_proceeds = temp_principal - interest;
+			net_proceeds = principal - interest;
 			cur_frm.set_value('net_proceeds', net_proceeds)
 		});
 	}

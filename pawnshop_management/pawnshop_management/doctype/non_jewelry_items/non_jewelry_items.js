@@ -27,10 +27,23 @@ frappe.ui.form.on('Non Jewelry Items', {
 			})
 		})
 		frm.set_query('model', function(){
-			return {
-				"filters": {
-					"type": frm.doc.type,
-					"brand": frm.doc.brand
+			if (frm.doc.type == "Laptop") {
+				if (frm.doc.brand == "Acer" || frm.doc.brand == "Asus" || frm.doc.brand == "Dell" || frm.doc.brand == "Lenovo" || frm.doc.brand == "Hp") {
+					return {
+						"filters": {
+							"type": frm.doc.type,
+							"brand": "",
+							"workflow_state": "Accepted"
+						}
+					}
+				} else {
+					return {
+						"filters": {
+							"type": frm.doc.type,
+							"brand": frm.doc.brand,
+							"workflow_state": "Accepted"
+						}
+					}
 				}
 			}
 		});

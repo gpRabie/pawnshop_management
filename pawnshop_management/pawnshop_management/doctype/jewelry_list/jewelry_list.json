@@ -7,7 +7,6 @@
  "engine": "InnoDB",
  "field_order": [
   "item_no",
-  "batch_number",
   "type",
   "weight",
   "karat",
@@ -20,26 +19,34 @@
  ],
  "fields": [
   {
+   "columns": 2,
    "fieldname": "item_no",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Item No",
-   "options": "Jewelry Items"
+   "options": "Jewelry Items",
+   "reqd": 1,
+   "width": "100px"
   },
   {
+   "columns": 2,
    "fetch_from": "item_no.type",
    "fieldname": "type",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Type",
-   "options": "Earrings\nBracelet\nNecklace\nRing\nBangles\nPendant\nEarcuff\nGold Coin",
-   "read_only": 1
+   "read_only": 1,
+   "width": "100px"
   },
   {
+   "columns": 2,
    "fetch_from": "item_no.karat",
    "fieldname": "karat",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Karat",
-   "options": "10KT\n14KTC\n14KT\n18KTC\n21KT\n22KT\n23KT\n24KT(Bars and Coins)",
-   "read_only": 1
+   "read_only": 1,
+   "width": "100px"
   },
   {
    "fetch_from": "item_no.additional_for_stone",
@@ -51,9 +58,8 @@
   {
    "fetch_from": "item_no.color",
    "fieldname": "color",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Color",
-   "options": "Yellow Gold\nWhite Gold\nRose Gold\nMulti Colored",
    "read_only": 1
   },
   {
@@ -64,19 +70,24 @@
    "read_only": 1
   },
   {
+   "columns": 1,
    "fetch_from": "item_no.weight",
    "fieldname": "weight",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Weight(g)",
-   "read_only": 1
+   "read_only": 1,
+   "width": "100px"
   },
   {
+   "columns": 2,
    "fetch_from": "item_no.karat_category",
    "fieldname": "karat_category",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Karat Category",
-   "options": "Defective\nRegular\nSagad\n3.4g and Below",
-   "read_only": 1
+   "read_only": 1,
+   "width": "100px"
   },
   {
    "fieldname": "comments",
@@ -85,24 +96,20 @@
    "read_only": 1
   },
   {
+   "columns": 2,
    "fetch_from": "item_no.appraisal_value",
    "fieldname": "suggested_appraisal_value",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Appraisal Value",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "item_no.batch_number",
-   "fieldname": "batch_number",
-   "fieldtype": "Int",
-   "label": "Batch Number",
-   "read_only": 1
+   "read_only": 1,
+   "width": "100px"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-01-12 13:36:46.826236",
+ "modified": "2022-01-13 16:10:34.502002",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry List",
