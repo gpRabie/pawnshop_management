@@ -106,5 +106,41 @@
   "parenttype": null,
   "style": "Danger",
   "workflow_state_name": "Not Accepted"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-01-12 15:24:08.315251",
+  "name": "Pawned",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Success",
+  "workflow_state_name": "Pawned"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-01-12 15:24:34.473527",
+  "name": "Redeemed",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Warning",
+  "workflow_state_name": "Redeemed"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-01-12 15:26:25.798474",
+  "name": "Collected",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Inverse",
+  "workflow_state_name": "Collected"
  }
 ]
