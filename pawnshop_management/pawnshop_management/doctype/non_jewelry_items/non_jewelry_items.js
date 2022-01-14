@@ -73,6 +73,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 		} else if (frm.doc.type == "Laptop") {
 			unhide_hidden_fields();
 			frm.set_df_property('internet_connection_capability', 'hidden', 1);
+			frm.set_df_property('internal_memory', 'hidden', 1);
 			frm.set_df_property('charger', 'hidden', 1);
 			frm.set_df_property('pin', 'hidden', 1);
 			frm.set_df_property('sim_card', 'hidden', 1);

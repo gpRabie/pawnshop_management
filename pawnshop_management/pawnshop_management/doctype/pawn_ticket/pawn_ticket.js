@@ -2,6 +2,15 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Pawn Ticket', {
+	on_submit: function(frm){
+		frm.add_custom_button('Tubos', () => {
+			
+		});
+		frm.add_custom_button('Renew', () => {
+			
+		})
+	},
+
 	validate: function(frm){
 		let temp_principal = 0.0;
 		if (frm.doc.type == "Jewelry") {
@@ -77,6 +86,7 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.clear_table('non_jewelry_items');
 				frm.set_value('desired_principal', 0);
 				frm.set_df_property('jewelry_items', 'hidden', false);
+				frm.set_df_property('non_jewelry_items', 'reqd', 0);
 				frm.set_df_property('non_jewelry_items', 'hidden', true);
 			}
 			else if (frm.doc.pawn_type == 'Non Jewelry'){
@@ -85,6 +95,7 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.clear_table('jewelry_items');
 				frm.set_value('desired_principal', 0);
 				frm.set_df_property('jewelry_items', 'hidden', true);
+				frm.set_df_property('jewelry_items', 'reqd', 0);
 				frm.set_df_property('non_jewelry_items', 'hidden', false);
 			}
 		}, () => {
