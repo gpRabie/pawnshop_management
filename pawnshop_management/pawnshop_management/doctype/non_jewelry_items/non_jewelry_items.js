@@ -25,7 +25,35 @@ frappe.ui.form.on('Non Jewelry Items', {
 					console.log(r.message);
 				}
 			})
-		})
+		});
+
+		frm.set_query('brand', function(){
+			if (frm.doc.type == "Cellphone") {
+				return {
+					"filters": {
+						"cellphone": 1
+					}
+				}	
+			} else if (frm.doc.type == "Tablet") {
+				return {
+					"filters": {
+						"tablet": 1
+					}
+				}
+			} else if (frm.doc.type == "Laptop") {
+				return {
+					"filters": {
+						"laptop": 1
+					}
+				}
+			} else if (frm.doc.type == "Camera") {
+				return {
+					"filters": {
+						"camera": 1
+					}
+				}
+			}
+		});
 		frm.set_query('model', function(){
 			if (frm.doc.type == "Laptop") {
 				if (frm.doc.brand == "Acer" || frm.doc.brand == "Asus" || frm.doc.brand == "Dell" || frm.doc.brand == "Lenovo" || frm.doc.brand == "Hp") {
@@ -50,7 +78,13 @@ frappe.ui.form.on('Non Jewelry Items', {
 		frm.set_query('assistant_appraiser', function() {
 			return {
 				"filters": {
-					"role_profile_name": "Assistant Appraiser"
+					"role_profile_name": [
+						"in", 
+						[
+							"Senior Appraiser",
+							"Supervisor"
+						]
+					]
 				}
 			};
 		});
@@ -59,21 +93,27 @@ frappe.ui.form.on('Non Jewelry Items', {
 	type: function(frm){
 		if (frm.doc.type == "Cellphone") {
 			unhide_hidden_fields();
+			require_unrequired_fields();
+			frm.set_df_property('disk_type', 'reqd', 0);
 			frm.set_df_property('disk_type', 'hidden', 1);
+			frm.set_df_property('internet_connection_capability', 'reqd', 0);
 			frm.set_df_property('internet_connection_capability', 'hidden', 1);
 			frm.set_df_property('bag', 'hidden', 1);
 			frm.set_df_property('extra_battery', 'hidden', 1);
 			frm.set_df_property('extra_lens', 'hidden', 1);
 		} else if (frm.doc.type == "Tablet") {
 			unhide_hidden_fields();
+			require_unrequired_fields();
+			frm.set_df_property('disk_type', 'reqd', 0);
 			frm.set_df_property('disk_type', 'hidden', 1);
 			frm.set_df_property('bag', 'hidden', 1);
 			frm.set_df_property('extra_battery', 'hidden', 1);
 			frm.set_df_property('extra_lens', 'hidden', 1);
 		} else if (frm.doc.type == "Laptop") {
 			unhide_hidden_fields();
+			require_unrequired_fields();
+			frm.set_df_property('internet_connection_capability', 'reqd', 0);
 			frm.set_df_property('internet_connection_capability', 'hidden', 1);
-			frm.set_df_property('internal_memory', 'hidden', 1);
 			frm.set_df_property('charger', 'hidden', 1);
 			frm.set_df_property('pin', 'hidden', 1);
 			frm.set_df_property('sim_card', 'hidden', 1);
@@ -83,10 +123,16 @@ frappe.ui.form.on('Non Jewelry Items', {
 			frm.set_df_property('extra_lens', 'hidden', 1);
 		} else if (frm.doc.type == "Camera") {
 			unhide_hidden_fields();
+			require_unrequired_fields();
+			frm.set_df_property('model_number', 'reqd', 0);
 			frm.set_df_property('model_number', 'hidden', 1);
+			frm.set_df_property('ram', 'reqd', 0);
 			frm.set_df_property('ram', 'hidden', 1);
+			frm.set_df_property('internal_memory', 'reqd', 0);
 			frm.set_df_property('internal_memory', 'hidden', 1);
+			frm.set_df_property('disk_type', 'reqd', 0);
 			frm.set_df_property('disk_type', 'hidden', 1);
+			frm.set_df_property('internet_connection_capability', 'reqd', 0);
 			frm.set_df_property('internet_connection_capability', 'hidden', 1);
 			frm.set_df_property('charger', 'hidden', 1);
 			frm.set_df_property('case', 'hidden', 1);
@@ -95,6 +141,18 @@ frappe.ui.form.on('Non Jewelry Items', {
 			frm.set_df_property('pin', 'hidden', 1);
 			frm.set_df_property('manual', 'hidden', 1);
 			frm.set_df_property('sim_card', 'hidden', 1);
+		}
+	},
+
+	brand: function(frm){
+		if (frm.doc.type == "Laptop" && frm.doc.brand == "Apple") {
+			frm.set_df_property('internal_memory', 'reqd', 0)
+			frm.set_df_property('ram', 'reqd', 0);
+			frm.refresh_field('ram')
+			frm.refresh_field('internal_memory')
+		}else if (frm.doc.brand == "Apple") {
+			frm.set_df_property('ram', 'reqd', 0);
+			frm.refresh_field('ram')
 		}
 	},
 
@@ -132,6 +190,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 							frm.set_df_property('case_box_or_bag', 'read_only', 1);
 							frm.set_df_property('appraisal_value', 'read_only', 1);
 							frm.set_df_property('assistant_appraiser', 'read_only', 1);
+							frm.set_df_property('comments', 'read_only', 1);
 							frm.enable_save();
 						} else {
 							frm.set_value('assistant_appraiser', null);
@@ -192,4 +251,12 @@ function unhide_hidden_fields() {
 	cur_frm.set_df_property('bag', 'hidden', 0);
 	cur_frm.set_df_property('extra_battery', 'hidden', 0);
 	cur_frm.set_df_property('extra_lens', 'hidden', 0);
+}
+
+function require_unrequired_fields() {
+	cur_frm.set_df_property('model_number', 'reqd', 1);
+	cur_frm.set_df_property('ram', 'reqd', 1);
+	cur_frm.set_df_property('internal_memory', 'reqd', 1);
+	cur_frm.set_df_property('disk_type', 'reqd', 1);
+	cur_frm.set_df_property('internet_connection_capability', 'reqd', 1);
 }

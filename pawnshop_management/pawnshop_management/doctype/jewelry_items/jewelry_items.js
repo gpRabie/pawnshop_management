@@ -12,7 +12,13 @@ frappe.ui.form.on('Jewelry Items', {
 		frm.set_query('assistant_appraiser', function() {
 			return {
 				"filters": {
-					"role_profile_name": "Assistant Appraiser"
+					"role_profile_name": [
+						"in", 
+						[
+							"Senior Appraiser",
+							"Supervisor"
+						]
+					]
 				}
 			};
 		});
@@ -47,6 +53,7 @@ frappe.ui.form.on('Jewelry Items', {
 							frm.set_df_property('colors_if_multi', 'read_only', 1);
 							frm.set_df_property('appraisal_value', 'read_only', 1);
 							frm.set_df_property('assistant_appraiser', 'read_only', 1);
+							frm.set_df_property('comments', 'read_only', 1);
 							frm.enable_save();
 						} else {
 							frm.set_value('assistant_appraiser', null);

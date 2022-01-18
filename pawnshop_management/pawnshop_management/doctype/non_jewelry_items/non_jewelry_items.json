@@ -58,7 +58,8 @@
    "fieldname": "type",
    "fieldtype": "Select",
    "label": "Type",
-   "options": "Cellphone\nTablet\nLaptop\nCamera"
+   "options": "Cellphone\nTablet\nLaptop\nCamera",
+   "reqd": 1
   },
   {
    "fieldname": "brand",
@@ -124,30 +125,34 @@
    "fieldname": "model",
    "fieldtype": "Link",
    "label": "Model",
-   "options": "Models"
+   "options": "Models",
+   "reqd": 1
   },
   {
    "fieldname": "ram",
    "fieldtype": "Select",
    "label": "RAM",
-   "options": "2 GB\n3 GB\n4 GB\n6 GB\n8 GB\n12 GB"
+   "options": "2 GB\n3 GB\n4 GB\n6 GB\n8 GB\n12 GB",
+   "reqd": 1
   },
   {
    "fieldname": "internal_memory",
    "fieldtype": "Select",
    "label": "Internal Memory",
-   "options": "No SD Card\n32 GB\n64 GB\n128 GB\n237 GB\n256 GB"
+   "options": "32 GB\n64 GB\n128 GB\n237 GB\n256 GB\n512 GB\n930 GB\n1 TB",
+   "reqd": 1
   },
   {
    "fieldname": "disk_type",
    "fieldtype": "Select",
    "label": "Disk Type",
-   "options": "N/A\nHDD\nSSD"
+   "options": "HDD\nSSD\nHDD & SSD"
   },
   {
    "fieldname": "color",
    "fieldtype": "Data",
-   "label": "Color"
+   "label": "Color",
+   "reqd": 1
   },
   {
    "fieldname": "accessories_section",
@@ -163,13 +168,15 @@
   {
    "fieldname": "model_number",
    "fieldtype": "Data",
-   "label": "Model Number"
+   "label": "Model Number",
+   "reqd": 1
   },
   {
    "fieldname": "internet_connection_capability",
    "fieldtype": "Select",
    "label": "Internet Connection Capability",
-   "options": "Wifi Only\nWifi with Cellular Data"
+   "options": "Wifi Only\nWifi with Cellular Data",
+   "reqd": 1
   },
   {
    "fieldname": "videocard",
@@ -259,7 +266,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-10 15:19:24.146201",
+ "modified": "2022-01-18 11:29:12.170993",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry Items",

@@ -18,10 +18,12 @@ def update_gadgets_data():
 	
 	# cellphones_brands = laptops[1][0]
 	# return cellphones[129][0]
-	loop_in_gadgets(cellphones, "Cellphone")
-	loop_in_gadgets(tablets, "Tablet")
+	# loop_in_gadgets(cellphones, "Cellphone")
+	# loop_in_gadgets(tablets, "Tablet")
 	loop_in_gadgets(laptops, "Laptop")
-	loop_in_gadgets(cameras, "Camera")
+	# loop_in_gadgets(cameras, "Camera")
+	# for i in range(len(laptops)):
+	# 	print(laptops[i][1])
 
 
 def loop_in_gadgets(entry, gadget_type):

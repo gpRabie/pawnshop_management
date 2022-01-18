@@ -34,5 +34,71 @@
     "role": "Main Appraiser"
    }
   ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2022-01-14 14:39:29.186070",
+  "name": "Supervisor",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Supervisor",
+  "roles": [
+   {
+    "parent": "Supervisor",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Main Appraiser"
+   },
+   {
+    "parent": "Supervisor",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Assistant Appraiser"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2022-01-14 14:41:29.554441",
+  "name": "Senior Appraiser",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Senior Appraiser",
+  "roles": [
+   {
+    "parent": "Senior Appraiser",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Main Appraiser"
+   },
+   {
+    "parent": "Senior Appraiser",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Assistant Appraiser"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2022-01-14 14:41:19.357828",
+  "name": "Junior Appraiser",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Junior Appraiser",
+  "roles": [
+   {
+    "parent": "Junior Appraiser",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Main Appraiser"
+   }
+  ]
  }
 ]

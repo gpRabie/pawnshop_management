@@ -2,38 +2,24 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Pawn Ticket', {
-	on_submit: function(frm){
-		frm.add_custom_button('Tubos', () => {
-			
-		});
-		frm.add_custom_button('Renew', () => {
-			
-		})
-	},
-
-	validate: function(frm){
+	validate: function(frm, cdt, cdn){
 		let temp_principal = 0.0;
-		if (frm.doc.type == "Jewelry") {
-			$.each(frm.doc.jewelry_items, function(index, item){
+		if (frm.doc.type == "Non Jewelry") {
+			$.each(frm.doc.non_jewelry_items, function(index, item){
 				temp_principal += parseFloat(item.suggested_appraisal_value);
 			});
 		} else {
-			$.each(frm.doc.non_jewelry_items, function(index, item){
+			$.each(frm.doc.jewelry_items, function(index, item){
 				temp_principal += parseFloat(item.suggested_appraisal_value);
 			});
 		}
 
 		if (frm.doc.desired_principal > temp_principal) {
-			frappe.msgprint({
-				title: __('Principal Amount Invalid'),
-				indicator: 'red',
-				message: __('Principal amount should not be more than the total appraisal amount of items in the list')
-			});
-			frm.set_value('desired_principal', temp_principal)
+			frappe.throw(__('Desired Principal is greater than the total value of items'));
 		}
 	},
 	refresh: function(frm){
-		show_tracking_no();
+		// show_tracking_no();
 		let today = frappe.datetime.now_datetime().split(" ");
 		frm.set_value('date_loan_granted', today[0]);
 		frappe.call({
@@ -86,7 +72,6 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.clear_table('non_jewelry_items');
 				frm.set_value('desired_principal', 0);
 				frm.set_df_property('jewelry_items', 'hidden', false);
-				frm.set_df_property('non_jewelry_items', 'reqd', 0);
 				frm.set_df_property('non_jewelry_items', 'hidden', true);
 			}
 			else if (frm.doc.pawn_type == 'Non Jewelry'){
@@ -95,7 +80,6 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.clear_table('jewelry_items');
 				frm.set_value('desired_principal', 0);
 				frm.set_df_property('jewelry_items', 'hidden', true);
-				frm.set_df_property('jewelry_items', 'reqd', 0);
 				frm.set_df_property('non_jewelry_items', 'hidden', false);
 			}
 		}, () => {

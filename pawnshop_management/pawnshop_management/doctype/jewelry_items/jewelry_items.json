@@ -20,12 +20,12 @@
   "section_break_10",
   "appraisal_value",
   "section_break_12",
+  "comments",
   "appraisers_section",
   "main_appraiser",
   "column_break_16",
   "assistant_appraiser",
   "section_break_18",
-  "comments",
   "amended_from"
  ],
  "fields": [
@@ -154,7 +154,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-10 14:18:15.930639",
+ "modified": "2022-01-14 13:14:50.005299",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Items",

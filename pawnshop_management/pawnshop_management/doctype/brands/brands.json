@@ -7,7 +7,11 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "brand"
+  "brand",
+  "cellphone",
+  "tablet",
+  "laptop",
+  "camera"
  ],
  "fields": [
   {
@@ -15,11 +19,35 @@
    "fieldtype": "Data",
    "label": "Brand",
    "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "cellphone",
+   "fieldtype": "Check",
+   "label": "Cellphone"
+  },
+  {
+   "default": "0",
+   "fieldname": "tablet",
+   "fieldtype": "Check",
+   "label": "Tablet"
+  },
+  {
+   "default": "0",
+   "fieldname": "laptop",
+   "fieldtype": "Check",
+   "label": "Laptop"
+  },
+  {
+   "default": "0",
+   "fieldname": "camera",
+   "fieldtype": "Check",
+   "label": "Camera"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-06 19:12:51.959195",
+ "modified": "2022-01-14 16:07:58.504629",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Brands",
