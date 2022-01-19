@@ -38,12 +38,13 @@
   "extra_lens",
   "section_break_6",
   "appraisal_value",
+  "section_break_11",
+  "comments",
+  "section_break_34",
   "section_break_7",
   "main_appraiser",
   "column_break_9",
-  "assistant_appraiser",
-  "section_break_11",
-  "comments"
+  "assistant_appraiser"
  ],
  "fields": [
   {
@@ -262,11 +263,15 @@
    "fieldtype": "Int",
    "hidden": 1,
    "label": "Batch Number"
+  },
+  {
+   "fieldname": "section_break_34",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-18 11:29:12.170993",
+ "modified": "2022-01-18 13:17:46.693199",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry Items",

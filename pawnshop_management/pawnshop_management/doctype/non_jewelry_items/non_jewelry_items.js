@@ -176,7 +176,6 @@ frappe.ui.form.on('Non Jewelry Items', {
 								indicator: 'green',
 								message: __('Appraisal Approved')
 							});
-							frm.set_df_property('originating_branch', 'read_only', 1);
 							frm.set_df_property('type', 'read_only', 1);
 							frm.set_df_property('brand', 'read_only', 1);
 							frm.set_df_property('model', 'read_only', 1);
@@ -191,6 +190,18 @@ frappe.ui.form.on('Non Jewelry Items', {
 							frm.set_df_property('appraisal_value', 'read_only', 1);
 							frm.set_df_property('assistant_appraiser', 'read_only', 1);
 							frm.set_df_property('comments', 'read_only', 1);
+							frm.set_df_property('charger', 'read_only', 1);
+							frm.set_df_property('case', 'read_only', 1);
+							frm.set_df_property('box', 'read_only', 1);
+							frm.set_df_property('earphones', 'read_only', 1);
+							frm.set_df_property('others', 'read_only', 1);
+							frm.set_df_property('pin', 'read_only', 1);
+							frm.set_df_property('manual', 'read_only', 1);
+							frm.set_df_property('sim_card', 'read_only', 1);
+							frm.set_df_property('sd_card', 'read_only', 1);
+							frm.set_df_property('bag', 'read_only', 1);
+							frm.set_df_property('extra_battery', 'read_only', 1);
+							frm.set_df_property('extra_lens', 'read_only', 1);
 							frm.enable_save();
 						} else {
 							frm.set_value('assistant_appraiser', null);

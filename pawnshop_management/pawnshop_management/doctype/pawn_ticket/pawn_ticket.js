@@ -19,7 +19,9 @@ frappe.ui.form.on('Pawn Ticket', {
 		}
 	},
 	refresh: function(frm){
-		// show_tracking_no();
+		frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"
+		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"
+		show_tracking_no();
 		let today = frappe.datetime.now_datetime().split(" ");
 		frm.set_value('date_loan_granted', today[0]);
 		frappe.call({
@@ -201,7 +203,7 @@ function show_tracking_no(frm){ //Sets inventory tracking number
 				non_jewelry_count++;
 				cur_frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ')
 			}
-
+			cur_frm.refresh_field('pawn_ticket')
 			// items_filter(cur_frm.doc.pawn_type, jewelry_count, non_jewelry_count) // filters items with the same batch
 
 		},
