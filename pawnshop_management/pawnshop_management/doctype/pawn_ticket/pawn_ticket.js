@@ -19,8 +19,8 @@ frappe.ui.form.on('Pawn Ticket', {
 		}
 	},
 	refresh: function(frm){
-		frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"
-		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"
+		frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"		//Change "Add Row" button of jewelry_items table into "Add Item"
+		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
 		show_tracking_no();
 		let today = frappe.datetime.now_datetime().split(" ");
 		frm.set_value('date_loan_granted', today[0]);

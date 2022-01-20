@@ -20,10 +20,13 @@ def update_gadgets_data():
 	# return cellphones[129][0]
 	# loop_in_gadgets(cellphones, "Cellphone")
 	# loop_in_gadgets(tablets, "Tablet")
-	loop_in_gadgets(laptops, "Laptop")
+	# loop_in_gadgets(laptops, "Laptop")
 	# loop_in_gadgets(cameras, "Camera")
 	# for i in range(len(laptops)):
 	# 	print(laptops[i][1])
+	
+	for entry_no in range(1, len(cameras)):
+			print(cameras[entry_no][4])
 
 
 def loop_in_gadgets(entry, gadget_type):
@@ -31,27 +34,25 @@ def loop_in_gadgets(entry, gadget_type):
 		for entry_no in range(1, len(entry)):
 			add_brands(entry[entry_no][0])
 			if str(entry[entry_no][0]).title() == "Apple":
-				add_models(entry[entry_no][1], gadget_type, entry[entry_no][0])
+				add_models(entry[entry_no][1], gadget_type, int(entry[entry_no][3]), int(entry[entry_no][4]), int(entry[entry_no][5]), entry[entry_no][0])
 			else:
-				add_models(entry[entry_no][1], gadget_type)
-	else:
+				add_models(entry[entry_no][1], gadget_type, int(entry[entry_no][3]), int(entry[entry_no][4]), int(entry[entry_no][5]), entry[entry_no][0])
+			assign_gadget_type(entry[entry_no][0], gadget_type)
+	elif gadget_type == "Cellphone":
 		for entry_no in range(1, len(entry)):
 			add_brands(entry[entry_no][0])
-			add_models(entry[entry_no][1], gadget_type, entry[entry_no][0])
-
-	# for entry_no in range(1,len(entry)):
-	# 	if check_model_status(entry[entry_no][1]) ==  False:
-	# 		model = frappe.get_doc('Models', str(entry[entry_no][1]).title())
-	# 		if model.workflow_state == "Accepted":
-	# 			model.workflow_state ==
-
-
-	
-
-# def delete_brands(brand_name):
-# 	if brand_name != None:
-# 		if frappe.db.exists('Brands', str(brand_name).title()) == str(brand_name).title():
-# 			frappe.delete_doc('Brands', str(brand_name).title())
+			add_models(entry[entry_no][1], gadget_type, int(entry[entry_no][4]), int(entry[entry_no][5]), int(entry[entry_no][6]), entry[entry_no][0])
+			assign_gadget_type(entry[entry_no][0], gadget_type)
+	elif gadget_type == "Tablet":
+		for entry_no in range(1, len(entry)):
+			add_brands(entry[entry_no][0])
+			add_models(entry[entry_no][1], gadget_type, int(entry[entry_no][3]), int(entry[entry_no][4]), int(entry[entry_no][5]), entry[entry_no][0])
+			assign_gadget_type(entry[entry_no][0], gadget_type)
+	elif gadget_type == "Camera":
+		for entry_no in range(1, len(entry)):
+			add_brands(entry[entry_no][0])
+			add_models(entry[entry_no][1], gadget_type, int(entry[entry_no][2]), int(entry[entry_no][3]), int(entry[entry_no][4]), entry[entry_no][0])
+			assign_gadget_type(entry[entry_no][0], gadget_type)
 
 def add_brands(brand_name):
 	brand_name = str(brand_name).title()
@@ -61,7 +62,7 @@ def add_brands(brand_name):
 			new_brand.brand = brand_name
 			new_brand.save(ignore_permissions=True)
 
-def add_models(model_name, gadget_type, brand=None):
+def add_models(model_name, gadget_type, defective_price, minimum_price, maximum_price, brand=None):
 	model_name = str(model_name).title()
 	gadget_type = str(gadget_type).title()
 	brand = str(brand).title()
@@ -71,13 +72,41 @@ def add_models(model_name, gadget_type, brand=None):
 				new_model = frappe.new_doc('Models')
 				new_model.model = model_name
 				new_model.type = gadget_type
+				new_model.defective = defective_price
+				new_model.minimum = minimum_price
+				new_model.maximum = maximum_price
 				new_model.save(ignore_permissions=True)
 			else:
 				new_model = frappe.new_doc('Models')
 				new_model.model = model_name
 				new_model.type = gadget_type
-				new_model.brand = brand
+				new_model.defective = defective_price
+				new_model.minimum = minimum_price
+				new_model.maximum = maximum_price
 				new_model.save(ignore_permissions=True)
+
+def assign_gadget_type(brand, gadget_type):
+	if frappe.db.exists('Brands', str(brand).title()) == str(brand).title():
+		if gadget_type == "Cellphone":
+			item = frappe.get_doc('Brands', str(brand).title())
+			if item.cellphone != 1:
+				item.cellphone = 1
+				item.save(ignore_permissions=True)
+		elif gadget_type == "Tablet":
+			item = frappe.get_doc('Brands', str(brand).title())
+			if item.tablet != 1:
+				item.tablet = 1
+				item.save(ignore_permissions=True)
+		elif gadget_type == "Laptop":
+			item = frappe.get_doc('Brands', str(brand).title())
+			if item.laptop != 1:
+				item.laptop = 1
+				item.save(ignore_permissions=True)
+		elif gadget_type == "Camera":
+			item = frappe.get_doc('Brands', str(brand).title())
+			if item.camera != 1:
+				item.camera = 1
+				item.save(ignore_permissions=True)
 
 def delete_models(model_name):
 	if model_name != None:

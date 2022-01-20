@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-01-20 10:52:21.789493",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee_1",
+  "column_break_3",
+  "employee_2"
+ ],
+ "fields": [
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employee_2",
+   "fieldtype": "Link",
+   "label": "Employee Change back to Appraiser",
+   "options": "User"
+  },
+  {
+   "fieldname": "employee_1",
+   "fieldtype": "Link",
+   "label": "Employee to be Cashier",
+   "options": "User"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2022-01-20 14:58:06.378014",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Role Assignment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

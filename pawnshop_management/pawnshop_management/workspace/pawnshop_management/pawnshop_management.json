@@ -2,7 +2,7 @@
  "cards_label": "Items",
  "category": "Modules",
  "charts": [],
- "creation": "2021-12-29 18:43:52.649815",
+ "creation": "2022-01-13 18:25:35.267139",
  "developer_mode_only": 0,
  "disable_user_customization": 1,
  "docstatus": 0,
@@ -59,9 +59,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Role Assignment",
+   "link_to": "Role Assignment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-01-12 11:32:19.215551",
+ "modified": "2022-01-20 15:31:44.490892",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",

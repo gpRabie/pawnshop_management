@@ -1,0 +1,180 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-01-19 09:43:30.430759",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "received_from",
+  "the_amount_of_php",
+  "php",
+  "redemption",
+  "amortization_of_principal",
+  "renewal",
+  "renewal_with_amortization_of_principal",
+  "partial_payment_of_accrued_interest_for_period",
+  "column_break_10",
+  "interest1",
+  "section_break_12",
+  "advanced_payment_of_accrued_interest_for_period",
+  "column_break_14",
+  "interest2",
+  "section_break_16",
+  "pawn_ticket_no",
+  "principal",
+  "principal_in_numbers",
+  "date_loan_granted",
+  "section_break_21",
+  "conforme",
+  "column_break_22",
+  "by"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "received_from",
+   "fieldtype": "Data",
+   "label": "Received From"
+  },
+  {
+   "fieldname": "the_amount_of_php",
+   "fieldtype": "Data",
+   "label": "The Amount of PHP"
+  },
+  {
+   "fieldname": "php",
+   "fieldtype": "Currency",
+   "label": "(Php)"
+  },
+  {
+   "default": "0",
+   "fieldname": "redemption",
+   "fieldtype": "Check",
+   "label": "Redemption"
+  },
+  {
+   "default": "0",
+   "fieldname": "amortization_of_principal",
+   "fieldtype": "Check",
+   "label": "Amortization of Principal"
+  },
+  {
+   "default": "0",
+   "fieldname": "renewal",
+   "fieldtype": "Check",
+   "label": "Renewal"
+  },
+  {
+   "default": "0",
+   "fieldname": "renewal_with_amortization_of_principal",
+   "fieldtype": "Check",
+   "label": "Renewal with Amortization of Principal"
+  },
+  {
+   "default": "0",
+   "fieldname": "partial_payment_of_accrued_interest_for_period",
+   "fieldtype": "Check",
+   "label": "Partial Payment of Accrued Interest for Period"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "interest1",
+   "fieldtype": "Data",
+   "label": "Interest1"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "advanced_payment_of_accrued_interest_for_period",
+   "fieldtype": "Check",
+   "label": "Advanced Payment of accrued Interest for Period"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "interest2",
+   "fieldtype": "Data",
+   "label": "Interest2"
+  },
+  {
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "pawn_ticket_no",
+   "fieldtype": "Data",
+   "label": "Pawn Ticket No"
+  },
+  {
+   "fieldname": "principal",
+   "fieldtype": "Data",
+   "label": "Principal"
+  },
+  {
+   "fieldname": "principal_in_numbers",
+   "fieldtype": "Data",
+   "label": "Principal in numbers"
+  },
+  {
+   "fieldname": "date_loan_granted",
+   "fieldtype": "Data",
+   "label": "Date Loan Granted"
+  },
+  {
+   "fieldname": "conforme",
+   "fieldtype": "Signature",
+   "label": "Conforme"
+  },
+  {
+   "fieldname": "by",
+   "fieldtype": "Signature",
+   "label": "By"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_21",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-01-19 10:08:35.798988",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Provisional Receipt",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

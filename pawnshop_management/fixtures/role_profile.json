@@ -2,43 +2,7 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2022-01-04 14:15:32.761257",
-  "name": "Assistant Appraiser",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "role_profile": "Assistant Appraiser",
-  "roles": [
-   {
-    "parent": "Assistant Appraiser",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Assistant Appraiser"
-   }
-  ]
- },
- {
-  "docstatus": 0,
-  "doctype": "Role Profile",
-  "modified": "2021-12-09 15:18:08.576762",
-  "name": "Main Appraiser",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "role_profile": "Main Appraiser",
-  "roles": [
-   {
-    "parent": "Main Appraiser",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Main Appraiser"
-   }
-  ]
- },
- {
-  "docstatus": 0,
-  "doctype": "Role Profile",
-  "modified": "2022-01-14 14:39:29.186070",
+  "modified": "2022-01-20 10:24:00.261126",
   "name": "Supervisor",
   "parent": null,
   "parentfield": null,
@@ -49,55 +13,67 @@
     "parent": "Supervisor",
     "parentfield": "roles",
     "parenttype": "Role Profile",
-    "role": "Main Appraiser"
+    "role": "Appraiser"
    },
    {
     "parent": "Supervisor",
     "parentfield": "roles",
     "parenttype": "Role Profile",
-    "role": "Assistant Appraiser"
+    "role": "Supervisor"
    }
   ]
  },
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2022-01-14 14:41:29.554441",
-  "name": "Senior Appraiser",
+  "modified": "2022-01-20 11:58:49.814339",
+  "name": "Vault Custodian",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "role_profile": "Senior Appraiser",
+  "role_profile": "Vault Custodian",
   "roles": [
    {
-    "parent": "Senior Appraiser",
+    "parent": "Vault Custodian",
     "parentfield": "roles",
     "parenttype": "Role Profile",
-    "role": "Main Appraiser"
-   },
-   {
-    "parent": "Senior Appraiser",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Assistant Appraiser"
+    "role": "Vault Custodian"
    }
   ]
  },
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2022-01-14 14:41:19.357828",
-  "name": "Junior Appraiser",
+  "modified": "2022-01-20 14:52:17.453455",
+  "name": "Appraiser",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "role_profile": "Junior Appraiser",
+  "role_profile": "Appraiser",
   "roles": [
    {
-    "parent": "Junior Appraiser",
+    "parent": "Appraiser",
     "parentfield": "roles",
     "parenttype": "Role Profile",
-    "role": "Main Appraiser"
+    "role": "Appraiser"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2022-01-20 11:58:03.917369",
+  "name": "Cashier",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Cashier",
+  "roles": [
+   {
+    "parent": "Cashier",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Pawnshop Cashier"
    }
   ]
  }

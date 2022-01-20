@@ -60,7 +60,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 					return {
 						"filters": {
 							"type": frm.doc.type,
-							"brand": "",
+							"brand": frm.doc.brand,
 							"workflow_state": "Accepted"
 						}
 					}
@@ -71,6 +71,14 @@ frappe.ui.form.on('Non Jewelry Items', {
 							"brand": frm.doc.brand,
 							"workflow_state": "Accepted"
 						}
+					}
+				}
+			} else {
+				return {
+					"filters": {
+						"type": frm.doc.type,
+						"brand": frm.doc.brand,
+						"workflow_state": "Accepted"
 					}
 				}
 			}
