@@ -105,15 +105,14 @@
   {
    "fieldname": "jewelry_items",
    "fieldtype": "Table",
-   "label": "Item(s)",
-   "options": "Jewelry List",
-   "reqd": 1
+   "label": "Jewelry Item(s)",
+   "options": "Jewelry List"
   },
   {
    "fieldname": "non_jewelry_items",
    "fieldtype": "Table",
    "hidden": 1,
-   "label": "Item(s)",
+   "label": "Non Jewelry Item(s)",
    "options": "Non Jewelry List"
   },
   {
@@ -159,7 +158,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-01-20 10:31:15.757742",
+ "modified": "2022-01-21 17:16:40.744829",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket",

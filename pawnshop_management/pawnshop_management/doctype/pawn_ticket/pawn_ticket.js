@@ -3,8 +3,8 @@
 
 frappe.ui.form.on('Pawn Ticket', {
 	validate: function(frm, cdt, cdn){
-		let temp_principal = 0.0;
-		if (frm.doc.type == "Non Jewelry") {
+		var temp_principal = 0.0;
+		if (frm.doc.pawn_type == "Non Jewelry") {
 			$.each(frm.doc.non_jewelry_items, function(index, item){
 				temp_principal += parseFloat(item.suggested_appraisal_value);
 			});
@@ -18,10 +18,13 @@ frappe.ui.form.on('Pawn Ticket', {
 			frappe.throw(__('Desired Principal is greater than the total value of items'));
 		}
 	},
+	onload: function(frm){
+		show_tracking_no()
+	},
+
 	refresh: function(frm){
 		frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"		//Change "Add Row" button of jewelry_items table into "Add Item"
 		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
-		show_tracking_no();
 		let today = frappe.datetime.now_datetime().split(" ");
 		frm.set_value('date_loan_granted', today[0]);
 		frappe.call({
@@ -73,7 +76,10 @@ frappe.ui.form.on('Pawn Ticket', {
 				show_tracking_no();
 				frm.clear_table('non_jewelry_items');
 				frm.set_value('desired_principal', 0);
+				frm.refresh_field('desired_principal')
 				frm.set_df_property('jewelry_items', 'hidden', false);
+			// 	frm.set_df_property('jewelry_items', 'reqd', 1);
+			// 	frm.set_df_property('non_jewelry_items', 'reqd', 0);
 				frm.set_df_property('non_jewelry_items', 'hidden', true);
 			}
 			else if (frm.doc.pawn_type == 'Non Jewelry'){
@@ -81,8 +87,11 @@ frappe.ui.form.on('Pawn Ticket', {
 				show_tracking_no();
 				frm.clear_table('jewelry_items');
 				frm.set_value('desired_principal', 0);
+				frm.refresh_field('desired_principal')
+			// 	frm.set_df_property('jewelry_items', 'reqd', 0);
 				frm.set_df_property('jewelry_items', 'hidden', true);
 				frm.set_df_property('non_jewelry_items', 'hidden', false);
+			// 	frm.set_df_property('non_jewelry_items', 'reqd', 1);
 			}
 		}, () => {
 			frm.set_value('pawn_type', previous_pawn_type);

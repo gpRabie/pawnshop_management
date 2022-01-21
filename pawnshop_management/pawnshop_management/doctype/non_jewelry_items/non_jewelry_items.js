@@ -22,7 +22,6 @@ frappe.ui.form.on('Non Jewelry Items', {
 						message:__('Update Successful'),
 						indicator:'green'
 					}, 5)
-					console.log(r.message);
 				}
 			})
 		});
@@ -98,10 +97,23 @@ frappe.ui.form.on('Non Jewelry Items', {
 		});
 	},
 
+	// validate: function(frm){
+	// 	frappe.db.get_value('Models', frm.doc.model, ['defective', 'minimum', 'maximum']).then(function(r){
+	// 		let r.
+	// 		if (frm.doc.category == "Defective") {
+	// 			if (frm.doc.appraisal_value > ) {
+					
+	// 			}
+	// 		}
+	// 	});
+	// },
+
 	type: function(frm){
 		if (frm.doc.type == "Cellphone") {
 			unhide_hidden_fields();
 			require_unrequired_fields();
+			frm.set_df_property('model', 'label', 'Model');
+			frm.set_df_property('model_number', 'label', 'Model Number');
 			frm.set_df_property('disk_type', 'reqd', 0);
 			frm.set_df_property('disk_type', 'hidden', 1);
 			frm.set_df_property('internet_connection_capability', 'reqd', 0);
@@ -112,6 +124,8 @@ frappe.ui.form.on('Non Jewelry Items', {
 		} else if (frm.doc.type == "Tablet") {
 			unhide_hidden_fields();
 			require_unrequired_fields();
+			frm.set_df_property('model', 'label', 'Model');
+			frm.set_df_property('model_number', 'label', 'Model Number');
 			frm.set_df_property('disk_type', 'reqd', 0);
 			frm.set_df_property('disk_type', 'hidden', 1);
 			frm.set_df_property('bag', 'hidden', 1);
@@ -120,6 +134,8 @@ frappe.ui.form.on('Non Jewelry Items', {
 		} else if (frm.doc.type == "Laptop") {
 			unhide_hidden_fields();
 			require_unrequired_fields();
+			frm.set_df_property('model', 'label', 'Processor & Generation');
+			frm.set_df_property('model_number', 'label', 'Model Name');
 			frm.set_df_property('internet_connection_capability', 'reqd', 0);
 			frm.set_df_property('internet_connection_capability', 'hidden', 1);
 			frm.set_df_property('charger', 'hidden', 1);
@@ -132,6 +148,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 		} else if (frm.doc.type == "Camera") {
 			unhide_hidden_fields();
 			require_unrequired_fields();
+			frm.set_df_property('model', 'label', 'Model');
 			frm.set_df_property('model_number', 'reqd', 0);
 			frm.set_df_property('model_number', 'hidden', 1);
 			frm.set_df_property('ram', 'reqd', 0);
@@ -162,6 +179,38 @@ frappe.ui.form.on('Non Jewelry Items', {
 			frm.set_df_property('ram', 'reqd', 0);
 			frm.refresh_field('ram')
 		}
+	},
+
+	model:function(frm){
+		frappe.db.get_value('Models', frm.doc.model, ['defective', 'minimum', 'maximum']).then(function(r){
+			let price_suggestion = r.message;
+			if (frm.doc.category == "Maximum") {
+				frm.set_value('appraisal_value', price_suggestion.maximum)
+				frm.refresh_field('appraisal_value')
+			} else if (frm.doc.category == "Minimum") {
+				frm.set_value('appraisal_value', price_suggestion.minimum)
+				frm.refresh_field('appraisal_value')
+			} else {
+				frm.set_value('appraisal_value', price_suggestion.defective)
+				frm.refresh_field('appraisal_value')
+			}
+		});
+	},
+
+	category: function(frm){
+		frappe.db.get_value('Models', frm.doc.model, ['defective', 'minimum', 'maximum']).then(function(r){
+			let price_suggestion = r.message;
+			if (frm.doc.category == "Maximum") {
+				frm.set_value('appraisal_value', price_suggestion.maximum)
+				frm.refresh_field('appraisal_value')
+			} else if (frm.doc.category == "Minimum") {
+				frm.set_value('appraisal_value', price_suggestion.minimum)
+				frm.refresh_field('appraisal_value')
+			} else {
+				frm.set_value('appraisal_value', price_suggestion.defective)
+				frm.refresh_field('appraisal_value')
+			}
+		});
 	},
 
 	assistant_appraiser: function(frm){

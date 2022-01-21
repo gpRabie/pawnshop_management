@@ -20,9 +20,9 @@ def update_gadgets_data():
 	# phone = cellphones[1][6]
 	# print(phone)
 	loop_in_gadgets(cellphones, "Cellphone")
-	# loop_in_gadgets(tablets, "Tablet")
-	# loop_in_gadgets(laptops, "Laptop")
-	# loop_in_gadgets(cameras, "Camera")
+	loop_in_gadgets(tablets, "Tablet")
+	loop_in_gadgets(laptops, "Laptop")
+	loop_in_gadgets(cameras, "Camera")
 
 
 def loop_in_gadgets(entry, gadget_type):
