@@ -25,6 +25,7 @@ frappe.ui.form.on('Pawn Ticket', {
 
 	after_save: function(frm){
 		frm.set_df_property('pawn_type', 'read_only', 1);
+		frm.set_df_property('customer_tracking_no', 'read_only', 1);
 	},
 
 	refresh: function(frm){
@@ -46,7 +47,7 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.set_query('item_no', 'jewelry_items', function(){
 					return {
 						"filters": {
-							"batch_number": String(parseInt(inventory_count.jewelry_inventory_count) + 1)
+							"batch_number": String(parseInt(inventory_count.jewelry_inventory_count))
 						}
 					};
 				});
@@ -54,7 +55,7 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.set_query('item_no', 'non_jewelry_items', function(){
 					return {
 						"filters": {
-							"batch_number": String(parseInt(inventory_count.non_jewelry_inventory_count) + 1)
+							"batch_number": String(parseInt(inventory_count.non_jewelry_inventory_count))
 						}
 					};
 				});
@@ -203,18 +204,16 @@ function show_tracking_no(frm){ //Sets inventory tracking number
 			let jewelry_count = parseInt(tracking_no.jewelry_inventory_count)
 			let non_jewelry_count = parseInt(tracking_no.non_jewelry_inventory_count)
 			if (cur_frm.doc.item_series == 'A') {
-				let new_ticket_no = parseInt(tracking_no.a_series_current_count) + 1;
+				let new_ticket_no = parseInt(tracking_no.a_series_current_count);
 				cur_frm.set_value('pawn_ticket', new_ticket_no + cur_frm.doc.item_series);
 			} else if (cur_frm.doc.item_series == 'B'){
-				let new_ticket_no = parseInt(tracking_no.b_series_current_count) + 1;
+				let new_ticket_no = parseInt(tracking_no.b_series_current_count);
 				cur_frm.set_value('pawn_ticket', new_ticket_no + cur_frm.doc.item_series);
 			}
 
 			if (cur_frm.doc.pawn_type == 'Jewelry') {
-				jewelry_count++;
 				cur_frm.set_value('inventory_tracking_no', jewelry_count + 'J')
 			} else if (cur_frm.doc.pawn_type == 'Non Jewelry'){
-				non_jewelry_count++;
 				cur_frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ')
 			}
 			cur_frm.refresh_field('pawn_ticket')

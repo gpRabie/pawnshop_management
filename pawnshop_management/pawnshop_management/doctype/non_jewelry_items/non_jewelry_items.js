@@ -282,8 +282,6 @@ function show_item_no(frm) {
 		callback: function(data) {
 			let non_jewelry_inventory_count = parseInt(data.message.non_jewelry_inventory_count);
 			let non_jewelry_count = parseInt(data.message.non_jewelry_count)
-			non_jewelry_count++
-			non_jewelry_inventory_count++
 			cur_frm.set_value('batch_number', non_jewelry_inventory_count)
 			cur_frm.set_value('item_no', '1-' + non_jewelry_inventory_count + 'NJ' + '-' + non_jewelry_count)
 		},
