@@ -32,7 +32,7 @@ def loop_in_gadgets(entry, gadget_type):
 			if str(entry[entry_no][0]).title() == "Apple":
 				add_models(entry[entry_no][1], gadget_type, entry[entry_no][3], entry[entry_no][4], entry[entry_no][5], entry[entry_no][0])
 			else:
-				add_models(entry[entry_no][1], gadget_type, entry[entry_no][3], entry[entry_no][4], entry[entry_no][5], entry[entry_no][0])
+				add_models(entry[entry_no][1], gadget_type, entry[entry_no][3], entry[entry_no][4], entry[entry_no][5])
 			assign_gadget_type(entry[entry_no][0], gadget_type)
 	elif gadget_type == "Cellphone":
 		for entry_no in range(1, len(entry)):
@@ -64,12 +64,11 @@ def add_models(model_name, gadget_type, defective_price, minimum_price, maximum_
 	brand = str(brand).title()
 	if frappe.db.exists('Models', model_name) != model_name:
 		if model_name != "None":
-			if brand == "None":
+			if brand == None or brand == "None":
 				new_model = frappe.new_doc('Models')
 				new_model.model = model_name
 				new_model.type = gadget_type
 				new_model.defective = string_to_int_converter(defective_price)
-				print(string_to_int_converter(defective_price))
 				new_model.minimum = string_to_int_converter(minimum_price)
 				new_model.maximum = string_to_int_converter(maximum_price)
 				new_model.save(ignore_permissions=True)

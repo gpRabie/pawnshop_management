@@ -18,8 +18,13 @@ frappe.ui.form.on('Pawn Ticket', {
 			frappe.throw(__('Desired Principal is greater than the total value of items'));
 		}
 	},
+	
 	onload: function(frm){
 		show_tracking_no()
+	},
+
+	after_save: function(frm){
+		frm.set_df_property('pawn_type', 'read_only', 1);
 	},
 
 	refresh: function(frm){
@@ -78,8 +83,8 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.set_value('desired_principal', 0);
 				frm.refresh_field('desired_principal')
 				frm.set_df_property('jewelry_items', 'hidden', false);
-			// 	frm.set_df_property('jewelry_items', 'reqd', 1);
-			// 	frm.set_df_property('non_jewelry_items', 'reqd', 0);
+				// frm.set_df_property('jewelry_items', 'reqd', 1);
+				// frm.set_df_property('non_jewelry_items', 'reqd', 0);
 				frm.set_df_property('non_jewelry_items', 'hidden', true);
 			}
 			else if (frm.doc.pawn_type == 'Non Jewelry'){
@@ -88,7 +93,7 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.clear_table('jewelry_items');
 				frm.set_value('desired_principal', 0);
 				frm.refresh_field('desired_principal')
-			// 	frm.set_df_property('jewelry_items', 'reqd', 0);
+			 	// frm.set_df_property('jewelry_items', 'reqd', 0);
 				frm.set_df_property('jewelry_items', 'hidden', true);
 				frm.set_df_property('non_jewelry_items', 'hidden', false);
 			// 	frm.set_df_property('non_jewelry_items', 'reqd', 1);

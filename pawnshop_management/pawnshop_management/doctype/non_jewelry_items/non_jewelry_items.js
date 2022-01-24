@@ -55,11 +55,11 @@ frappe.ui.form.on('Non Jewelry Items', {
 		});
 		frm.set_query('model', function(){
 			if (frm.doc.type == "Laptop") {
-				if (frm.doc.brand == "Acer" || frm.doc.brand == "Asus" || frm.doc.brand == "Dell" || frm.doc.brand == "Lenovo" || frm.doc.brand == "Hp") {
+				if (frm.doc.brand != "Apple") {
 					return {
 						"filters": {
 							"type": frm.doc.type,
-							"brand": frm.doc.brand,
+							"brand": "",
 							"workflow_state": "Accepted"
 						}
 					}
@@ -88,7 +88,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 					"role_profile_name": [
 						"in", 
 						[
-							"Senior Appraiser",
+							"Appraiser",
 							"Supervisor"
 						]
 					]
@@ -97,16 +97,6 @@ frappe.ui.form.on('Non Jewelry Items', {
 		});
 	},
 
-	// validate: function(frm){
-	// 	frappe.db.get_value('Models', frm.doc.model, ['defective', 'minimum', 'maximum']).then(function(r){
-	// 		let r.
-	// 		if (frm.doc.category == "Defective") {
-	// 			if (frm.doc.appraisal_value > ) {
-					
-	// 			}
-	// 		}
-	// 	});
-	// },
 
 	type: function(frm){
 		if (frm.doc.type == "Cellphone") {
@@ -150,6 +140,8 @@ frappe.ui.form.on('Non Jewelry Items', {
 			require_unrequired_fields();
 			frm.set_df_property('model', 'label', 'Model');
 			frm.set_df_property('model_number', 'reqd', 0);
+			frm.set_value('model_number', "N/A");
+			frm.refresh_field('model_number')
 			frm.set_df_property('model_number', 'hidden', 1);
 			frm.set_df_property('ram', 'reqd', 0);
 			frm.set_df_property('ram', 'hidden', 1);

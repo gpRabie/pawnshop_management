@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class PawnTicket(Document):
-	def before_save(self):
+	def before_submit(self):
 		settings = frappe.get_doc('Pawnshop Management Settings')
 		if self.pawn_ticket != frappe.db.exists('Pawn Ticket', self.pawn_ticket):
 			if self.pawn_type == 'Jewelry':

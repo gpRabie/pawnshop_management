@@ -158,7 +158,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-01-21 17:16:40.744829",
+ "modified": "2022-01-24 13:08:55.344457",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket",
@@ -175,6 +175,17 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Appraiser",
+   "share": 1
   }
  ],
  "sort_field": "modified",
