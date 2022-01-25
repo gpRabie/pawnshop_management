@@ -17,24 +17,3 @@ class PawnTicket(Document):
 			settings.b_series_current_count += 1
 		settings.save(ignore_permissions=True)
 
-	# def on_submit(self):
-	# 	settings = frappe.get_doc('Pawnshop Management Settings')
-	# 	if self.pawn_type == 'Jewelry':
-	# 		settings.jewelry_inventory_count += 1
-	# 	elif self.pawn_type == 'Non Jewelry':
-	# 		settings.non_jewelry_inventory_count += 1
-	# 	if self.item_series == 'A':
-	# 		settings.a_series_current_count += 1
-	# 	elif self.item_series == 'B':
-	# 		settings.b_series_current_count += 1
-	# 	# if frappe.db.exists('Pawn Ticket', self.name) != self.name:
-	# 	# 	print("You should not enter")
-	# 	# 	if self.pawn_type == 'Jewelry':
-	# 	# 		settings.jewelry_inventory_count += 1
-	# 	# 	elif self.pawn_type == 'Non Jewelry':
-	# 	# 		settings.non_jewelry_inventory_count += 1
-	# 	# 	if self.item_series == 'A':
-	# 	# 		settings.a_series_current_count += 1
-	# 	# 	elif self.item_series == 'B':
-	# 	# 		settings.b_series_current_count += 1
-	# 	settings.save(ignore_permissions=True)
