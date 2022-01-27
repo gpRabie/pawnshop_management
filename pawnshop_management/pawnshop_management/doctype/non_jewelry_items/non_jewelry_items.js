@@ -2,18 +2,45 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Non Jewelry Items', {
-	onload: function(frm) {
-		show_item_no();
+
+	// after_save:function(frm){
+	// 	frm.set_df_property('type', 'read_only', 1);
+	// 	frm.set_df_property('brand', 'read_only', 1);
+	// 	frm.set_df_property('model', 'read_only', 1);
+	// 	frm.set_df_property('model_number', 'read_only', 1);
+	// 	frm.set_df_property('ram', 'read_only', 1);
+	// 	frm.set_df_property('internal_memory', 'read_only', 1);
+	// 	frm.set_df_property('disk_type', 'read_only', 1);
+	// 	frm.set_df_property('color', 'read_only', 1);
+	// 	frm.set_df_property('category', 'read_only', 1);
+	// 	frm.set_df_property('charger', 'read_only', 1);
+	// 	frm.set_df_property('case_box_or_bag', 'read_only', 1);
+	// 	frm.set_df_property('appraisal_value', 'read_only', 1);
+	// 	frm.set_df_property('assistant_appraiser', 'read_only', 1);
+	// 	frm.set_df_property('comments', 'read_only', 1);
+	// 	frm.set_df_property('charger', 'read_only', 1);
+	// 	frm.set_df_property('case', 'read_only', 1);
+	// 	frm.set_df_property('box', 'read_only', 1);
+	// 	frm.set_df_property('earphones', 'read_only', 1);
+	// 	frm.set_df_property('others', 'read_only', 1);
+	// 	frm.set_df_property('pin', 'read_only', 1);
+	// 	frm.set_df_property('manual', 'read_only', 1);
+	// 	frm.set_df_property('sim_card', 'read_only', 1);
+	// 	frm.set_df_property('sd_card', 'read_only', 1);
+	// 	frm.set_df_property('bag', 'read_only', 1);
+	// 	frm.set_df_property('extra_battery', 'read_only', 1);
+	// 	frm.set_df_property('extra_lens', 'read_only', 1);
+	// },
+
+	refresh: function(frm){
 		frm.set_value('main_appraiser', frappe.user_info().fullname);
 		frm.disable_save();
+		show_item_no(frm)
 		frm.set_df_property('disk_type', 'hidden', 1);
 		frm.set_df_property('internet_connection_capability', 'hidden', 1);
 		frm.set_df_property('bag', 'hidden', 1);
 		frm.set_df_property('extra_battery', 'hidden', 1);
 		frm.set_df_property('extra_lens', 'hidden', 1);
-	},
-
-	refresh: function(frm){
 		frm.add_custom_button('Update Data', function(){
 			frappe.call({
 				method: 'pawnshop_management.pawnshop_management.custom_codes.import_gadgets_info.update_gadgets_data',
@@ -89,6 +116,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 						"in", 
 						[
 							"Appraiser",
+							"Cashier",
 							"Supervisor"
 						]
 					]
@@ -100,8 +128,8 @@ frappe.ui.form.on('Non Jewelry Items', {
 
 	type: function(frm){
 		if (frm.doc.type == "Cellphone") {
-			unhide_hidden_fields();
-			require_unrequired_fields();
+			unhide_hidden_fields(frm);
+			require_unrequired_fields(frm);
 			frm.set_df_property('model', 'label', 'Model');
 			frm.set_df_property('model_number', 'label', 'Model Number');
 			frm.set_df_property('disk_type', 'reqd', 0);
@@ -112,8 +140,8 @@ frappe.ui.form.on('Non Jewelry Items', {
 			frm.set_df_property('extra_battery', 'hidden', 1);
 			frm.set_df_property('extra_lens', 'hidden', 1);
 		} else if (frm.doc.type == "Tablet") {
-			unhide_hidden_fields();
-			require_unrequired_fields();
+			unhide_hidden_fields(frm);
+			require_unrequired_fields(frm);
 			frm.set_df_property('model', 'label', 'Model');
 			frm.set_df_property('model_number', 'label', 'Model Number');
 			frm.set_df_property('disk_type', 'reqd', 0);
@@ -123,7 +151,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 			frm.set_df_property('extra_lens', 'hidden', 1);
 		} else if (frm.doc.type == "Laptop") {
 			unhide_hidden_fields();
-			require_unrequired_fields();
+			require_unrequired_fields(frm);
 			frm.set_df_property('model', 'label', 'Processor & Generation');
 			frm.set_df_property('model_number', 'label', 'Model Name');
 			frm.set_df_property('internet_connection_capability', 'reqd', 0);
@@ -137,7 +165,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 			frm.set_df_property('extra_lens', 'hidden', 1);
 		} else if (frm.doc.type == "Camera") {
 			unhide_hidden_fields();
-			require_unrequired_fields();
+			require_unrequired_fields(frm);
 			frm.set_df_property('model', 'label', 'Model');
 			frm.set_df_property('model_number', 'reqd', 0);
 			frm.set_value('model_number', "N/A");
@@ -282,8 +310,8 @@ function show_item_no(frm) {
 		callback: function(data) {
 			let non_jewelry_inventory_count = parseInt(data.message.non_jewelry_inventory_count);
 			let non_jewelry_count = parseInt(data.message.non_jewelry_count)
-			cur_frm.set_value('batch_number', non_jewelry_inventory_count)
-			cur_frm.set_value('item_no', '1-' + non_jewelry_inventory_count + 'NJ' + '-' + non_jewelry_count)
+			frm.set_value('batch_number', non_jewelry_inventory_count)
+			frm.set_value('item_no', '1-' + non_jewelry_inventory_count + 'NJ' + '-' + non_jewelry_count)
 		},
 
 		error: function(data){
@@ -292,29 +320,29 @@ function show_item_no(frm) {
 	})
 }
 
-function unhide_hidden_fields() {
-	cur_frm.set_df_property('model_number', 'hidden', 0);
-	cur_frm.set_df_property('ram', 'hidden', 0);
-	cur_frm.set_df_property('internal_memory', 'hidden', 0);
-	cur_frm.set_df_property('disk_type', 'hidden', 0);
-	cur_frm.set_df_property('internet_connection_capability', 'hidden', 0);
-	cur_frm.set_df_property('charger', 'hidden', 0);
-	cur_frm.set_df_property('case', 'hidden', 0);
-	cur_frm.set_df_property('box', 'hidden', 0);
-	cur_frm.set_df_property('earphones', 'hidden', 0);
-	cur_frm.set_df_property('pin', 'hidden', 0);
-	cur_frm.set_df_property('manual', 'hidden', 0);
-	cur_frm.set_df_property('sim_card', 'hidden', 0);
-	cur_frm.set_df_property('sd_card', 'hidden', 0);
-	cur_frm.set_df_property('bag', 'hidden', 0);
-	cur_frm.set_df_property('extra_battery', 'hidden', 0);
-	cur_frm.set_df_property('extra_lens', 'hidden', 0);
+function unhide_hidden_fields(frm) {
+	frm.set_df_property('model_number', 'hidden', 0);
+	frm.set_df_property('ram', 'hidden', 0);
+	frm.set_df_property('internal_memory', 'hidden', 0);
+	frm.set_df_property('disk_type', 'hidden', 0);
+	frm.set_df_property('internet_connection_capability', 'hidden', 0);
+	frm.set_df_property('charger', 'hidden', 0);
+	frm.set_df_property('case', 'hidden', 0);
+	frm.set_df_property('box', 'hidden', 0);
+	frm.set_df_property('earphones', 'hidden', 0);
+	frm.set_df_property('pin', 'hidden', 0);
+	frm.set_df_property('manual', 'hidden', 0);
+	frm.set_df_property('sim_card', 'hidden', 0);
+	frm.set_df_property('sd_card', 'hidden', 0);
+	frm.set_df_property('bag', 'hidden', 0);
+	frm.set_df_property('extra_battery', 'hidden', 0);
+	frm.set_df_property('extra_lens', 'hidden', 0);
 }
 
-function require_unrequired_fields() {
-	cur_frm.set_df_property('model_number', 'reqd', 1);
-	cur_frm.set_df_property('ram', 'reqd', 1);
-	cur_frm.set_df_property('internal_memory', 'reqd', 1);
-	cur_frm.set_df_property('disk_type', 'reqd', 1);
-	cur_frm.set_df_property('internet_connection_capability', 'reqd', 1);
+function require_unrequired_fields(frm) {
+	frm.set_df_property('model_number', 'reqd', 1);
+	frm.set_df_property('ram', 'reqd', 1);
+	frm.set_df_property('internal_memory', 'reqd', 1);
+	frm.set_df_property('disk_type', 'reqd', 1);
+	frm.set_df_property('internet_connection_capability', 'reqd', 1);
 }

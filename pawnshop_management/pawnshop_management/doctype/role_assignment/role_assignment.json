@@ -6,32 +6,33 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "employee_1",
-  "column_break_3",
-  "employee_2"
+  "change_employee_role_section",
+  "role",
+  "employee"
  ],
  "fields": [
   {
-   "fieldname": "column_break_3",
-   "fieldtype": "Column Break"
+   "fieldname": "change_employee_role_section",
+   "fieldtype": "Section Break",
+   "label": "Change Employee Role"
   },
   {
-   "fieldname": "employee_2",
-   "fieldtype": "Link",
-   "label": "Employee Change back to Appraiser",
-   "options": "User"
+   "fieldname": "role",
+   "fieldtype": "Select",
+   "label": "Role",
+   "options": "Cashier\nAppraiser"
   },
   {
-   "fieldname": "employee_1",
+   "fieldname": "employee",
    "fieldtype": "Link",
-   "label": "Employee to be Cashier",
+   "label": "Employee",
    "options": "User"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-01-20 14:58:06.378014",
+ "modified": "2022-01-25 13:36:48.730464",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Role Assignment",

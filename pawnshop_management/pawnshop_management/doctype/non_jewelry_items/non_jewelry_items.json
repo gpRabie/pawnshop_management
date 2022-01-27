@@ -40,79 +40,63 @@
   "appraisal_value",
   "section_break_11",
   "comments",
-  "section_break_34",
-  "section_break_7",
+  "appraisers_section",
   "main_appraiser",
-  "column_break_9",
+  "column_break_36",
   "assistant_appraiser"
  ],
  "fields": [
   {
    "fieldname": "item_no",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Item No",
    "read_only": 1,
    "reqd": 1,
+   "set_only_once": 1,
    "unique": 1
   },
   {
    "fieldname": "type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Type",
    "options": "Cellphone\nTablet\nLaptop\nCamera",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "brand",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Brand",
    "options": "Brands",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "column_break_4",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "set_only_once": 1
   },
   {
    "fieldname": "category",
    "fieldtype": "Select",
    "label": "Category",
-   "options": "Defective\nMinimum\nMaximum"
+   "options": "Defective\nMinimum\nMaximum",
+   "set_only_once": 1
   },
   {
    "fieldname": "appraisal_value",
    "fieldtype": "Currency",
-   "label": "Appraisal Value"
-  },
-  {
-   "fieldname": "section_break_7",
-   "fieldtype": "Section Break",
-   "label": "Appraisers"
+   "label": "Appraisal Value",
+   "set_only_once": 1
   },
   {
    "fieldname": "comments",
    "fieldtype": "Small Text",
-   "label": "Comments"
-  },
-  {
-   "fieldname": "main_appraiser",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Main Appraiser",
-   "read_only": 1,
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_9",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "assistant_appraiser",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Assistant Appraiser",
-   "options": "User",
-   "reqd": 1
+   "label": "Comments",
+   "set_only_once": 1
   },
   {
    "fieldname": "section_break_11",
@@ -120,64 +104,75 @@
   },
   {
    "fieldname": "section_break_6",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "set_only_once": 1
   },
   {
    "fieldname": "model",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Model",
    "options": "Models",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "ram",
    "fieldtype": "Select",
    "label": "RAM",
    "options": "2 GB\n3 GB\n4 GB\n6 GB\n8 GB\n12 GB",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "internal_memory",
    "fieldtype": "Select",
    "label": "Internal Memory",
    "options": "32 GB\n64 GB\n128 GB\n237 GB\n256 GB\n512 GB\n930 GB\n1 TB",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "disk_type",
    "fieldtype": "Select",
    "label": "Disk Type",
-   "options": "HDD\nSSD\nHDD & SSD"
+   "options": "HDD\nSSD\nHDD & SSD",
+   "set_only_once": 1
   },
   {
    "fieldname": "color",
    "fieldtype": "Data",
    "label": "Color",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "accessories_section",
    "fieldtype": "Section Break",
-   "label": "Accessories"
+   "label": "Accessories",
+   "set_only_once": 1
   },
   {
    "default": "0",
    "fieldname": "charger",
    "fieldtype": "Check",
-   "label": "Charger"
+   "label": "Charger",
+   "set_only_once": 1
   },
   {
    "fieldname": "model_number",
    "fieldtype": "Data",
    "label": "Model Number",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "internet_connection_capability",
    "fieldtype": "Select",
    "label": "Internet Connection Capability",
    "options": "Wifi Only\nWifi with Cellular Data",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "videocard",
@@ -189,24 +184,28 @@
    "default": "0",
    "fieldname": "case",
    "fieldtype": "Check",
-   "label": "Case"
+   "label": "Case",
+   "set_only_once": 1
   },
   {
    "default": "0",
    "fieldname": "box",
    "fieldtype": "Check",
-   "label": "Box"
+   "label": "Box",
+   "set_only_once": 1
   },
   {
    "default": "0",
    "fieldname": "earphones",
    "fieldtype": "Check",
-   "label": "Earphones"
+   "label": "Earphones",
+   "set_only_once": 1
   },
   {
    "fieldname": "others",
    "fieldtype": "Data",
-   "label": "Others"
+   "label": "Others",
+   "set_only_once": 1
   },
   {
    "fieldname": "column_break_20",
@@ -216,25 +215,29 @@
    "default": "0",
    "fieldname": "pin",
    "fieldtype": "Check",
-   "label": "Pin"
+   "label": "Pin",
+   "set_only_once": 1
   },
   {
    "default": "0",
    "fieldname": "manual",
    "fieldtype": "Check",
-   "label": "Manual"
+   "label": "Manual",
+   "set_only_once": 1
   },
   {
    "default": "0",
    "fieldname": "sim_card",
    "fieldtype": "Check",
-   "label": "Sim Card"
+   "label": "Sim Card",
+   "set_only_once": 1
   },
   {
    "default": "0",
    "fieldname": "sd_card",
    "fieldtype": "Check",
-   "label": "SD Card"
+   "label": "SD Card",
+   "set_only_once": 1
   },
   {
    "fieldname": "column_break_25",
@@ -244,34 +247,56 @@
    "default": "0",
    "fieldname": "bag",
    "fieldtype": "Check",
-   "label": "Bag"
+   "label": "Bag",
+   "set_only_once": 1
   },
   {
    "default": "0",
    "fieldname": "extra_battery",
    "fieldtype": "Check",
-   "label": "Extra Battery"
+   "label": "Extra Battery",
+   "set_only_once": 1
   },
   {
    "default": "0",
    "fieldname": "extra_lens",
    "fieldtype": "Check",
-   "label": "Extra Lens"
+   "label": "Extra Lens",
+   "set_only_once": 1
   },
   {
    "fieldname": "batch_number",
    "fieldtype": "Int",
    "hidden": 1,
-   "label": "Batch Number"
+   "label": "Batch Number",
+   "set_only_once": 1
   },
   {
-   "fieldname": "section_break_34",
-   "fieldtype": "Section Break"
+   "fieldname": "appraisers_section",
+   "fieldtype": "Section Break",
+   "label": "Appraisers"
+  },
+  {
+   "fieldname": "main_appraiser",
+   "fieldtype": "Link",
+   "label": "Main Appraiser",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_36",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assistant_appraiser",
+   "fieldtype": "Link",
+   "label": "Assistant Appraiser",
+   "options": "User"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-18 13:17:46.693199",
+ "modified": "2022-01-27 17:31:29.508597",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry Items",

@@ -5,12 +5,14 @@ import frappe
 from frappe.model.document import Document
 
 class PawnTicket(Document):
-	def on_submit(self):
+	def before_save(self):
 		settings = frappe.get_doc('Pawnshop Management Settings')
 		if self.pawn_type == 'Jewelry':
 			settings.jewelry_inventory_count += 1
+			settings.jewelry_count = 1
 		elif self.pawn_type == 'Non Jewelry':
 			settings.non_jewelry_inventory_count += 1
+			settings.non_jewelry_count = 1
 		if self.item_series == 'A':
 			settings.a_series_current_count += 1
 		elif self.item_series == 'B':
