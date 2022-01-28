@@ -3,34 +3,9 @@
 
 frappe.ui.form.on('Non Jewelry Items', {
 
-	// after_save:function(frm){
-	// 	frm.set_df_property('type', 'read_only', 1);
-	// 	frm.set_df_property('brand', 'read_only', 1);
-	// 	frm.set_df_property('model', 'read_only', 1);
-	// 	frm.set_df_property('model_number', 'read_only', 1);
-	// 	frm.set_df_property('ram', 'read_only', 1);
-	// 	frm.set_df_property('internal_memory', 'read_only', 1);
-	// 	frm.set_df_property('disk_type', 'read_only', 1);
-	// 	frm.set_df_property('color', 'read_only', 1);
-	// 	frm.set_df_property('category', 'read_only', 1);
-	// 	frm.set_df_property('charger', 'read_only', 1);
-	// 	frm.set_df_property('case_box_or_bag', 'read_only', 1);
-	// 	frm.set_df_property('appraisal_value', 'read_only', 1);
-	// 	frm.set_df_property('assistant_appraiser', 'read_only', 1);
-	// 	frm.set_df_property('comments', 'read_only', 1);
-	// 	frm.set_df_property('charger', 'read_only', 1);
-	// 	frm.set_df_property('case', 'read_only', 1);
-	// 	frm.set_df_property('box', 'read_only', 1);
-	// 	frm.set_df_property('earphones', 'read_only', 1);
-	// 	frm.set_df_property('others', 'read_only', 1);
-	// 	frm.set_df_property('pin', 'read_only', 1);
-	// 	frm.set_df_property('manual', 'read_only', 1);
-	// 	frm.set_df_property('sim_card', 'read_only', 1);
-	// 	frm.set_df_property('sd_card', 'read_only', 1);
-	// 	frm.set_df_property('bag', 'read_only', 1);
-	// 	frm.set_df_property('extra_battery', 'read_only', 1);
-	// 	frm.set_df_property('extra_lens', 'read_only', 1);
-	// },
+	before_save:function(frm){
+		frm.set_df_property('assistant_appraiser', 'read_only', 1);
+	},
 
 	refresh: function(frm){
 		frm.set_value('main_appraiser', frappe.user_info().fullname);

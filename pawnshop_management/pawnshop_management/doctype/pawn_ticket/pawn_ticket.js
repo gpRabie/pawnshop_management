@@ -27,8 +27,6 @@ frappe.ui.form.on('Pawn Ticket', {
 	refresh: function(frm){
 		frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"		//Change "Add Row" button of jewelry_items table into "Add Item"
 		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
-		let today = frappe.datetime.now_datetime().split(" ");
-		frm.set_value('date_loan_granted', today[0]);
 		frappe.call({
 			method: 'frappe.client.get_value',
 			args: {
@@ -79,8 +77,8 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.set_value('desired_principal', 0);
 				frm.refresh_field('desired_principal')
 				frm.set_df_property('jewelry_items', 'hidden', false);
-				// frm.set_df_property('jewelry_items', 'reqd', 1);
-				// frm.set_df_property('non_jewelry_items', 'reqd', 0);
+				frm.set_df_property('jewelry_items', 'reqd', 1);
+				frm.set_df_property('non_jewelry_items', 'reqd', 0);
 				frm.set_df_property('non_jewelry_items', 'hidden', true);
 			}
 			else if (frm.doc.pawn_type == 'Non Jewelry'){
@@ -89,10 +87,10 @@ frappe.ui.form.on('Pawn Ticket', {
 				frm.clear_table('jewelry_items');
 				frm.set_value('desired_principal', 0);
 				frm.refresh_field('desired_principal')
-			 	// frm.set_df_property('jewelry_items', 'reqd', 0);
+			 	frm.set_df_property('jewelry_items', 'reqd', 0);
 				frm.set_df_property('jewelry_items', 'hidden', true);
 				frm.set_df_property('non_jewelry_items', 'hidden', false);
-			// 	frm.set_df_property('non_jewelry_items', 'reqd', 1);
+				frm.set_df_property('non_jewelry_items', 'reqd', 1);
 			}
 		}, () => {
 
@@ -108,6 +106,8 @@ frappe.ui.form.on('Pawn Ticket', {
 
 	customers_tracking_no:function(frm){
 		show_tracking_no(frm)
+		let today = frappe.datetime.now_datetime().split(" ");
+		frm.set_value('date_loan_granted', today[0]);
 	}
 
 });

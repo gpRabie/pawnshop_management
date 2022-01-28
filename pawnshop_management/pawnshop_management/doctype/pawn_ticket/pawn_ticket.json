@@ -14,6 +14,7 @@
   "maturity_date",
   "expiry_date",
   "column_break_6",
+  "transaction_type",
   "customers_tracking_no",
   "customers_full_name",
   "section_break_9",
@@ -53,6 +54,7 @@
    "read_only": 1
   },
   {
+   "default": "Today",
    "fieldname": "date_loan_granted",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -112,6 +114,7 @@
   {
    "fieldname": "non_jewelry_items",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Non Jewelry Item(s)",
    "options": "Non Jewelry List"
   },
@@ -148,6 +151,12 @@
    "options": "Pawn Ticket",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "transaction_type",
+   "fieldtype": "Select",
+   "label": "Transaction Type",
+   "options": "New\nRedemption\nRenew\nRenew with Amortization\nAmortization\nInterest Payment"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -158,7 +167,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-01-27 17:35:34.312060",
+ "modified": "2022-01-28 11:37:15.855370",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket",

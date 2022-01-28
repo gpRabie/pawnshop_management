@@ -43,7 +43,7 @@
    "fieldtype": "Section Break"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "a_series_current_count",
    "fieldtype": "Int",
    "label": "A Series Current Count"
@@ -53,7 +53,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "b_series_current_count",
    "fieldtype": "Int",
    "label": "B Series Current Count"
@@ -63,13 +63,13 @@
    "fieldtype": "Section Break"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "jewelry_inventory_count",
    "fieldtype": "Int",
    "label": "Jewelry Inventory Count"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "non_jewelry_inventory_count",
    "fieldtype": "Int",
    "label": "Non Jewelry Inventory Count"
@@ -83,7 +83,7 @@
    "fieldtype": "Section Break"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "jewelry_count",
    "fieldtype": "Int",
    "label": "Jewelry Count"
@@ -93,7 +93,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "non_jewelry_count",
    "fieldtype": "Int",
    "label": "Non Jewelry Count"
@@ -102,7 +102,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2021-12-02 16:32:51.604085",
+ "modified": "2022-01-28 11:56:32.512500",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management Settings",

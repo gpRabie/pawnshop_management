@@ -3,7 +3,7 @@
 
 frappe.ui.form.on('Jewelry Items', {
 	onload: function(frm) {
-		show_item_no();
+		show_item_no(frm);
 		frm.set_value('main_appraiser', frappe.user_info().fullname);
 		frm.disable_save();
 	},
@@ -15,7 +15,7 @@ frappe.ui.form.on('Jewelry Items', {
 					"role_profile_name": [
 						"in", 
 						[
-							"Senior Appraiser",
+							"Appraiser",
 							"Supervisor"
 						]
 					]
@@ -86,8 +86,8 @@ function show_item_no(frm) {
 		callback: function(data) {
 			let jewelry_inventory_count = parseInt(data.message.jewelry_inventory_count);
 			let jewelry_count = parseInt(data.message.jewelry_count)
-			cur_frm.set_value('batch_number', jewelry_inventory_count)
-			cur_frm.set_value('item_no', '1-' + jewelry_inventory_count + 'J' + '-' + jewelry_count)
+			frm.set_value('batch_number', jewelry_inventory_count)
+			frm.set_value('item_no', '1-' + jewelry_inventory_count + 'J' + '-' + jewelry_count)
 		},
 
 		// error: function(data){

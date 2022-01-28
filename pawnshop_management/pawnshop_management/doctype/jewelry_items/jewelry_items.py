@@ -6,7 +6,7 @@ from frappe.model.document import Document
 
 class JewelryItems(Document):	
 	def before_save(self):
-		doc = frappe.get_doc('Pawnshop Management Settings')
-		if self.item_no != frappe.db.exists('Jewelry Items', self.item_no):
+		if frappe.db.exists('Jewelry Items', self.name) == None:
+			doc = frappe.get_doc('Pawnshop Management Settings')
 			doc.jewelry_count += 1
-		doc.save(ignore_permissions=True)
+			doc.save(ignore_permissions=True)

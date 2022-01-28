@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "####",
  "creation": "2022-01-19 09:43:30.430759",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -8,28 +9,15 @@
  "field_order": [
   "date",
   "received_from",
-  "the_amount_of_php",
-  "php",
-  "redemption",
-  "amortization_of_principal",
-  "renewal",
-  "renewal_with_amortization_of_principal",
-  "partial_payment_of_accrued_interest_for_period",
+  "received_amount",
   "column_break_10",
-  "interest1",
-  "section_break_12",
-  "advanced_payment_of_accrued_interest_for_period",
-  "column_break_14",
-  "interest2",
-  "section_break_16",
   "pawn_ticket_no",
-  "principal",
-  "principal_in_numbers",
-  "date_loan_granted",
-  "section_break_21",
-  "conforme",
-  "column_break_22",
-  "by"
+  "principal_amount",
+  "section_break_16",
+  "signature_of_pawner",
+  "column_break_9",
+  "signature_of_pawnshop_representative",
+  "amended_from"
  ],
  "fields": [
   {
@@ -40,76 +28,13 @@
   },
   {
    "fieldname": "received_from",
-   "fieldtype": "Data",
-   "label": "Received From"
-  },
-  {
-   "fieldname": "the_amount_of_php",
-   "fieldtype": "Data",
-   "label": "The Amount of PHP"
-  },
-  {
-   "fieldname": "php",
-   "fieldtype": "Currency",
-   "label": "(Php)"
-  },
-  {
-   "default": "0",
-   "fieldname": "redemption",
-   "fieldtype": "Check",
-   "label": "Redemption"
-  },
-  {
-   "default": "0",
-   "fieldname": "amortization_of_principal",
-   "fieldtype": "Check",
-   "label": "Amortization of Principal"
-  },
-  {
-   "default": "0",
-   "fieldname": "renewal",
-   "fieldtype": "Check",
-   "label": "Renewal"
-  },
-  {
-   "default": "0",
-   "fieldname": "renewal_with_amortization_of_principal",
-   "fieldtype": "Check",
-   "label": "Renewal with Amortization of Principal"
-  },
-  {
-   "default": "0",
-   "fieldname": "partial_payment_of_accrued_interest_for_period",
-   "fieldtype": "Check",
-   "label": "Partial Payment of Accrued Interest for Period"
+   "fieldtype": "Link",
+   "label": "Received From",
+   "options": "Customer"
   },
   {
    "fieldname": "column_break_10",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "interest1",
-   "fieldtype": "Data",
-   "label": "Interest1"
-  },
-  {
-   "fieldname": "section_break_12",
-   "fieldtype": "Section Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "advanced_payment_of_accrued_interest_for_period",
-   "fieldtype": "Check",
-   "label": "Advanced Payment of accrued Interest for Period"
-  },
-  {
-   "fieldname": "column_break_14",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "interest2",
-   "fieldtype": "Data",
-   "label": "Interest2"
   },
   {
    "fieldname": "section_break_16",
@@ -117,46 +42,48 @@
   },
   {
    "fieldname": "pawn_ticket_no",
-   "fieldtype": "Data",
-   "label": "Pawn Ticket No"
+   "fieldtype": "Link",
+   "label": "Pawn Ticket No",
+   "options": "Pawn Ticket"
   },
   {
-   "fieldname": "principal",
-   "fieldtype": "Data",
-   "label": "Principal"
+   "fieldname": "received_amount",
+   "fieldtype": "Currency",
+   "label": "Received Amount"
   },
   {
-   "fieldname": "principal_in_numbers",
+   "fieldname": "principal_amount",
    "fieldtype": "Data",
-   "label": "Principal in numbers"
+   "label": "Principal Amount"
   },
   {
-   "fieldname": "date_loan_granted",
-   "fieldtype": "Data",
-   "label": "Date Loan Granted"
-  },
-  {
-   "fieldname": "conforme",
+   "fieldname": "signature_of_pawner",
    "fieldtype": "Signature",
-   "label": "Conforme"
+   "label": "Signature of Pawner"
   },
   {
-   "fieldname": "by",
-   "fieldtype": "Signature",
-   "label": "By"
-  },
-  {
-   "fieldname": "column_break_22",
+   "fieldname": "column_break_9",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_21",
-   "fieldtype": "Section Break"
+   "fieldname": "signature_of_pawnshop_representative",
+   "fieldtype": "Signature",
+   "label": "Signature of Pawnshop Representative"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Provisional Receipt",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2022-01-19 10:08:35.798988",
+ "modified": "2022-01-28 11:50:47.304986",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
