@@ -27,35 +27,22 @@ frappe.ui.form.on('Pawn Ticket', {
 	refresh: function(frm){
 		frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"		//Change "Add Row" button of jewelry_items table into "Add Item"
 		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
-		frappe.call({
-			method: 'frappe.client.get_value',
-			args: {
-				'doctype': 'Pawnshop Management Settings',
-				'fieldname': [
-					'non_jewelry_inventory_count',
-					'jewelry_inventory_count'
-				]
-			},
-			callback: function(r){
-				let inventory_count = r.message
-				frm.set_query('item_no', 'jewelry_items', function(){
-					return {
-						"filters": {
-							"batch_number": String(parseInt(inventory_count.jewelry_inventory_count)),
-						}
-					};
-				});
+		let batch_no = frm.doc.inventory_count.split()
+		frm.set_query('item_no', 'jewelry_items', function(){
+			return {
+				"filters": {
+					"batch_number": String(parseInt(batch_no[0])),
+				}
+			};
+		});
 
-				frm.set_query('item_no', 'non_jewelry_items', function(){
-					return {
-						"filters": {
-							"batch_number": String(parseInt(inventory_count.non_jewelry_inventory_count)),
-						}
-					};
-				});
-			}
-
-		})
+		frm.set_query('item_no', 'non_jewelry_items', function(){
+			return {
+				"filters": {
+					"batch_number": String(parseInt(batch_no[0])),
+				}
+			};
+		});
 	},
 
 	date_loan_granted: function(frm){

@@ -4,13 +4,13 @@
 frappe.ui.form.on('Non Jewelry Items', {
 
 	before_save:function(frm){
-		frm.set_df_property('assistant_appraiser', 'read_only', 1);
+		// frm.set_value('main_appraiser', frappe.user_info().fullname);
+		show_item_no(frm)
 	},
 
 	refresh: function(frm){
-		frm.set_value('main_appraiser', frappe.user_info().fullname);
+		frm.set_df_property('assistant_appraiser', 'read_only', 1);
 		frm.disable_save();
-		show_item_no(frm)
 		frm.set_df_property('disk_type', 'hidden', 1);
 		frm.set_df_property('internet_connection_capability', 'hidden', 1);
 		frm.set_df_property('bag', 'hidden', 1);
