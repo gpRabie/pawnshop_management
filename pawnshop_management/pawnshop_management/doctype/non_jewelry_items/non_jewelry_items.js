@@ -91,7 +91,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 						"in", 
 						[
 							"Appraiser",
-							"Main Appraiser",
+							"Main Appriaser",
 							"Cashier",
 							"Supervisor"
 						]
