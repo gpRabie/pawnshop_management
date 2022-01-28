@@ -50,48 +50,6 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2022-01-26 16:02:50.008165",
-  "name": "Main Appriaser",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "role_profile": "Main Appriaser",
-  "roles": [
-   {
-    "parent": "Main Appriaser",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Main Appraiser"
-   }
-  ]
- },
- {
-  "docstatus": 0,
-  "doctype": "Role Profile",
-  "modified": "2022-01-26 16:03:12.977098",
-  "name": "Assistant Appraiser",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "role_profile": "Assistant Appraiser",
-  "roles": [
-   {
-    "parent": "Assistant Appraiser",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Main Appraiser"
-   },
-   {
-    "parent": "Assistant Appraiser",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Assistant Appraiser"
-   }
-  ]
- },
- {
-  "docstatus": 0,
-  "doctype": "Role Profile",
   "modified": "2022-01-20 14:52:17.453455",
   "name": "Appraiser",
   "parent": null,
