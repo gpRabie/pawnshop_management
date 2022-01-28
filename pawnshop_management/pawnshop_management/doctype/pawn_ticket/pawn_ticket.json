@@ -54,7 +54,6 @@
    "read_only": 1
   },
   {
-   "default": "Today",
    "fieldname": "date_loan_granted",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -167,7 +166,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-01-28 11:37:15.855370",
+ "modified": "2022-01-28 13:00:41.895054",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket",

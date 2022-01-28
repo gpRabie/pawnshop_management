@@ -1,12 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "####",
+ "autoname": "naming_series:",
  "creation": "2022-01-19 09:43:30.430759",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "date",
   "received_from",
   "received_amount",
@@ -28,9 +29,8 @@
   },
   {
    "fieldname": "received_from",
-   "fieldtype": "Link",
-   "label": "Received From",
-   "options": "Customer"
+   "fieldtype": "Data",
+   "label": "Received From"
   },
   {
    "fieldname": "column_break_10",
@@ -53,7 +53,7 @@
   },
   {
    "fieldname": "principal_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Principal Amount"
   },
   {
@@ -78,12 +78,19 @@
    "options": "Provisional Receipt",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "No",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-01-28 11:50:47.304986",
+ "modified": "2022-01-28 12:09:00.946964",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
