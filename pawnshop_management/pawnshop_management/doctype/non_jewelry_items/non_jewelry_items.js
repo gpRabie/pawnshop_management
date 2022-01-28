@@ -9,7 +9,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 	},
 
 	refresh: function(frm){
-		frm.set_df_property('assistant_appraiser', 'read_only', 1);
+		// frm.set_df_property('assistant_appraiser', 'read_only', 1);
 		frm.disable_save();
 		frm.set_df_property('disk_type', 'hidden', 1);
 		frm.set_df_property('internet_connection_capability', 'hidden', 1);
