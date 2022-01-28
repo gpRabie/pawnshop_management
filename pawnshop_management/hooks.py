@@ -175,6 +175,7 @@ user_data_fields = [
 
 fixtures = [
 	"Workflow State",
+	"Customer",
 	"Role",
 	"Role Profile",
 	"DocPerm", 		# Role Permissions Manager
