@@ -26,7 +26,7 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2022-01-20 11:58:49.814339",
+  "modified": "2022-01-25 16:16:15.060870",
   "name": "Vault Custodian",
   "parent": null,
   "parentfield": null,
@@ -38,6 +38,54 @@
     "parentfield": "roles",
     "parenttype": "Role Profile",
     "role": "Vault Custodian"
+   },
+   {
+    "parent": "Vault Custodian",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Appraiser"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2022-01-26 16:02:50.008165",
+  "name": "Main Appriaser",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Main Appriaser",
+  "roles": [
+   {
+    "parent": "Main Appriaser",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Main Appraiser"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2022-01-26 16:03:12.977098",
+  "name": "Assistant Appraiser",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Assistant Appraiser",
+  "roles": [
+   {
+    "parent": "Assistant Appraiser",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Main Appraiser"
+   },
+   {
+    "parent": "Assistant Appraiser",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Assistant Appraiser"
    }
   ]
  },

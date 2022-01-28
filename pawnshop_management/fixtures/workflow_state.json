@@ -39,30 +39,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2021-12-14 09:35:38.193088",
-  "name": "Initially Appraised",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "style": "Info",
-  "workflow_state_name": "Initially Appraised"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2021-12-14 10:04:23.251938",
-  "name": "Finally Appraised",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "style": "Success",
-  "workflow_state_name": "Finally Appraised"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2022-01-11 10:17:28.810257",
   "name": "Active",
   "parent": null,
@@ -142,5 +118,41 @@
   "parenttype": null,
   "style": "Inverse",
   "workflow_state_name": "Collected"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-01-26 10:33:11.636012",
+  "name": "Expired",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Inverse",
+  "workflow_state_name": "Expired"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2021-12-14 09:35:38.193088",
+  "name": "Initially Appraised",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Info",
+  "workflow_state_name": "Initially Appraised"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2021-12-14 10:04:23.251938",
+  "name": "Finally Appraised",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Success",
+  "workflow_state_name": "Finally Appraised"
  }
 ]
