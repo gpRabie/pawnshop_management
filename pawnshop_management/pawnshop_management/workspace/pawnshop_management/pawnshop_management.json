@@ -18,8 +18,17 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Pawn Tickets",
-   "link_to": "Pawn Ticket",
+   "label": "Jewelry Pawn Tickets",
+   "link_to": "Pawn Ticket Jewelry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Non Jewelry Pawn Tickets",
+   "link_to": "Pawn Ticket Non Jewelry",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -54,15 +63,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Gadgets Price List",
-   "link_to": "Models",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Role Assignment",
    "link_to": "Role Assignment",
    "link_type": "DocType",
@@ -70,7 +70,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-01-20 15:31:44.490892",
+ "modified": "2022-01-31 16:18:36.354764",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -80,30 +80,30 @@
  "shortcuts": [
   {
    "doc_view": "New",
-   "label": "Pawn Ticket",
-   "link_to": "Pawn Ticket",
+   "label": "New Jewelry Pawn Ticket",
+   "link_to": "Pawn Ticket Jewelry",
    "type": "DocType"
   },
   {
-   "doc_view": "Dashboard",
-   "label": "Pawnshop Management Settings",
-   "link_to": "Pawnshop Management Settings",
+   "doc_view": "New",
+   "label": "New Non Jewelry Pawn Ticket",
+   "link_to": "Pawn Ticket Non Jewelry",
    "type": "DocType"
   },
   {
-   "doc_view": "Dashboard",
+   "doc_view": "New",
    "label": "Jewelry Items",
    "link_to": "Jewelry Items",
    "type": "DocType"
   },
   {
-   "doc_view": "Dashboard",
+   "doc_view": "New",
    "label": "Non Jewelry Items",
    "link_to": "Non Jewelry Items",
    "type": "DocType"
   },
   {
-   "doc_view": "Dashboard",
+   "doc_view": "List",
    "label": "Gadgets Price List",
    "link_to": "Models",
    "type": "DocType"

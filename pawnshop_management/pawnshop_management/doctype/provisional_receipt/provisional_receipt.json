@@ -44,7 +44,7 @@
    "fieldname": "pawn_ticket_no",
    "fieldtype": "Link",
    "label": "Pawn Ticket No",
-   "options": "Pawn Ticket"
+   "options": "Pawn Ticket Jewelry"
   },
   {
    "fieldname": "received_amount",
@@ -90,7 +90,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-01-28 12:09:00.946964",
+ "modified": "2022-01-31 13:12:57.314604",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
