@@ -30,7 +30,8 @@
   {
    "fieldname": "received_from",
    "fieldtype": "Data",
-   "label": "Received From"
+   "label": "Received From",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_10",
@@ -44,12 +45,14 @@
    "fieldname": "pawn_ticket_no",
    "fieldtype": "Link",
    "label": "Pawn Ticket No",
-   "options": "Pawn Ticket Jewelry"
+   "options": "Pawn Ticket Jewelry",
+   "reqd": 1
   },
   {
    "fieldname": "received_amount",
    "fieldtype": "Currency",
-   "label": "Received Amount"
+   "label": "Received Amount",
+   "reqd": 1
   },
   {
    "fieldname": "principal_amount",
@@ -90,7 +93,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-01-31 13:12:57.314604",
+ "modified": "2022-02-01 15:37:41.718513",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",

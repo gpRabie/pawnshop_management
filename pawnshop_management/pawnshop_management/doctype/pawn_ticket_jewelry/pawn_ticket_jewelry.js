@@ -2,11 +2,6 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Pawn Ticket Jewelry', {
-	customers_tracking_no: function(frm){
-		set_series(frm);
-		show_tracking_no(frm);
-		frm.set_value('date_loan_granted', frappe.datetime.nowdate())
-	},
 	validate: function(frm, cdt, cdn){
 		var temp_principal = 0.0;
 		$.each(frm.doc.jewelry_items, function(index, item){
@@ -23,6 +18,12 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 	},
 
 	refresh: function(frm){
+		if (frm.is_new()) {
+			set_series(frm);
+			show_tracking_no(frm);
+			frm.set_value('date_loan_granted', frappe.datetime.nowdate())
+		}
+		
 		frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"		//Change "Add Row" button of jewelry_items table into "Add Item"
 		frappe.call({
 			method: 'frappe.client.get_value',

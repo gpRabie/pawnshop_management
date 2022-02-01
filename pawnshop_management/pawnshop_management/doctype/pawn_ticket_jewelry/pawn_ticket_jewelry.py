@@ -15,3 +15,4 @@ class PawnTicketJewelry(Document):
 			elif self.item_series == 'B':
 				settings.b_series_current_count += 1
 			settings.save(ignore_permissions=True)
+

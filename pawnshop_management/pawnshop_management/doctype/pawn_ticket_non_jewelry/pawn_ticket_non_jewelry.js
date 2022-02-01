@@ -2,7 +2,6 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Pawn Ticket Non Jewelry', {
-	
 	validate: function(frm, cdt, cdn){
 		var temp_principal = 0.0;
 		$.each(frm.doc.non_jewelry_items, function(index, item){
@@ -18,6 +17,10 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	},
 
 	refresh: function(frm){
+		if (frm.is_new()) {
+			show_tracking_no(frm);
+			frm.set_value('date_loan_granted', frappe.datetime.nowdate())
+		}
 		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
 		frappe.call({
 			method: 'frappe.client.get_value',
@@ -52,10 +55,6 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 		frm.refresh_fields('pawn_ticket');
 		set_item_interest(frm)
 	},
-	customers_tracking_no: function(frm){
-		show_tracking_no(frm);
-		frm.set_value('date_loan_granted', frappe.datetime.nowdate())
-	}
 });
 
 frappe.ui.form.on('Non Jewelry List', {
@@ -104,13 +103,11 @@ function show_tracking_no(frm){ //Sets inventory tracking number
 
 		callback: function(value){
 			let tracking_no = value.message;
-			let non_jewelry_count = parseInt(tracking_no.non_jewelry_inventory_count)
+			let non_jewelry_count = parseInt(tracking_no.non_jewelry_inventory_count);
 			let new_ticket_no = parseInt(tracking_no.b_series_current_count);
 			frm.set_value('pawn_ticket', new_ticket_no + frm.doc.item_series);
-			frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ')
-			frm.refresh_field('pawn_ticket')
-			// items_filter(frm.doc.pawn_type, jewelry_count, non_jewelry_count) // filters items with the same batch
-
+			frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ');
+			frm.refresh_field('pawn_ticket');
 		},
 
 		error: function(value){
