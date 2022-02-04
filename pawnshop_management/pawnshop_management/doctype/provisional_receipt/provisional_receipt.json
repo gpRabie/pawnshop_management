@@ -8,70 +8,41 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "date",
-  "received_from",
-  "received_amount",
-  "column_break_10",
+  "pawn_ticket_type",
   "pawn_ticket_no",
+  "date_loan_granted",
+  "maturity_date",
+  "expiry_date",
+  "column_break_10",
+  "date_issued",
+  "transaction_type",
+  "complete_name",
   "principal_amount",
-  "section_break_16",
-  "signature_of_pawner",
-  "column_break_9",
-  "signature_of_pawnshop_representative",
+  "interest",
+  "payments_section",
+  "amortization",
+  "interest_payment",
+  "discount",
+  "additional_amortization",
   "amended_from"
  ],
  "fields": [
-  {
-   "default": "Today",
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "label": "Date"
-  },
-  {
-   "fieldname": "received_from",
-   "fieldtype": "Data",
-   "label": "Received From",
-   "reqd": 1
-  },
   {
    "fieldname": "column_break_10",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_16",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "pawn_ticket_no",
-   "fieldtype": "Link",
+   "fieldtype": "Dynamic Link",
    "label": "Pawn Ticket No",
-   "options": "Pawn Ticket Jewelry",
+   "options": "pawn_ticket_type",
    "reqd": 1
   },
   {
-   "fieldname": "received_amount",
-   "fieldtype": "Currency",
-   "label": "Received Amount",
-   "reqd": 1
-  },
-  {
+   "fetch_from": "pawn_ticket_no.desired_principal",
    "fieldname": "principal_amount",
    "fieldtype": "Currency",
    "label": "Principal Amount"
-  },
-  {
-   "fieldname": "signature_of_pawner",
-   "fieldtype": "Signature",
-   "label": "Signature of Pawner"
-  },
-  {
-   "fieldname": "column_break_9",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "signature_of_pawnshop_representative",
-   "fieldtype": "Signature",
-   "label": "Signature of Pawnshop Representative"
   },
   {
    "fieldname": "amended_from",
@@ -87,13 +58,89 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "No",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "pawn_ticket_no.date_loan_granted",
+   "fieldname": "date_loan_granted",
+   "fieldtype": "Date",
+   "label": "Date Loan Granted"
+  },
+  {
+   "fetch_from": "pawn_ticket_no.maturity_date",
+   "fieldname": "maturity_date",
+   "fieldtype": "Date",
+   "label": "Maturity Date"
+  },
+  {
+   "fetch_from": "pawn_ticket_no.expiry_date",
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "transaction_type",
+   "fieldtype": "Select",
+   "label": "Transaction Type",
+   "options": "Renewal\nRedemption\nInterest Payment\nAmortization\nRenewal w/ Amortization"
+  },
+  {
+   "fetch_from": "pawn_ticket_no.customers_full_name",
+   "fieldname": "complete_name",
+   "fieldtype": "Data",
+   "label": "Complete Name"
+  },
+  {
+   "fetch_from": "pawn_ticket_no.interest",
+   "fieldname": "interest",
+   "fieldtype": "Currency",
+   "label": "Interest"
+  },
+  {
+   "fieldname": "amortization",
+   "fieldtype": "Data",
+   "label": "Amortization"
+  },
+  {
+   "fieldname": "interest_payment",
+   "fieldtype": "Data",
+   "label": "Interest Payment"
+  },
+  {
+   "fieldname": "discount",
+   "fieldtype": "Data",
+   "label": "Discount"
+  },
+  {
+   "fieldname": "additional_amortization",
+   "fieldtype": "Data",
+   "label": "Additional Amortization"
+  },
+  {
+   "fieldname": "payments_section",
+   "fieldtype": "Section Break",
+   "label": "Payments"
+  },
+  {
+   "fieldname": "pawn_ticket_type",
+   "fieldtype": "Link",
+   "label": "Pawn Ticket Type",
+   "options": "DocType"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date_issued",
+   "fieldtype": "Data",
+   "label": "Date Issued",
+   "read_only": 1,
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-01 15:37:41.718513",
+ "modified": "2022-02-04 17:54:32.785360",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",

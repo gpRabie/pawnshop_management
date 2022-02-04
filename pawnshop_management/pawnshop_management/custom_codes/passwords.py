@@ -34,8 +34,6 @@ def check_password(user, pwd, doctype="User", fieldname="password", delete_track
 		.limit(1)
 		.run(as_dict=True)
 	)
-
-	print(pwd)
 	if not result or not passlibctx.verify(pwd, result[0].password):
 		user = "Incorrect Password"
 	else:
