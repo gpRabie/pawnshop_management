@@ -13,7 +13,6 @@
   "maturity_date",
   "expiry_date",
   "column_break_6",
-  "transaction_type",
   "customers_tracking_no",
   "customers_full_name",
   "section_break_9",
@@ -69,12 +68,6 @@
   {
    "fieldname": "column_break_6",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "transaction_type",
-   "fieldtype": "Select",
-   "label": "Transaction Type",
-   "options": "New\nRedemption\nRenew\nRenew with Amortization\nAmortization\nInterest Payment"
   },
   {
    "fieldname": "customers_tracking_no",
@@ -149,7 +142,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-01-31 13:17:24.344570",
+ "modified": "2022-02-02 13:24:29.419255",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Jewelry",

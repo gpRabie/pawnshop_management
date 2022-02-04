@@ -50,11 +50,15 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	},
 
 	desired_principal: function(frm, cdt, cdn) {
-		set_series(frm);
 		show_tracking_no(frm);
 		frm.refresh_fields('pawn_ticket');
 		set_item_interest(frm)
 	},
+
+	inventory_tracking_no: function(frm, cdt, cdn){
+		get_items();
+	}
+
 });
 
 frappe.ui.form.on('Non Jewelry List', {
@@ -63,7 +67,7 @@ frappe.ui.form.on('Non Jewelry List', {
 		if (frm.doc.non_jewelry_items.length > 1) {
 			for (let index = 0; index < table_length - 1; index++) {
 				if (frm.doc.non_jewelry_items[table_length-1].item_no == frm.doc.non_jewelry_items[index].item_no) {
-					console.log(frm.doc.non_jewelry_items.pop(table_length-1));
+					frm.doc.non_jewelry_items.pop(table_length-1);
 					frm.refresh_field('jewelry_items');
 					frappe.msgprint({
 						title:__('Notification'),
@@ -71,10 +75,7 @@ frappe.ui.form.on('Non Jewelry List', {
 						message: __('Added item is already in the list. Item removed.')
 					});
 					set_total_appraised_amount(frm, cdt, cdn);
-					// console.log("Pasok!");
 				}
-				// console.log(frm.doc.jewelry_items[index].item_no);
-				// console.log(frm.doc.jewelry_items[table_length - 1].item_no);
 			}
 		}
 	},
@@ -94,10 +95,8 @@ function show_tracking_no(frm){ //Sets inventory tracking number
 		args: {
 			'doctype': 'Pawnshop Management Settings',
 			'fieldname': [
-				'a_series_current_count',
 				'b_series_current_count',
 				'non_jewelry_inventory_count',
-				'jewelry_inventory_count'
 			]
 		},
 
@@ -153,3 +152,9 @@ function null_checker(number) {
 	}
 	return parseInt(number)
 }
+
+// function get_items() {
+// 	frappe.db.get_value('Non Jewelry Batch', '5NJ', 'items').then(function(r){
+		
+// 	})
+// }

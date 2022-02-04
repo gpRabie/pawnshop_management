@@ -139,7 +139,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 			frm.set_df_property('model', 'label', 'Model');
 			frm.set_df_property('model_number', 'reqd', 0);
 			frm.set_value('model_number', "N/A");
-			frm.refresh_field('model_number')
+			frm.refresh_field('model_number');
 			frm.set_df_property('model_number', 'hidden', 1);
 			frm.set_df_property('ram', 'reqd', 0);
 			frm.set_df_property('ram', 'hidden', 1);

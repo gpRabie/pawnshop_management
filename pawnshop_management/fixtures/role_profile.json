@@ -2,6 +2,78 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
+  "modified": "2022-02-03 16:13:22.646323",
+  "name": "Appraiser/Cashier",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Appraiser/Cashier",
+  "roles": [
+   {
+    "parent": "Appraiser/Cashier",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Appraiser"
+   },
+   {
+    "parent": "Appraiser/Cashier",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Pawnshop Cashier"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2022-02-03 16:14:00.418818",
+  "name": "Supervisor/Cashier",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Supervisor/Cashier",
+  "roles": [
+   {
+    "parent": "Supervisor/Cashier",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Appraiser"
+   },
+   {
+    "parent": "Supervisor/Cashier",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Supervisor"
+   },
+   {
+    "parent": "Supervisor/Cashier",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Pawnshop Cashier"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2022-02-04 14:24:11.960216",
+  "name": "Guest",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Guest",
+  "roles": [
+   {
+    "parent": "Guest",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Employee"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
   "modified": "2022-01-20 10:24:00.261126",
   "name": "Supervisor",
   "parent": null,
@@ -68,7 +140,7 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2022-01-20 11:58:03.917369",
+  "modified": "2022-02-04 14:26:06.506802",
   "name": "Cashier",
   "parent": null,
   "parentfield": null,
@@ -80,6 +152,12 @@
     "parentfield": "roles",
     "parenttype": "Role Profile",
     "role": "Pawnshop Cashier"
+   },
+   {
+    "parent": "Cashier",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Employee"
    }
   ]
  }
