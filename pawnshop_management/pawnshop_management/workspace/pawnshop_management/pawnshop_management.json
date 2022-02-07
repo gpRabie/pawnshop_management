@@ -2,7 +2,7 @@
  "cards_label": "Items",
  "category": "Modules",
  "charts": [],
- "creation": "2022-01-13 18:25:35.267139",
+ "creation": "2022-02-04 13:37:51.209860",
  "developer_mode_only": 0,
  "disable_user_customization": 1,
  "docstatus": 0,
@@ -18,7 +18,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Jewelry Pawn Tickets",
+   "label": "Jewelry Pawn Tickets List",
    "link_to": "Pawn Ticket Jewelry",
    "link_type": "DocType",
    "onboard": 0,
@@ -27,7 +27,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Non Jewelry Pawn Tickets",
+   "label": "Non Jewelry Pawn Tickets List",
    "link_to": "Pawn Ticket Non Jewelry",
    "link_type": "DocType",
    "onboard": 0,
@@ -36,7 +36,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Jewelry Batch",
+   "label": "Jewelry Batch List",
    "link_to": "Jewelry Batch",
    "link_type": "DocType",
    "onboard": 0,
@@ -45,7 +45,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Jewlery Items",
+   "label": "Jewlery Items List",
    "link_to": "Jewelry Items",
    "link_type": "DocType",
    "onboard": 0,
@@ -54,7 +54,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Non Jewelry Items",
+   "label": "Non Jewelry Items List",
    "link_to": "Non Jewelry Items",
    "link_type": "DocType",
    "onboard": 0,
@@ -68,9 +68,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Provisional Receipt List",
+   "link_to": "Provisional Receipt",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-01-31 16:18:36.354764",
+ "modified": "2022-02-07 09:54:27.416759",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -106,6 +115,12 @@
    "doc_view": "List",
    "label": "Gadgets Price List",
    "link_to": "Models",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "New",
+   "label": "New Provisional Receipt",
+   "link_to": "Provisional Receipt",
    "type": "DocType"
   }
  ],

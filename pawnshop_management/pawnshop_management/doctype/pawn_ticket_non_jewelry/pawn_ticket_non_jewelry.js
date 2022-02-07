@@ -56,7 +56,7 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	},
 
 	inventory_tracking_no: function(frm, cdt, cdn){
-		get_items();
+		// get_items(frm.doc.inventory_tracking_no);
 	}
 
 });
@@ -153,8 +153,8 @@ function null_checker(number) {
 	return parseInt(number)
 }
 
-// function get_items() {
-// 	frappe.db.get_value('Non Jewelry Batch', '5NJ', 'items').then(function(r){
-		
-// 	})
-// }
+function get_items(inventory_no) {
+	frappe.db.get_value('Non Jewelry Batch', inventory_no, 'items').then(function(r){
+		console.log(r);
+	})
+}

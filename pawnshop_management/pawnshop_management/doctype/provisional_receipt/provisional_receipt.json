@@ -42,7 +42,8 @@
    "fetch_from": "pawn_ticket_no.desired_principal",
    "fieldname": "principal_amount",
    "fieldtype": "Currency",
-   "label": "Principal Amount"
+   "label": "Principal Amount",
+   "read_only": 1
   },
   {
    "fieldname": "amended_from",
@@ -65,19 +66,22 @@
    "fetch_from": "pawn_ticket_no.date_loan_granted",
    "fieldname": "date_loan_granted",
    "fieldtype": "Date",
-   "label": "Date Loan Granted"
+   "label": "Date Loan Granted",
+   "read_only": 1
   },
   {
    "fetch_from": "pawn_ticket_no.maturity_date",
    "fieldname": "maturity_date",
    "fieldtype": "Date",
-   "label": "Maturity Date"
+   "label": "Maturity Date",
+   "read_only": 1
   },
   {
    "fetch_from": "pawn_ticket_no.expiry_date",
    "fieldname": "expiry_date",
    "fieldtype": "Date",
-   "label": "Expiry Date"
+   "label": "Expiry Date",
+   "read_only": 1
   },
   {
    "fieldname": "transaction_type",
@@ -95,7 +99,8 @@
    "fetch_from": "pawn_ticket_no.interest",
    "fieldname": "interest",
    "fieldtype": "Currency",
-   "label": "Interest"
+   "label": "Interest",
+   "read_only": 1
   },
   {
    "fieldname": "amortization",
@@ -140,7 +145,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-04 17:54:32.785360",
+ "modified": "2022-02-07 10:09:45.798250",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",

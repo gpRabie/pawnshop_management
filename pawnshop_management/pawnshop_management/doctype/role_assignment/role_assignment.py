@@ -7,7 +7,7 @@ from frappe.model.document import Document
 class RoleAssignment(Document):
 	def before_save(self):
 		reset_roles()
-		# select_cashier(self.employee)
+		select_cashier(self.employee)
 		user = frappe.get_doc('User', self.employee)
 		if user.role_profile_name == 'Appraiser':
 			user.role_profile_name = 'Appraiser/Cashier'
