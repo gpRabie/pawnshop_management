@@ -39,6 +39,10 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 				});
 			}
 		})
+
+		frm.add_custom_button('Test', () => {
+			get_items("2NJ")
+		})
 	},
 
 	date_loan_granted: function(frm){
@@ -154,7 +158,11 @@ function null_checker(number) {
 }
 
 function get_items(inventory_no) {
-	frappe.db.get_value('Non Jewelry Batch', inventory_no, 'items').then(function(r){
-		console.log(r);
+	frappe.db.get_doc('Non Jewelry Batch', inventory_no).then(function(r){
+		item_list = r.items
+		for (let index = 0; index < array.length; index++) {
+			
+			
+		}
 	})
 }
