@@ -17,5 +17,27 @@ frappe.ui.form.on('Provisional Receipt', {
 				}
 			}
 		})
+	},
+
+	amortization: function(frm){
+		frm.set_value('total', parseFloat(frm.doc.total) + parseFloat(frm.doc.amortization))
+		frm.refresh_field('total')
+	},
+
+	interest_payment: function(frm){
+		frm.set_value('total', parseFloat(frm.doc.total) + parseFloat(frm.doc.interest_payment))
+		frm.refresh_field('total')
+	},
+
+	discount: function(frm){
+		frm.set_value('total', parseFloat(frm.doc.total) - parseFloat(frm.doc.discount))
+		frm.refresh_field('total')
+	},
+
+	additional_amortization: function(frm){
+		frm.set_value('total', parseFloat(frm.doc.total) + parseFloat(frm.doc.additional_amortization))
+		frm.refresh_field('total')
 	}
 });
+
+

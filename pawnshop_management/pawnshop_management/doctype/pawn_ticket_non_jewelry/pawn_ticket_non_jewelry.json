@@ -88,9 +88,8 @@
   },
   {
    "fieldname": "inventory_tracking_no",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Inventory Tracking No",
-   "options": "Non Jewelry Batch",
    "reqd": 1,
    "set_only_once": 1
   },
@@ -144,7 +143,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-02-07 10:14:05.777899",
+ "modified": "2022-02-08 09:36:34.404507",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Non Jewelry",

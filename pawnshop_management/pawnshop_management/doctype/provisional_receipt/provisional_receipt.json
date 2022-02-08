@@ -24,6 +24,7 @@
   "interest_payment",
   "discount",
   "additional_amortization",
+  "total",
   "amended_from"
  ],
  "fields": [
@@ -103,23 +104,27 @@
    "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "amortization",
-   "fieldtype": "Data",
-   "label": "Amortization"
+   "fieldtype": "Currency",
+   "label": "Amortization0"
   },
   {
+   "default": "0",
    "fieldname": "interest_payment",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Interest Payment"
   },
   {
+   "default": "0",
    "fieldname": "discount",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Discount"
   },
   {
+   "default": "0",
    "fieldname": "additional_amortization",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Additional Amortization"
   },
   {
@@ -140,12 +145,18 @@
    "label": "Date Issued",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "Total "
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-07 10:09:45.798250",
+ "modified": "2022-02-07 17:49:14.624165",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",

@@ -41,7 +41,12 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 		})
 
 		frm.add_custom_button('Test', () => {
-			get_items("2NJ")
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.update_pawn_tickets',
+				callback: function(data){
+					console.log(data.message);
+				}
+			})
 		})
 	},
 
@@ -120,21 +125,13 @@ function show_tracking_no(frm){ //Sets inventory tracking number
 	
 }
 
-function set_total_appraised_amount(frm, cdt, cdn) { // Calculate Principal Amount
+function set_total_appraised_amount(frm, cdt, cdn) { 			// Calculate Principal Amount
 	let temp_principal = 0.00;
-	if (frm.doc.pawn_type == 'Jewelry') {
-		$.each(frm.doc.jewelry_items, function(index, item){
-			temp_principal += parseFloat(item.suggested_appraisal_value);
-		});
-		frm.set_value('desired_principal', temp_principal)
-		set_item_interest(frm)
-	} else {
-		$.each(frm.doc.non_jewelry_items, function(index, item){
-			temp_principal += parseFloat(item.suggested_appraisal_value);
-		});
-		frm.set_value('desired_principal', temp_principal);
-		set_item_interest(frm)
-	}
+	$.each(frm.doc.non_jewelry_items, function(index, item){
+		temp_principal += parseFloat(item.suggested_appraisal_value);
+	});
+	frm.set_value('desired_principal', temp_principal);
+	set_item_interest(frm)
 	return temp_principal
 }
 
@@ -157,12 +154,12 @@ function null_checker(number) {
 	return parseInt(number)
 }
 
-function get_items(inventory_no) {
-	frappe.db.get_doc('Non Jewelry Batch', inventory_no).then(function(r){
-		item_list = r.items
-		for (let index = 0; index < array.length; index++) {
+// function get_items(inventory_no) {
+// 	frappe.db.get_doc('Non Jewelry Batch', inventory_no).then(function(r){
+// 		item_list = r.items
+// 		for (let index = 0; index < array.length; index++) {
 			
 			
-		}
-	})
-}
+// 		}
+// 	})
+// }
