@@ -154,5 +154,17 @@
   "parenttype": null,
   "style": "Success",
   "workflow_state_name": "Finally Appraised"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-02-08 16:46:47.678678",
+  "name": "Draft",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Warning",
+  "workflow_state_name": "Draft"
  }
 ]

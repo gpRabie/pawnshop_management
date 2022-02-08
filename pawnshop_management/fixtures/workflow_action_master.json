@@ -52,6 +52,16 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
+  "modified": "2022-02-08 16:47:29.430858",
+  "name": "Submit",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "workflow_action_name": "Submit"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
   "modified": "2021-11-23 08:41:13.814667",
   "name": "Approve",
   "parent": null,
