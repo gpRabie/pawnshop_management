@@ -180,7 +180,8 @@ fixtures = [
  	# "DocPerm" 		# Role Permissions Manager
 # 	"Workspace",
 # 	"Print Settings", 		# Print Option will only be available after submit
-	"Workflow"
+	"Workflow",
+	"Workflow Action"
 # 	"Naming Series"
 ]
 
