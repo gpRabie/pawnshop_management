@@ -173,14 +173,14 @@ user_data_fields = [
 # 	"pawnshop_management.auth.validate"
 # ]
 
-# fixtures = [
-# # 	"Workflow State",
-# # 	"Role",
-# #	"Role Profile",
-#  	# "DocPerm" 		# Role Permissions Manager
-# # 	"Workspace",
-# # 	"Print Settings", 		# Print Option will only be available after submit
-# # 	"Workflow",
-# # 	"Naming Series"
-# ]
+fixtures = [
+	"Workflow State"
+# 	"Role",
+#	"Role Profile",
+ 	# "DocPerm" 		# Role Permissions Manager
+# 	"Workspace",
+# 	"Print Settings", 		# Print Option will only be available after submit
+# 	"Workflow",
+# 	"Naming Series"
+]
 
