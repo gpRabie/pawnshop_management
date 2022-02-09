@@ -19,6 +19,20 @@ frappe.ui.form.on('Provisional Receipt', {
 		})
 	},
 
+	pawn_ticket_no: function(frm){
+		if (frm.doc.transaction_type == "Redemption") {
+			console.log(frm.doc.principal_amount);
+			frm.set_value('total', cur_frm.doc.principal_amount)
+		}
+	},
+
+	transaction_type: function(frm){
+		if (frm.doc.transaction_type == "Redemption") {
+			console.log(frm.doc.principal_amount);
+			frm.set_value('total', cur_frm.doc.principal_amount)
+		}
+	},
+
 	amortization: function(frm){
 		frm.set_value('total', parseFloat(frm.doc.total) + parseFloat(frm.doc.amortization))
 		frm.refresh_field('total')
