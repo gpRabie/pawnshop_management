@@ -174,8 +174,6 @@ user_data_fields = [
 # ]
 
 fixtures = [
-	"Workflow",
-	"Workflow State",
-	"Workflow Action Master"
+	"Workspace"
 ]
 
