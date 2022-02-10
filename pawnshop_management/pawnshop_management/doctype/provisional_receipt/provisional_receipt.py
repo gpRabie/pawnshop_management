@@ -9,5 +9,5 @@ class ProvisionalReceipt(Document):
 		if self.transaction_type == "Redemption":
 			doc = frappe.get_doc('Pawn Ticket Non Jewelry', self.pawn_ticket_no)
 			doc.workflow_state = "Redeemed"
-			doc.save()
+			doc.save(ignore_permissions=True)
 			frappe.db.commit()
