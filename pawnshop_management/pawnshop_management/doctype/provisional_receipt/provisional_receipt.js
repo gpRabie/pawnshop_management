@@ -21,15 +21,19 @@ frappe.ui.form.on('Provisional Receipt', {
 
 	pawn_ticket_no: function(frm){
 		if (frm.doc.transaction_type == "Redemption") {
-			console.log(frm.doc.principal_amount);
-			frm.set_value('total', cur_frm.doc.principal_amount)
+			frm.set_value('total', cur_frm.doc.principal_amount);
 		}
 	},
 
 	transaction_type: function(frm){
+		show_payment_fields(frm);
 		if (frm.doc.transaction_type == "Redemption") {
-			console.log(frm.doc.principal_amount);
-			frm.set_value('total', cur_frm.doc.principal_amount)
+			frm.set_value('total', cur_frm.doc.principal_amount);
+			frm.set_df_property('amortization', 'hidden', 1);
+			frm.set_df_property('interest_payment', 'hidden', 1);
+			frm.set_df_property('additional_amortization', 'hidden', 1);
+		} else {
+			frm.set_value('total', 0.00);
 		}
 	},
 
@@ -54,4 +58,9 @@ frappe.ui.form.on('Provisional Receipt', {
 	}
 });
 
+function show_payment_fields(frm) {
+	frm.set_df_property('amortization', 'hidden', 0);
+	frm.set_df_property('interest_payment', 'hidden', 0);
+	frm.set_df_property('additional_amortization', 'hidden', 0);
+}
 
