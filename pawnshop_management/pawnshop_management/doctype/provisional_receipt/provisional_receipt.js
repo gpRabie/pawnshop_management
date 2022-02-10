@@ -17,6 +17,14 @@ frappe.ui.form.on('Provisional Receipt', {
 				}
 			}
 		})
+
+		frm.set_query('pawn_ticket_no', () => {
+			return {
+				"filters": {
+					"workflow_state": "Active"
+				}
+			}
+		})
 	},
 
 	pawn_ticket_no: function(frm){
