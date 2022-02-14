@@ -173,7 +173,7 @@ user_data_fields = [
 # 	"pawnshop_management.auth.validate"
 # ]
 
-fixtures = [
-	"Holiday List"
-]
+# fixtures = [
+# 	"Holiday List"
+# ]
 
