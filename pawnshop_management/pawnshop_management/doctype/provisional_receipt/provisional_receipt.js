@@ -120,9 +120,9 @@ function compute_interest() {
 				cur_frm.set_value('interest_payment', temp_interest)
 				cur_frm.refresh_field('interest_payment')
 			}
-		} else if (holiday == frappe.datetime.add_days(temp_maturity_date, 1)) {
+		} else if (holiday == frappe.datetime.add_days(temp_maturity_date, 1)) { //last day  of tawad is saturday
 			console.log("Hi");
-			if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 2)) {
+			if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) {
 				let temp_interest = 0.00;
 				temp_interest = parseFloat(cur_frm.doc.interest) * parseFloat(Math.ceil(frappe.datetime.get_day_diff(cur_frm.doc.date_loan_granted, cur_frm.doc.maturity_date)/30))
 				cur_frm.set_value('interest_payment', temp_interest)
@@ -148,7 +148,7 @@ function compute_interest() {
 			}
 		} else if (holiday == frappe.datetime.add_days(temp_maturity_date, 3)) {
 			console.log("Welcome")
-			if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 1)) {
+			if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) {
 				let temp_interest = 0.00;
 				temp_interest = parseFloat(cur_frm.doc.interest) * parseFloat(Math.ceil(frappe.datetime.get_day_diff(cur_frm.doc.date_loan_granted, cur_frm.doc.maturity_date)/30))
 				cur_frm.set_value('interest_payment', temp_interest)
