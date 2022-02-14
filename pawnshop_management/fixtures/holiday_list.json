@@ -1,0 +1,435 @@
+[
+ {
+  "color": "#CB2929",
+  "docstatus": 0,
+  "doctype": "Holiday List",
+  "from_date": "2022-01-01",
+  "holiday_list_name": "No Operations",
+  "holidays": [
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-01-02",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-01-09",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-01-16",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-01-23",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-01-30",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-02-06",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-02-13",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-02-20",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-02-27",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-03-06",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-03-13",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-03-20",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-03-27",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-04-03",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-04-10",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-04-17",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-04-24",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-05-01",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-05-08",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-05-15",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-05-22",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-05-29",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-06-05",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-06-12",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-06-19",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-06-26",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-07-03",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-07-10",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-07-17",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-07-24",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-07-31",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-08-07",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-08-14",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-08-21",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-08-28",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-09-04",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-09-11",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-09-18",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-09-25",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-10-02",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-10-09",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-10-16",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-10-23",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-10-30",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-11-06",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-11-13",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-11-20",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-11-27",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-12-04",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-12-11",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-12-18",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   },
+   {
+    "description": "Sunday",
+    "holiday_date": "2022-12-25",
+    "parent": "No Operations",
+    "parentfield": "holidays",
+    "parenttype": "Holiday List",
+    "weekly_off": 1
+   }
+  ],
+  "modified": "2022-02-11 10:57:22.430983",
+  "name": "No Operations",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "to_date": "2022-12-31",
+  "total_holidays": 52,
+  "weekly_off": "Sunday"
+ }
+]

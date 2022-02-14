@@ -35,6 +35,7 @@
   {
    "fieldname": "pawn_ticket_no",
    "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
    "label": "Pawn Ticket No",
    "options": "pawn_ticket_type",
    "reqd": 1
@@ -58,31 +59,27 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Data",
-   "in_list_view": 1,
+   "hidden": 1,
    "label": "No",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fetch_from": "pawn_ticket_no.date_loan_granted",
    "fieldname": "date_loan_granted",
    "fieldtype": "Date",
-   "label": "Date Loan Granted",
-   "read_only": 1
+   "label": "Date Loan Granted"
   },
   {
    "fetch_from": "pawn_ticket_no.maturity_date",
    "fieldname": "maturity_date",
    "fieldtype": "Date",
-   "label": "Maturity Date",
-   "read_only": 1
+   "label": "Maturity Date"
   },
   {
    "fetch_from": "pawn_ticket_no.expiry_date",
    "fieldname": "expiry_date",
    "fieldtype": "Date",
-   "label": "Expiry Date",
-   "read_only": 1
+   "label": "Expiry Date"
   },
   {
    "fieldname": "transaction_type",
@@ -142,6 +139,7 @@
    "default": "Today",
    "fieldname": "date_issued",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Date Issued",
    "read_only": 1,
    "reqd": 1
@@ -150,6 +148,7 @@
    "default": "0",
    "fieldname": "total",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Total ",
    "read_only": 1,
    "reqd": 1
@@ -158,7 +157,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-10 09:15:18.137734",
+ "modified": "2022-02-11 09:22:03.287578",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
