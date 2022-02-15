@@ -26,7 +26,7 @@ frappe.ui.form.on('Provisional Receipt', {
 			}
 		})
 
-		frm.add_custom_button('Get Days', () => {
+		frm.add_custom_button('Compute Interest', () => {
 			compute_interest();
 		})
 	},
@@ -39,9 +39,9 @@ frappe.ui.form.on('Provisional Receipt', {
 
 	transaction_type: function(frm){
 		show_payment_fields(frm);
-		if (frm.doc.transaction_type == "Redemption") {
-			compute_interest();
-		}
+		// if (frm.doc.transaction_type == "Redemption") {
+		// 	compute_interest();
+		// }
 		// } else if (frappe.datetime.nowdate() < frappe.datetime.add_days(frm.doc.maturity_date, 2)) {
 		// 	if (frm.doc.transaction_type == "Redemption") {
 		// 		frm.set_value('total', cur_frm.doc.principal_amount);
