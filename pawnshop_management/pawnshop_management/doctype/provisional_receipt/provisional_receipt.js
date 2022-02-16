@@ -232,8 +232,18 @@ function compute_interest(frm) {
 					cur_frm.refresh_field('interest_payment')
 				} else if(cur_frm.doc.date_loan_granted >= temp_expiry_date && cur_frm.doc.date_loan_granted <= frappe.datetime.add_days(temp_expiry_date, 3)){
 					let temp_interest = 0.00;
-					temp_interest = (parseFloat(cur_frm.doc.interest) * expiry_month_multiplier) + calculate_interest_before_expiry(frm);;
-					console.log(temp_interest);
+					if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date, 3)) {
+						temp_interest = (parseFloat(cur_frm.doc.interest) * expiry_month_multiplier) + calculate_interest_before_expiry(frm);;
+						console.log(temp_interest);
+					} else if(frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date, 2)){
+						temp_interest = parseFloat(cur_frm.doc.interest) * expiry_month_multiplier + (calculate_interest_before_expiry(frm) - parseFloat(cur_frm.doc.interest));
+						console.log(calculate_interest_before_expiry(frm));
+						
+					} else {
+						temp_interest = parseFloat(cur_frm.doc.interest) * expiry_month_multiplier + calculate_interest_before_expiry(frm); 
+						console.log(calculate_interest_before_expiry(frm));
+					}
+					
 					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
 				}
