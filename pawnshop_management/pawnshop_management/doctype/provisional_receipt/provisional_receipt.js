@@ -126,7 +126,6 @@ function compute_interest(frm) {
 				break
 			}
 		}
-		console.log(cur_frm.doc.date_loan_granted > cur_frm.doc.expiry_date);
 		if (cur_frm.doc.date_loan_granted >= cur_frm.doc.maturity_date && cur_frm.doc.date_loan_granted <= cur_frm.doc.expiry_date) {
 			if (holidays_before_expiry_date == temp_maturity_date) {
 				console.log("SC1");
@@ -149,6 +148,7 @@ function compute_interest(frm) {
 				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) {
 					let temp_interest = 0.00;
 					temp_interest = parseFloat(cur_frm.doc.interest) * maturity_month_multiplier;
+					console.log(maturity_month_multiplier);
 					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
 				} 
@@ -162,12 +162,18 @@ function compute_interest(frm) {
 				} 
 			} else if(holidays_before_expiry_date != frappe.datetime.add_days(temp_maturity_date, 3) && holidays_before_expiry_date != frappe.datetime.add_days(temp_maturity_date, 2) && holidays_before_expiry_date != frappe.datetime.add_days(temp_maturity_date, 1) && holidays_before_expiry_date != temp_maturity_date){
 				console.log("SC5");
+				console.log(cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 2));
 				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 2)) {
 					let temp_interest = 0.00;
 					temp_interest = parseFloat(cur_frm.doc.interest) * maturity_month_multiplier;
 					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
-				}
+				} else if(cur_frm.doc.date_loan_granted < frappe.datetime.add_days(temp_maturity_date, 3) && cur_frm.doc.date_loan_granted > temp_maturity_date){
+					let temp_interest = 0.00;
+					temp_interest = parseFloat(cur_frm.doc.interest) * (maturity_month_multiplier - 1);
+					cur_frm.set_value('interest_payment', temp_interest)
+					cur_frm.refresh_field('interest_payment')
+				} 
 			}
 		} else if (cur_frm.doc.date_loan_granted > cur_frm.doc.expiry_date) {
 			console.log(cur_frm.doc.date_loan_granted > cur_frm.doc.expiry_date);
