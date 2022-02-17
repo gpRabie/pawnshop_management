@@ -198,6 +198,12 @@ function compute_interest(frm) {
 					cur_frm.refresh_field('interest_payment')
 				} 
 			}
+		} else if(cur_frm.doc.date_loan_granted < cur_frm.doc.maturity_date){
+			console.log("SC11");
+			let temp_interest = 0.00;
+			temp_interest = parseFloat(cur_frm.doc.interest) * (maturity_month_multiplier);
+			cur_frm.set_value('interest_payment', temp_interest)
+			cur_frm.refresh_field('interest_payment')
 		} else if (cur_frm.doc.date_loan_granted > cur_frm.doc.expiry_date) { //Compute Interest After Expiry Date
 			if (holidays_after_expiry_date == temp_expiry_date) {
 				console.log("SC6");
