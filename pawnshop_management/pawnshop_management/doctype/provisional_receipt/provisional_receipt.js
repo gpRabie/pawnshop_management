@@ -126,43 +126,66 @@ function compute_interest(frm) {
 				break
 			}
 		}
-		if (cur_frm.doc.date_loan_granted >= cur_frm.doc.maturity_date && cur_frm.doc.date_loan_granted <= cur_frm.doc.expiry_date) {
+		if (cur_frm.doc.date_loan_granted >= cur_frm.doc.maturity_date && cur_frm.doc.date_loan_granted <= cur_frm.doc.expiry_date) { // Compute Interest before Expiry Date
 			if (holidays_before_expiry_date == temp_maturity_date) {
 				console.log("SC1");
-				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) {
+				if (cur_frm.doc.date_loan_granted <= frappe.datetime.add_days(temp_maturity_date, 3) && cur_frm.doc.date_loan_granted >= temp_maturity_date) { // Tawad Days
 					let temp_interest = 0.00;
-					temp_interest = parseFloat(cur_frm.doc.interest) * maturity_month_multiplier;
+					temp_interest = parseFloat(cur_frm.doc.interest) * (maturity_month_multiplier - 1);
 					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
-				}
-			} else if (holidays_before_expiry_date == frappe.datetime.add_days(temp_maturity_date, 1)) { //last day  of tawad is saturday
-				console.log("SC2");
-				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) {
-					let temp_interest = 0.00;
-					temp_interest = parseFloat(cur_frm.doc.interest) * maturity_month_multiplier;
-					cur_frm.set_value('interest_payment', temp_interest)
-					cur_frm.refresh_field('interest_payment')
-				} 
-			} else if (holidays_before_expiry_date == frappe.datetime.add_days(temp_maturity_date, 2)) {
-				console.log("SC3");
-				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) {
+				} else if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) { //After Tawad
 					let temp_interest = 0.00;
 					temp_interest = parseFloat(cur_frm.doc.interest) * maturity_month_multiplier;
 					console.log(maturity_month_multiplier);
 					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
-				} 
-			} else if (holidays_before_expiry_date == frappe.datetime.add_days(temp_maturity_date, 3)) {
-				console.log("SC4")
-				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) {
+				}
+			} else if (holidays_before_expiry_date == frappe.datetime.add_days(temp_maturity_date, 1)) { //last day  of tawad is saturday
+				console.log("SC2");
+				if (cur_frm.doc.date_loan_granted <= frappe.datetime.add_days(temp_maturity_date, 3) && cur_frm.doc.date_loan_granted >= temp_maturity_date) { // Tawad Days
 					let temp_interest = 0.00;
-					temp_interest = parseFloat(cur_frm.doc.interest) * maturity_month_multiplier;
+					temp_interest = parseFloat(cur_frm.doc.interest) * (maturity_month_multiplier - 1);
 					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
-				} 
+				} else if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) {
+					let temp_interest = 0.00;
+					temp_interest = parseFloat(cur_frm.doc.interest) * maturity_month_multiplier;
+					console.log(maturity_month_multiplier);
+					cur_frm.set_value('interest_payment', temp_interest)
+					cur_frm.refresh_field('interest_payment')
+				}
+			} else if (holidays_before_expiry_date == frappe.datetime.add_days(temp_maturity_date, 2)) {
+				console.log("SC3");
+				if (cur_frm.doc.date_loan_granted <= frappe.datetime.add_days(temp_maturity_date, 3) && cur_frm.doc.date_loan_granted >= temp_maturity_date) {// Tawad Days
+					let temp_interest = 0.00;
+					temp_interest = parseFloat(cur_frm.doc.interest) * (maturity_month_multiplier - 1);
+					console.log(maturity_month_multiplier);
+					cur_frm.set_value('interest_payment', temp_interest)
+					cur_frm.refresh_field('interest_payment')
+				} else if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) {
+					let temp_interest = 0.00;
+					temp_interest = parseFloat(cur_frm.doc.interest) * maturity_month_multiplier;
+					console.log(maturity_month_multiplier);
+					cur_frm.set_value('interest_payment', temp_interest)
+					cur_frm.refresh_field('interest_payment')
+				}
+			} else if (holidays_before_expiry_date == frappe.datetime.add_days(temp_maturity_date, 3)) {
+				console.log("SC4")
+				if (cur_frm.doc.date_loan_granted <= frappe.datetime.add_days(temp_maturity_date, 3) && cur_frm.doc.date_loan_granted >= temp_maturity_date) {
+					let temp_interest = 0.00;
+					temp_interest = parseFloat(cur_frm.doc.interest) * (maturity_month_multiplier - 1);
+					cur_frm.set_value('interest_payment', temp_interest)
+					cur_frm.refresh_field('interest_payment')
+				} else if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 3)) {
+					let temp_interest = 0.00;
+					temp_interest = parseFloat(cur_frm.doc.interest) * maturity_month_multiplier;
+					console.log(maturity_month_multiplier);
+					cur_frm.set_value('interest_payment', temp_interest)
+					cur_frm.refresh_field('interest_payment')
+				}
 			} else if(holidays_before_expiry_date != frappe.datetime.add_days(temp_maturity_date, 3) && holidays_before_expiry_date != frappe.datetime.add_days(temp_maturity_date, 2) && holidays_before_expiry_date != frappe.datetime.add_days(temp_maturity_date, 1) && holidays_before_expiry_date != temp_maturity_date){
 				console.log("SC5");
-				console.log(cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 2));
 				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_maturity_date, 2)) {
 					let temp_interest = 0.00;
 					temp_interest = parseFloat(cur_frm.doc.interest) * maturity_month_multiplier;
@@ -175,8 +198,7 @@ function compute_interest(frm) {
 					cur_frm.refresh_field('interest_payment')
 				} 
 			}
-		} else if (cur_frm.doc.date_loan_granted > cur_frm.doc.expiry_date) {
-			console.log(cur_frm.doc.date_loan_granted > cur_frm.doc.expiry_date);
+		} else if (cur_frm.doc.date_loan_granted > cur_frm.doc.expiry_date) { //Compute Interest After Expiry Date
 			if (holidays_after_expiry_date == temp_expiry_date) {
 				console.log("SC6");
 				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date, 3)) {
@@ -187,8 +209,6 @@ function compute_interest(frm) {
 				} 
 			} else if (holidays_after_expiry_date == frappe.datetime.add_days(temp_expiry_date, 1)) { //last day  of tawad is saturday
 				console.log("SC7");
-				console.log(cur_frm.doc.date_loan_granted >= temp_expiry_date && cur_frm.doc.date_loan_granted <= frappe.datetime.add_days(temp_expiry_date, 3));
-				console.log(temp_expiry_date);
 				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date, 3)) {
 					console.log("Hello");
 					let temp_interest = 0.00;
@@ -214,15 +234,23 @@ function compute_interest(frm) {
 						cur_frm.set_value('interest_payment', temp_interest)
 						cur_frm.refresh_field('interest_payment')
 					}
+				} else {
+					let temp_interest = 0.00;
+					temp_interest = calculate_interest_before_expiry(frm); 
+					console.log(calculate_interest_before_expiry(frm));
+					cur_frm.set_value('interest_payment', temp_interest)
+					cur_frm.refresh_field('interest_payment')
 				}
 			} else if (holidays_after_expiry_date == frappe.datetime.add_days(temp_expiry_date, 2)) {
 				console.log("SC8");
 				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date, 3)) {
+					console.log("Hi");
 					let temp_interest = 0.00;
 					temp_interest = (parseFloat(cur_frm.doc.interest) * expiry_month_multiplier) + calculate_interest_before_expiry(frm);
 					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
 				} else if(cur_frm.doc.date_loan_granted >= temp_expiry_date && cur_frm.doc.date_loan_granted <= frappe.datetime.add_days(temp_expiry_date, 3)){
+					console.log("Hello");
 					let temp_interest = 0.00;
 					if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date, 3)) {
 						temp_interest = (parseFloat(cur_frm.doc.interest) * expiry_month_multiplier) + calculate_interest_before_expiry(frm);;
@@ -235,6 +263,13 @@ function compute_interest(frm) {
 						temp_interest = parseFloat(cur_frm.doc.interest) * expiry_month_multiplier + calculate_interest_before_expiry(frm); 
 						console.log(calculate_interest_before_expiry(frm));
 					}
+					cur_frm.set_value('interest_payment', temp_interest)
+					cur_frm.refresh_field('interest_payment')
+				} else {
+					console.log("Welcome");
+					let temp_interest = 0.00;
+					temp_interest = calculate_interest_before_expiry(frm);
+					console.log(temp_interest);
 					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
 				}
@@ -261,11 +296,17 @@ function compute_interest(frm) {
 					
 					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
+				} else {
+					let temp_interest = 0.00;
+					temp_interest = calculate_interest_before_expiry(frm); 
+					console.log(calculate_interest_before_expiry(frm));
+					cur_frm.set_value('interest_payment', temp_interest)
+					cur_frm.refresh_field('interest_payment')
 				}
 			} else if(holidays_after_expiry_date != frappe.datetime.add_days(temp_expiry_date, 3) && holidays_after_expiry_date != frappe.datetime.add_days(temp_expiry_date, 2) && holidays_after_expiry_date != frappe.datetime.add_days(temp_expiry_date, 1) && holidays_after_expiry_date != temp_expiry_date){
 				console.log("SC10");
-				console.log(temp_expiry_date);
-				console.log(holidays_after_expiry_date)
+				// console.log(temp_expiry_date);
+				// console.log(holidays_after_expiry_date)
 				if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date, 2)) {
 					console.log("Hello");
 					let temp_interest = 0.00;
@@ -273,18 +314,29 @@ function compute_interest(frm) {
 					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
 				} else if(cur_frm.doc.date_loan_granted >= temp_expiry_date && cur_frm.doc.date_loan_granted <= frappe.datetime.add_days(temp_expiry_date, 2)){
+					console.log("Hi");
 					let temp_interest = 0.00;
 					if (cur_frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date, 3)) {
+						console.log(1);
 						temp_interest = (parseFloat(cur_frm.doc.interest) * expiry_month_multiplier) + calculate_interest_before_expiry(frm);;
 						console.log(temp_interest);
 					} else if(frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date, 2)){
+						console.log(2);
 						temp_interest = parseFloat(cur_frm.doc.interest) * expiry_month_multiplier + (calculate_interest_before_expiry(frm) - parseFloat(cur_frm.doc.interest));
 						console.log(calculate_interest_before_expiry(frm));
-						
 					} else {
-						temp_interest = parseFloat(cur_frm.doc.interest) * expiry_month_multiplier + calculate_interest_before_expiry(frm); 
+						console.log(3);
+						temp_interest = calculate_interest_before_expiry(frm); 
 						console.log(calculate_interest_before_expiry(frm));
 					}
+					cur_frm.set_value('interest_payment', temp_interest)
+					cur_frm.refresh_field('interest_payment')
+				} else {
+					let temp_interest = 0.00;
+					console.log("Welcome");
+					temp_interest = parseFloat(cur_frm.doc.interest) * expiry_month_multiplier + calculate_interest_before_expiry(frm); 
+					console.log(calculate_interest_before_expiry(frm));
+					cur_frm.set_value('interest_payment', temp_interest)
 					cur_frm.refresh_field('interest_payment')
 				}
 			}
