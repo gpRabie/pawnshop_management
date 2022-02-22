@@ -29,7 +29,7 @@ frappe.ui.form.on('Provisional Receipt', {
 		frm.add_custom_button('Compute Interest', () => {
 			// calculate_maturity_date_interest(frm)
 			// console.log(expiry_interest_multiplier(frm));
-			calculate_expiry_date_interest(frm)
+			console.log(calculate_expiry_date_interest(frm));
 		})
 	},
 
@@ -267,26 +267,36 @@ function maturity_interest_multiplier(frm) {
 }
 
 function expiry_interest_multiplier(frm) {
+	var temp_expiry_date = expiry_date(frm).previous_expiry_date.split("-");
 	var original_expiry_date = frm.doc.expiry_date;
 	var actual_current_date = frm.doc.date_loan_granted;
 	var split_current_date = frm.doc.date_loan_granted.split("-")
 	var split_original_expiry_date = frm.doc.expiry_date.split("-")
 	var multiplier = 0;
 
-	if (actual_current_date > original_expiry_date) {
-		if (parseInt(split_current_date[0]) > parseInt(split_original_expiry_date[0])) {
-			multiplier = parseInt(split_current_date[1]) + (12 - parseInt(split_original_expiry_date[1]))
-		} else if(parseInt(split_current_date[0]) == parseInt(split_original_expiry_date[0])){
-			if (parseInt(split_current_date[1]) == parseInt(split_original_expiry_date[1])) {
-				if (actual_current_date > original_expiry_date) {
-					multiplier = 1;
-				}
-			} else if (parseInt(split_current_date[1]) > parseInt(split_original_expiry_date[1])) {
-				multiplier = parseInt(split_current_date[1]) - parseInt(split_original_expiry_date[1])
+	if (parseInt(temp_expiry_date[0]) > parseInt(split_original_expiry_date[0])) {
+		console.log("A1");
+		multiplier = parseInt(temp_expiry_date[1]) + (12 - parseInt(split_original_expiry_date[1]))
+	} else if (parseInt(temp_expiry_date[0]) == parseInt(split_original_expiry_date[0])) {
+		console.log("B1");
+		if (parseInt(temp_expiry_date[1]) == parseInt(split_original_expiry_date[1])) {
+			console.log("B1-1");
+			if (actual_current_date > original_expiry_date) {
+				console.log("B1-2");
+				multiplier = 1;
+			} 
+		}else if (parseInt(temp_expiry_date[1]) > parseInt(split_original_expiry_date[1])) {
+			console.log("B2");
+			if (actual_current_date > original_expiry_date) {
+				console.log("B2-1");
+				multiplier = Math.abs(parseInt(temp_expiry_date[1]) - parseInt(split_original_expiry_date[1])) + 1;
+			} else {
+				console.log("B2-2");
+				multiplier = Math.abs(parseInt(temp_expiry_date[1]) - parseInt(split_original_expiry_date[1]));
 			}
 		}
 	}
-	return multiplier;
+	return multiplier
 }
 
 function expiry_date(frm) {
@@ -347,51 +357,86 @@ function calculate_expiry_date_interest(frm) {
 		var temp_interest = frm.doc.interest
 
 		for (let index = 0; index < holidays_list.length; index++) {
-			if (holidays_list[index].holiday_date == temp_expiry_date.previous_maturity_date) {
+			
+			if (holidays_list[index].holiday_date == temp_expiry_date.previous_expiry_date) {
 				holidays_before_expiry_date = holidays_list[index].holiday_date
 				break
-			} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_expiry_date.previous_maturity_date, 1)) {
+			} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 1)) {
 				holidays_before_expiry_date = holidays_list[index].holiday_date
 				break
-			} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_expiry_date.previous_maturity_date, 2)) {
+			} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 2)) {
 				holidays_before_expiry_date = holidays_list[index].holiday_date
 				break
-			} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_expiry_date.previous_maturity_date, 3)) {
+			} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
 				holidays_before_expiry_date = holidays_list[index].holiday_date
 				break
 			}
 		}
+		//console.log(holidays_list[index].holiday_date);
 
 		if (frm.doc.date_loan_granted > frm.doc.expiry_date) {
 			if (temp_expiry_date.previous_expiry_date == holidays_before_expiry_date) {
+				console.log("A1");
 				if (frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
 					temp_interest = initial_interest + (temp_interest * multiplier);
 				} else {
-					temp_interest = initial_interest + (temp_interest * (multiplier - 1));
+					multiplier = multiplier - 1;
+					if (multiplier < 0) {
+						multiplier = 0;
+					}
+					temp_interest = initial_interest + (temp_interest * (multiplier));
 				}
 			} else if(frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3) == holidays_before_expiry_date){
+				console.log("B1");
 				if (frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
 					temp_interest = initial_interest + (temp_interest * multiplier);
 				} else {
-					temp_interest = initial_interest + (temp_interest * (multiplier - 1));
+					multiplier = multiplier - 1;
+					if (multiplier < 0) {
+						multiplier = 0;
+					}
+					temp_interest = initial_interest + (temp_interest * (multiplier));
 				}
 			} else if (frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 2) == holidays_before_expiry_date) {
+				console.log("C1");
 				if (frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
 					temp_interest = initial_interest + (temp_interest * multiplier);
 				} else {
-					temp_interest = initial_interest + (temp_interest * (multiplier - 1));
+					multiplier = multiplier - 1;
+					if (multiplier < 0) {
+						multiplier = 0;
+					}
+					temp_interest = initial_interest + (temp_interest * (multiplier));
 				}
 			} else if (frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 1) == holidays_before_expiry_date) {
+				console.log("D1");
 				if (frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
+					console.log("D1-1");
+					console.log(multiplier);
 					temp_interest = initial_interest + (temp_interest * multiplier);
 				} else {
-					temp_interest = initial_interest + (temp_interest * (multiplier - 1));
+					multiplier = multiplier - 1;
+					console.log("D1-2");
+					if (multiplier < 0) {
+						multiplier = 0;
+					}
+					temp_interest = initial_interest + (temp_interest * (multiplier));
 				}
 			} else {
+				console.log(temp_expiry_date.previous_expiry_date);
+				console.log(multiplier);
+				console.log("E1");
 				if (frm.doc.date_loan_granted > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 2)) {
-					temp_interest = initial_interest + (temp_interest * multiplier);
+					console.log("E1-1");
+					temp_interest = initial_interest + (temp_interest * (multiplier));
 				} else {
-					temp_interest = initial_interest + (temp_interest * (multiplier - 1));
+					multiplier = multiplier - 1;
+					console.log("E1-2");
+					console.log(multiplier);
+					if (multiplier < 0) {
+						multiplier = 0;
+					}
+					temp_interest = initial_interest + (temp_interest * (multiplier));
 				}
 			}
 		} else {
