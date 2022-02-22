@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-17 11:55:35.081404",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "beginning_balance",
+  "provisional_receipts",
+  "selling",
+  "total_in",
+  "jewelry_a",
+  "jewelry_b",
+  "non_jewelry_b",
+  "total_out",
+  "column_break_9",
+  "date",
+  "net_cash",
+  "ending_balance"
+ ],
+ "fields": [
+  {
+   "fieldname": "beginning_balance",
+   "fieldtype": "Currency",
+   "label": "Beginning Balance"
+  },
+  {
+   "fieldname": "provisional_receipts",
+   "fieldtype": "Int",
+   "label": "Provisional Receipts"
+  },
+  {
+   "fieldname": "selling",
+   "fieldtype": "Data",
+   "label": "Selling"
+  },
+  {
+   "fieldname": "total_in",
+   "fieldtype": "Int",
+   "label": "Total IN"
+  },
+  {
+   "fieldname": "jewelry_a",
+   "fieldtype": "Int",
+   "label": "Jewelry A"
+  },
+  {
+   "fieldname": "jewelry_b",
+   "fieldtype": "Int",
+   "label": "Jewelry B"
+  },
+  {
+   "fieldname": "non_jewelry_b",
+   "fieldtype": "Data",
+   "label": "Non Jewelry B"
+  },
+  {
+   "fieldname": "total_out",
+   "fieldtype": "Data",
+   "label": "Total OUT"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "net_cash",
+   "fieldtype": "Currency",
+   "label": "Net Cash"
+  },
+  {
+   "fieldname": "ending_balance",
+   "fieldtype": "Currency",
+   "label": "Ending Balance"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-17 11:55:35.081404",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Cash Position Report",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
