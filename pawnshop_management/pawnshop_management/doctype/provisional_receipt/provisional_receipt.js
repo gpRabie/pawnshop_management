@@ -27,9 +27,7 @@ frappe.ui.form.on('Provisional Receipt', {
 		})
 
 		frm.add_custom_button('Compute Interest', () => {
-			// calculate_maturity_date_interest(frm)
-			// console.log(expiry_interest_multiplier(frm));
-			console.log(calculate_expiry_date_interest(frm));
+			calculate_interest(frm);
 		})
 	},
 
@@ -77,12 +75,20 @@ frappe.ui.form.on('Provisional Receipt', {
 	}
 });
 
+
 function show_payment_fields(frm) {
 	frm.set_df_property('amortization', 'hidden', 0);
 	frm.set_df_property('interest_payment', 'hidden', 0);
 	frm.set_df_property('additional_amortization', 'hidden', 0);
 }
 
+function calculate_interest(frm) {
+	if (frm.doc.date_loan_granted > frm.doc.maturity_date && frm.doc.date_loan_granted < frm.doc.expiry_date) {
+		calculate_maturity_date_interest(frm);
+	} else if (frm.doc.date_loan_granted > frm.doc.expiry_date) {
+		calculate_expiry_date_interest(frm);
+	}
+}
 
 function calculate_maturity_date_interest(frm) {
 	frappe.db.get_doc('Holiday List', 'No Operations').then(function(r){
@@ -178,6 +184,7 @@ function calculate_maturity_date_interest(frm) {
 	});
 }
 
+
 function maturity_date_of_the_month(frm) {
 	var current_date = frm.doc.date_loan_granted.split("-");
 	var maturity_date = frm.doc.maturity_date.split("-");
@@ -204,7 +211,7 @@ function maturity_date_of_the_month(frm) {
 			current_maturity_date = frappe.datetime.add_months(frm.doc.maturity_date, month_difference);
 			previous_maturity_date = frappe.datetime.add_months(current_maturity_date, -1);
 		}
-	} else if (condition) {
+	} else if (current_date[0] == maturity_date[0]) {
 		if (current_date[1] > maturity_date[1]) {
 			if (current_date[2] > current_maturity_date_day[2]) {
 				current_maturity_date = frappe.datetime.add_months(frm.doc.maturity_date, month_difference + 1);
