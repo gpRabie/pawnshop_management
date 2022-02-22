@@ -85,7 +85,7 @@ function show_payment_fields(frm) {
 function calculate_interest(frm) {
 	if (frm.doc.date_loan_granted > frm.doc.maturity_date && frm.doc.date_loan_granted < frm.doc.expiry_date) {
 		calculate_maturity_date_interest(frm);
-	} else if (frm.doc.date_loan_granted > frm.doc.expiry_date) {
+	} else if (frm.doc.date_loan_granted >= frm.doc.expiry_date) {
 		calculate_expiry_date_interest(frm);
 	}
 }
