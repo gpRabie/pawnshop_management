@@ -17,47 +17,67 @@
   "column_break_9",
   "date",
   "net_cash",
-  "ending_balance"
+  "ending_balance",
+  "cash_breakdown_section",
+  "1000_php_bills",
+  "500_php_bills",
+  "200_php_bills",
+  "100_php_bills",
+  "50_php_bills",
+  "column_break_19",
+  "20_php_bills",
+  "10_php_coin",
+  "5_php_coin",
+  "1_php_coin",
+  "25_cent_php_coin"
  ],
  "fields": [
   {
+   "default": "0.00",
    "fieldname": "beginning_balance",
    "fieldtype": "Currency",
    "label": "Beginning Balance"
   },
   {
+   "default": "0.00",
    "fieldname": "provisional_receipts",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "Provisional Receipts"
   },
   {
+   "default": "0.00",
    "fieldname": "selling",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Selling"
   },
   {
+   "default": "0.00",
    "fieldname": "total_in",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "Total IN"
   },
   {
+   "default": "0.00",
    "fieldname": "jewelry_a",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "Jewelry A"
   },
   {
+   "default": "0.00",
    "fieldname": "jewelry_b",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "Jewelry B"
   },
   {
+   "default": "0.00",
    "fieldname": "non_jewelry_b",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Non Jewelry B"
   },
   {
+   "default": "0.00",
    "fieldname": "total_out",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Total OUT"
   },
   {
@@ -65,24 +85,99 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
-   "label": "Date"
+   "in_list_view": 1,
+   "label": "Date",
+   "read_only": 1,
+   "reqd": 1
   },
   {
+   "default": "0.00",
    "fieldname": "net_cash",
    "fieldtype": "Currency",
    "label": "Net Cash"
   },
   {
+   "default": "0.00",
    "fieldname": "ending_balance",
    "fieldtype": "Currency",
    "label": "Ending Balance"
+  },
+  {
+   "fieldname": "cash_breakdown_section",
+   "fieldtype": "Section Break",
+   "label": "Cash Breakdown"
+  },
+  {
+   "default": "0",
+   "fieldname": "1000_php_bills",
+   "fieldtype": "Int",
+   "label": "1000 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "500_php_bills",
+   "fieldtype": "Int",
+   "label": "500 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "200_php_bills",
+   "fieldtype": "Int",
+   "label": "200 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "100_php_bills",
+   "fieldtype": "Int",
+   "label": "100 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "50_php_bills",
+   "fieldtype": "Int",
+   "label": "50 Php Bills"
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "20_php_bills",
+   "fieldtype": "Int",
+   "label": "20 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "10_php_coin",
+   "fieldtype": "Int",
+   "label": "10 Php Coin"
+  },
+  {
+   "default": "0",
+   "fieldname": "5_php_coin",
+   "fieldtype": "Int",
+   "label": "5 Php Coin"
+  },
+  {
+   "default": "0",
+   "fieldname": "1_php_coin",
+   "fieldtype": "Int",
+   "label": "1 Php Coin"
+  },
+  {
+   "default": "0",
+   "fieldname": "25_cent_php_coin",
+   "fieldtype": "Int",
+   "label": "0.25 Php Coin"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-17 11:55:35.081404",
+ "modified": "2022-02-24 09:19:01.431686",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",
