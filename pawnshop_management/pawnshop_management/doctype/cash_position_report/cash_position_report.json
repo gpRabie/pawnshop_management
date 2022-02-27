@@ -1,18 +1,22 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series",
  "creation": "2022-02-17 11:55:35.081404",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "beginning_balance",
   "provisional_receipts",
   "selling",
+  "cash_from_vault",
   "total_in",
   "jewelry_a",
   "jewelry_b",
-  "non_jewelry_b",
+  "non_jewelry",
+  "cash_to_vault",
   "total_out",
   "column_break_9",
   "date",
@@ -29,14 +33,19 @@
   "10_php_coin",
   "5_php_coin",
   "1_php_coin",
-  "25_cent_php_coin"
+  "25_cent_php_coin",
+  "section_break_27",
+  "total_cash",
+  "column_break_29",
+  "shortage_overage"
  ],
  "fields": [
   {
    "default": "0.00",
    "fieldname": "beginning_balance",
    "fieldtype": "Currency",
-   "label": "Beginning Balance"
+   "label": "Beginning Balance",
+   "reqd": 1
   },
   {
    "default": "0.00",
@@ -70,12 +79,6 @@
   },
   {
    "default": "0.00",
-   "fieldname": "non_jewelry_b",
-   "fieldtype": "Currency",
-   "label": "Non Jewelry B"
-  },
-  {
-   "default": "0.00",
    "fieldname": "total_out",
    "fieldtype": "Currency",
    "label": "Total OUT"
@@ -103,7 +106,8 @@
    "default": "0.00",
    "fieldname": "ending_balance",
    "fieldtype": "Currency",
-   "label": "Ending Balance"
+   "label": "Ending Balance",
+   "reqd": 1
   },
   {
    "fieldname": "cash_breakdown_section",
@@ -173,11 +177,55 @@
    "fieldname": "25_cent_php_coin",
    "fieldtype": "Int",
    "label": "0.25 Php Coin"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "cash_from_vault",
+   "fieldtype": "Currency",
+   "label": "Cash From Vault"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "cash_to_vault",
+   "fieldtype": "Currency",
+   "label": "Cash To Vault"
+  },
+  {
+   "fieldname": "section_break_27",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "total_cash",
+   "fieldtype": "Currency",
+   "label": "Total Cash"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "shortage_overage",
+   "fieldtype": "Currency",
+   "label": "Shortage/Overage"
+  },
+  {
+   "fieldname": "column_break_29",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "No"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "non_jewelry",
+   "fieldtype": "Currency",
+   "label": "Non Jewelry"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-24 09:19:01.431686",
+ "modified": "2022-02-27 21:47:44.472830",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",
