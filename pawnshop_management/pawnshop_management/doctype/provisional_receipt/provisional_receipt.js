@@ -37,6 +37,8 @@ frappe.ui.form.on('Provisional Receipt', {
 			show_items(frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 			calculate_interest(frm);
 		}
+		frm.clear_table('items');
+		frm.refresh_field('items');
 	},
 
 	transaction_type: function(frm){
