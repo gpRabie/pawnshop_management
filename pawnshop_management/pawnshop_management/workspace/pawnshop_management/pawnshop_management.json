@@ -77,9 +77,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cash Position Report List",
+   "link_to": "Cash Position Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-02-07 09:54:27.416759",
+ "modified": "2022-02-28 15:30:54.852231",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -121,6 +130,12 @@
    "doc_view": "New",
    "label": "New Provisional Receipt",
    "link_to": "Provisional Receipt",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "New",
+   "label": "Cash Position Report",
+   "link_to": "Cash Position Report",
    "type": "DocType"
   }
  ],
