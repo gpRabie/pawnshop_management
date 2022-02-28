@@ -42,6 +42,26 @@ frappe.ui.form.on('Cash Position Report', {
 		})
 	},
 
+	date: function(frm){
+		get_provisional_receipts_of_the_day(frm, frm.doc.date);
+		get_non_jewelry_of_the_day(frm, frm.doc.date)
+		frappe.db.get_list('Cash Position Report', {
+			fields: ['ending_balance', 'date', 'creation'],
+			filters: {
+				date: frm.doc.date
+			}
+		}).then(records => {
+			let latest_record = records[0]
+			for (let index = 0; index < records.length; index++) {
+				if (latest_record.creation < records[index].creation) {
+					latest_record = records[index]
+				}
+			}
+			frm.set_value('beginning_balance', latest_record.ending_balance)
+			frm.refresh_field('beginning_balance')
+		})
+	},
+
 	validate: function(frm){
 		if (frm.doc.total_cash != frm.doc.ending_balance) {
 			frappe.throw("Cash on hand is not equal to the Ending Balance")
