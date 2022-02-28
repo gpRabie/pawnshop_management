@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "naming_series",
+ "autoname": "naming_series:",
  "creation": "2022-02-17 11:55:35.081404",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -23,17 +23,17 @@
   "net_cash",
   "ending_balance",
   "cash_breakdown_section",
-  "1000_php_bills",
-  "500_php_bills",
-  "200_php_bills",
-  "100_php_bills",
-  "50_php_bills",
+  "one_thousand_php_bills",
+  "five_hundred_php_bills",
+  "two_hundred_php_bills",
+  "one_hundred_php_bills",
+  "fifty_php_bills",
   "column_break_19",
-  "20_php_bills",
-  "10_php_coin",
-  "5_php_coin",
-  "1_php_coin",
-  "25_cent_php_coin",
+  "twenty_php_bills",
+  "ten_php_coin",
+  "five_php_coin",
+  "peso_php_coin",
+  "twenty_five_cent_php_coin",
   "section_break_27",
   "total_cash",
   "column_break_29",
@@ -115,68 +115,8 @@
    "label": "Cash Breakdown"
   },
   {
-   "default": "0",
-   "fieldname": "1000_php_bills",
-   "fieldtype": "Int",
-   "label": "1000 Php Bills"
-  },
-  {
-   "default": "0",
-   "fieldname": "500_php_bills",
-   "fieldtype": "Int",
-   "label": "500 Php Bills"
-  },
-  {
-   "default": "0",
-   "fieldname": "200_php_bills",
-   "fieldtype": "Int",
-   "label": "200 Php Bills"
-  },
-  {
-   "default": "0",
-   "fieldname": "100_php_bills",
-   "fieldtype": "Int",
-   "label": "100 Php Bills"
-  },
-  {
-   "default": "0",
-   "fieldname": "50_php_bills",
-   "fieldtype": "Int",
-   "label": "50 Php Bills"
-  },
-  {
    "fieldname": "column_break_19",
    "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "20_php_bills",
-   "fieldtype": "Int",
-   "label": "20 Php Bills"
-  },
-  {
-   "default": "0",
-   "fieldname": "10_php_coin",
-   "fieldtype": "Int",
-   "label": "10 Php Coin"
-  },
-  {
-   "default": "0",
-   "fieldname": "5_php_coin",
-   "fieldtype": "Int",
-   "label": "5 Php Coin"
-  },
-  {
-   "default": "0",
-   "fieldname": "1_php_coin",
-   "fieldtype": "Int",
-   "label": "1 Php Coin"
-  },
-  {
-   "default": "0",
-   "fieldname": "25_cent_php_coin",
-   "fieldtype": "Int",
-   "label": "0.25 Php Coin"
   },
   {
    "default": "0.00",
@@ -221,11 +161,71 @@
    "fieldname": "non_jewelry",
    "fieldtype": "Currency",
    "label": "Non Jewelry"
+  },
+  {
+   "default": "0",
+   "fieldname": "one_thousand_php_bills",
+   "fieldtype": "Int",
+   "label": "1000 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "five_hundred_php_bills",
+   "fieldtype": "Int",
+   "label": "500 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "two_hundred_php_bills",
+   "fieldtype": "Int",
+   "label": "200 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "one_hundred_php_bills",
+   "fieldtype": "Int",
+   "label": "100 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "fifty_php_bills",
+   "fieldtype": "Int",
+   "label": "50 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "twenty_php_bills",
+   "fieldtype": "Int",
+   "label": "20 Php Bills"
+  },
+  {
+   "default": "0",
+   "fieldname": "ten_php_coin",
+   "fieldtype": "Int",
+   "label": "10 Php Coin"
+  },
+  {
+   "default": "0",
+   "fieldname": "five_php_coin",
+   "fieldtype": "Int",
+   "label": "5 Php Coin"
+  },
+  {
+   "default": "0",
+   "fieldname": "peso_php_coin",
+   "fieldtype": "Int",
+   "label": "1 Php Coin"
+  },
+  {
+   "default": "0",
+   "fieldname": "twenty_five_cent_php_coin",
+   "fieldtype": "Int",
+   "label": "25 Cents Php Coin"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-27 21:47:44.472830",
+ "modified": "2022-02-28 11:56:29.280510",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",

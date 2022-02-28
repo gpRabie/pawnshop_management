@@ -3,11 +3,56 @@
 
 frappe.ui.form.on('Cash Position Report', {
 	refresh: function(frm) {
-		get_provisional_receipts_of_the_day(frm, '2022-02-09');
+		if (frm.is_new()) {
+			get_provisional_receipts_of_the_day(frm, '2022-02-09');
+			get_non_jewelry_of_the_day(frm, '2022-02-27')
+			frappe.db.get_list('Cash Position Report', {
+				fields: ['ending_balance', 'date', 'creation'],
+				filters: {
+					date: frm.doc.date
+				}
+			}).then(records => {
+				let latest_record = records[0]
+				for (let index = 0; index < records.length; index++) {
+					if (latest_record.creation < records[index].creation) {
+						latest_record = records[index]
+					}
+				}
+				frm.set_value('beginning_balance', latest_record.ending_balance)
+				frm.refresh_field('beginning_balance')
+			})
+		}
+		frm.set_value('date', frappe.datetime.now_date())
 		frm.add_custom_button('Test', () => {
 			get_provisional_receipts_of_the_day(frm, '2022-02-09');
 			get_non_jewelry_of_the_day(frm, '2022-02-27')
+			frappe.db.get_list('Cash Position Report', {
+				fields: ['ending_balance', 'date', 'creation'],
+				filters: {
+					date: frm.doc.date
+				}
+			}).then(records => {
+				// for (let index = 0; index < records.length; index++) {
+				// 	console.log(records[index]);
+				// 	frm.set_value('beginning_balance',records[index].ending_balance);
+				// 	frm.refresh_field('beginning_balance');
+				// }
+				console.log(records[0]);
+			})
 		})
+	},
+
+	validate: function(frm){
+		if (frm.doc.total_cash != frm.doc.ending_balance) {
+			frappe.throw("Cash on hand is not equal to the Ending Balance")
+		}
+	},
+
+
+	beginning_balance: function(frm){
+		frm.set_value('ending_balance', 0.00);
+		frm.set_value('ending_balance', calculate_ending_balance());
+		frm.refresh_field('ending_balance');
 	},
 
 	provisional_receipts: function(frm){
@@ -68,6 +113,50 @@ frappe.ui.form.on('Cash Position Report', {
 		frm.set_value('ending_balance', 0.00);
 		frm.set_value('ending_balance', calculate_ending_balance());
 		frm.refresh_field('ending_balance');
+	},
+
+	one_thousand_php_bills: function(frm){
+		total_cash_breakdown(frm);
+	},
+
+	five_hundred_php_bills: function(frm){
+		total_cash_breakdown(frm);
+	},
+
+	two_hundred_php_bills: function(frm){
+		total_cash_breakdown(frm);
+	},
+
+	one_hundred_php_bills: function(frm){
+		total_cash_breakdown(frm);
+	},
+
+	fifty_php_bills: function(frm){
+		total_cash_breakdown(frm);
+	},
+
+	twenty_php_bills: function(frm){
+		total_cash_breakdown(frm);
+	},
+
+	ten_php_coin: function(frm){
+		total_cash_breakdown(frm);
+	},
+
+	five_php_coin: function(frm){
+		total_cash_breakdown(frm);
+	},
+
+	peso_php_coin: function(frm){
+		total_cash_breakdown(frm);
+	},
+
+	twenty_five_cent_php_coin: function(frm){
+		total_cash_breakdown(frm);
+	},
+
+	shortage_overage: function(frm){
+		total_cash_breakdown(frm);
 	}
 });
 
@@ -102,7 +191,6 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 		frm.set_value('provisional_receipts', 0.00);
 		for (let index = 0; index < records.length; index++) {
 			temp_total += parseFloat(records[index].total)
-			console.log(temp_total);
 		}
 		frm.set_value('provisional_receipts', temp_total);
 	})
@@ -120,7 +208,6 @@ function get_jewelry_a_of_the_day(frm, date_today=null) {
 		frm.set_value('jewelry_a', 0.00);
 		for (let index = 0; index < records.length; index++) {
 			temp_total += parseFloat(records[index].net_proceeds)
-			console.log(temp_total);
 		}
 		frm.set_value('jewelry_a', temp_total);
 	})
@@ -138,7 +225,6 @@ function get_jewelry_b_of_the_day(frm, date_today=null) {
 		frm.set_value('jewelry_b', 0.00);
 		for (let index = 0; index < records.length; index++) {
 			temp_total += parseFloat(records[index].net_proceeds)
-			console.log(temp_total);
 		}
 		frm.set_value('jewelry_b', temp_total);
 	})
@@ -156,8 +242,25 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 		frm.set_value('non_jewelry', 0.00);
 		for (let index = 0; index < records.length; index++) {
 			temp_total += parseFloat(records[index].net_proceeds)
-			console.log(temp_total);
 		}
 		frm.set_value('non_jewelry', temp_total);
 	})
+}
+
+function total_cash_breakdown(frm) {
+	let thousand_bill = 1000 * frm.doc.one_thousand_php_bills;
+	let five_hundred_bill = 500 * frm.doc.five_hundred_php_bills;
+	let two_hundred_bill = 200 * frm.doc.two_hundred_php_bills;
+	let one_hundred_bill = 100 * frm.doc.one_hundred_php_bills;
+	let fifty_bill = 50 * frm.doc.fifty_php_bills;
+	let twenty_bill = 20 * frm.doc.twenty_php_bills;
+	let ten_peso_coin = 10 * frm.doc.ten_php_coin;
+	let five_peso_coin = 5 * frm.doc.five_php_coin;
+	let one_peso_coin = 1 * frm.doc.peso_php_coin;
+	let twenty_five_cents = 0.25 * frm.doc.twenty_five_cent_php_coin;
+	let total_cash_breakdown = (thousand_bill + five_hundred_bill + two_hundred_bill + one_hundred_bill + fifty_bill + twenty_bill + ten_peso_coin + five_peso_coin + one_peso_coin + twenty_five_cents) + parseFloat(frm.doc.shortage_overage);
+
+	frm.set_value('total_cash', 0.00);
+	frm.set_value('total_cash', total_cash_breakdown);
+	frm.refresh_field('total_cash');
 }

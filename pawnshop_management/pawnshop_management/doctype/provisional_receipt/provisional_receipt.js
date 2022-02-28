@@ -47,7 +47,13 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_value('total', frm.doc.total + frm.doc.principal_amount + frm.doc.interest_payment)
 			frm.set_df_property('additional_amortization', 'hidden', 1);
 			frm.set_df_property('amortization', 'hidden', 1);
-		} 
+		} else if (frm.doc.transaction_type == "Amortization") {
+			frm.set_df_property('additional_amortization', 'hidden', 0);
+		} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
+			frm.set_df_property('additional_amortization', 'hidden', 0);
+		} else {
+			frm.set_df_property('additional_amortization', 'hidden', 1);
+		}
 	},
 
 	amortization: function(frm){
@@ -467,4 +473,12 @@ function show_items(doctype, doc_name, doc_table_name = null) {
 		}
 		cur_frm.refresh_field('items')
 	})
+}
+
+function hide_additional_amortization_field(frm) {
+	frm.set_df_property('additional_amortization', 'hidden', 1);
+}
+
+function show_additional_amortization_field(frm){
+	frm.set_df_property('additional_amortization', 'hidden', 0);
 }

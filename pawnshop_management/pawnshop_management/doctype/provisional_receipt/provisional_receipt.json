@@ -132,6 +132,7 @@
    "default": "0",
    "fieldname": "additional_amortization",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Additional Amortization"
   },
   {
@@ -180,7 +181,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-24 10:20:41.719078",
+ "modified": "2022-02-28 14:18:42.172738",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
