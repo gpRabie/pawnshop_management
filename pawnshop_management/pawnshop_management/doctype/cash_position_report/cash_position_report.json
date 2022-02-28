@@ -44,8 +44,7 @@
    "default": "0.00",
    "fieldname": "beginning_balance",
    "fieldtype": "Currency",
-   "label": "Beginning Balance",
-   "reqd": 1
+   "label": "Beginning Balance"
   },
   {
    "default": "0.00",
@@ -93,7 +92,6 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Date",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -153,8 +151,9 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Data",
-   "hidden": 1,
-   "label": "No"
+   "label": "No",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "default": "0.00",
@@ -225,7 +224,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-28 11:56:29.280510",
+ "modified": "2022-02-28 16:56:53.751889",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",

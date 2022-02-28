@@ -16,10 +16,12 @@ frappe.ui.form.on('Cash Position Report', {
 				for (let index = 0; index < records.length; index++) {
 					if (latest_record.creation < records[index].creation) {
 						latest_record = records[index]
+						console.log(latest_record);
 					}
 				}
-				frm.set_value('beginning_balance', latest_record.ending_balance)
-				frm.refresh_field('beginning_balance')
+				// console.log(latest_record.ending_balance == null);
+				// frm.set_value('beginning_balance', latest_record.ending_balance)
+				// frm.refresh_field('beginning_balance')
 			})
 		}
 		frm.set_value('date', frappe.datetime.now_date())
@@ -279,7 +281,7 @@ function total_cash_breakdown(frm) {
 	let five_peso_coin = 5 * frm.doc.five_php_coin;
 	let one_peso_coin = 1 * frm.doc.peso_php_coin;
 	let twenty_five_cents = 0.25 * frm.doc.twenty_five_cent_php_coin;
-	let total_cash_breakdown = (thousand_bill + five_hundred_bill + two_hundred_bill + one_hundred_bill + fifty_bill + twenty_bill + ten_peso_coin + five_peso_coin + one_peso_coin + twenty_five_cents) + parseFloat(frm.doc.shortage_overage);
+	let total_cash_breakdown = (thousand_bill + five_hundred_bill + two_hundred_bill + one_hundred_bill + fifty_bill + twenty_bill + ten_peso_coin + five_peso_coin + one_peso_coin + twenty_five_cents) - parseFloat(frm.doc.shortage_overage);
 
 	frm.set_value('total_cash', 0.00);
 	frm.set_value('total_cash', total_cash_breakdown);
