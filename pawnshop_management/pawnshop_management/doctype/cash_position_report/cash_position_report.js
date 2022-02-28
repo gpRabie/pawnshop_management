@@ -48,7 +48,8 @@ frappe.ui.form.on('Cash Position Report', {
 		frappe.db.get_list('Cash Position Report', {
 			fields: ['ending_balance', 'date', 'creation'],
 			filters: {
-				date: frm.doc.date
+				date: frm.doc.date,
+				docstatus: 1
 			}
 		}).then(records => {
 			let latest_record = records[0]
@@ -204,7 +205,8 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 	frappe.db.get_list('Provisional Receipt', {
 		fields: ['total'],
 		filters: {
-			date_issued: date_today
+			date_issued: date_today,
+			docstatus: 1
 		}
 	}).then(records => {
 		let temp_total = 0.00;
@@ -254,8 +256,7 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 	frappe.db.get_list('Pawn Ticket Non Jewelry', {
 		fields: ['net_proceeds'],
 		filters: {
-			date_loan_granted: date_today,
-			workflow_state: 'Active'
+			date_loan_granted: date_today
 		}
 	}).then(records => {
 		let temp_total = 0.00;
