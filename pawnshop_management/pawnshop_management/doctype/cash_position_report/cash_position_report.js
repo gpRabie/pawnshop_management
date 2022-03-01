@@ -19,9 +19,9 @@ frappe.ui.form.on('Cash Position Report', {
 						console.log(latest_record);
 					}
 				}
-				// console.log(latest_record.ending_balance == null);
-				// frm.set_value('beginning_balance', latest_record.ending_balance)
-				// frm.refresh_field('beginning_balance')
+				console.log(latest_record.ending_balance == null);
+				frm.set_value('beginning_balance', latest_record.ending_balance)
+				frm.refresh_field('beginning_balance')
 			})
 		}
 		frm.set_value('date', frappe.datetime.now_date())
