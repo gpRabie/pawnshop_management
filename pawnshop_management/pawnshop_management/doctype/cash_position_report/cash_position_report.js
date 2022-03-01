@@ -19,7 +19,7 @@ frappe.ui.form.on('Cash Position Report', {
 						console.log(latest_record);
 					}
 				}
-				console.log(latest_record.ending_balance == null);
+				frm.set_value('beginning_balance', 0.00)
 				frm.set_value('beginning_balance', latest_record.ending_balance)
 				frm.refresh_field('beginning_balance')
 			})
@@ -59,6 +59,7 @@ frappe.ui.form.on('Cash Position Report', {
 					latest_record = records[index]
 				}
 			}
+			frm.set_value('beginning_balance', 0.00)
 			frm.set_value('beginning_balance', latest_record.ending_balance)
 			frm.refresh_field('beginning_balance')
 		})
