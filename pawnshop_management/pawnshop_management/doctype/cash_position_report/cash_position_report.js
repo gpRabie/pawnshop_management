@@ -9,7 +9,7 @@ frappe.ui.form.on('Cash Position Report', {
 			frappe.db.get_list('Cash Position Report', {
 				fields: ['ending_balance', 'date', 'creation'],
 				filters: {
-					date: frm.doc.date
+					date: frappe.datetime.add_days(frm.doc.date, -1)
 				}
 			}).then(records => {
 				let latest_record = records[0]
@@ -50,8 +50,7 @@ frappe.ui.form.on('Cash Position Report', {
 		frappe.db.get_list('Cash Position Report', {
 			fields: ['ending_balance', 'date', 'creation'],
 			filters: {
-				date: frm.doc.date,
-				docstatus: 1
+				date: frappe.datetime.add_days(frm.doc.date, -1)
 			}
 		}).then(records => {
 			let latest_record = records[0]
