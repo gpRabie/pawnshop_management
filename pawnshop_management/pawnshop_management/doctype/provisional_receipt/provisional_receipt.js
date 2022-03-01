@@ -30,21 +30,24 @@ frappe.ui.form.on('Provisional Receipt', {
 		})
 	},
 
+	date_issued: function(frm){
+		calculate_interest(frm);
+	},
+
 	pawn_ticket_no: function(frm){
 		if (frm.doc.transaction_type == "Redemption") {
 			frm.set_value('total', 0.00);
 			frm.set_value('total', frm.doc.principal_amount + frm.doc.interest_payment);
-			show_items(frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 			calculate_interest(frm);
 		}
 		frm.clear_table('items');
+		show_items(frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		frm.refresh_field('items');
 	},
 
 	transaction_type: function(frm){
 		show_payment_fields(frm);
 		if (frm.doc.transaction_type == "Redemption") {
-			show_items(frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 			calculate_interest(frm);
 			frm.set_value('total', frm.doc.total + frm.doc.principal_amount + frm.doc.interest_payment)
 			frm.set_df_property('additional_amortization', 'hidden', 1);
@@ -66,7 +69,7 @@ frappe.ui.form.on('Provisional Receipt', {
 
 	interest_payment: function(frm){
 		frm.set_value('total', 0.00);
-		frm.set_value('total', parseFloat(frm.doc.amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.additional_amortization) - parseFloat(frm.doc.discount));
+		frm.set_value('total', parseFloat(frm.doc.principal_amount)+ parseFloat(frm.doc.amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.additional_amortization) - parseFloat(frm.doc.discount));
 		frm.refresh_field('total')
 	},
 
@@ -91,7 +94,7 @@ function show_payment_fields(frm) {
 }
 
 function calculate_interest(frm) {
-	var date_today = frappe.datetime.get_today()
+	var date_today = frm.doc.date_issued;//frappe.datetime.get_today()
 	if (date_today > frm.doc.maturity_date && date_today < frm.doc.expiry_date) {
 		calculate_maturity_date_interest(frm);
 	} else if (date_today >= frm.doc.expiry_date) {
@@ -104,11 +107,11 @@ function calculate_maturity_date_interest(frm) {
 		var holidays_list = r.holidays;
 		var holidays_before_expiry_date = null;
 		var temp_maturity_date = maturity_date_of_the_month(frm)
-		var current_date = frappe.datetime.get_today().split("-");
+		var current_date = frm.doc.date_issued; //frappe.datetime.get_today().split("-");
 		var maturity_date = temp_maturity_date
 		var multiplier = maturity_interest_multiplier(frm);
 		var temp_interest = frm.doc.interest;
-		var date_today = frappe.datetime.get_today();
+		var date_today = frm.doc.date_issued; //frappe.datetime.get_today();
 
 		for (let index = 0; index < holidays_list.length; index++) {				// Check if maturity date is a holiday
 			if (holidays_list[index].holiday_date == temp_maturity_date.previous_maturity_date) {
@@ -197,7 +200,7 @@ function calculate_maturity_date_interest(frm) {
 
 
 function maturity_date_of_the_month(frm) {
-	var current_date = frappe.datetime.get_today().split("-");
+	var current_date = frm.doc.date_issued.split("-");//frappe.datetime.get_today().split("-");
 	var maturity_date = frm.doc.maturity_date.split("-");
 	var expiry_date = frm.doc.expiry_date.split("-")
 	var month_difference = 0;
@@ -255,8 +258,8 @@ function maturity_interest_multiplier(frm) {
 	var temp_maturity_date = maturity_date_of_the_month(frm).previous_maturity_date.split("-");
 	var maturity_date = frm.doc.maturity_date.split("-");
 	var multiplier = 0;
-	var current_date = frappe.datetime.get_today().split("-");
-	var actual_current_date = frappe.datetime.get_today();
+	var current_date = frm.doc.date_issued.split("-");//frappe.datetime.get_today().split("-");
+	var actual_current_date = frm.doc.date_issued; //frappe.datetime.get_today();
 	var actual_original_maturity_date = frm.doc.maturity_date;
 	
 	if (parseInt(temp_maturity_date[0]) > parseInt(maturity_date[0])) {
@@ -287,8 +290,8 @@ function maturity_interest_multiplier(frm) {
 function expiry_interest_multiplier(frm) {
 	var temp_expiry_date = expiry_date(frm).previous_expiry_date.split("-");
 	var original_expiry_date = frm.doc.expiry_date;
-	var actual_current_date = frappe.datetime.get_today();
-	var split_current_date = frappe.datetime.get_today().split("-")
+	var actual_current_date = frm.doc.date_issued; //frappe.datetime.get_today();
+	var split_current_date = frm.doc.date_issued.split("-"); //frappe.datetime.get_today().split("-")
 	var split_original_expiry_date = frm.doc.expiry_date.split("-")
 	var multiplier = 0;
 
@@ -318,7 +321,7 @@ function expiry_interest_multiplier(frm) {
 }
 
 function expiry_date(frm) {
-	var actual_current_date = frappe.datetime.get_today();
+	var actual_current_date = frm.doc.date_issued; //frappe.datetime.get_today();
 	var actual_previous_expiry_date = frm.doc.expiry_date;
 	var actual_current_expiry_date = frm.doc.expiry_date;
 	var previous_expiry_date = actual_previous_expiry_date.split("-");
@@ -373,7 +376,7 @@ function calculate_expiry_date_interest(frm) {
 		var temp_expiry_date = expiry_date(frm)
 		var multiplier = expiry_interest_multiplier(frm);
 		var temp_interest = frm.doc.interest
-		var date_today = frappe.datetime.get_today();
+		var date_today = frm.doc.date_issued; //frappe.datetime.get_today();
 
 		for (let index = 0; index < holidays_list.length; index++) {
 			

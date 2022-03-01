@@ -271,16 +271,16 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 }
 
 function total_cash_breakdown(frm) {
-	let thousand_bill = 1000 * frm.doc.one_thousand_php_bills;
-	let five_hundred_bill = 500 * frm.doc.five_hundred_php_bills;
-	let two_hundred_bill = 200 * frm.doc.two_hundred_php_bills;
-	let one_hundred_bill = 100 * frm.doc.one_hundred_php_bills;
-	let fifty_bill = 50 * frm.doc.fifty_php_bills;
-	let twenty_bill = 20 * frm.doc.twenty_php_bills;
-	let ten_peso_coin = 10 * frm.doc.ten_php_coin;
-	let five_peso_coin = 5 * frm.doc.five_php_coin;
-	let one_peso_coin = 1 * frm.doc.peso_php_coin;
-	let twenty_five_cents = 0.25 * frm.doc.twenty_five_cent_php_coin;
+	let thousand_bill = parseFloat(frm.doc.one_thousand_php_bills);
+	let five_hundred_bill = parseFloat(frm.doc.five_hundred_php_bills);
+	let two_hundred_bill = parseFloat(frm.doc.two_hundred_php_bills);
+	let one_hundred_bill = parseFloat(frm.doc.one_hundred_php_bills);
+	let fifty_bill = parseFloat(frm.doc.fifty_php_bills);
+	let twenty_bill = parseFloat(frm.doc.twenty_php_bills);
+	let ten_peso_coin = parseFloat(frm.doc.ten_php_coin);
+	let five_peso_coin = parseFloat(frm.doc.five_php_coin);
+	let one_peso_coin = parseFloat(frm.doc.peso_php_coin);
+	let twenty_five_cents = parseFloat(frm.doc.twenty_five_cent_php_coin);
 	let total_cash_breakdown = (thousand_bill + five_hundred_bill + two_hundred_bill + one_hundred_bill + fifty_bill + twenty_bill + ten_peso_coin + five_peso_coin + one_peso_coin + twenty_five_cents) - parseFloat(frm.doc.shortage_overage);
 
 	frm.set_value('total_cash', 0.00);

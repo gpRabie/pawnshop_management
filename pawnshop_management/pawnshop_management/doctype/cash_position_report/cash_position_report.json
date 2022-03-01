@@ -164,67 +164,67 @@
   {
    "default": "0",
    "fieldname": "one_thousand_php_bills",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "1000 Php Bills"
   },
   {
    "default": "0",
    "fieldname": "five_hundred_php_bills",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "500 Php Bills"
   },
   {
    "default": "0",
    "fieldname": "two_hundred_php_bills",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "200 Php Bills"
   },
   {
    "default": "0",
    "fieldname": "one_hundred_php_bills",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "100 Php Bills"
   },
   {
    "default": "0",
    "fieldname": "fifty_php_bills",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "50 Php Bills"
   },
   {
    "default": "0",
    "fieldname": "twenty_php_bills",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "20 Php Bills"
   },
   {
    "default": "0",
    "fieldname": "ten_php_coin",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "10 Php Coin"
   },
   {
    "default": "0",
    "fieldname": "five_php_coin",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "5 Php Coin"
   },
   {
    "default": "0",
    "fieldname": "peso_php_coin",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "1 Php Coin"
   },
   {
    "default": "0",
    "fieldname": "twenty_five_cent_php_coin",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "25 Cents Php Coin"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-28 16:56:53.751889",
+ "modified": "2022-03-01 09:44:49.071201",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",

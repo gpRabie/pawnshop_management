@@ -150,10 +150,9 @@
   {
    "default": "Today",
    "fieldname": "date_issued",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Date Issued",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -181,7 +180,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-28 14:18:42.172738",
+ "modified": "2022-03-01 09:51:39.982656",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
