@@ -24,7 +24,7 @@ frappe.ui.form.on('Cash Position Report', {
 				frm.refresh_field('beginning_balance')
 			})
 		}
-		frm.set_value('date', frappe.datetime.now_date())
+		// frm.set_value('date', frappe.datetime.now_date())
 		frm.add_custom_button('Test', () => {
 			get_provisional_receipts_of_the_day(frm, '2022-02-09');
 			get_non_jewelry_of_the_day(frm, '2022-02-27')
