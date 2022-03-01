@@ -51,7 +51,6 @@ frappe.ui.form.on('Provisional Receipt', {
 			calculate_interest(frm);
 			frm.set_value('total', frm.doc.total + frm.doc.principal_amount + frm.doc.interest_payment)
 			frm.set_df_property('additional_amortization', 'hidden', 1);
-			frm.set_df_property('amortization', 'hidden', 1);
 		} else if (frm.doc.transaction_type == "Amortization") {
 			frm.set_df_property('additional_amortization', 'hidden', 0);
 		} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
