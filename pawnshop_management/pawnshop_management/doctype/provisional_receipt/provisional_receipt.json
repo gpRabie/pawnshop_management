@@ -10,6 +10,7 @@
   "naming_series",
   "pawn_ticket_type",
   "pawn_ticket_no",
+  "new_pawn_ticket_no",
   "date_loan_granted",
   "maturity_date",
   "expiry_date",
@@ -175,12 +176,19 @@
    "label": "Items",
    "options": "Provisional Receipt Items",
    "read_only": 1
+  },
+  {
+   "fieldname": "new_pawn_ticket_no",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "New Pawn Ticket No",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-01 09:51:39.982656",
+ "modified": "2022-03-01 16:12:12.113306",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",

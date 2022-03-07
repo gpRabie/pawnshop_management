@@ -14,3 +14,8 @@ def update_pawn_tickets():
         print(type(pawn_ticket.expiry_date))
         # if pawn_ticket.expiry_date) < str(today()):
         #     print("True")
+
+@frappe.whitelist()
+def get_child_table():
+    items = frappe.get_doc('Pawn Ticket Non Jewelry', '6B')
+    return items

@@ -21,6 +21,7 @@
    "in_list_view": 1,
    "label": "Item No",
    "options": "Non Jewelry Items",
+   "reqd": 1,
    "width": "100px"
   },
   {
@@ -70,13 +71,14 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Model Number",
+   "read_only": 1,
    "width": "100px"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-01-18 14:58:02.410494",
+ "modified": "2022-03-04 09:28:45.569213",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry List",

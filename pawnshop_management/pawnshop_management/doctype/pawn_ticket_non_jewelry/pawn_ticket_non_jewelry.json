@@ -47,6 +47,7 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Date Loan Granted",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -87,10 +88,10 @@
   },
   {
    "fieldname": "inventory_tracking_no",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Inventory Tracking No",
-   "reqd": 1,
-   "set_only_once": 1
+   "options": "Non Jewelry Batch",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_11",
@@ -122,6 +123,7 @@
    "fieldtype": "Table",
    "label": "Non Jewelry Item(s)",
    "options": "Non Jewelry List",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -142,7 +144,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-02-11 12:14:09.858724",
+ "modified": "2022-03-04 10:21:28.303815",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Non Jewelry",

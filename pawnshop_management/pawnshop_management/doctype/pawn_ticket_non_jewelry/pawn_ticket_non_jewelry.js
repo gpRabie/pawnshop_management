@@ -21,28 +21,28 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 			show_tracking_no(frm);
 			frm.set_value('date_loan_granted', frappe.datetime.nowdate())
 		}
-		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
-		frappe.call({
-			method: 'frappe.client.get_value',
-			args: {
-				'doctype': 'Pawnshop Management Settings',
-				'fieldname': 'non_jewelry_inventory_count'
-			},
-			callback: function(r){
-				let inventory_count = r.message
-				frm.set_query('item_no', 'non_jewelry_items', function(){
-					return {
-						"filters": {
-							"batch_number": String(parseInt(inventory_count.non_jewelry_inventory_count)),
-						}
-					};
-				});
-			}
-		})
+		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].hidden = true // Hides "Add Row" button of non_jewelry_items table
+		// frappe.call({
+		// 	method: 'frappe.client.get_value',
+		// 	args: {
+		// 		'doctype': 'Pawnshop Management Settings',
+		// 		'fieldname': 'non_jewelry_inventory_count'
+		// 	},
+		// 	callback: function(r){
+		// 		let inventory_count = r.message
+		// 		frm.set_query('item_no', 'non_jewelry_items', function(){
+		// 			return {
+		// 				"filters": {
+		// 					"batch_number": String(parseInt(inventory_count.non_jewelry_inventory_count)),
+		// 				}
+		// 			};
+		// 		});
+		// 	}
+		// })
 
 		frm.add_custom_button('Test', () => {
 			frappe.call({
-				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.update_pawn_tickets',
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.get_child_table',
 				callback: function(data){
 					console.log(data.message);
 				}
@@ -65,7 +65,8 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	},
 
 	inventory_tracking_no: function(frm, cdt, cdn){
-		// get_items(frm.doc.inventory_tracking_no);
+		show_items(frm);
+		set_total_appraised_amount(frm, cdt, cdn);
 	}
 
 });
@@ -111,10 +112,10 @@ function show_tracking_no(frm){ //Sets inventory tracking number
 
 		callback: function(value){
 			let tracking_no = value.message;
-			let non_jewelry_count = parseInt(tracking_no.non_jewelry_inventory_count);
+			//let non_jewelry_count = parseInt(tracking_no.non_jewelry_inventory_count);
 			let new_ticket_no = parseInt(tracking_no.b_series_current_count);
 			frm.set_value('pawn_ticket', new_ticket_no + frm.doc.item_series);
-			frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ');
+			//frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ');
 			frm.refresh_field('pawn_ticket');
 		},
 
@@ -154,12 +155,24 @@ function null_checker(number) {
 	return parseInt(number)
 }
 
-// function get_items(inventory_no) {
-// 	frappe.db.get_doc('Non Jewelry Batch', inventory_no).then(function(r){
-// 		item_list = r.items
-// 		for (let index = 0; index < array.length; index++) {
-			
-			
-// 		}
-// 	})
-// }
+function show_items(frm, doc_table_name = null) {
+	frm.clear_table('non_jewelry_items');
+	var temp_principal = 0.00
+	frappe.db.get_doc("Non Jewelry Batch", frm.doc.inventory_tracking_no).then(function(r){
+		var item_list = r.items
+		for (let index = 0; index < item_list.length; index++) {
+			let childTable = cur_frm.add_child("non_jewelry_items");
+			childTable.item_no = item_list[index].item_no;
+			console.log(item_list[index].item_no);
+			childTable.type = item_list[index].type;
+			childTable.brand = item_list[index].brand;
+			childTable.model = item_list[index].model;
+			childTable.model_number = item_list[index].model_number;
+			childTable.suggested_appraisal_value = item_list[index].suggested_appraisal_value;
+			temp_principal += parseFloat(item_list[index].suggested_appraisal_value)
+		}
+		cur_frm.refresh_field('non_jewelry_items');
+		frm.set_value('desired_principal', temp_principal);
+		frm.refresh_field('desired_principal');
+	})
+}

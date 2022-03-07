@@ -22,5 +22,21 @@ frappe.ui.form.on('Non Jewelry Batch', {
 				})
 			})
 		frm.fields_dict["items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
+
+		frm.add_custom_button('Test', () => {
+			console.log(frm.doc.inventory_tracking_no);
+			console.log(get_inventory_batch(frm));
+		})
 	}
 });
+
+function get_inventory_batch(frm) {
+	var inventory_tracking_no = frm.doc.inventory_tracking_no;
+	var batch_number = "";
+	for (let index = 0; index < inventory_tracking_no.length; index++) {
+		if (!isNaN(inventory_tracking_no[index])) {
+			batch_number += inventory_tracking_no[index];
+		}
+	}
+	return batch_number
+}
