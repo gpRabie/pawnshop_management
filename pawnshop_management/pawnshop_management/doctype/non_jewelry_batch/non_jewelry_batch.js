@@ -16,7 +16,7 @@ frappe.ui.form.on('Non Jewelry Batch', {
 				frm.set_query('item_no', 'items', () => {
 					return {
 						"filters": {
-							"batch_number": String(inventory_count)
+							"batch_number": String(get_inventory_batch(frm))
 						}
 					}
 				})
