@@ -14,20 +14,23 @@
   {
    "fieldname": "inventory_tracking_no",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Inventory Tracking No",
    "read_only": 1,
+   "reqd": 1,
    "unique": 1
   },
   {
    "fieldname": "items",
    "fieldtype": "Table",
    "label": "Item(s)",
-   "options": "Non Jewelry List"
+   "options": "Non Jewelry List",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-04 09:47:46.009322",
+ "modified": "2022-03-07 17:19:59.063750",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry Batch",

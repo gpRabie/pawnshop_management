@@ -49,7 +49,8 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.desired_principal = previous_pawn_ticket.desired_principal
 			new_pawn_ticket.interest = previous_pawn_ticket.interest
 			new_pawn_ticket.net_proceeds = previous_pawn_ticket.net_proceeds
-
 			new_pawn_ticket.save(ignore_permissions=True)
 			new_pawn_ticket.submit()
+			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
+			frappe.db.commit()
 

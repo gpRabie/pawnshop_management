@@ -138,7 +138,7 @@
   "doctype": "Workflow",
   "document_type": "Pawn Ticket Non Jewelry",
   "is_active": 1,
-  "modified": "2022-02-08 16:47:38.427155",
+  "modified": "2022-03-07 12:05:53.078905",
   "name": "Pawn Ticket Non Jewelry",
   "override_status": 0,
   "parent": null,
@@ -200,6 +200,19 @@
    },
    {
     "allow_edit": "Appraiser",
+    "doc_status": "1",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Pawn Ticket Non Jewelry",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Renewed",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Appraiser",
     "doc_status": "2",
     "is_optional_state": 0,
     "message": null,
@@ -245,6 +258,39 @@
     "parentfield": "transitions",
     "parenttype": "Workflow",
     "state": "Active"
+   },
+   {
+    "action": "Renew",
+    "allow_self_approval": 1,
+    "allowed": "Appraiser",
+    "condition": null,
+    "next_state": "Renewed",
+    "parent": "Pawn Ticket Non Jewelry",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Active"
+   },
+   {
+    "action": "Review",
+    "allow_self_approval": 1,
+    "allowed": "Appraiser",
+    "condition": null,
+    "next_state": "Active",
+    "parent": "Pawn Ticket Non Jewelry",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Renewed"
+   },
+   {
+    "action": "Collect",
+    "allow_self_approval": 1,
+    "allowed": "Appraiser",
+    "condition": null,
+    "next_state": "Expired",
+    "parent": "Pawn Ticket Non Jewelry",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Renewed"
    },
    {
     "action": "Close",

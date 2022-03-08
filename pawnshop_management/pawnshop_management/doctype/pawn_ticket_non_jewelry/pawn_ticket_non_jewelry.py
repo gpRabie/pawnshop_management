@@ -12,3 +12,19 @@ class PawnTicketNonJewelry(Document):
 			settings.b_series_current_count += 1
 			# settings.non_jewelry_count = 1
 			settings.save(ignore_permissions=True)
+
+	def on_submit(self):
+		if frappe.db.exists('Non Jewelry Batch', self.inventory_tracking_no) != self.inventory_tracking_no:
+			new_non_jewelry_batch = frappe.new_doc('Non Jewelry Batch')
+			new_non_jewelry_batch.inventory_tracking_no = self.inventory_tracking_no
+			items = self.non_jewelry_items
+			for i in range(len(items)):
+				new_non_jewelry_batch.append('items', {
+					"item_no": items[i].item_no,
+					"type": items[i].type,
+					"brand": items[i].brand,
+					"model": items[i].model,
+					"model_number": items[i].model_number,
+					"suggested_appraisal_value": items[i].suggested_appraisal_value
+				})
+			new_non_jewelry_batch.save(ignore_permissions=True)	
