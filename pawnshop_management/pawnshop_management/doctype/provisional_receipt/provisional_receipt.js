@@ -63,6 +63,8 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.refresh_field('discount');
 			frm.set_df_property('interest_payment', 'hidden', 1);
 			frm.set_df_property('discount', 'hidden', 1);
+			frm.set_value('total', 0.00);
+			frm.refresh_field('total');
 		} else if(frm.doc.transaction_type == "Interest Payment") {
 			frm.set_df_property('interest_payment', 'hidden', 0);
 			frm.set_df_property('discount', 'hidden', 1);
