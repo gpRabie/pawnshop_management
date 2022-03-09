@@ -66,13 +66,13 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.refresh_field('total');
 			select_transaction_type(frm)
 		} else if(frm.doc.transaction_type == "Interest Payment") {
-			select_transaction_type(frm)
+			select_transaction_type(frm);
 			frm.set_df_property('interest_payment', 'hidden', 0);
 			frm.set_df_property('discount', 'hidden', 1);
 		} else if(frm.doc.transaction_type == "Redemption") {
-			select_transaction_type(frm)
 			frm.set_df_property('interest_payment', 'hidden', 0);
 			frm.set_df_property('discount', 'hidden', 1);
+			select_transaction_type(frm);
 		} else {
 			frm.set_df_property('interest_payment', 'hidden', 0);
 			frm.set_df_property('discount', 'hidden', 0);
