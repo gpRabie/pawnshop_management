@@ -86,9 +86,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Non Jewelry Batch",
+   "link_to": "Non Jewelry Batch",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-02-28 15:30:54.852231",
+ "modified": "2022-03-09 09:46:43.518887",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -136,6 +145,12 @@
    "doc_view": "New",
    "label": "Cash Position Report",
    "link_to": "Cash Position Report",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Non Jewelry Batch List",
+   "link_to": "Non Jewelry Batch",
    "type": "DocType"
   }
  ],
