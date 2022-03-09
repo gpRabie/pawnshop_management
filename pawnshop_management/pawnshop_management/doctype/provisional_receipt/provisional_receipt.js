@@ -55,7 +55,6 @@ frappe.ui.form.on('Provisional Receipt', {
 
 	transaction_type: function(frm){
 		show_payment_fields(frm);
-		select_transaction_type(frm)
 		if (frm.doc.transaction_type == "Amortization") {
 			frm.set_value('interest_payment', 0.00);
 			frm.refresh_field('interest_payment');
@@ -65,7 +64,13 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_df_property('discount', 'hidden', 1);
 			frm.set_value('total', 0.00);
 			frm.refresh_field('total');
+			select_transaction_type(frm)
 		} else if(frm.doc.transaction_type == "Interest Payment") {
+			select_transaction_type(frm)
+			frm.set_df_property('interest_payment', 'hidden', 0);
+			frm.set_df_property('discount', 'hidden', 1);
+		} else if(frm.doc.transaction_type == "Redemption") {
+			select_transaction_type(frm)
 			frm.set_df_property('interest_payment', 'hidden', 0);
 			frm.set_df_property('discount', 'hidden', 1);
 		} else {
