@@ -11,6 +11,8 @@ class ProvisionalReceipt(Document):
 		if self.transaction_type == "Redemption":
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Redeemed')
 			frappe.db.commit()
+		elif self.transaction_type == "Amortization":
+			self.amortization += self.additional_amortization
 
 	def on_submit(self):
 		if self.transaction_type == "Renewal": # Create New Pawn Ticket
@@ -53,4 +55,29 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.submit()
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
 			frappe.db.commit()
+
+		elif self.transaction_type == "Amortization":
+			interest_rate = frappe.get_doc('Pawnshop Management Settings')
+			if self.pawn_ticket_type == "Pawn Ticket Non Jewelry":
+				desired_principal = self.principal_amount - self.additional_amortization
+				interest = desired_principal * (interest_rate.gadget_interest_rate/100)
+				net_proceeds = desired_principal - interest
+				frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, {
+					'desired_principal': desired_principal,
+					'interest': interest,
+					'net_proceeds': net_proceeds
+				})
+				frappe.db.commit()
+
+			elif self.pawn_ticket_type == "Pawn Ticket Jewelry":
+				desired_principal = self.principal_amount - self.additional_amortization
+				interest = desired_principal * (interest_rate.jewelry_interest_rate/100)
+				net_proceeds = desired_principal - interest
+				frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, {
+					'desired_principal': desired_principal,
+					'interest': interest,
+					'net_proceeds': net_proceeds
+				})
+				frappe.db.commit()
+
 

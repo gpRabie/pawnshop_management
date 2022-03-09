@@ -21,8 +21,7 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 			show_tracking_no(frm);
 			frm.set_value('date_loan_granted', frappe.datetime.nowdate())
 		}
-		frm.fields_dict["items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
-		// frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].hidden = true // Hides "Add Row" button of non_jewelry_items table
+		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
 		frappe.call({
 			method: 'frappe.client.get_value',
 			args: {

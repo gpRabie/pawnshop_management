@@ -13,15 +13,15 @@ frappe.ui.form.on('Non Jewelry Items', {
 		frm.set_df_property('extra_battery', 'hidden', 1);
 		frm.set_df_property('extra_lens', 'hidden', 1);
 		frm.add_custom_button('Update Data', function(){
-			frappe.call({
-				method: 'pawnshop_management.pawnshop_management.custom_codes.import_gadgets_info.update_gadgets_data',
-				callback: (r) =>{
-					frappe.show_alert({
-						message:__('Update Successful'),
-						indicator:'green'
-					}, 5)
-				}
-			})
+			// frappe.call({
+			// 	method: 'pawnshop_management.pawnshop_management.custom_codes.import_gadgets_info.update_gadgets_data',
+			// 	callback: (r) =>{
+			// 		frappe.show_alert({
+			// 			message:__('Update Successful'),
+			// 			indicator:'green'
+			// 		}, 5)
+			// 	}
+			// })
 		});
 
 		frm.set_query('brand', function(){
@@ -100,6 +100,8 @@ frappe.ui.form.on('Non Jewelry Items', {
 		if (frm.doc.type == "Cellphone") {
 			unhide_hidden_fields(frm);
 			require_unrequired_fields(frm);
+			frm.set_value('model_number', "");
+			frm.refresh_field('model_number')
 			frm.set_df_property('model', 'label', 'Model');
 			frm.set_df_property('model_number', 'label', 'Model Number');
 			frm.set_df_property('disk_type', 'reqd', 0);
@@ -112,6 +114,8 @@ frappe.ui.form.on('Non Jewelry Items', {
 		} else if (frm.doc.type == "Tablet") {
 			unhide_hidden_fields(frm);
 			require_unrequired_fields(frm);
+			frm.set_value('model_number', "");
+			frm.refresh_field('model_number')
 			frm.set_df_property('model', 'label', 'Model');
 			frm.set_df_property('model_number', 'label', 'Model Number');
 			frm.set_df_property('disk_type', 'reqd', 0);
@@ -122,6 +126,8 @@ frappe.ui.form.on('Non Jewelry Items', {
 		} else if (frm.doc.type == "Laptop") {
 			unhide_hidden_fields();
 			require_unrequired_fields(frm);
+			frm.set_value('model_number', "");
+			frm.refresh_field('model_number')
 			frm.set_df_property('model', 'label', 'Processor & Generation');
 			frm.set_df_property('model_number', 'label', 'Model Name');
 			frm.set_df_property('internet_connection_capability', 'reqd', 0);
@@ -137,9 +143,9 @@ frappe.ui.form.on('Non Jewelry Items', {
 			unhide_hidden_fields();
 			require_unrequired_fields(frm);
 			frm.set_df_property('model', 'label', 'Model');
+			frm.set_value('model_number', "N/A")
+			frm.refresh_field('model_number')
 			frm.set_df_property('model_number', 'reqd', 0);
-			frm.set_value('model_number', "N/A");
-			frm.refresh_field('model_number');
 			frm.set_df_property('model_number', 'hidden', 1);
 			frm.set_df_property('ram', 'reqd', 0);
 			frm.set_df_property('ram', 'hidden', 1);

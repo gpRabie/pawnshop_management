@@ -173,8 +173,8 @@ user_data_fields = [
 # 	"pawnshop_management.auth.validate"
 # ]
 
-fixtures = [
-	"Workspace",
-	"Workflow State",
-	"Workflow"
-]
+# fixtures = [
+# 	"Workspace",
+# 	"Workflow State",
+# 	"Workflow"
+# ]

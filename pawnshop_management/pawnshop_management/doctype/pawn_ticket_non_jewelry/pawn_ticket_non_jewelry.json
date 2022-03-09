@@ -105,6 +105,7 @@
    "reqd": 1
   },
   {
+   "default": "0.00",
    "fieldname": "interest",
    "fieldtype": "Currency",
    "label": "Interest",
@@ -112,6 +113,7 @@
    "reqd": 1
   },
   {
+   "default": "0.00",
    "fieldname": "net_proceeds",
    "fieldtype": "Currency",
    "label": "Net Proceeds",
@@ -143,7 +145,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-03-07 17:15:13.539289",
+ "modified": "2022-03-08 10:43:38.346826",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Non Jewelry",
