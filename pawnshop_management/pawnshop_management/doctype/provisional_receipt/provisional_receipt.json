@@ -93,7 +93,7 @@
    "fieldtype": "Select",
    "in_standard_filter": 1,
    "label": "Transaction Type",
-   "options": "Renewal\nRedemption\nInterest Payment\nAmortization\nRenewal w/ Amortization",
+   "options": "---Select Transaction Type---\nRenewal\nRedemption\nInterest Payment\nAmortization\nRenewal w/ Amortization",
    "reqd": 1
   },
   {
@@ -189,7 +189,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-10 10:49:21.666691",
+ "modified": "2022-03-10 11:03:55.090468",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
