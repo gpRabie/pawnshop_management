@@ -60,18 +60,22 @@ frappe.ui.form.on('Provisional Receipt', {
 			// frm.refresh_field('discount');
 			frm.set_df_property('interest_payment', 'hidden', 1);
 			frm.set_df_property('discount', 'hidden', 1);
+			frm.set_df_property('new_pawn_ticket_no', 'hidden', 1);
 			select_transaction_type(frm)
 		} else if(frm.doc.transaction_type == "Interest Payment") {
 			frm.set_df_property('discount', 'hidden', 1);
+			frm.set_df_property('new_pawn_ticket_no', 'hidden', 1);
 			select_transaction_type(frm);
 			// frm.set_df_property('interest_payment', 'hidden', 0);
 		} else if(frm.doc.transaction_type == "Redemption") {
 			frm.set_df_property('additional_amortization', 'hidden', 1);
+			frm.set_df_property('new_pawn_ticket_no', 'hidden', 1);
 			// frm.set_df_property('interest_payment', 'hidden', 0);
 			// frm.set_df_property('discount', 'hidden', 0);
 			select_transaction_type(frm);
 		} else if (frm.doc.transaction_type == "Renewal") {
 			frm.set_df_property('additional_amortization', 'hidden', 1);
+			frm.set_df_property('new_pawn_ticket_no', 'hidden', 0);
 			select_transaction_type(frm);
 		}
 	},
