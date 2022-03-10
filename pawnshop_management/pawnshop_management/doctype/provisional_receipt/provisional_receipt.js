@@ -529,6 +529,7 @@ function select_transaction_type(frm) {
 	if (frm.doc.transaction_type == "Redemption") {
 		frm.set_value('new_pawn_ticket_no', '')
 		calculate_interest(frm);
+		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		frm.set_value('total', parseFloat(frm.doc.total) + parseFloat(frm.doc.principal_amount))
 		frm.refresh_field('total')
 	} else if (frm.doc.transaction_type == "Amortization") {
@@ -537,9 +538,11 @@ function select_transaction_type(frm) {
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 	} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
 		get_new_pawn_ticket_no(frm)
+		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 	} else if(frm.doc.transaction_type == "Renewal"){
 		get_new_pawn_ticket_no(frm);
 		calculate_interest(frm);
+		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		frm.set_value('interest_payment', parseFloat(frm.doc.interest) + parseFloat(frm.doc.interest_payment))
 		frm.refresh_field('interest_payment')
 	} 
