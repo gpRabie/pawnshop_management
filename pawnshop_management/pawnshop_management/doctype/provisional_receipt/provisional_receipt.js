@@ -2,6 +2,13 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Provisional Receipt', {
+	before_save: function(frm){
+		if (frm.doc.transaction_type == "Renewal w/ Amortization" || frm.doc.transaction_type == "Amortization") {
+			if (frm.doc.additional_amortization <= 0 || frm.doc.additional_amortization == null) {
+				frappe.throw('Unable to proceed because Additional Amortization field is either empty or is equal to 0');
+			}
+		}
+	},
 	refresh: function(frm) {
 		frm.set_query('pawn_ticket_type', () => {
 			return {
@@ -27,7 +34,7 @@ frappe.ui.form.on('Provisional Receipt', {
 		})
 
 		frm.add_custom_button('Compute Interest', () => {
-			frm.set_df_property('new_pawn_ticket_no', 'hidden', 0);
+			show_payment_fields(frm)
 			// calculate_interest(frm)
 			// calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		})
@@ -56,13 +63,13 @@ frappe.ui.form.on('Provisional Receipt', {
 
 	transaction_type: function(frm){
 		frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type == 'Renewal w/ Amortization');
+		frm.toggle_display(['additional_amortization'], frm.doc.transaction_type == 'Amortization');
 		if (frm.doc.transaction_type == "Amortization") {
 			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('interest_payment', 'hidden', 1);
 			frm.set_df_property('discount', 'hidden', 1);
 			frm.set_df_property('new_pawn_ticket_no', 'hidden', 1);
-			frm.set_df_property('additional_amortization', 'hidden', 1);
 			frm.set_df_property('advance_interest', 'hidden', 1);
 			select_transaction_type(frm)
 		} else if(frm.doc.transaction_type == "Interest Payment") {
@@ -565,6 +572,10 @@ function select_transaction_type(frm) {
 	} else if (frm.doc.transaction_type == "Amortization") {
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 	} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
+		if (frm.doc.additional_amortization == 0) {
+			frm.set_value('advance_interest', frm.doc.interest);
+			frm.refresh_field('advance_interest');
+		}
 		calculate_interest(frm);
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 	} else if(frm.doc.transaction_type == "Renewal"){
