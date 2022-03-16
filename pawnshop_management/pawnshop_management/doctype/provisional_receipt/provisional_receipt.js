@@ -8,7 +8,15 @@ frappe.ui.form.on('Provisional Receipt', {
 				frappe.throw('Unable to proceed because Additional Amortization field is either empty or is equal to 0');
 			}
 		}
+		
 	},
+
+	before_submit: function(frm){
+		if (frm.doc.transaction_type != "Interest Payment") {
+			check_creditted_interest_payments(frm);
+		}
+	},
+
 	refresh: function(frm) {
 		frm.set_query('pawn_ticket_type', () => {
 			return {
@@ -33,8 +41,11 @@ frappe.ui.form.on('Provisional Receipt', {
 			}
 		})
 
-		frm.add_custom_button('Compute Interest', () => {
-			show_payment_fields(frm)
+		frm.add_custom_button('Test Button', () => {
+			// subtract_previous_interest_payment(frm)
+			// check_creditted_interest_payments(frm);
+			show_previous_interest_payment(frm);
+			// show_payment_fields(frm)
 			// calculate_interest(frm)
 			// calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		})
@@ -62,8 +73,13 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	transaction_type: function(frm){
-		frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type == 'Renewal w/ Amortization');
-		frm.toggle_display(['additional_amortization'], frm.doc.transaction_type == 'Amortization');
+		// show_payment_fields(frm);
+		// clear_all_payment_fields();
+		// frm.toggle_display(['new_pawn_ticket_no', 'advance_interest', 'interest_payment'], frm.doc.transaction_type == 'Renewal w/ Amortization');
+		// frm.toggle_display(['additional_amortization'], frm.doc.transaction_type == 'Amortization');
+		// frm.toggle_display(['advance_interest', 'discount'], frm.doc.transaction_type == 'Renewal');
+		// frm.toggle_display(['discount', 'interest_payment'], frm.doc.transaction_type == 'Redemption');
+		// select_transaction_type(frm)
 		if (frm.doc.transaction_type == "Amortization") {
 			clear_all_payment_fields();
 			show_payment_fields(frm);
@@ -71,10 +87,12 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_df_property('discount', 'hidden', 1);
 			frm.set_df_property('new_pawn_ticket_no', 'hidden', 1);
 			frm.set_df_property('advance_interest', 'hidden', 1);
+			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
 			select_transaction_type(frm)
 		} else if(frm.doc.transaction_type == "Interest Payment") {
 			clear_all_payment_fields();
 			show_payment_fields(frm);
+			frm.set_df_property('interest_payment', 'hidden', 1);
 			frm.set_df_property('discount', 'hidden', 1);
 			frm.set_df_property('new_pawn_ticket_no', 'hidden', 1);
 			frm.set_df_property('additional_amortization', 'hidden', 1);
@@ -86,26 +104,25 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_df_property('additional_amortization', 'hidden', 1);
 			frm.set_df_property('new_pawn_ticket_no', 'hidden', 1);
 			frm.set_df_property('advance_interest', 'hidden', 1);
+			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
 			select_transaction_type(frm);
 		} else if (frm.doc.transaction_type == "Renewal") {
 			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('additional_amortization', 'hidden', 1);
 			frm.set_df_property('advance_interest', 'hidden', 1);
+			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
 			get_new_pawn_ticket_no(frm);
 			select_transaction_type(frm);
 		} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
 			clear_all_payment_fields();
 			show_payment_fields(frm);
 			get_new_pawn_ticket_no(frm);
+			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
 			select_transaction_type(frm);
 		}
 	},
 
-	interest_payment: function(frm){
-		frm.set_value('total', parseFloat(frm.doc.total) + parseFloat(frm.doc.interest_payment));
-		frm.refresh_field('total');
-	},
 
 	discount: function(frm){
 		frm.set_value('total', parseFloat(frm.doc.total) - parseFloat(frm.doc.discount));
@@ -115,14 +132,19 @@ frappe.ui.form.on('Provisional Receipt', {
 	additional_amortization: function(frm){
 		if (frm.doc.transaction_type == "Renewal w/ Amortization") {
 			calculate_new_interest(frm);
+			console.log(parseFloat(frm.doc.previous_interest_payment));
+			console.log(parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
+			frm.set_value('total', parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
+			frm.refresh_field('total');
+		} else if (frm.doc.transaction_type == "Amortization") {
+			frm.set_value('total', parseFloat(frm.doc.additional_amortization) - parseFloat(frm.doc.previous_interest_payment));
+			frm.refresh_field('total');
 		}
-		frm.set_value('total', parseFloat(frm.doc.total) + parseFloat(frm.doc.additional_amortization));
-		frm.refresh_field('total');
+		
 	},
 
-	advance_interest: function(frm){
-		frm.set_value('total', parseFloat(frm.doc.total) + parseFloat(frm.doc.advance_interest));
-		frm.refresh_field('total');
+	number_of_months_to_pay_in_advance: function(frm){
+		calculate_advance_interest_payment(frm);
 	}
 });
 
@@ -133,6 +155,7 @@ function show_payment_fields(frm) {
 	frm.set_df_property('additional_amortization', 'hidden', 0);
 	frm.set_df_property('discount', 'hidden', 0)
 	frm.set_df_property('advance_interest', 'hidden', 0)
+	frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 0)
 }
 
 function calculate_interest(frm) {
@@ -560,7 +583,7 @@ function get_new_pawn_ticket_no(frm) {
 	})
 }
 
-function select_transaction_type(frm) {
+function select_transaction_type(frm) {					// Sets all field values calculations
 	clear_all_payment_fields();
 	frm.set_value('new_pawn_ticket_no', "");
 	frm.refresh_field('new_pawn_ticket_no');
@@ -569,8 +592,14 @@ function select_transaction_type(frm) {
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		frm.set_value('total', parseFloat(frm.doc.total) + parseFloat(frm.doc.principal_amount));
 		frm.refresh_field('total');
+		show_previous_interest_payment(frm);
+		frm.set_value('total', parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.principal_amount) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
+		frm.refresh_field('total');
 	} else if (frm.doc.transaction_type == "Amortization") {
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
+		show_previous_interest_payment(frm);
+		// frm.set_value('total', parseFloat(frm.doc.additional_amortization) - parseFloat(frm.doc.previous_interest_payment));
+		// frm.refresh_field('total');
 	} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
 		if (frm.doc.additional_amortization == 0) {
 			frm.set_value('advance_interest', frm.doc.interest);
@@ -578,12 +607,20 @@ function select_transaction_type(frm) {
 		}
 		calculate_interest(frm);
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
+		show_previous_interest_payment(frm);
+		// frm.set_value('total', parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest_payment) - parseFloat(frm.doc.discount) -parseFloat(frm.doc.previous_interest_payment));
+		// frm.refresh_field('total');
 	} else if(frm.doc.transaction_type == "Renewal"){
 		calculate_interest(frm);
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		frm.set_value('interest_payment', parseFloat(frm.doc.interest) + parseFloat(frm.doc.interest_payment));
 		frm.refresh_field('interest_payment');
-	} 
+		show_previous_interest_payment(frm);
+		frm.set_value('total', parseFloat(frm.doc.interest_payment) - parseFloat(frm.doc.previous_interest_payment));
+		frm.refresh_field('total');
+	} else if (frm.doc.transaction_type == "Interest Payment") {
+		calculate_advance_interest_payment(frm)
+	}
 }
 
 function clear_all_payment_fields() {
@@ -636,4 +673,53 @@ function calculate_new_interest(frm) {
 			// frm.refresh_field('advance_interest');
 		})
 	}
+}
+
+function calculate_advance_interest_payment(frm) { 			//For "Interest Payment" transaction
+	let advance_interest_payment = parseFloat(frm.doc.interest) * parseInt(frm.doc.number_of_months_to_pay_in_advance);
+	frm.set_value('total', advance_interest_payment);
+	frm.refresh_field('total');
+}
+
+function show_previous_interest_payment(frm) {			// Gathers every provisional receipt that has the same pawn ticket, transaction type is "Interest Payment", and creditted checkbox is unchecked
+	frappe.db.get_list('Provisional Receipt', {
+		fields: ['total'],
+		filters: {
+			transaction_type: 'Interest Payment',
+			creditted: 0,
+			pawn_ticket_no: frm.doc.pawn_ticket_no,
+			docstatus: 1
+		} 
+	}).then(records => {
+		console.log(records);
+		let temp_previous_interest_payment = 0.00
+		for (let index = 0; index < records.length; index++) {
+			console.log(records[index].total);
+			temp_previous_interest_payment += parseFloat(records[index].total)
+		}
+		// console.log(temp_previous_interest_payment);
+		frm.set_value('previous_interest_payment', temp_previous_interest_payment);
+		frm.refresh_field('previous_interest_payment');
+	})
+}
+
+function check_creditted_interest_payments(frm) {			//Check the checkbox "Creditted" in 
+	frappe.db.get_list('Provisional Receipt', {
+		fields: ['name'],
+		filters: {
+			transaction_type: 'Interest Payment',
+			creditted: 0,
+			pawn_ticket_no: frm.doc.pawn_ticket_no,
+			docstatus: 1
+		} 
+	}).then(records => {
+		for (let index = 0; index < records.length; index++) {
+			frappe.db.set_value('Provisional Receipt', records[index].name, 'creditted', 1);
+		}
+	})
+}
+
+function subtract_previous_interest_payment(frm) {
+	frm.set_value('total', parseFloat(frm.doc.total) - parseFloat(frm.doc.previous_interest_payment));
+	frm.refresh_field('total');
 }

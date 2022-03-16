@@ -119,3 +119,4 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.submit()
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
 			frappe.db.commit()
+

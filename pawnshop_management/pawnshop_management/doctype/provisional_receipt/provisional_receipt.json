@@ -14,6 +14,7 @@
   "date_loan_granted",
   "maturity_date",
   "expiry_date",
+  "creditted",
   "column_break_10",
   "date_issued",
   "transaction_type",
@@ -21,6 +22,7 @@
   "principal_amount",
   "interest",
   "amortization",
+  "previous_interest_payment",
   "redeemables_section",
   "items",
   "payments_section",
@@ -28,6 +30,7 @@
   "discount",
   "additional_amortization",
   "advance_interest",
+  "number_of_months_to_pay_in_advance",
   "total",
   "amended_from"
  ],
@@ -122,6 +125,7 @@
    "default": "0",
    "fieldname": "interest_payment",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Interest Payment",
    "read_only": 1
   },
@@ -129,6 +133,7 @@
    "default": "0",
    "fieldname": "discount",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Discount"
   },
   {
@@ -193,12 +198,35 @@
    "hidden": 1,
    "label": "Advance Interest",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "number_of_months_to_pay_in_advance",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Number of Months to Pay in Advance"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "previous_interest_payment",
+   "fieldtype": "Currency",
+   "label": "Previous Interest Payment",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "creditted",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Creditted",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-11 13:38:48.280044",
+ "modified": "2022-03-16 16:56:08.856250",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
