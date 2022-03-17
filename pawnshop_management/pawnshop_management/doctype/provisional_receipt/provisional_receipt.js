@@ -18,6 +18,7 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	refresh: function(frm) {
+		frm.toggle_display(['creditted'], frm.doc.transaction_type == 'Interest Payment');
 		frm.set_query('pawn_ticket_type', () => {
 			return {
 				"filters": {
