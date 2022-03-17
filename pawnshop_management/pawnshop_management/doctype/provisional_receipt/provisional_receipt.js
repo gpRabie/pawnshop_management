@@ -70,6 +70,8 @@ frappe.ui.form.on('Provisional Receipt', {
 		} else {
 			frm.set_df_property('transaction_type', 'options', ['Renewal', 'Redemption', 'Interest Payment', 'Amortization', 'Renewal w/ Amortization'])
 		}
+		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
+		show_previous_interest_payment(frm);
 		select_transaction_type(frm)
 	},
 

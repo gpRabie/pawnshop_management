@@ -210,7 +210,7 @@
    "default": "0.00",
    "fieldname": "previous_interest_payment",
    "fieldtype": "Currency",
-   "label": "Previous Interest Payment",
+   "label": "Advance Interest Payment",
    "read_only": 1
   },
   {
@@ -226,7 +226,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-16 16:56:08.856250",
+ "modified": "2022-03-17 11:45:11.644208",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
