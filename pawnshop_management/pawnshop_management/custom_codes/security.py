@@ -3,5 +3,5 @@ import frappe
 
 @frappe.whitelist()
 def get_ip():
-    ip = get('https://api.ipify.org').text
+    ip = frappe.local.request_ip
     return ip
