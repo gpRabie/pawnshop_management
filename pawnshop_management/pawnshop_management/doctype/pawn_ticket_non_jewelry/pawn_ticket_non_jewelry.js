@@ -42,7 +42,7 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 
 		frm.add_custom_button('Test', () => {
 			frappe.call({
-				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.get_child_table',
+				method: 'pawnshop_management.pawnshop_management.custom_codes.security.get_ip',
 				callback: function(data){
 					console.log(data.message);
 				}

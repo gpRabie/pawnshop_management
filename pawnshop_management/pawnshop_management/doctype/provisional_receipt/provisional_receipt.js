@@ -140,7 +140,7 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_value('total', parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
 			frm.refresh_field('total');
 		} else if (frm.doc.transaction_type == "Amortization") {
-			frm.set_value('total', parseFloat(frm.doc.additional_amortization) - parseFloat(frm.doc.previous_interest_payment));
+			frm.set_value('total', parseFloat(frm.doc.additional_amortization));
 			frm.refresh_field('total');
 		}
 		
