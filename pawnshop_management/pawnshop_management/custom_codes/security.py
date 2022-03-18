@@ -1,6 +1,7 @@
-import socket
+from requests import get
 import frappe
 
 @frappe.whitelist()
 def get_ip():
-    return socket.gethostbyname(socket.gethostname())
+    ip = get('https://api.ipify.org').text
+    return ip

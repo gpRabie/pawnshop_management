@@ -20,6 +20,22 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 		if (frm.is_new()) {
 			show_tracking_no(frm);
 			frm.set_value('date_loan_granted', frappe.datetime.nowdate())
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.security.get_ip',
+				callback: function(data){
+					let current_ip = data.message
+					let branch_ip = {
+						"180.195.203.152" : "Garcia's Pawnshop - CC",
+						"180.191.229.200" : "Garcia'a Pawnshop - GTC",
+						"49.144.96.243" : "Garcia'a Pawnshop - MOL",
+						"49.144.15.239" : "Garcia'a Pawnshop - POB",
+						"112.210.69.32" : "Garcia'a Pawnshop - TNZ",
+						"120.28.240.240" : "Rabie's House"
+					}
+					frm.set_value('branch', branch_ip[String(current_ip)]);
+					frm.refresh_field('branch');
+				}
+			})
 		}
 		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
 		frappe.call({
