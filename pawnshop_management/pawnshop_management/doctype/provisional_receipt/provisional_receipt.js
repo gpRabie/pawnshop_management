@@ -135,9 +135,9 @@ frappe.ui.form.on('Provisional Receipt', {
 	additional_amortization: function(frm){
 		if (frm.doc.transaction_type == "Renewal w/ Amortization") {
 			calculate_new_interest(frm);
-			console.log(parseFloat(frm.doc.previous_interest_payment));
-			console.log(parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
-			frm.set_value('total', parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
+			// console.log(parseFloat(frm.doc.previous_interest_payment));
+			// console.log(parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
+			frm.set_value('total', (parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest)) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
 			frm.refresh_field('total');
 		} else if (frm.doc.transaction_type == "Amortization") {
 			frm.set_value('total', parseFloat(frm.doc.additional_amortization));
