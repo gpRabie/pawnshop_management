@@ -120,3 +120,68 @@ class ProvisionalReceipt(Document):
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
 			frappe.db.commit()
 
+		if self.transaction_type == "Renewal" and self.mode_of_payment == "Cash":			#For Journal Entry Creation
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.interest_payment)
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		elif self.transaction_type == "Redemption" and self.mode_of_payment == "Cash":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.interest_payment)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Pawned Items Inventory - NJ - TGPP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.principal_amount)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		elif self.transaction_type == "Redemption" and self.mode_of_payment == "Cash":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.interest_payment)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Pawned Items Inventory - NJ - TGPP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.principal_amount)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()

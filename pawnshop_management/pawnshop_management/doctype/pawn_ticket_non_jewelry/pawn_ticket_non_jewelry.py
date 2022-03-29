@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils import flt
 
 class PawnTicketNonJewelry(Document):
 	def before_save(self):
@@ -27,4 +28,28 @@ class PawnTicketNonJewelry(Document):
 					"model_number": items[i].model_number,
 					"suggested_appraisal_value": items[i].suggested_appraisal_value
 				})
-			new_non_jewelry_batch.save(ignore_permissions=True)	
+			new_non_jewelry_batch.save(ignore_permissions=True)
+
+		doc1 = frappe.new_doc('Journal Entry')
+		doc1.voucher_type = 'Journal Entry'
+		doc1.company = 'TEST Garcia\'s Pawnshop'
+		doc1.posting_date = self.date_loan_granted
+
+		row_values1 = doc1.append('accounts', {})
+		row_values1.account = "Pawned Items Inventory - NJ - TGP"
+		row_values1.debit_in_account_currency = flt(self.desired_principal)
+		row_values1.credit_in_account_currency = flt(0)
+
+		row_values2 = doc1.append('accounts', {})
+		row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+		row_values2.debit_in_account_currency = flt(0)
+		row_values2.credit_in_account_currency = flt(self.interest)
+
+		row_values3 = doc1.append('accounts', {})
+		row_values3.account = "Cash on Hand - Pawnshop - TGP"
+		row_values3.debit_in_account_currency = flt(0)
+		row_values3.credit_in_account_currency = flt(self.net_proceeds)
+
+		doc1.save(ignore_permissions=True)
+		doc1.submit()
+	

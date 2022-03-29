@@ -2,6 +2,19 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Pawn Ticket Non Jewelry', {
+	before_workflow_action: function(frm){
+		if (frm.selected_workflow_action === "Collect") {
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.create_journal_entry_for_expired_items.create_journal_entry_nj',
+				args: {
+					desired_principal: parseFloat(frm.doc.desired_principal)
+				},
+				callback: function(){
+					console.log("Success");
+				}
+			})
+		}
+	},
 	validate: function(frm, cdt, cdn){
 		var temp_principal = 0.0;
 		$.each(frm.doc.non_jewelry_items, function(index, item){
