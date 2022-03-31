@@ -37,7 +37,8 @@
   "section_break_27",
   "total_cash",
   "column_break_29",
-  "shortage_overage"
+  "shortage_overage",
+  "amended_from"
  ],
  "fields": [
   {
@@ -87,10 +88,12 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Date",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -219,11 +222,20 @@
    "fieldname": "twenty_five_cent_php_coin",
    "fieldtype": "Currency",
    "label": "25 Cents Php Coin"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Cash Position Report",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-01 10:53:54.563228",
+ "modified": "2022-03-30 10:59:26.455809",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",

@@ -5,6 +5,7 @@ from datetime import datetime
 from frappe.utils import add_to_date
 import frappe
 from frappe.model.document import Document
+from frappe.utils import flt
 
 class ProvisionalReceipt(Document):
 	def before_submit(self):
@@ -120,25 +121,9 @@ class ProvisionalReceipt(Document):
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
 			frappe.db.commit()
 
-		if self.transaction_type == "Renewal" and self.mode_of_payment == "Cash":			#For Journal Entry Creation
-			doc1 = frappe.new_doc('Journal Entry')
-			doc1.voucher_type = 'Journal Entry'
-			doc1.company = 'TEST Garcia\'s Pawnshop'
-			doc1.posting_date = self.date_issued
-
-			row_values1 = doc1.append('accounts', {})
-			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
-			row_values1.debit_in_account_currency = flt(self.total)
-			row_values1.credit_in_account_currency = flt(0)
-
-			row_values2 = doc1.append('accounts', {})
-			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
-			row_values2.debit_in_account_currency = flt(0)
-			row_values2.credit_in_account_currency = flt(self.interest_payment)
-			doc1.save(ignore_permissions=True)
-			doc1.submit()
-
-		elif self.transaction_type == "Redemption" and self.mode_of_payment == "Cash":
+		# For Journal Entry Creation
+		# For Cash Accounts
+		if self.transaction_type == "Renewal" and self.mode_of_payment == "Cash":			
 			doc1 = frappe.new_doc('Journal Entry')
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
@@ -155,14 +140,39 @@ class ProvisionalReceipt(Document):
 			row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 			row_values3 = doc1.append('accounts', {})
-			row_values3.account = "Pawned Items Inventory - NJ - TGPP"
+			row_values3.account = "Interest Advances - NJ - TGP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.advance_interest)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		elif self.transaction_type == "Redemption" and self.mode_of_payment == "Cash":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			if flt(self.interest_payment) > 0:
+				row_values2 = doc1.append('accounts', {})
+				row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+				row_values2.debit_in_account_currency = flt(0)
+				row_values2.credit_in_account_currency = flt(self.interest_payment)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Pawned Items Inventory - NJ - TGP"
 			row_values3.debit_in_account_currency = flt(0)
 			row_values3.credit_in_account_currency = flt(self.principal_amount)
 
 			doc1.save(ignore_permissions=True)
 			doc1.submit()
 
-		elif self.transaction_type == "Redemption" and self.mode_of_payment == "Cash":
+		elif self.transaction_type == "Amortization" and self.mode_of_payment == "Cash":
 			doc1 = frappe.new_doc('Journal Entry')
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
@@ -179,9 +189,168 @@ class ProvisionalReceipt(Document):
 			row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 			row_values3 = doc1.append('accounts', {})
-			row_values3.account = "Pawned Items Inventory - NJ - TGPP"
+			row_values3.account = "Pawned Items Inventory - NJ - TGP"
 			row_values3.debit_in_account_currency = flt(0)
 			row_values3.credit_in_account_currency = flt(self.principal_amount)
 
 			doc1.save(ignore_permissions=True)
 			doc1.submit()
+
+		elif self.transaction_type == "Renewal w/ Amortization" and self.mode_of_payment == "Cash":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.interest_payment) + flt(self.advance_interest)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Pawned Items Inventory - NJ - TGP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.additional_amortization)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+			
+		elif self.transaction_type == "Interest Payment" and self.mode_of_payment == "Cash":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.total)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		# For GCash Accounts
+		elif self.transaction_type == "Renewal" and self.mode_of_payment == "GCash":			
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.interest_payment)
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		elif self.transaction_type == "Redemption" and self.mode_of_payment == "GCash":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.interest_payment)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Pawned Items Inventory - NJ - TGP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.principal_amount)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		elif self.transaction_type == "Amortization" and self.mode_of_payment == "GCash":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.interest_payment)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Pawned Items Inventory - NJ - TGP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.principal_amount)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		elif self.transaction_type == "Renewal w/ Amortization" and self.mode_of_payment == "GCash":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.interest_payment)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Pawned Items Inventory - NJ - TGP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.additional_amortization)
+
+			row_values4 = doc1.append('accounts', {})
+			row_values4.account = "Interest Advances - NJ - TGP"
+			row_values4.debit_in_account_currency = flt(0)
+			row_values4.credit_in_account_currency = flt(self.advance_interest)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+			
+		elif self.transaction_type == "Interest Payment" and self.mode_of_payment == "GCash":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.total)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+		
