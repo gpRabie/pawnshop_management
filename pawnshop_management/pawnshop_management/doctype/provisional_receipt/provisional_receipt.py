@@ -441,3 +441,150 @@ class ProvisionalReceipt(Document):
 			doc1.save(ignore_permissions=True)
 			doc1.submit()
 		
+		# For Bank Transfer Transaction
+		elif self.transaction_type == "Renewal" and self.mode_of_payment == "Bank Transfer":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			if self.bank == "BDO":
+				row_values1.account = "Cash in Bank - BDO - TGP"
+			elif self.bank == "BPI":
+				row_values1.account = "Cash in Bank - BPI - TGP"
+			elif self.bank == "East West Cavite Branch":
+				row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+			if self.interest_payment > 0:
+				row_values2 = doc1.append('accounts', {})
+				row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+				row_values2.debit_in_account_currency = flt(0)
+				row_values2.credit_in_account_currency = flt(self.interest_payment)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Interest on Loans and Advances - NJ - TGP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.advance_interest)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		elif self.transaction_type == "Redemption" and self.mode_of_payment == "Bank Transfer":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			if self.bank == "BDO":
+				row_values1.account = "Cash in Bank - BDO - TGP"
+			elif self.bank == "BPI":
+				row_values1.account = "Cash in Bank - BPI - TGP"
+			elif self.bank == "East West Cavite Branch":
+				row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+
+			if flt(self.interest_payment) > 0:
+				row_values2 = doc1.append('accounts', {})
+				row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+				row_values2.debit_in_account_currency = flt(0)
+				row_values2.credit_in_account_currency = flt(self.interest_payment)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Pawned Items Inventory - NJ - TGP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.principal_amount)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		elif self.transaction_type == "Amortization" and self.mode_of_payment == "Bank Transfer":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			if self.bank == "BDO":
+				row_values1.account = "Cash in Bank - BDO - TGP"
+			elif self.bank == "BPI":
+				row_values1.account = "Cash in Bank - BPI - TGP"
+			elif self.bank == "East West Cavite Branch":
+				row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+			
+			if self.interest_payment > 0:
+				row_values2 = doc1.append('accounts', {})
+				row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+				row_values2.debit_in_account_currency = flt(0)
+				row_values2.credit_in_account_currency = flt(self.interest_payment)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Pawned Items Inventory - NJ - TGP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.principal_amount)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		elif self.transaction_type == "Renewal w/ Amortization" and self.mode_of_payment == "Bank Transfer":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			if self.bank == "BDO":
+				row_values1.account = "Cash in Bank - BDO - TGP"
+			elif self.bank == "BPI":
+				row_values1.account = "Cash in Bank - BPI - TGP"
+			elif self.bank == "East West Cavite Branch":
+				row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+			
+			if self.interest_payment > 0:
+				row_values2 = doc1.append('accounts', {})
+				row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+				row_values2.debit_in_account_currency = flt(0)
+				row_values2.credit_in_account_currency = flt(self.interest_payment) + flt(self.advance_interest)
+
+			row_values3 = doc1.append('accounts', {})
+			row_values3.account = "Pawned Items Inventory - NJ - TGP"
+			row_values3.debit_in_account_currency = flt(0)
+			row_values3.credit_in_account_currency = flt(self.additional_amortization)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		elif self.transaction_type == "Interest Payment" and self.mode_of_payment == "Bank Transfer":
+			doc1 = frappe.new_doc('Journal Entry')
+			doc1.voucher_type = 'Journal Entry'
+			doc1.company = 'TEST Garcia\'s Pawnshop'
+			doc1.posting_date = self.date_issued
+
+			row_values1 = doc1.append('accounts', {})
+			if self.bank == "BDO":
+				row_values1.account = "Cash in Bank - BDO - TGP"
+			elif self.bank == "BPI":
+				row_values1.account = "Cash in Bank - BPI - TGP"
+			elif self.bank == "East West Cavite Branch":
+				row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
+			row_values1.debit_in_account_currency = flt(self.total)
+			row_values1.credit_in_account_currency = flt(0)
+			
+			row_values2 = doc1.append('accounts', {})
+			row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.total)
+
+			doc1.save(ignore_permissions=True)
+			doc1.submit()
+
+		
+
+		

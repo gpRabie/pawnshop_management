@@ -127,6 +127,9 @@ frappe.ui.form.on('Provisional Receipt', {
 		}
 	},
 
+	mode_of_payment: function(frm){
+		frm.toggle_display(['bank'], frm.doc.mode_of_payment === 'Bank Transfer');
+	},
 
 	discount: function(frm){
 		frm.set_value('total', parseFloat(frm.doc.total) - parseFloat(frm.doc.discount));

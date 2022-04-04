@@ -20,6 +20,7 @@
   "column_break_10",
   "date_issued",
   "mode_of_payment",
+  "bank",
   "transaction_type",
   "complete_name",
   "amortization",
@@ -229,12 +230,20 @@
    "fieldtype": "Select",
    "label": "Mode of Payment",
    "options": "Cash\nBank Transfer\nGCash"
+  },
+  {
+   "default": "BPI",
+   "fieldname": "bank",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Bank",
+   "options": "BPI\nBDO\nEast West Cavite Branch"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-04 10:15:19.764927",
+ "modified": "2022-04-04 14:39:49.759464",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
