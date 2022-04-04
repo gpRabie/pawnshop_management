@@ -163,7 +163,10 @@ frappe.ui.form.on('Provisional Receipt', {
 		} else if (frm.doc.transaction_type == "Redemption") {
 			frm.set_value('total', (parseFloat(frm.doc.principal_amount) + parseFloat(frm.doc.interest_payment)) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment) + parseFloat(frm.doc.advance_interest));
 			frm.refresh_field('total');
-		} 
+		} else if (frm.doc.transaction_type == "Renewal") {
+			frm.set_value('total', (parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest)) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
+			frm.refresh_field('total');
+		}
 		
 	}
 });
