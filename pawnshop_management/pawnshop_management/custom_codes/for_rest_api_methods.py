@@ -70,14 +70,19 @@ def create_journal_entry_nj_sales_gcash(date, total, for_prendas_dispaly, for_ga
     return "Success"
 
 @frappe.whitelist()
-def create_journal_entry_nj_sales_bank_transfer(date, for_cash_on_hand_account, for_prendas_dispaly, for_gains_loss):
+def create_journal_entry_nj_sales_bank_transfer(date, bank, total, for_prendas_dispaly, for_gains_loss):
     doc1 = frappe.new_doc('Journal Entry')
     doc1.voucher_type = 'Journal Entry'
     doc1.company = 'TEST Garcia\'s Pawnshop'
     doc1.posting_date = date
     row_values1 = doc1.append('accounts', {})
-    row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
-    row_values1.debit_in_account_currency = flt(for_cash_on_hand_account)
+    if bank == "BDO":
+        row_values1.account = "Cash in Bank - BDO - TGP"
+    elif bank == "BPI":
+        row_values1.account = "Cash in Bank - BPI - TGP"
+    elif bank == "EASTWEST":
+        row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
+    row_values1.debit_in_account_currency = flt(total)
     row_values1.credit_in_account_currency = flt(0)
 
     row_values2 = doc1.append('accounts', {})
