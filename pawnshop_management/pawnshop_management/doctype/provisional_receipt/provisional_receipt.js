@@ -160,14 +160,16 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	interest_payment: function(frm){
+		frm.set_value('interest_payment', parseFloat(frm.doc.interest_payment) - parseFloat(frm.doc.previous_interest_payment));
+		frm.refresh_field('interest_payment');
 		if (frm.doc.transaction_type == "Amortization" || frm.doc.transaction_type == "Renewal w/ Amortization") {
-			frm.set_value('total', (parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment)) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment) + parseFloat(frm.doc.advance_interest));
+			frm.set_value('total', (parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment)) - parseFloat(frm.doc.discount) + parseFloat(frm.doc.advance_interest));
 			frm.refresh_field('total');
 		} else if (frm.doc.transaction_type == "Redemption") {
-			frm.set_value('total', (parseFloat(frm.doc.principal_amount) + parseFloat(frm.doc.interest_payment)) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment) + parseFloat(frm.doc.advance_interest));
+			frm.set_value('total', (parseFloat(frm.doc.principal_amount) + parseFloat(frm.doc.interest_payment)) - parseFloat(frm.doc.discount) + parseFloat(frm.doc.advance_interest));
 			frm.refresh_field('total');
 		} else if (frm.doc.transaction_type == "Renewal") {
-			frm.set_value('total', (parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest)) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
+			frm.set_value('total', (parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest)) - parseFloat(frm.doc.discount));
 			frm.refresh_field('total');
 		}
 		
