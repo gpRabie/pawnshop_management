@@ -343,16 +343,10 @@ class ProvisionalReceipt(Document):
 			row_values3.debit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 			row_values3.credit_in_account_currency = flt(0)
 
-			if self.interest_payment > 0:
-				row_values4 = doc1.append('accounts', {})
-				row_values4.account = "Interest on Past Due Loans - NJ - TGP"
-				row_values4.debit_in_account_currency = flt(0)
-				row_values4.credit_in_account_currency = flt(self.interest_payment)
-
 			row_values5 = doc1.append('accounts', {})
 			row_values5.account = "Pawned Items Inventory - NJ - TGP"
 			row_values5.debit_in_account_currency = flt(0)
-			row_values5.credit_in_account_currency = flt(self.principal_amount)
+			row_values5.credit_in_account_currency = flt(self.total)
 
 			row_values6 = doc1.append('accounts', {})
 			row_values6.account = "Withholding Tax Payable - Expanded - TGP"
@@ -526,7 +520,7 @@ class ProvisionalReceipt(Document):
 			row_values3 = doc1.append('accounts', {})
 			row_values3.account = "Pawned Items Inventory - NJ - TGP"
 			row_values3.debit_in_account_currency = flt(0)
-			row_values3.credit_in_account_currency = flt(self.principal_amount)
+			row_values3.credit_in_account_currency = flt(self.total)
 
 			doc1.save(ignore_permissions=True)
 			doc1.submit()
