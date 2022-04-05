@@ -192,7 +192,7 @@ class ProvisionalReceipt(Document):
 			row_values3 = doc1.append('accounts', {})
 			row_values3.account = "Pawned Items Inventory - NJ - TGP"
 			row_values3.debit_in_account_currency = flt(0)
-			row_values3.credit_in_account_currency = flt(self.principal_amount)
+			row_values3.credit_in_account_currency = flt(self.total)
 
 			doc1.save(ignore_permissions=True)
 			doc1.submit()
