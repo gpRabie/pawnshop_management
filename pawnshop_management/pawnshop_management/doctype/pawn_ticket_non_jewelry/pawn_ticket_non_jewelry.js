@@ -104,7 +104,7 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 		let default_maturity_date = frappe.datetime.add_days(frm.doc.date_loan_granted, 30);
 		frm.set_value('maturity_date', default_maturity_date);
 
-		let defaul_expiry_date = frappe.datetime.add_days(frm.doc.date_loan_granted, 120);
+		let defaul_expiry_date = frappe.datetime.add_days(frm.doc.date_loan_granted, 90);
 		frm.set_value('expiry_date', defaul_expiry_date);
 	},
 

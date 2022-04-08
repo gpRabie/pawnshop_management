@@ -255,18 +255,13 @@ class ProvisionalReceipt(Document):
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
-			row_values1.debit_in_account_currency = flt(self.total) - (flt(self.total) * 0.02)
+			row_values1.debit_in_account_currency = (flt(self.total) - (flt(self.total) * 0.02)) + (((flt(self.total) * 0.02) / 1.12) * 0.02)
 			row_values1.credit_in_account_currency = flt(0)
 
 			row_values2 = doc1.append('accounts', {})
 			row_values2.account = "Merchant Fee - COS - Gcash - TGP"
 			row_values2.debit_in_account_currency = (flt(self.total) * 0.02)
 			row_values2.credit_in_account_currency = flt(0)
-
-			row_values3 = doc1.append('accounts', {})
-			row_values3.account = "Withholding Tax Expense - Expanded - TGP"
-			row_values3.debit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
-			row_values3.credit_in_account_currency = flt(0)
 
 			if self.interest_payment > 0:
 				row_values4 = doc1.append('accounts', {})
@@ -295,18 +290,13 @@ class ProvisionalReceipt(Document):
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
-			row_values1.debit_in_account_currency = flt(self.total) - (flt(self.total) * 0.02)
+			row_values1.debit_in_account_currency = (flt(self.total) - (flt(self.total) * 0.02)) + (((flt(self.total) * 0.02) / 1.12) * 0.02)
 			row_values1.credit_in_account_currency = flt(0)
 
 			row_values2 = doc1.append('accounts', {})
 			row_values2.account = "Merchant Fee - COS - Gcash - TGP"
 			row_values2.debit_in_account_currency = (flt(self.total) * 0.02)
 			row_values2.credit_in_account_currency = flt(0)
-
-			row_values3 = doc1.append('accounts', {})
-			row_values3.account = "Withholding Tax Expense - Expanded - TGP"
-			row_values3.debit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
-			row_values3.credit_in_account_currency = flt(0)
 
 			if self.interest_payment > 0:
 				row_values4 = doc1.append('accounts', {})
@@ -335,18 +325,13 @@ class ProvisionalReceipt(Document):
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
-			row_values1.debit_in_account_currency = flt(self.total) - (flt(self.total) * 0.02)
+			row_values1.debit_in_account_currency = (flt(self.total) - (flt(self.total) * 0.02)) + (((flt(self.total) * 0.02) / 1.12) * 0.02)
 			row_values1.credit_in_account_currency = flt(0)
 
 			row_values2 = doc1.append('accounts', {})
 			row_values2.account = "Merchant Fee - COS - Gcash - TGP"
 			row_values2.debit_in_account_currency = (flt(self.total) * 0.02)
 			row_values2.credit_in_account_currency = flt(0)
-
-			row_values3 = doc1.append('accounts', {})
-			row_values3.account = "Withholding Tax Expense - Expanded - TGP"
-			row_values3.debit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
-			row_values3.credit_in_account_currency = flt(0)
 
 			row_values5 = doc1.append('accounts', {})
 			row_values5.account = "Pawned Items Inventory - NJ - TGP"
@@ -369,18 +354,13 @@ class ProvisionalReceipt(Document):
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
-			row_values1.debit_in_account_currency = flt(self.total) - (flt(self.total) * 0.02)
+			row_values1.debit_in_account_currency = (flt(self.total) - (flt(self.total) * 0.02)) + (((flt(self.total) * 0.02) / 1.12) * 0.02)
 			row_values1.credit_in_account_currency = flt(0)
 
 			row_values2 = doc1.append('accounts', {})
 			row_values2.account = "Merchant Fee - COS - Gcash - TGP"
 			row_values2.debit_in_account_currency = (flt(self.total) * 0.02)
 			row_values2.credit_in_account_currency = flt(0)
-
-			row_values3 = doc1.append('accounts', {})
-			row_values3.account = "Withholding Tax Expense - Expanded - TGP"
-			row_values3.debit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
-			row_values3.credit_in_account_currency = flt(0)
 
 			if self.interest_payment > 0:
 				row_values4 = doc1.append('accounts', {})
@@ -414,18 +394,13 @@ class ProvisionalReceipt(Document):
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
-			row_values1.debit_in_account_currency = flt(self.total) - (flt(self.total) * 0.02)
+			row_values1.debit_in_account_currency = (flt(self.total) - (flt(self.total) * 0.02)) + (((flt(self.total) * 0.02) / 1.12) * 0.02)
 			row_values1.credit_in_account_currency = flt(0)
 
 			row_values2 = doc1.append('accounts', {})
 			row_values2.account = "Merchant Fee - COS - Gcash - TGP"
 			row_values2.debit_in_account_currency = (flt(self.total) * 0.02)
 			row_values2.credit_in_account_currency = flt(0)
-
-			row_values3 = doc1.append('accounts', {})
-			row_values3.account = "Withholding Tax Expense - Expanded - TGP"
-			row_values3.debit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
-			row_values3.credit_in_account_currency = flt(0)
 
 			row_values4 = doc1.append('accounts', {})
 			row_values4.account = "Interest on Past Due Loans - NJ - TGP"

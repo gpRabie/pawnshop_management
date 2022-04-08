@@ -15,13 +15,13 @@ class CashPositionReport(Document):
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash Shortage/Overage - NJ - TGP"
-			row_values1.debit_in_account_currency = flt(0)
-			row_values1.credit_in_account_currency = flt(self.shortage_overage)
+			row_values1.debit_in_account_currency = flt(self.shortage_overage)
+			row_values1.credit_in_account_currency = flt(0)
 
 			row_values2 = doc1.append('accounts', {})
 			row_values2.account = "Cash on Hand - Pawnshop - NJ - TGP"
-			row_values2.debit_in_account_currency = flt(self.shortage_overage)
-			row_values2.credit_in_account_currency = flt(0)
+			row_values2.debit_in_account_currency = flt(0)
+			row_values2.credit_in_account_currency = flt(self.shortage_overage)
 
 			doc1.save(ignore_permissions=True)
 			doc1.submit()
@@ -33,13 +33,13 @@ class CashPositionReport(Document):
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
-			row_values1.debit_in_account_currency = flt(abs(self.shortage_overage))
-			row_values1.credit_in_account_currency = flt(0)
+			row_values1.debit_in_account_currency = flt(0)
+			row_values1.credit_in_account_currency = flt(abs(self.shortage_overage))
 
 			row_values2 = doc1.append('accounts', {})
 			row_values2.account = "Cash Shortage/Overage - NJ - TGP"
-			row_values2.debit_in_account_currency = flt(0)
-			row_values2.credit_in_account_currency = flt(abs(self.shortage_overage))
+			row_values2.debit_in_account_currency = flt(abs(self.shortage_overage))
+			row_values2.credit_in_account_currency = flt(0)
 
 			doc1.save(ignore_permissions=True)
 			doc1.submit()
