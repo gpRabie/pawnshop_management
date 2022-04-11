@@ -167,7 +167,8 @@ user_data_fields = [
 ]
 
 
-on_session_creation = "pawnshop_management.pawnshop_management.custom_codes.log_in.login_feed"
+# on_session_creation = "pawnshop_management.pawnshop_management.custom_codes.log_in.login_feed"
+on_login = "pawnshop_management.pawnshop_management.custom_codes.log_in.post_login"
 
 # Authentication and authorization
 # --------------------------------
