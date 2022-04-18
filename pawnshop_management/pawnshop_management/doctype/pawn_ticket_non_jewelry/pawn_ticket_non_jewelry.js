@@ -42,7 +42,8 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 						"49.144.100.169" : "Garcia'a Pawnshop - MOL",
 						"49.144.9.203" : "Garcia'a Pawnshop - POB",
 						"136.158.82.68" : "Garcia'a Pawnshop - TNZ",
-						"127.0.0.1" : "Rabie's House"
+						"127.0.0.1" : "Rabie's House",
+						"120.28.240.93": "Rabie's House"
 					}
 					frm.set_value('branch', branch_ip[String(current_ip)]);
 					frm.refresh_field('branch');
@@ -92,7 +93,7 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 		frappe.call({
 			method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
 		}).then(ip => {
-			if (ip.message == "127.0.0.1") {
+			if (ip.message == "127.0.0.1" || ip.message == "120.28.240.93") {
 				frappe.db.get_value('Non Jewelry Naming Series', "Rabie's House", 'inventory_count')
 				.then(r =>{
 					let inventory_count = r.message.inventory_count

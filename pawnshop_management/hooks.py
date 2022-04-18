@@ -180,7 +180,6 @@ on_login = "pawnshop_management.pawnshop_management.custom_codes.log_in.post_log
 # fixtures = [
 # 	"Workspace",
 # 	"Workflow State",
-# 	"Workflow"
+# 	"Workflow",
+# 	"Non Jewelry Naming Series"
 # ]
-
-fixtures = ["Non Jewelry Naming Series"]
