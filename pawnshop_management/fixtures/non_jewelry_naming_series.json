@@ -1,0 +1,80 @@
+[
+ {
+  "b_series": 1,
+  "branch": "Cavite City Branch",
+  "docstatus": 0,
+  "doctype": "Non Jewelry Naming Series",
+  "inventory_count": 1,
+  "item_count": 1,
+  "modified": "2022-04-18 09:45:27.184711",
+  "name": "Cavite City Branch",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "b_series": 1,
+  "branch": "Molino Branch",
+  "docstatus": 0,
+  "doctype": "Non Jewelry Naming Series",
+  "inventory_count": 1,
+  "item_count": 1,
+  "modified": "2022-04-18 09:45:21.216939",
+  "name": "Molino Branch",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "b_series": 1,
+  "branch": "Poblacion Branch",
+  "docstatus": 0,
+  "doctype": "Non Jewelry Naming Series",
+  "inventory_count": 1,
+  "item_count": 1,
+  "modified": "2022-04-18 09:45:14.247325",
+  "name": "Poblacion Branch",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "b_series": 1,
+  "branch": "GTC Branch",
+  "docstatus": 0,
+  "doctype": "Non Jewelry Naming Series",
+  "inventory_count": 1,
+  "item_count": 1,
+  "modified": "2022-04-18 09:45:06.582979",
+  "name": "GTC Branch",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "b_series": 1,
+  "branch": "Tanza Branch",
+  "docstatus": 0,
+  "doctype": "Non Jewelry Naming Series",
+  "inventory_count": 1,
+  "item_count": 1,
+  "modified": "2022-04-18 09:45:00.801644",
+  "name": "Tanza Branch",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "b_series": 1,
+  "branch": "Rabie's House",
+  "docstatus": 0,
+  "doctype": "Non Jewelry Naming Series",
+  "inventory_count": 1,
+  "item_count": 1,
+  "modified": "2022-04-13 16:32:42.245423",
+  "name": "Rabie's House",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ }
+]

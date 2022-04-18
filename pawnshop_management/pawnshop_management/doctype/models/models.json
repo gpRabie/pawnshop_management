@@ -12,7 +12,8 @@
   "brand",
   "defective",
   "minimum",
-  "maximum"
+  "maximum",
+  "preview"
  ],
  "fields": [
   {
@@ -55,11 +56,16 @@
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Maximum"
+  },
+  {
+   "fieldname": "preview",
+   "fieldtype": "Image",
+   "label": "Preview"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-20 19:03:40.651676",
+ "modified": "2022-04-13 17:10:03.220111",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Models",

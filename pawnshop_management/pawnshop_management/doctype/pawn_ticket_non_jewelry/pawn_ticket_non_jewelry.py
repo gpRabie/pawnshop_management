@@ -8,11 +8,30 @@ from frappe.utils import flt
 class PawnTicketNonJewelry(Document):
 	def before_save(self):
 		if frappe.db.exists('Pawn Ticket Non Jewelry', self.name) == None:
-			settings = frappe.get_doc('Pawnshop Management Settings')
-			# settings.non_jewelry_inventory_count += 1
-			settings.b_series_current_count += 1
-			# settings.non_jewelry_count = 1
-			settings.save(ignore_permissions=True)
+			if self.branch == "Garcia's Pawnshop - CC":
+				settings = frappe.get_doc('Non Jewelry Naming Series', 'Cavite City Branch')
+				settings.b_series += 1
+				settings.save(ignore_permissions=True)
+			elif self.branch == "Garcia'a Pawnshop - GTC":
+				settings = frappe.get_doc('Non Jewelry Naming Series', 'GTC Branch')
+				settings.b_series += 1
+				settings.save(ignore_permissions=True)
+			elif self.branch == "Garcia'a Pawnshop - MOL":
+				settings = frappe.get_doc('Non Jewelry Naming Series', 'Molino Branch')
+				settings.b_series += 1
+				settings.save(ignore_permissions=True)
+			elif self.branch == "Garcia'a Pawnshop - POB":
+				settings = frappe.get_doc('Non Jewelry Naming Series', 'Poblacion Branch')
+				settings.b_series += 1
+				settings.save(ignore_permissions=True)
+			elif self.branch == "Garcia'a Pawnshop - TNZ":
+				settings = frappe.get_doc('Non Jewelry Naming Series', 'Tanza Branch')
+				settings.b_series += 1
+				settings.save(ignore_permissions=True)
+			elif self.branch == "Rabie's House":
+				settings = frappe.get_doc('Non Jewelry Naming Series', "Rabie's House")
+				settings.b_series += 1
+				settings.save(ignore_permissions=True)
 
 	def on_submit(self):
 		if frappe.db.exists('Non Jewelry Batch', self.inventory_tracking_no) != self.inventory_tracking_no: #Copies Items table from pawnt ticket to non jewelry batch doctype

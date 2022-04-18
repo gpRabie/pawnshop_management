@@ -1,0 +1,75 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:branch",
+ "creation": "2022-04-12 11:12:59.611297",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "branch",
+  "series_section",
+  "b_series",
+  "column_break_4",
+  "inventory_count",
+  "item_count"
+ ],
+ "fields": [
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch",
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "b_series",
+   "fieldtype": "Int",
+   "label": "B Series"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "inventory_count",
+   "fieldtype": "Int",
+   "label": "Inventory Count"
+  },
+  {
+   "default": "0",
+   "fieldname": "item_count",
+   "fieldtype": "Int",
+   "label": "Item Count"
+  },
+  {
+   "fieldname": "series_section",
+   "fieldtype": "Section Break",
+   "label": "Series"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-04-12 15:25:56.638099",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Non Jewelry Naming Series",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
