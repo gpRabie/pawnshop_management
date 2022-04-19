@@ -293,7 +293,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 
 function show_item_no(frm) {
 	if (frm.doc.branch == "Garcia's Pawnshop - CC") {
-		frappe.db.get_value('Non Jewelry Naming Series', 'Cavite City Branch',['item_count', 'inventory_count'])
+		frappe.db.get_value('Non Jewelry Naming Series', "Garcia's Pawnshop - CC",['item_count', 'inventory_count'])
 		.then(value => {
 			let non_jewelry_inventory_count = parseInt(value.message.inventory_count);
 			let non_jewelry_count = parseInt(value.message.item_count)
@@ -302,7 +302,7 @@ function show_item_no(frm) {
 			
 		})
 	} else if (frm.doc.branch == "Garcia'a Pawnshop - GTC") {
-		frappe.db.get_value('Non Jewelry Naming Series', 'GTC Branch',['item_count', 'inventory_count'])
+		frappe.db.get_value('Non Jewelry Naming Series', "Garcia'a Pawnshop - GTC",['item_count', 'inventory_count'])
 		.then(value => {
 			let non_jewelry_inventory_count = parseInt(value.message.inventory_count);
 			let non_jewelry_count = parseInt(value.message.item_count)
@@ -310,7 +310,7 @@ function show_item_no(frm) {
 			frm.set_value('item_no', '4-' + non_jewelry_inventory_count + 'NJ' + '-' + non_jewelry_count)
 		})
 	} else if (frm.doc.branch == "Garcia'a Pawnshop - MOL") {
-		frappe.db.get_value('Non Jewelry Naming Series', 'Molino Branch',['item_count', 'inventory_count'])
+		frappe.db.get_value('Non Jewelry Naming Series', "Garcia'a Pawnshop - MOL",['item_count', 'inventory_count'])
 		.then(value => {
 			let non_jewelry_inventory_count = parseInt(value.message.inventory_count);
 			let non_jewelry_count = parseInt(value.message.item_count)
@@ -318,7 +318,7 @@ function show_item_no(frm) {
 			frm.set_value('item_no', '6-' + non_jewelry_inventory_count + 'NJ' + '-' + non_jewelry_count)
 		})
 	} else if (frm.doc.branch == "Garcia'a Pawnshop - POB") {
-		frappe.db.get_value('Non Jewelry Naming Series', 'Poblacion Branch',['item_count', 'inventory_count'])
+		frappe.db.get_value('Non Jewelry Naming Series', "Garcia'a Pawnshop - POB",['item_count', 'inventory_count'])
 		.then(value => {
 			let non_jewelry_inventory_count = parseInt(value.message.inventory_count);
 			let non_jewelry_count = parseInt(value.message.item_count)
@@ -326,7 +326,7 @@ function show_item_no(frm) {
 			frm.set_value('item_no', '3-' + non_jewelry_inventory_count + 'NJ' + '-' + non_jewelry_count)
 		})
 	} else if (frm.doc.branch == "Garcia'a Pawnshop - TNZ") {
-		frappe.db.get_value('Non Jewelry Naming Series', 'Tanza Branch',['item_count', 'inventory_count'])
+		frappe.db.get_value('Non Jewelry Naming Series', "Garcia'a Pawnshop - TNZ",['item_count', 'inventory_count'])
 		.then(value => {
 			let non_jewelry_inventory_count = parseInt(value.message.inventory_count);
 			let non_jewelry_count = parseInt(value.message.item_count)
