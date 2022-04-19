@@ -9,23 +9,23 @@ class PawnTicketNonJewelry(Document):
 	def before_save(self):
 		if frappe.db.exists('Pawn Ticket Non Jewelry', self.name) == None:
 			if self.branch == "Garcia's Pawnshop - CC":
-				settings = frappe.get_doc('Non Jewelry Naming Series', 'Cavite City Branch')
+				settings = frappe.get_doc('Non Jewelry Naming Series', "Garcia's Pawnshop - CC")
 				settings.b_series += 1
 				settings.save(ignore_permissions=True)
 			elif self.branch == "Garcia'a Pawnshop - GTC":
-				settings = frappe.get_doc('Non Jewelry Naming Series', 'GTC Branch')
+				settings = frappe.get_doc('Non Jewelry Naming Series', "Garcia'a Pawnshop - GTC")
 				settings.b_series += 1
 				settings.save(ignore_permissions=True)
 			elif self.branch == "Garcia'a Pawnshop - MOL":
-				settings = frappe.get_doc('Non Jewelry Naming Series', 'Molino Branch')
+				settings = frappe.get_doc('Non Jewelry Naming Series', "Garcia'a Pawnshop - MOL")
 				settings.b_series += 1
 				settings.save(ignore_permissions=True)
 			elif self.branch == "Garcia'a Pawnshop - POB":
-				settings = frappe.get_doc('Non Jewelry Naming Series', 'Poblacion Branch')
+				settings = frappe.get_doc('Non Jewelry Naming Series', "Garcia'a Pawnshop - POB")
 				settings.b_series += 1
 				settings.save(ignore_permissions=True)
 			elif self.branch == "Garcia'a Pawnshop - TNZ":
-				settings = frappe.get_doc('Non Jewelry Naming Series', 'Tanza Branch')
+				settings = frappe.get_doc('Non Jewelry Naming Series', "Garcia'a Pawnshop - TNZ")
 				settings.b_series += 1
 				settings.save(ignore_permissions=True)
 			elif self.branch == "Rabie's House":
