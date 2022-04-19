@@ -24,6 +24,25 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	refresh: function(frm) {
+		if (frm.is_new()) {
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
+				callback: function(data){
+					let current_ip = data.message
+					let branch_ip = {
+						"180.195.203.152" : "Garcia's Pawnshop - CC",
+						"180.191.232.68" : "Garcia'a Pawnshop - GTC",
+						"49.144.100.169" : "Garcia'a Pawnshop - MOL",
+						"49.144.9.203" : "Garcia'a Pawnshop - POB",
+						"136.158.82.68" : "Garcia'a Pawnshop - TNZ",
+						"127.0.0.1" : "Rabie's House",
+						"120.28.240.93": "Rabie's House"
+					}
+					frm.set_value('branch', branch_ip[String(current_ip)]);
+					frm.refresh_field('branch');
+				}
+			})
+		}
 		frm.toggle_display(['creditted'], frm.doc.transaction_type == 'Interest Payment');
 		frm.set_query('pawn_ticket_type', () => {
 			return {
@@ -57,6 +76,10 @@ frappe.ui.form.on('Provisional Receipt', {
 			// calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 			subtract_previous_interest_payment(frm);
 		})
+	},
+
+	branch: function(frm){
+		select_naming_series(frm);
 	},
 
 	date_issued: function(frm){
@@ -609,40 +632,116 @@ function show_items(doctype, doc_name, doc_table_name = null) {
 	})
 }
 
+function select_naming_series(frm) { //Select naming series with regards to the branch
+	if (frm.doc.branch == "Rabie's House") {
+		frm.set_value('naming_series', "No-20-.######")
+	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
+		frm.set_value('naming_series', "No-1-.######")
+	} else if (frm.doc.branch == "Garcia'a Pawnshop - GTC") {
+		frm.set_value('naming_series', "No-4-.######")
+	} else if (frm.doc.branch == "Garcia'a Pawnshop - MOL") {
+		frm.set_value('naming_series', "No-6-.######")
+	} else if (frm.doc.branch == "Garcia'a Pawnshop - POB") {
+		frm.set_value('naming_series', "No-3-.######")
+	} else if (frm.doc.branch == "Garcia'a Pawnshop - TNZ") {
+		frm.set_value('naming_series', "No-5-.######")
+	}
+}
+
 function get_new_pawn_ticket_no(frm) {
-	frappe.call({
-		method: 'frappe.client.get_value',
-		args: {
-			'doctype': 'Pawnshop Management Settings',
-			'fieldname': [
-				'a_series_current_count', 
-				'b_series_current_count'
-			]
-		},
-		callback: function(r){
-			frm.set_df_property('new_pawn_ticket_no', 'hidden', 0);
-			let new_pawn_ticket_no = r.message
-			if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal") {
-				frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
-				frm.refresh_field('new_pawn_ticket_no')
-			} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal") {
-				frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.a_series_current_count + "A")
-				frm.refresh_field('new_pawn_ticket_no')
-			} else if(frm.doc.transaction_type == "Renewal"){
-				frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
-				frm.refresh_field('new_pawn_ticket_no')
-			} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal w/ Amortization") {
-				frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
-				frm.refresh_field('new_pawn_ticket_no')
-			} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal w/ Amortization") {
-				frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.a_series_current_count + "A")
-				frm.refresh_field('new_pawn_ticket_no')
-			} else if(frm.doc.transaction_type == "Renewal w/ Amortization"){
-				frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
-				frm.refresh_field('new_pawn_ticket_no')
-			}
-		}
-	})
+	if (frm.doc.branch == "Rabie's House") {
+		frappe.db.get_value("Non Jewelry Naming Series", "Rabie's House", "b_series")
+		.then(r => {
+			let current_count = r.message.b_series;
+			new_pawn_ticket_no(frm, "20-", current_count);
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
+		frappe.db.get_value("Non Jewelry Naming Series", "Garcia's Pawnshop - CC", "b_series")
+		.then(r => {
+			let current_count = r.message.b_series;
+			new_pawn_ticket_no(frm, "1-", current_count);
+		})
+	} else if (frm.doc.branch == "Garcia'a Pawnshop - GTC") {
+		frappe.db.get_value("Non Jewelry Naming Series", "Garcia'a Pawnshop - GTC", "b_series")
+		.then(r => {
+			let current_count = r.message.b_series;
+			new_pawn_ticket_no(frm, "4-", current_count);
+		})
+	} else if (frm.doc.branch == "Garcia'a Pawnshop - MOL") {
+		frappe.db.get_value("Non Jewelry Naming Series", "Garcia'a Pawnshop - MOL", "b_series")
+		.then(r => {
+			let current_count = r.message.b_series;
+			new_pawn_ticket_no(frm, "6-", current_count);
+		})
+	} else if (frm.doc.branch == "Garcia'a Pawnshop - POB") {
+		frappe.db.get_value("Non Jewelry Naming Series", "Garcia'a Pawnshop - POB", "b_series")
+		.then(r => {
+			let current_count = r.message.b_series;
+			new_pawn_ticket_no(frm, "3-", current_count);
+		})
+	} else if (frm.doc.branch == "Garcia'a Pawnshop - TNZ") {
+		frappe.db.get_value("Non Jewelry Naming Series", "Garcia'a Pawnshop - TNZ", "b_series")
+		.then(r => {
+			let current_count = r.message.b_series;
+			new_pawn_ticket_no(frm, "5-", current_count);
+		})
+	}
+	// frappe.call({
+	// 	method: 'frappe.client.get_value',
+	// 	args: {
+	// 		'doctype': 'Pawnshop Management Settings',
+	// 		'fieldname': [
+	// 			'a_series_current_count', 
+	// 			'b_series_current_count'
+	// 		]
+	// 	},
+	// 	callback: function(r){
+	// 		frm.set_df_property('new_pawn_ticket_no', 'hidden', 0);
+	// 		let new_pawn_ticket_no = r.message
+	// 		if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal") {
+	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
+	// 			frm.refresh_field('new_pawn_ticket_no')
+	// 		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal") {
+	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.a_series_current_count + "A")
+	// 			frm.refresh_field('new_pawn_ticket_no')
+	// 		} else if(frm.doc.transaction_type == "Renewal"){
+	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
+	// 			frm.refresh_field('new_pawn_ticket_no')
+	// 		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal w/ Amortization") {
+	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
+	// 			frm.refresh_field('new_pawn_ticket_no')
+	// 		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal w/ Amortization") {
+	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.a_series_current_count + "A")
+	// 			frm.refresh_field('new_pawn_ticket_no')
+	// 		} else if(frm.doc.transaction_type == "Renewal w/ Amortization"){
+	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
+	// 			frm.refresh_field('new_pawn_ticket_no')
+	// 		}
+	// 	}
+	// })
+}
+
+function new_pawn_ticket_no(frm, prefix, b_series) {
+	frm.set_df_property('new_pawn_ticket_no', 'hidden', 0);
+	if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal") {
+		frm.set_value('new_pawn_ticket_no', prefix + b_series + "B")
+		frm.refresh_field('new_pawn_ticket_no')
+	} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal") {
+		frm.set_value('new_pawn_ticket_no',  prefix + b_series + "A")
+		frm.refresh_field('new_pawn_ticket_no')
+	} else if(frm.doc.transaction_type == "Renewal"){
+		frm.set_value('new_pawn_ticket_no', prefix + b_series + "B")
+		frm.refresh_field('new_pawn_ticket_no')
+	} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal w/ Amortization") {
+		frm.set_value('new_pawn_ticket_no', prefix + b_series + "B")
+		frm.refresh_field('new_pawn_ticket_no')
+	} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal w/ Amortization") {
+		frm.set_value('new_pawn_ticket_no', prefix + b_series + "A")
+		frm.refresh_field('new_pawn_ticket_no')
+	} else if(frm.doc.transaction_type == "Renewal w/ Amortization"){
+		frm.set_value('new_pawn_ticket_no', prefix + b_series + "B")
+		frm.refresh_field('new_pawn_ticket_no')
+	}
 }
 
 function select_transaction_type(frm) {					// Sets all field values calculations

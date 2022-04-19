@@ -19,6 +19,7 @@
   "cash_to_vault",
   "total_out",
   "column_break_9",
+  "branch",
   "date",
   "net_cash",
   "ending_balance",
@@ -107,6 +108,7 @@
    "fieldname": "ending_balance",
    "fieldtype": "Currency",
    "label": "Ending Balance",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -138,13 +140,15 @@
    "default": "0.00",
    "fieldname": "total_cash",
    "fieldtype": "Currency",
-   "label": "Total Cash"
+   "label": "Total Cash",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "shortage_overage",
    "fieldtype": "Currency",
-   "label": "Shortage/Overage"
+   "label": "Shortage/Overage",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_29",
@@ -231,11 +235,16 @@
    "options": "Cash Position Report",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-30 10:59:26.455809",
+ "modified": "2022-04-19 14:10:07.403574",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",

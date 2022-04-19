@@ -18,6 +18,7 @@
   "interest",
   "creditted",
   "column_break_10",
+  "branch",
   "date_issued",
   "mode_of_payment",
   "bank",
@@ -68,10 +69,10 @@
   },
   {
    "fieldname": "naming_series",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "hidden": 1,
    "label": "No",
-   "read_only": 1
+   "options": "No-1-.######\nNo-3-.######\nNo-4-.######\nNo-5-.######\nNo-6-.######\nNo-20-.######"
   },
   {
    "fetch_from": "pawn_ticket_no.date_loan_granted",
@@ -238,12 +239,18 @@
    "hidden": 1,
    "label": "Bank",
    "options": "BPI\nBDO\nEast West Cavite Branch"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-08 13:41:21.066776",
+ "modified": "2022-04-19 10:47:33.096927",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",

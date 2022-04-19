@@ -140,6 +140,9 @@
   {
    "fieldname": "branch",
    "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Branch",
    "read_only": 1
   }
@@ -152,7 +155,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-03-23 13:37:08.811766",
+ "modified": "2022-04-19 11:42:32.548345",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Non Jewelry",
