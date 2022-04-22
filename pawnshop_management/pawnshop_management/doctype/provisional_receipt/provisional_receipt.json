@@ -207,13 +207,13 @@
    "fieldname": "number_of_months_to_pay_in_advance",
    "fieldtype": "Int",
    "hidden": 1,
-   "label": "Number of Months to Pay in Advance"
+   "label": "Number of Accrued Moths to Pay"
   },
   {
    "default": "0.00",
    "fieldname": "previous_interest_payment",
    "fieldtype": "Currency",
-   "label": "Advance Interest Payment",
+   "label": "Accrued Interest Payment",
    "read_only": 1
   },
   {
@@ -250,7 +250,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-19 10:47:33.096927",
+ "modified": "2022-04-20 17:15:50.091470",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",

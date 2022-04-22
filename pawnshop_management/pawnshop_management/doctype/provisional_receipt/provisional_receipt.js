@@ -34,7 +34,7 @@ frappe.ui.form.on('Provisional Receipt', {
 						"180.191.232.68" : "Garcia'a Pawnshop - GTC",
 						"49.144.100.169" : "Garcia'a Pawnshop - MOL",
 						"49.144.9.203" : "Garcia'a Pawnshop - POB",
-						"136.158.82.68" : "Garcia'a Pawnshop - TNZ",
+						"119.95.124.193" : "Garcia'a Pawnshop - TNZ",
 						"127.0.0.1" : "Rabie's House",
 						"120.28.240.93": "Rabie's House"
 					}

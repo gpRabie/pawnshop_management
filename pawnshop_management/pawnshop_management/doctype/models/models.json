@@ -13,6 +13,8 @@
   "defective",
   "minimum",
   "maximum",
+  "column_break_7",
+  "item_image",
   "preview"
  ],
  "fields": [
@@ -60,12 +62,22 @@
   {
    "fieldname": "preview",
    "fieldtype": "Image",
-   "label": "Preview"
+   "label": "Preview",
+   "options": "item_image"
+  },
+  {
+   "fieldname": "item_image",
+   "fieldtype": "Attach Image",
+   "label": "Item Image"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-04-13 17:10:03.220111",
+ "modified": "2022-04-21 12:35:48.067466",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Models",
