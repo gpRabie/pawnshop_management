@@ -12,7 +12,7 @@ def login_feed(login_manager):
         "180.190.248.186" : "Garcia's Pawnshop GTC Branch",
         "49.144.100.169" : "Garcia's Pawnshop Molino Branch",
         "49.144.9.203" : "Garcia's Pawnshop Poblacion Branch",
-        "136.158.82.68" : "Garcia's Pawnshop Tanza Branch"
+        "119.95.124.193" : "Garcia's Pawnshop Tanza Branch"
     }
     if user.role_profile_name == "Cashier" or user.role_profile_name == "Appraiser" or user.role_profile_name == "Vault Custodian" or user.role_profile_name == "Supervisor/Cashier" or user.role_profile_name == "Appraiser/Cashier" or user.role_profile_name == "Supervisor":
         # if ip != "127.0.0.1":
