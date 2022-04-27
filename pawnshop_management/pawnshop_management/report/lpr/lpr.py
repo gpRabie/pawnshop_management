@@ -33,7 +33,7 @@ def get_columns():
 			'fieldname': 'pawn_ticket_no',
 			'label': _('P.T.'),
 			'fieldtype': 'Link',
-			'options': 'Pawn Ticket Non Jewelry'
+			'options': 'Pawn Ticket Non Jewelry',
 			'width': 120
 		},
 
