@@ -127,9 +127,18 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "LPR",
+   "link_to": "LPR",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-04-20 14:49:22.941454",
+ "modified": "2022-04-27 15:26:46.572702",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -141,6 +150,12 @@
    "doc_view": "Report Builder",
    "label": "LER",
    "link_to": "LER",
+   "type": "Report"
+  },
+  {
+   "doc_view": "Report Builder",
+   "label": "LPR",
+   "link_to": "LPR",
    "type": "Report"
   },
   {

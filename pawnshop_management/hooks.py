@@ -184,3 +184,6 @@ on_login = "pawnshop_management.pawnshop_management.custom_codes.log_in.post_log
 # 	"Non Jewelry Naming Series"
 # ]
 
+fixtures = [
+	"Workspace"
+]
