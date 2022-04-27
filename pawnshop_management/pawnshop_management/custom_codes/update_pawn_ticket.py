@@ -19,3 +19,8 @@ def update_pawn_tickets():
 def get_child_table():
     items = frappe.get_doc('Pawn Ticket Non Jewelry', '6B')
     return items
+
+@frappe.whitelist()
+def status_change_date(pawn_ticket_no):
+    frappe.db.set_value('Pawn Ticket Non Jewelry', pawn_ticket_no, 'change_status_date', today())
+    frappe.db.commit()

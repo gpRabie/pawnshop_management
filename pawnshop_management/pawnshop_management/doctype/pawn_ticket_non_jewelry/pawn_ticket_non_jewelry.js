@@ -13,8 +13,19 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 					console.log("Success");
 				}
 			})
+		} else if (frm.selected_workflow_action === "Redeem") {
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.status_change_date',
+				args: {
+					pawn_ticket_no: String(frm.doc.pawn_ticket)
+				},
+				callback: function(){
+					frm.refresh_field('change_status_date');
+				}
+			})
 		}
 	},
+
 	validate: function(frm, cdt, cdn){
 		var temp_principal = 0.0;
 		$.each(frm.doc.non_jewelry_items, function(index, item){
@@ -38,7 +49,7 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 					let current_ip = data.message
 					let branch_ip = {
 						"180.195.203.152" : "Garcia's Pawnshop - CC",
-						"180.191.232.68" : "Garcia'a Pawnshop - GTC",
+						"180.190.248.186" : "Garcia'a Pawnshop - GTC",
 						"49.144.100.169" : "Garcia'a Pawnshop - MOL",
 						"49.144.9.203" : "Garcia'a Pawnshop - POB",
 						"119.95.124.193" : "Garcia'a Pawnshop - TNZ",
@@ -176,7 +187,7 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 						}
 					})
 				})
-			} else if (ip.message == "180.191.232.68") {
+			} else if (ip.message == "180.190.248.186") {
 				frappe.db.get_value('Non Jewelry Naming Series', "Garcia'a Pawnshop - GTC", 'inventory_count')
 				.then(r =>{
 					let inventory_count = r.message.inventory_count

@@ -7,7 +7,15 @@ from frappe import _ # _ for to set the string into literal string
 def execute(filters=None):
 	columns, data = [], []
 	columns = get_columns()
-	data = frappe.get_all("Pawn Ticket Non Jewelry", filters=filters, fields=['pawn_ticket', 'customers_tracking_no', 'inventory_tracking_no', 'desired_principal', 'date_loan_granted', 'expiry_date', 'workflow_state'])
+	data = frappe.get_all("Pawn Ticket Non Jewelry", filters=filters, fields=['pawn_ticket', 'customers_tracking_no', 'customers_full_name', 'inventory_tracking_no', 'desired_principal', 'date_loan_granted', 'expiry_date', 'workflow_state', 'change_status_date'])
+	for i in range(len(data)):
+		description = ""
+		details = frappe.db.get_list("Non Jewelry List", filters={'parent': data[i]['pawn_ticket']}, fields=['item_no', 'type', 'brand', 'model', 'model_number'])
+		customer = frappe.get_doc('Customer', data[i]['customers_tracking_no'])
+		data[i]['contact_no'] = customer.mobile_no
+		for j in range(len(details)):
+			description += details[j]["item_no"] + ", " + details[j]["type"] + ", " + details[j]["brand"] + ", " + details[j]["model"] + ", " + details[j]["model_number"] + "; "
+		data[i]['description'] = description
 	return columns, data
 
 def get_columns():
@@ -21,11 +29,18 @@ def get_columns():
 		},
 
 		{
-			'fieldname': 'customers_tracking_no',
-			'label': _('Customer Tracking No'),
-			'fieldtype': 'Link',
+			'fieldname': 'customers_full_name',
+			'label': _('Customer Name'),
+			'fieldtype': 'Data',
 			'options': 'Customer',
 			'width': 200
+		},
+
+		{
+			'fieldname': 'contact_no',
+			'label': _('Contact #'),
+			'fieldtype': 'Data',
+			'width': 150
 		},
 
 		{
@@ -34,6 +49,13 @@ def get_columns():
 			'fieldtype': 'Link',
 			'options': 'Non Jewelry Batch',
 			'width': 100
+		},
+
+		{
+			'fieldname': 'description',
+			'label': _('Item Description'),
+			'fieldtype': 'Small Text',
+			'width': 500
 		},
 
 		{
@@ -47,14 +69,14 @@ def get_columns():
 			'fieldname': 'date_loan_granted',
 			'label': _('Date Loan Granted'),
 			'fieldtype': 'Date',
-			'width': 200
+			'width': 100
 		},
 
 		{
 			'fieldname': 'expiry_date',
 			'label': _('Expiry Date'),
 			'fieldtype': 'Date',
-			'width': 200
+			'width': 100
 		},
 
 		{
@@ -63,5 +85,13 @@ def get_columns():
 			'fieldtype': 'Data',
 			'width': 100
 		},
+
+		{
+			'fieldname': 'change_status_date',
+			'label': _('Date of Status Change'),
+			'fieldtype': 'Date',
+			'width': 150
+		}
+		
 	]
 	return columns

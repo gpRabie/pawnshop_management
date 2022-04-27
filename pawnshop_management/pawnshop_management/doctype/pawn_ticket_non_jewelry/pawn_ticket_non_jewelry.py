@@ -37,6 +37,7 @@ class PawnTicketNonJewelry(Document):
 		if frappe.db.exists('Non Jewelry Batch', self.inventory_tracking_no) != self.inventory_tracking_no: #Copies Items table from pawnt ticket to non jewelry batch doctype
 			new_non_jewelry_batch = frappe.new_doc('Non Jewelry Batch')
 			new_non_jewelry_batch.inventory_tracking_no = self.inventory_tracking_no
+			new_non_jewelry_batch.branch = self.branch
 			items = self.non_jewelry_items
 			for i in range(len(items)):
 				new_non_jewelry_batch.append('items', {

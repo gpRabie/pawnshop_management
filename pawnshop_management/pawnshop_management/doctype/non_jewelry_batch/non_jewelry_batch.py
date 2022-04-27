@@ -7,6 +7,7 @@ from frappe.model.document import Document
 class NonJewelryBatch(Document):
 	def before_save(self):
 		if frappe.db.exists('Pawn Ticket Jewelry', self.name) == None:
+			print("hello")
 			if self.branch == "Garcia's Pawnshop - CC":
 				settings = frappe.get_doc('Non Jewelry Naming Series', "Garcia's Pawnshop - CC")
 				settings.inventory_count += 1
@@ -33,7 +34,10 @@ class NonJewelryBatch(Document):
 				settings.item_count = 1
 				settings.save(ignore_permissions=True)
 			elif self.branch == "Rabie's House":
+				print("Accessed")
 				settings = frappe.get_doc('Non Jewelry Naming Series', "Rabie's House")
 				settings.inventory_count += 1
 				settings.item_count = 1
 				settings.save(ignore_permissions=True)
+			else:
+				print(self.branch)

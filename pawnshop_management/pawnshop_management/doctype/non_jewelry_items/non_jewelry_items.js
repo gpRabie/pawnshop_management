@@ -10,7 +10,7 @@ frappe.ui.form.on('Non Jewelry Items', {
 					let current_ip = data.message
 					let branch_ip = {
 						"180.195.203.152" : "Garcia's Pawnshop - CC",
-						"180.191.232.68" : "Garcia'a Pawnshop - GTC",
+						"180.190.248.186" : "Garcia'a Pawnshop - GTC",
 						"49.144.100.169" : "Garcia'a Pawnshop - MOL",
 						"49.144.9.203" : "Garcia'a Pawnshop - POB",
 						"136.158.82.68" : "Garcia'a Pawnshop - TNZ",
