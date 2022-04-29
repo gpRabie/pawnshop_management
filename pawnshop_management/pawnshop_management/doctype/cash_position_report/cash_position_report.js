@@ -8,17 +8,31 @@ frappe.ui.form.on('Cash Position Report', {
 				method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
 				callback: function(data){
 					let current_ip = data.message
-					let branch_ip = {
-						"180.195.203.152" : "Garcia's Pawnshop - CC",
-						"180.190.248.186" : "Garcia'a Pawnshop - GTC",
-						"49.144.100.169" : "Garcia'a Pawnshop - MOL",
-						"49.144.9.203" : "Garcia'a Pawnshop - POB",
-						"119.95.124.193" : "Garcia'a Pawnshop - TNZ",
-						"127.0.0.1" : "Rabie's House",
-						"120.28.240.93": "Rabie's House"
-					}
-					frm.set_value('branch', branch_ip[String(current_ip)]);
-					frm.refresh_field('branch');
+					frappe.call({
+						method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip_from_settings',
+						callback: (result) => {
+							let ip = result.message;
+							if (current_ip == ip["cavite_city"]) {
+								frm.set_value('branch', "Garcia's Pawnshop - CC");
+								frm.refresh_field('branch');
+							} else if (current_ip == ip["poblacion"]) {
+								frm.set_value('branch', "Garcia'a Pawnshop - POB");
+								frm.refresh_field('branch');
+							} else if (current_ip == ip["molino"]) {
+								frm.set_value('branch', "Garcia'a Pawnshop - MOL");
+								frm.refresh_field('branch');
+							} else if (current_ip == ip["gtc"]) {
+								frm.set_value('branch', "Garcia'a Pawnshop - GTC");
+								frm.refresh_field('branch');
+							} else if (current_ip == ip["tanza"]) {
+								frm.set_value('branch', "Garcia'a Pawnshop - TNZ");
+								frm.refresh_field('branch');
+							} else if (current_ip == ip["rabies_house"]) {
+								frm.set_value('branch', "Rabie's House");
+								frm.refresh_field('branch');
+							}
+						}
+					})
 				}
 			})
 			frappe.db.get_list('Cash Position Report', {

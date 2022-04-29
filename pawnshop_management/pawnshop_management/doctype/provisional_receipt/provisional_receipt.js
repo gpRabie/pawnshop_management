@@ -29,17 +29,31 @@ frappe.ui.form.on('Provisional Receipt', {
 				method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
 				callback: function(data){
 					let current_ip = data.message
-					let branch_ip = {
-						"180.195.203.152" : "Garcia's Pawnshop - CC",
-						"180.190.248.186" : "Garcia'a Pawnshop - GTC",
-						"49.144.100.169" : "Garcia'a Pawnshop - MOL",
-						"49.144.9.203" : "Garcia'a Pawnshop - POB",
-						"119.95.124.193" : "Garcia'a Pawnshop - TNZ",
-						"127.0.0.1" : "Rabie's House",
-						"120.28.240.93": "Rabie's House"
-					}
-					frm.set_value('branch', branch_ip[String(current_ip)]);
-					frm.refresh_field('branch');
+					frappe.call({
+						method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip_from_settings',
+						callback: (result) => {
+							let ip = result.message;
+							if (current_ip == ip["cavite_city"]) {
+								frm.set_value('branch', "Garcia's Pawnshop - CC");
+								frm.refresh_field('branch');
+							} else if (current_ip == ip["poblacion"]) {
+								frm.set_value('branch', "Garcia'a Pawnshop - POB");
+								frm.refresh_field('branch');
+							} else if (current_ip == ip["molino"]) {
+								frm.set_value('branch', "Garcia'a Pawnshop - MOL");
+								frm.refresh_field('branch');
+							} else if (current_ip == ip["gtc"]) {
+								frm.set_value('branch', "Garcia'a Pawnshop - GTC");
+								frm.refresh_field('branch');
+							} else if (current_ip == ip["tanza"]) {
+								frm.set_value('branch', "Garcia'a Pawnshop - TNZ");
+								frm.refresh_field('branch');
+							} else if (current_ip == ip["rabies_house"]) {
+								frm.set_value('branch', "Rabie's House");
+								frm.refresh_field('branch');
+							}
+						}
+					})
 				}
 			})
 		}
@@ -686,39 +700,6 @@ function get_new_pawn_ticket_no(frm) {
 			new_pawn_ticket_no(frm, "5-", current_count);
 		})
 	}
-	// frappe.call({
-	// 	method: 'frappe.client.get_value',
-	// 	args: {
-	// 		'doctype': 'Pawnshop Management Settings',
-	// 		'fieldname': [
-	// 			'a_series_current_count', 
-	// 			'b_series_current_count'
-	// 		]
-	// 	},
-	// 	callback: function(r){
-	// 		frm.set_df_property('new_pawn_ticket_no', 'hidden', 0);
-	// 		let new_pawn_ticket_no = r.message
-	// 		if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal") {
-	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
-	// 			frm.refresh_field('new_pawn_ticket_no')
-	// 		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal") {
-	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.a_series_current_count + "A")
-	// 			frm.refresh_field('new_pawn_ticket_no')
-	// 		} else if(frm.doc.transaction_type == "Renewal"){
-	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
-	// 			frm.refresh_field('new_pawn_ticket_no')
-	// 		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal w/ Amortization") {
-	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
-	// 			frm.refresh_field('new_pawn_ticket_no')
-	// 		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal w/ Amortization") {
-	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.a_series_current_count + "A")
-	// 			frm.refresh_field('new_pawn_ticket_no')
-	// 		} else if(frm.doc.transaction_type == "Renewal w/ Amortization"){
-	// 			frm.set_value('new_pawn_ticket_no', new_pawn_ticket_no.b_series_current_count + "B")
-	// 			frm.refresh_field('new_pawn_ticket_no')
-	// 		}
-	// 	}
-	// })
 }
 
 function new_pawn_ticket_no(frm, prefix, b_series) {
@@ -752,20 +733,13 @@ function select_transaction_type(frm) {					// Sets all field values calculation
 		var total = 0.00;
 		calculate_interest(frm);
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
-		// frm.set_value('total', parseFloat(frm.doc.total) + parseFloat(frm.doc.principal_amount));
-		// frm.refresh_field('total');
 		show_previous_interest_payment(frm);
-		// subtract_previous_interest_payment(frm);
-		// console.log(parseFloat(frm.doc.principal_amount));
 		total = parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.principal_amount) - parseFloat(frm.doc.discount);
-		// console.log(total);
 		frm.set_value('total', total);
 		frm.refresh_field('total');
 	} else if (frm.doc.transaction_type == "Amortization") {
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		show_previous_interest_payment(frm);
-		// frm.set_value('total', parseFloat(frm.doc.additional_amortization));
-		// frm.refresh_field('total');
 	} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
 		if (frm.doc.additional_amortization == 0) {
 			frm.set_value('advance_interest', frm.doc.interest);
@@ -774,9 +748,6 @@ function select_transaction_type(frm) {					// Sets all field values calculation
 		calculate_interest(frm);
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		show_previous_interest_payment(frm);
-		// subtract_previous_interest_payment(frm);
-		// frm.set_value('total', parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest_payment) - parseFloat(frm.doc.discount));
-		// frm.refresh_field('total');
 	} else if(frm.doc.transaction_type == "Renewal"){
 		calculate_interest(frm);
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
@@ -785,7 +756,6 @@ function select_transaction_type(frm) {					// Sets all field values calculation
 		frm.set_value('advance_interest', parseFloat(frm.doc.interest));
 		frm.refresh_field('advance_interest');
 		show_previous_interest_payment(frm);
-		// subtract_previous_interest_payment(frm);
 		frm.set_value('total', parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest));
 		frm.refresh_field('total');
 		console.log(parseFloat(frm.doc.interest_payment));
