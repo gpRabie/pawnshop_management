@@ -4,7 +4,6 @@
 frappe.ui.form.on('Non Jewelry Items', {
 	refresh: function(frm){
 		if (frm.is_new()) {
-			console.log(ip);
 			frappe.call({
 				method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
 				callback: function(data){
