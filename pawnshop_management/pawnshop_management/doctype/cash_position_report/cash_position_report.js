@@ -466,6 +466,7 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 }
 
 function total_cash_breakdown(frm) {
+	let total_cash_breakdown = 0.00
 	let thousand_bill = parseFloat(frm.doc.one_thousand_php_bills);
 	let five_hundred_bill = parseFloat(frm.doc.five_hundred_php_bills);
 	let two_hundred_bill = parseFloat(frm.doc.two_hundred_php_bills);
@@ -476,8 +477,9 @@ function total_cash_breakdown(frm) {
 	let five_peso_coin = parseFloat(frm.doc.five_php_coin);
 	let one_peso_coin = parseFloat(frm.doc.peso_php_coin);
 	let twenty_five_cents = parseFloat(frm.doc.twenty_five_cent_php_coin);
-	let total_cash_breakdown = (thousand_bill + five_hundred_bill + two_hundred_bill + one_hundred_bill + fifty_bill + twenty_bill + ten_peso_coin + five_peso_coin + one_peso_coin + twenty_five_cents);
-	
+	total_cash_breakdown = thousand_bill + five_hundred_bill + two_hundred_bill + one_hundred_bill + fifty_bill + twenty_bill + ten_peso_coin + five_peso_coin + one_peso_coin + twenty_five_cents;
+	console.log(total_cash_breakdown);
+
 	let ending_balance = parseFloat(frm.doc.ending_balance);
 	let shortage_overage = 0.00;
 	if (total_cash_breakdown != ending_balance) {
@@ -490,9 +492,11 @@ function total_cash_breakdown(frm) {
 			frm.set_value('shortage_overage', shortage_overage);
 			frm.refresh_field('shortage_overage');
 		}
+	} else {
+		frm.set_value('shortage_overage', 0.00);
+		frm.refresh_field('shortage_overage');
 	}
 
-	frm.set_value('total_cash', 0.00);
 	frm.set_value('total_cash', total_cash_breakdown - parseFloat(frm.doc.shortage_overage));
 	frm.refresh_field('total_cash');
 }
