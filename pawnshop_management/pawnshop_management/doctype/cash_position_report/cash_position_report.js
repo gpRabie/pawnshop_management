@@ -422,7 +422,6 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 			frm.set_value('non_jewelry', 0.00);
 			for (let index = 0; index < records.length; index++) {
 				temp_total += parseFloat(records[index].net_proceeds)
-				console.log("hello");
 			}
 			frm.set_value('non_jewelry', temp_total);
 			frm.refresh_field('non_jewelry');

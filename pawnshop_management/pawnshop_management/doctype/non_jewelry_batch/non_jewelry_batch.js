@@ -16,16 +16,16 @@ frappe.ui.form.on('Non Jewelry Batch', {
 								frm.set_value('branch', "Garcia's Pawnshop - CC");
 								frm.refresh_field('branch');
 							} else if (current_ip == ip["poblacion"]) {
-								frm.set_value('branch', "Garcia'a Pawnshop - POB");
+								frm.set_value('branch', "Garcia's Pawnshop - POB");
 								frm.refresh_field('branch');
 							} else if (current_ip == ip["molino"]) {
-								frm.set_value('branch', "Garcia'a Pawnshop - MOL");
+								frm.set_value('branch', "Garcia's Pawnshop - MOL");
 								frm.refresh_field('branch');
 							} else if (current_ip == ip["gtc"]) {
-								frm.set_value('branch', "Garcia'a Pawnshop - GTC");
+								frm.set_value('branch', "Garcia's Pawnshop - GTC");
 								frm.refresh_field('branch');
 							} else if (current_ip == ip["tanza"]) {
-								frm.set_value('branch', "Garcia'a Pawnshop - TNZ");
+								frm.set_value('branch', "Garcia's Pawnshop - TNZ");
 								frm.refresh_field('branch');
 							} else if (current_ip == ip["rabies_house"]) {
 								frm.set_value('branch', "Rabie's House");
