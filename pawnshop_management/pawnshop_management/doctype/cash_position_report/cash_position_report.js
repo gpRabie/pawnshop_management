@@ -16,16 +16,16 @@ frappe.ui.form.on('Cash Position Report', {
 								frm.set_value('branch', "Garcia's Pawnshop - CC");
 								frm.refresh_field('branch');
 							} else if (current_ip == ip["poblacion"]) {
-								frm.set_value('branch', "Garcia'a Pawnshop - POB");
+								frm.set_value('branch', "Garcia's Pawnshop - POB");
 								frm.refresh_field('branch');
 							} else if (current_ip == ip["molino"]) {
-								frm.set_value('branch', "Garcia'a Pawnshop - MOL");
+								frm.set_value('branch', "Garcia's Pawnshop - MOL");
 								frm.refresh_field('branch');
 							} else if (current_ip == ip["gtc"]) {
-								frm.set_value('branch', "Garcia'a Pawnshop - GTC");
+								frm.set_value('branch', "Garcia's Pawnshop - GTC");
 								frm.refresh_field('branch');
 							} else if (current_ip == ip["tanza"]) {
-								frm.set_value('branch', "Garcia'a Pawnshop - TNZ");
+								frm.set_value('branch', "Garcia's Pawnshop - TNZ");
 								frm.refresh_field('branch');
 							} else if (current_ip == ip["rabies_house"]) {
 								frm.set_value('branch', "Rabie's House");
@@ -410,7 +410,7 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 			frm.set_value('non_jewelry', temp_total);
 			frm.refresh_field('non_jewelry');
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - GTC") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		frappe.db.get_list('Pawn Ticket Non Jewelry', {
 			fields: ['net_proceeds'],
 			filters: {
@@ -427,7 +427,7 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 			frm.set_value('non_jewelry', temp_total);
 			frm.refresh_field('non_jewelry');
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - MOL") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frappe.db.get_list('Pawn Ticket Non Jewelry', {
 			fields: ['net_proceeds'],
 			filters: {
@@ -443,7 +443,7 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 			frm.set_value('non_jewelry', temp_total);
 			frm.refresh_field('non_jewelry');
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - POB") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
 		frappe.db.get_list('Pawn Ticket Non Jewelry', {
 			fields: ['net_proceeds'],
 			filters: {
@@ -459,7 +459,7 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 			frm.set_value('non_jewelry', temp_total);
 			frm.refresh_field('non_jewelry');
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - TNZ") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
 		frappe.db.get_list('Pawn Ticket Non Jewelry', {
 			fields: ['net_proceeds'],
 			filters: {
