@@ -276,7 +276,7 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 			filters: {
 				date_issued: date_today,
 				docstatus: 1,
-				branch: "Garcia'a Pawnshop - GTC"
+				branch: "Garcia's Pawnshop - GTC"
 			}
 		}).then(records => {
 			let temp_total = 0.00;
@@ -292,7 +292,7 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 			filters: {
 				date_issued: date_today,
 				docstatus: 1,
-				branch: "Garcia'a Pawnshop - MOL"
+				branch: "Garcia's Pawnshop - MOL"
 			}
 		}).then(records => {
 			let temp_total = 0.00;
@@ -308,7 +308,7 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 			filters: {
 				date_issued: date_today,
 				docstatus: 1,
-				branch: "Garcia'a Pawnshop - POB"
+				branch: "Garcia's Pawnshop - POB"
 			}
 		}).then(records => {
 			let temp_total = 0.00;
@@ -324,7 +324,7 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 			filters: {
 				date_issued: date_today,
 				docstatus: 1,
-				branch: "Garcia'a Pawnshop - TNZ"
+				branch: "Garcia's Pawnshop - TNZ"
 			}
 		}).then(records => {
 			let temp_total = 0.00;
