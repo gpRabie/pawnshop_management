@@ -519,13 +519,13 @@ function select_naming_series(frm) { //Select naming series with regards to the 
 		frm.set_value('naming_series', "No.20-.######")
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frm.set_value('naming_series', "No.1-.######")
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - GTC") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		frm.set_value('naming_series', "No.4-.######")
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - MOL") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frm.set_value('naming_series', "No.6-.######")
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - POB") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
 		frm.set_value('naming_series', "No.3-.######")
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - TNZ") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
 		frm.set_value('naming_series', "No.5-.######")
 	}
 }

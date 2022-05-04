@@ -71,53 +71,53 @@ frappe.ui.form.on('Non Jewelry Batch', {
 						})
 					})
 				} else if (ip.message == branch_ip_settings["gtc"]) {
-					frappe.db.get_value('Non Jewelry Naming Series', "Garcia'a Pawnshop - GTC", 'inventory_count')
+					frappe.db.get_value('Non Jewelry Naming Series', "Garcia's Pawnshop - GTC", 'inventory_count')
 					.then(r =>{
 						let inventory_count = r.message.inventory_count
 						frm.set_query('item_no', 'non_jewelry_items', function(){
 							return {
 								filters: {
 									batch_number: String(inventory_count),
-									branch: "Garcia'a Pawnshop - GTC"
+									branch: "Garcia's Pawnshop - GTC"
 								}
 							}
 						})
 					})
 				} else if(ip.message == branch_ip_settings["molino"]) {
-					frappe.db.get_value('Non Jewelry Naming Series', "Garcia'a Pawnshop - MOL", 'inventory_count')
+					frappe.db.get_value('Non Jewelry Naming Series', "Garcia's Pawnshop - MOL", 'inventory_count')
 					.then(r =>{
 						let inventory_count = r.message.inventory_count
 						frm.set_query('item_no', 'non_jewelry_items', function(){
 							return {
 								filters: {
 									batch_number: String(inventory_count),
-									branch: "Garcia'a Pawnshop - MOL"
+									branch: "Garcia's Pawnshop - MOL"
 								}
 							}
 						})
 					})
 				} else if (ip.message == branch_ip_settings["poblacion"]) {
-					frappe.db.get_value('Non Jewelry Naming Series', "Garcia'a Pawnshop - POB", 'inventory_count')
+					frappe.db.get_value('Non Jewelry Naming Series', "Garcia's Pawnshop - POB", 'inventory_count')
 					.then(r =>{
 						let inventory_count = r.message.inventory_count
 						frm.set_query('item_no', 'non_jewelry_items', function(){
 							return {
 								filters: {
 									batch_number: String(inventory_count),
-									branch: "Garcia'a Pawnshop - POB"
+									branch: "Garcia's Pawnshop - POB"
 								}
 							}
 						})
 					})
 				} else if (ip.message == branch_ip_settings["tanza"]) {
-					frappe.db.get_value('Non Jewelry Naming Series', "Garcia'a Pawnshop - TNZ", 'inventory_count')
+					frappe.db.get_value('Non Jewelry Naming Series', "Garcia's Pawnshop - TNZ", 'inventory_count')
 					.then(r =>{
 						let inventory_count = r.message.inventory_count
 						frm.set_query('item_no', 'non_jewelry_items', function(){
 							return {
 								filters: {
 									batch_number: String(inventory_count),
-									branch: "Garcia'a Pawnshop - TNZ"
+									branch: "Garcia's Pawnshop - TNZ"
 								}
 							}
 						})
@@ -146,7 +146,7 @@ function get_inventory_batch(frm) {
 			let non_jewelry_count = parseInt(tracking_no.inventory_count);
 			frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ');
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - GTC") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		frappe.db.get_value('Non Jewelry Naming Series', 'GTC Branch',['b_series', 'inventory_count'])
 		.then(value => {
 			let tracking_no = value.message;
@@ -154,21 +154,21 @@ function get_inventory_batch(frm) {
 			frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ');
 	
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - MOL") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frappe.db.get_value('Non Jewelry Naming Series', 'Molino Branch',['b_series', 'inventory_count'])
 		.then(value => {
 			let tracking_no = value.message;
 			let non_jewelry_count = parseInt(tracking_no.inventory_count);
 			frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ');
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - POB") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
 		frappe.db.get_value('Non Jewelry Naming Series', 'Poblacion Branch',['b_series', 'inventory_count'])
 		.then(value => {
 			let tracking_no = value.message;
 			let non_jewelry_count = parseInt(tracking_no.inventory_count);
 			frm.set_value('inventory_tracking_no', non_jewelry_count + 'NJ');
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - TNZ") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
 		frappe.db.get_value('Non Jewelry Naming Series', 'Tanza Branch',['b_series', 'inventory_count'])
 		.then(value => {
 			let tracking_no = value.message;
