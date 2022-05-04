@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Non Jewelry Report",
- "modified": "2022-05-03 10:11:05.590083",
+ "modified": "2022-05-04 11:18:28.330580",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "IN OUT Report",
@@ -18,7 +18,7 @@
  "prepared_report": 0,
  "ref_doctype": "Cash Position Report",
  "report_name": "IN OUT Report",
- "report_type": "Script Report",
+ "report_type": "Query Report",
  "roles": [
   {
    "role": "System Manager"

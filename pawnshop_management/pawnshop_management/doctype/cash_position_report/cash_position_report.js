@@ -270,7 +270,7 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 			}
 			frm.set_value('provisional_receipts', temp_total);
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - GTC") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
 			filters: {
@@ -286,7 +286,7 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 			}
 			frm.set_value('provisional_receipts', temp_total);
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - MOL") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
 			filters: {
@@ -302,7 +302,7 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 			}
 			frm.set_value('provisional_receipts', temp_total);
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - POB") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
 			filters: {
@@ -318,7 +318,7 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 			}
 			frm.set_value('provisional_receipts', temp_total);
 		})
-	} else if (frm.doc.branch == "Garcia'a Pawnshop - TNZ") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
 			filters: {
