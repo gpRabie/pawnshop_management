@@ -76,6 +76,7 @@ frappe.ui.form.on('Cash Position Report', {
 	branch: function(frm){
 		get_provisional_receipts_of_the_day(frm, frm.doc.date);
 		get_non_jewelry_of_the_day(frm, frm.doc.date)
+		get_gcash_provisional_receipt(frm, frm.doc.date)
 		select_naming_series(frm);
 	},
 
@@ -83,6 +84,7 @@ frappe.ui.form.on('Cash Position Report', {
 		get_provisional_receipts_of_the_day(frm, frm.doc.date);
 		get_non_jewelry_of_the_day(frm, frm.doc.date)
 		select_naming_series(frm);
+		get_gcash_provisional_receipt(frm, frm.doc.date)
 		frappe.db.get_list('Cash Position Report', {
 			fields: ['ending_balance', 'date', 'creation'],
 			filters: {
@@ -225,7 +227,7 @@ function calculate_total_in() {
 }
 
 function calculate_total_out(){
-	var total_out = parseFloat(cur_frm.doc.jewelry_a) + parseFloat(cur_frm.doc.jewelry_b) + parseFloat(cur_frm.doc.cash_to_vault) + parseFloat(cur_frm.doc.non_jewelry);
+	var total_out = parseFloat(cur_frm.doc.jewelry_a) + parseFloat(cur_frm.doc.jewelry_b) + parseFloat(cur_frm.doc.cash_to_vault) + parseFloat(cur_frm.doc.non_jewelry) + parseFloat(cur_frm.doc.agreement_to_sell) + parseFloat(cur_frm.doc.acknowledgement_receipts) + parseFloat(cur_frm.doc.gcash) + parseFloat(cur_frm.doc.bank_transfer);
 	return total_out;
 }
 
@@ -528,5 +530,230 @@ function select_naming_series(frm) { //Select naming series with regards to the 
 		frm.set_value('naming_series', "No.3-.######")
 	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
 		frm.set_value('naming_series', "No.5-.######")
+	}
+}
+
+
+function get_gcash_provisional_receipt(frm, date_today = null) {
+	if (frm.doc.branch == "Rabie's House") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Rabie's House",
+				mode_of_payment: "GCash"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('gcash', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('gcash', temp_total);
+			frm.refresh_field('gcash');
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Garcia's Pawnshop - TNZ",
+				mode_of_payment: "GCash"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('gcash', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('gcash', temp_total);
+			frm.refresh_field('gcash');
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Garcia's Pawnshop - POB",
+				mode_of_payment: "GCash"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('gcash', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('gcash', temp_total);
+			frm.refresh_field('gcash');
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Garcia's Pawnshop - MOL",
+				mode_of_payment: "GCash"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('gcash', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('gcash', temp_total);
+			frm.refresh_field('gcash');
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Garcia's Pawnshop - GTC",
+				mode_of_payment: "GCash"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('gcash', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('gcash', temp_total);
+			frm.refresh_field('gcash');
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Garcia's Pawnshop - CC",
+				mode_of_payment: "GCash"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('gcash', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('gcash', temp_total);
+			frm.refresh_field('gcash');
+		})
+	}
+}
+
+function get_bank_transfer_provisional_receipt(frm, date_today = null) {
+	if (frm.doc.branch == "Rabie's House") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Rabie's House",
+				mode_of_payment: "Bank Transfer"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('bank_transfer', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('gcash', temp_total);
+			frm.refresh_field('bank_transfer');
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Garcia's Pawnshop - TNZ",
+				mode_of_payment: "Bank Transfer"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('bank_transfer', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('bank_transfer', temp_total);
+			frm.refresh_field('bank_transfer');
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Garcia's Pawnshop - POB",
+				mode_of_payment: "Bank Transfer"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('bank_transfer', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('bank_transfer', temp_total);
+			frm.refresh_field('bank_transfer');
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Garcia's Pawnshop - MOL",
+				mode_of_payment: "Bank Transfer"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('bank_transfer', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('bank_transfer', temp_total);
+			frm.refresh_field('bank_transfer');
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Garcia's Pawnshop - GTC",
+				mode_of_payment: "Bank Transfer"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('bank_transfer', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('bank_transfer', temp_total);
+			frm.refresh_field('bank_transfer');
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total'],
+			filters: {
+				date_issued: date_today,
+				docstatus: 1,
+				branch: "Garcia's Pawnshop - CC",
+				mode_of_payment: "Bank Transfer"
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('bank_transfer', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].total)
+			}
+			frm.set_value('bank_transfer', temp_total);
+			frm.refresh_field('bank_transfer');
+		})
 	}
 }
