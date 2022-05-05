@@ -10,10 +10,10 @@ frappe.query_reports["NJ End of the Day Repor"] = {
 			fieldtype: "Select",
 			options: [
 				"Garcia's Pawnshop - CC", 
-				"Garcia'a Pawnshop - GTC", 
-				"Garcia'a Pawnshop - MOL",
-				"Garcia'a Pawnshop - POB",
-				"Garcia'a Pawnshop - TNZ",
+				"Garcia's Pawnshop - GTC", 
+				"Garcia's Pawnshop - MOL",
+				"Garcia's Pawnshop - POB",
+				"Garcia's Pawnshop - TNZ",
 				"Rabie's House"
 			]
 		},
