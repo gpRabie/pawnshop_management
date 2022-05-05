@@ -121,7 +121,7 @@
    "fieldname": "ram",
    "fieldtype": "Select",
    "label": "RAM",
-   "options": "2 GB\n3 GB\n4 GB\n6 GB\n8 GB\n12 GB",
+   "options": "Not Shown\n2 GB\n3 GB\n4 GB\n6 GB\n8 GB\n12 GB",
    "reqd": 1,
    "set_only_once": 1
   },
@@ -303,7 +303,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-04-21 12:34:43.652780",
+ "modified": "2022-05-05 14:54:13.282661",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry Items",
