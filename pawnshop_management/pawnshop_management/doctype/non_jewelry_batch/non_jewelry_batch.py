@@ -13,28 +13,27 @@ class NonJewelryBatch(Document):
 				settings.inventory_count += 1
 				settings.item_count = 1
 				settings.save(ignore_permissions=True)
-			elif self.branch == "Garcia'a Pawnshop - GTC":
+			elif self.branch == "Garcia's Pawnshop - GTC":
 				settings = frappe.get_doc('Non Jewelry Naming Series', "Garcia'a Pawnshop - GTC")
 				settings.inventory_count += 1
 				settings.item_count = 1
 				settings.save(ignore_permissions=True)
-			elif self.branch == "Garcia'a Pawnshop - MOL":
+			elif self.branch == "Garcia's Pawnshop - MOL":
 				settings = frappe.get_doc('Non Jewelry Naming Series', "Garcia'a Pawnshop - MOL")
 				settings.inventory_count += 1
 				settings.item_count = 1
 				settings.save(ignore_permissions=True)
-			elif self.branch == "Garcia'a Pawnshop - POB":
+			elif self.branch == "Garcia's Pawnshop - POB":
 				settings = frappe.get_doc('Non Jewelry Naming Series', "Garcia'a Pawnshop - POB")
 				settings.inventory_count += 1
 				settings.item_count = 1
 				settings.save(ignore_permissions=True)
-			elif self.branch == "Garcia'a Pawnshop - TNZ":
+			elif self.branch == "Garcia's Pawnshop - TNZ":
 				settings = frappe.get_doc('Non Jewelry Naming Series', "Garcia'a Pawnshop - TNZ")
 				settings.inventory_count += 1
 				settings.item_count = 1
 				settings.save(ignore_permissions=True)
 			elif self.branch == "Rabie's House":
-				print("Accessed")
 				settings = frappe.get_doc('Non Jewelry Naming Series', "Rabie's House")
 				settings.inventory_count += 1
 				settings.item_count = 1
