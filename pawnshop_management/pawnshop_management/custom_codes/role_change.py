@@ -2,12 +2,6 @@ import frappe
 
 @frappe.whitelist()
 def change_role(email):
-    # user_role = frappe.get_doc("User", email)
-    # user_role.append('roles', {
-    #     "doctype": "Has Role",
-    #     "role": "Pawnshop Cashier"
-    # })
-    # user_role.save(ignore_permissions=True)
     remove_cashier_role()
     add_cashier_role(email)
 
