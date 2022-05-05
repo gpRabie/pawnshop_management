@@ -80,8 +80,9 @@ frappe.ui.form.on('Cash Position Report', {
 	},
 
 	date: function(frm){
-		// get_provisional_receipts_of_the_day(frm, frm.doc.date);
-		// get_non_jewelry_of_the_day(frm, frm.doc.date)
+		get_provisional_receipts_of_the_day(frm, frm.doc.date);
+		get_non_jewelry_of_the_day(frm, frm.doc.date)
+		select_naming_series(frm);
 		frappe.db.get_list('Cash Position Report', {
 			fields: ['ending_balance', 'date', 'creation'],
 			filters: {
