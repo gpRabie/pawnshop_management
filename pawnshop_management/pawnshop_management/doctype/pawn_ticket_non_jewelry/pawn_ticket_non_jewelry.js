@@ -85,31 +85,6 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 			})
 		}
 		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
-		if (frm.doc.branch == "Garcia's Pawnshop - CC") {
-			for (let index = 0; index < frm.doc.in.length; index++) {
-				const element = array[index];
-				
-			}
-			
-		}
-
-		// frappe.call({
-		// 	method: 'frappe.client.get_value',
-		// 	args: {
-		// 		'doctype': 'Pawnshop Management Settings',
-		// 		'fieldname': 'non_jewelry_inventory_count'
-		// 	},
-		// 	callback: function(r){
-		// 		let inventory_count = r.message
-		// 		frm.set_query('item_no', 'non_jewelry_items', function(){
-		// 			return {
-		// 				"filters": {
-		// 					"batch_number": String(parseInt(inventory_count.non_jewelry_inventory_count))
-		// 				}
-		// 			};
-		// 		});
-		// 	}
-		// })
 
 		frm.add_custom_button('Skip Pawn Ticket No', () => {
 			if (frm.doc.branch == "Rabie's House") {
