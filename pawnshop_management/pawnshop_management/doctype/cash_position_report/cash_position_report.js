@@ -152,6 +152,30 @@ frappe.ui.form.on('Cash Position Report', {
 		frm.refresh_field('total_out');
 	},
 
+	agreement_to_sell: function(frm){
+		frm.set_value('total_out', 0.00);
+		frm.set_value('total_out', calculate_total_out());
+		frm.refresh_field('total_out');
+	},
+
+	acknowledgement_receipts: function(frm){
+		frm.set_value('total_out', 0.00);
+		frm.set_value('total_out', calculate_total_out());
+		frm.refresh_field('total_out');
+	},
+
+	gcash: function(frm){
+		frm.set_value('total_out', 0.00);
+		frm.set_value('total_out', calculate_total_out());
+		frm.refresh_field('total_out');
+	},
+
+	bank_transfer: function(frm){
+		frm.set_value('total_out', 0.00);
+		frm.set_value('total_out', calculate_total_out());
+		frm.refresh_field('total_out');
+	},
+
 	cash_to_vault: function(frm){
 		frm.set_value('total_out', 0.00);
 		frm.set_value('total_out', calculate_total_out());
