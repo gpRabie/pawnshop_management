@@ -8,19 +8,7 @@
  "field_order": [
   "gadget_interest_rate",
   "column_break_2",
-  "jewelry_interest_rate",
-  "section_break_4",
-  "a_series_current_count",
-  "column_break_6",
-  "b_series_current_count",
-  "section_break_8",
-  "jewelry_inventory_count",
-  "column_break_10",
-  "non_jewelry_inventory_count",
-  "section_break_12",
-  "jewelry_count",
-  "column_break_14",
-  "non_jewelry_count"
+  "jewelry_interest_rate"
  ],
  "fields": [
   {
@@ -37,72 +25,12 @@
    "fieldname": "jewelry_interest_rate",
    "fieldtype": "Percent",
    "label": "Jewelry Interest Rate"
-  },
-  {
-   "fieldname": "section_break_4",
-   "fieldtype": "Section Break"
-  },
-  {
-   "default": "1",
-   "fieldname": "a_series_current_count",
-   "fieldtype": "Int",
-   "label": "A Series Current Count"
-  },
-  {
-   "fieldname": "column_break_6",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "1",
-   "fieldname": "b_series_current_count",
-   "fieldtype": "Int",
-   "label": "B Series Current Count"
-  },
-  {
-   "fieldname": "section_break_8",
-   "fieldtype": "Section Break"
-  },
-  {
-   "default": "1",
-   "fieldname": "jewelry_inventory_count",
-   "fieldtype": "Int",
-   "label": "Jewelry Inventory Count"
-  },
-  {
-   "default": "1",
-   "fieldname": "non_jewelry_inventory_count",
-   "fieldtype": "Int",
-   "label": "Non Jewelry Inventory Count"
-  },
-  {
-   "fieldname": "column_break_10",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_12",
-   "fieldtype": "Section Break"
-  },
-  {
-   "default": "1",
-   "fieldname": "jewelry_count",
-   "fieldtype": "Int",
-   "label": "Jewelry Count"
-  },
-  {
-   "fieldname": "column_break_14",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "1",
-   "fieldname": "non_jewelry_count",
-   "fieldtype": "Int",
-   "label": "Non Jewelry Count"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-01-28 11:56:32.512500",
+ "modified": "2022-05-06 13:14:31.896835",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management Settings",

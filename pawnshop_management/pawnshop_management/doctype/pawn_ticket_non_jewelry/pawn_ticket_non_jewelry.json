@@ -49,7 +49,6 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Date Loan Granted",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -163,7 +162,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-04-26 13:19:57.576050",
+ "modified": "2022-05-10 08:59:56.372878",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Non Jewelry",
