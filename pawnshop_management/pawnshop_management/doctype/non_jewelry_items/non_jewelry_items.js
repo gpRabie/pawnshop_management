@@ -40,7 +40,12 @@ frappe.ui.form.on('Non Jewelry Items', {
 
 		if (frm.doc.type == "Cellphone" || frm.doc.type == "Tablet") {
 			frm.set_value('charger', 1)
+			frm.refresh_field('charger')
+		} else {
+			frm.set_value('charger', 0)
+			frm.refresh_field('charger')
 		}
+
 		frm.disable_save();
 		frm.set_df_property('disk_type', 'hidden', 1);
 		frm.set_df_property('internet_connection_capability', 'hidden', 1);
@@ -201,6 +206,11 @@ frappe.ui.form.on('Non Jewelry Items', {
 			frm.set_df_property('manual', 'hidden', 1);
 			frm.set_df_property('sim_card', 'hidden', 1);
 		}
+
+		if (frm.doc.type == "Cellphone" || frm.doc.type == "Tablet") {
+			frm.set_value('charger', 1)
+			frm.refresh_field('charger')
+		} 
 	},
 
 	brand: function(frm){
@@ -219,14 +229,29 @@ frappe.ui.form.on('Non Jewelry Items', {
 		frappe.db.get_value('Models', frm.doc.model, ['defective', 'minimum', 'maximum']).then(function(r){
 			let price_suggestion = r.message;
 			if (frm.doc.category == "Maximum") {
-				frm.set_value('appraisal_value', price_suggestion.maximum)
-				frm.refresh_field('appraisal_value')
+				if (frm.doc.charger == 0) {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.maximum) - 300)
+					frm.refresh_field('appraisal_value')
+				} else {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.maximum))
+					frm.refresh_field('appraisal_value')
+				}
 			} else if (frm.doc.category == "Minimum") {
-				frm.set_value('appraisal_value', price_suggestion.minimum)
-				frm.refresh_field('appraisal_value')
+				if (frm.doc.charger == 0) {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.minimum) - 300)
+					frm.refresh_field('appraisal_value')
+				} else {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.minimum))
+					frm.refresh_field('appraisal_value')
+				}
 			} else {
-				frm.set_value('appraisal_value', price_suggestion.defective)
-				frm.refresh_field('appraisal_value')
+				if (frm.doc.charger == 0) {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.defective) - 300)
+					frm.refresh_field('appraisal_value')
+				} else {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.defective))
+					frm.refresh_field('appraisal_value')
+				}
 			}
 		});
 	},
@@ -235,14 +260,29 @@ frappe.ui.form.on('Non Jewelry Items', {
 		frappe.db.get_value('Models', frm.doc.model, ['defective', 'minimum', 'maximum']).then(function(r){
 			let price_suggestion = r.message;
 			if (frm.doc.category == "Maximum") {
-				frm.set_value('appraisal_value', price_suggestion.maximum)
-				frm.refresh_field('appraisal_value')
+				if (frm.doc.charger == 0) {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.maximum) - 300)
+					frm.refresh_field('appraisal_value')
+				} else {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.maximum))
+					frm.refresh_field('appraisal_value')
+				}
 			} else if (frm.doc.category == "Minimum") {
-				frm.set_value('appraisal_value', price_suggestion.minimum)
-				frm.refresh_field('appraisal_value')
+				if (frm.doc.charger == 0) {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.minimum) - 300)
+					frm.refresh_field('appraisal_value')
+				} else {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.minimum))
+					frm.refresh_field('appraisal_value')
+				}
 			} else {
-				frm.set_value('appraisal_value', price_suggestion.defective)
-				frm.refresh_field('appraisal_value')
+				if (frm.doc.charger == 0) {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.defective) - 300)
+					frm.refresh_field('appraisal_value')
+				} else {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.defective))
+					frm.refresh_field('appraisal_value')
+				}
 			}
 		});
 	},
@@ -307,6 +347,37 @@ frappe.ui.form.on('Non Jewelry Items', {
 				})
 			})
 		}
+	},
+
+	charger: function(frm){
+		frappe.db.get_value('Models', frm.doc.model, ['defective', 'minimum', 'maximum']).then(function(r){
+			let price_suggestion = r.message;
+			if (frm.doc.category == "Maximum") {
+				if (frm.doc.charger == 0) {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.maximum) - 300)
+					frm.refresh_field('appraisal_value')
+				} else {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.maximum))
+					frm.refresh_field('appraisal_value')
+				}
+			} else if (frm.doc.category == "Minimum") {
+				if (frm.doc.charger == 0) {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.minimum) - 300)
+					frm.refresh_field('appraisal_value')
+				} else {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.minimum))
+					frm.refresh_field('appraisal_value')
+				}
+			} else {
+				if (frm.doc.charger == 0) {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.defective) - 300)
+					frm.refresh_field('appraisal_value')
+				} else {
+					frm.set_value('appraisal_value', parseFloat(price_suggestion.defective))
+					frm.refresh_field('appraisal_value')
+				}
+			}
+		});
 	}
 });
 

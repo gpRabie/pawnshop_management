@@ -7,10 +7,10 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 			frappe.call({
 				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.status_change_date',
 				args: {
-					desired_principal: parseFloat(frm.doc.desired_principal)
+					pawn_ticket_no: String(frm.doc.pawn_ticket)
 				},
 				callback: function(){
-					console.log("Success");
+					frm.refresh_field('change_status_date');
 				}
 			})
 		} else if (frm.selected_workflow_action === "Redeem") {

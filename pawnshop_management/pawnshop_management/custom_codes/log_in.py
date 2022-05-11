@@ -24,7 +24,7 @@ def login_feed(login_manager):
     }
     if user.role_profile_name == "Cashier" or user.role_profile_name == "Appraiser" or user.role_profile_name == "Vault Custodian" or user.role_profile_name == "Supervisor/Cashier" or user.role_profile_name == "Appraiser/Cashier" or user.role_profile_name == "Supervisor":
         # if ip != "127.0.0.1":
-        if ip == cavite_city.ip_address or ip == gtc.ip_address or ip == molino.ip_address or ip == poblacion.ip_address or ip == tanza.ip_address or ip == rabies_house.ip_address:
+        if ip == cavite_city.ip_address or ip == gtc.ip_address or ip == molino.ip_address or ip == poblacion.ip_address or ip == tanza.ip_address:  # or ip == rabies_house.ip_address
             frappe.msgprint(
                 msg = 'Welcome, ' + user.full_name,
                 title = 'Welcome to ' + branch[ip]

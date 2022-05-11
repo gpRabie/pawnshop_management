@@ -88,6 +88,7 @@
    "set_only_once": 1
   },
   {
+   "default": "0.00",
    "fieldname": "appraisal_value",
    "fieldtype": "Currency",
    "label": "Appraisal Value",
@@ -303,7 +304,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-05-05 14:54:13.282661",
+ "modified": "2022-05-11 09:35:20.596701",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Non Jewelry Items",
