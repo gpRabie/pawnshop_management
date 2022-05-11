@@ -5,7 +5,7 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	before_workflow_action: function(frm){
 		if (frm.selected_workflow_action === "Collect") {
 			frappe.call({
-				method: 'pawnshop_management.pawnshop_management.custom_codes.create_journal_entry_for_expired_items.create_journal_entry_nj',
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.status_change_date',
 				args: {
 					desired_principal: parseFloat(frm.doc.desired_principal)
 				},

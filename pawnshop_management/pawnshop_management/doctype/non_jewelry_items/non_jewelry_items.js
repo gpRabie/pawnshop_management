@@ -37,6 +37,10 @@ frappe.ui.form.on('Non Jewelry Items', {
 			})
 
 		}
+
+		if (frm.doc.type == "Cellphone" || frm.doc.type == "Tablet") {
+			frm.set_value('charger', 1)
+		}
 		frm.disable_save();
 		frm.set_df_property('disk_type', 'hidden', 1);
 		frm.set_df_property('internet_connection_capability', 'hidden', 1);

@@ -536,7 +536,7 @@ function total_cash_breakdown(frm) {
 		frm.refresh_field('shortage_overage');
 	}
 
-	frm.set_value('total_cash', total_cash_breakdown - parseFloat(frm.doc.shortage_overage));
+	frm.set_value('total_cash', total_cash_breakdown);
 	frm.refresh_field('total_cash');
 }
 

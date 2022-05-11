@@ -163,7 +163,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-05-10 12:14:43.139090",
+ "modified": "2022-05-10 15:46:26.638370",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Non Jewelry",
@@ -190,7 +190,10 @@
    "read": 1,
    "report": 1,
    "role": "Appraiser",
-   "share": 1
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
   }
  ],
  "sort_field": "modified",
