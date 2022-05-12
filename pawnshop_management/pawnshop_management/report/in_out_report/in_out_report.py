@@ -10,11 +10,13 @@ def execute(filters=None):
 	values = {'company': "TEST Garcia's Pawnshop", 'branch': "Rabie's House"}
 	data = frappe.db.sql("""
 		SELECT 
-			pr.beginning_balance AS start_money,
-			pr.provisional_receipts AS receipt,
-			pr.total_in AS sulod
+			cpr.beginning_balance AS start_money,
+			cpr.provisional_receipts AS receipt,
+			cpr.total_in AS sulod,
+			pt.total AS total
 		FROM
-			(`tabCash Position Report` pr)
+			(`tabCash Position Report` cpr),
+			(`tabProvisional Receipt` pt)
 	""", values=values, as_dict=0)
 	return columns, data
 
@@ -38,6 +40,13 @@ def get_columns():
 		{
 			'fieldname': 'sulod',
 			'label': _('Total IN'),
+			'fieldtype': 'Currency',
+			'width': 200
+		}, 
+
+		{
+			'fieldname': 'total',
+			'label': _('Total PR'),
 			'fieldtype': 'Currency',
 			'width': 200
 		}

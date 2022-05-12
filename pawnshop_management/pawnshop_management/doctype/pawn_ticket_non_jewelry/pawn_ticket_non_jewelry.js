@@ -5,8 +5,9 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	before_workflow_action: function(frm){
 		if (frm.selected_workflow_action === "Collect") {
 			frappe.call({
-				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.status_change_date',
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.update_fields_after_status_change_collect',
 				args: {
+					pawn_ticket_type: "Pawn Ticket Non Jewelry",
 					pawn_ticket_no: String(frm.doc.pawn_ticket)
 				},
 				callback: function(){

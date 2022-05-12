@@ -2,7 +2,8 @@
 # For license information, please see license.txt
 
 from datetime import datetime
-from frappe.utils import add_to_date
+from pydoc import Doc, doc
+from frappe.utils import add_to_date, today
 import frappe
 from frappe.model.document import Document
 from frappe.utils import flt
@@ -12,8 +13,26 @@ class ProvisionalReceipt(Document):
 		if self.transaction_type == "Redemption":
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Redeemed')
 			frappe.db.commit()
+			doc = frappe.get_doc(self.pawn_ticket_type, self.pawn_ticket_no)
+			if self.pawn_ticket_type == 'Pawn Ticket Non Jewelry':
+				for items in doc.get('non_jewelry_items'):
+					frappe.db.set_value('Non Jewelry Items', items.item_no, 'workflow_state', 'Redeemed')
+					frappe.db.commit()
 		elif self.transaction_type == "Amortization":
 			self.amortization += self.additional_amortization
+
+		if self.transaction_type == "Renewal":
+				if self.pawn_ticket_no != "":
+					frappe.db.set_value('Pawn Ticket Non Jewelry', self.pawn_ticket_no, 'change_status_date', today())
+					frappe.db.commit()
+		elif self.transaction_type == "Redemption":
+			if self.pawn_ticket_no != "":
+				frappe.db.set_value('Pawn Ticket Non Jewelry', self.pawn_ticket_no, 'change_status_date', today())
+				frappe.db.commit()
+		elif self.transaction_type == "Renewal w/ Amortization":
+			if self.pawn_ticket_no != "":
+				frappe.db.set_value('Pawn Ticket Non Jewelry', self.pawn_ticket_no, 'change_status_date', today())
+				frappe.db.commit()
 
 	def on_submit(self):
 		if self.transaction_type == "Renewal": # Create New Pawn Ticket
@@ -122,6 +141,8 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.submit()
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
 			frappe.db.commit()
+
+
 
 		# For Journal Entry Creation
 		# For Cash Accounts
@@ -620,6 +641,3 @@ class ProvisionalReceipt(Document):
 			doc1.save(ignore_permissions=True)
 			doc1.submit()
 
-		
-
-		
