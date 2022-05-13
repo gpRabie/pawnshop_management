@@ -3,7 +3,7 @@
 
 frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	before_workflow_action: function(frm){
-		if (frm.selected_workflow_action === "Collect") {
+		if (frm.selected_workflow_action === "Collect") { // Change status
 			frappe.call({
 				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.update_fields_after_status_change_collect',
 				args: {
