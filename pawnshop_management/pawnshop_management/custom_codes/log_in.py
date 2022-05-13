@@ -1,8 +1,13 @@
+import re
 import frappe
 import frappe.permissions 
 from frappe import _
 from frappe.sessions import delete_session
 
+@frappe.whitelist()
+def show_ip():
+    ip = frappe.local.request_ip
+    return ip
 
 def login_feed(login_manager):
     ip = frappe.local.request_ip

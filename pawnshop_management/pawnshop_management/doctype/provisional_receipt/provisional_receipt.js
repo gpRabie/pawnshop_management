@@ -89,7 +89,10 @@ frappe.ui.form.on('Provisional Receipt', {
 			// calculate_interest(frm)
 			// calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 			// subtract_previous_interest_payment(frm);
-			console.log(frappe.local.request_ip);
+			frappe.call('pawnshop_management.pawnshop_management.custom_codes.log_in.show_ip', {
+			}).then(r => {
+				console.log(r.message)
+			})
 		})
 	},
 
