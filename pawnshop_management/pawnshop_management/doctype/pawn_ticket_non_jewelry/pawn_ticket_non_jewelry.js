@@ -24,6 +24,17 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 					frm.refresh_field('change_status_date');
 				}
 			})
+		} else if (frm.selected_workflow_action === "Review") {
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.update_fields_after_status_change_review',
+				args: {
+					pawn_ticket_type: "Pawn Ticket Non Jewelry",
+					pawn_ticket_no: String(frm.doc.pawn_ticket)
+				},
+				callback: function(){
+					frm.refresh_field('change_status_date')
+				}
+			})
 		}
 	},
 

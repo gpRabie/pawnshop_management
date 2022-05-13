@@ -10,9 +10,11 @@ def execute(filters=None):
 	values = {'company': "TEST Garcia's Pawnshop", 'branch': "Rabie's House"}
 	data = frappe.db.sql("""
 		SELECT 
+			cpr.date AS date,
 			cpr.beginning_balance AS start_money,
 			cpr.provisional_receipts AS receipt,
 			cpr.total_in AS sulod,
+			(cpr.beginning_balance + cpr.provisional_receipts) AS sum,
 			pt.total AS total
 		FROM
 			(`tabCash Position Report` cpr),
@@ -23,6 +25,13 @@ def execute(filters=None):
 
 def get_columns():
 	columns = [
+		{
+			'fieldname': 'date',
+			'label': _('Date'),
+			'fieldtype': 'Date',
+			'width': 120
+		},
+
 		{
 			'fieldname': 'start_money',
 			'label': _('Beginning Balance'),
@@ -37,12 +46,20 @@ def get_columns():
 			'width': 200
 		},
 
+
 		{
 			'fieldname': 'sulod',
 			'label': _('Total IN'),
 			'fieldtype': 'Currency',
 			'width': 200
 		}, 
+
+		{
+			'fieldname': 'sum',
+			'label': _('Sample'),
+			'fieldtype': 'Currency',
+			'width': 200
+		},
 
 		{
 			'fieldname': 'total',
