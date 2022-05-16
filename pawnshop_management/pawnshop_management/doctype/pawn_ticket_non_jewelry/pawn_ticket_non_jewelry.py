@@ -1,6 +1,7 @@
 # Copyright (c) 2022, Rabie Moses Santillan and contributors
 # For license information, please see license.txt
 
+from pydoc import doc
 import frappe
 from frappe.model.document import Document
 from frappe.utils import flt
@@ -54,6 +55,7 @@ class PawnTicketNonJewelry(Document):
 		doc1.voucher_type = 'Journal Entry'
 		doc1.company = 'TEST Garcia\'s Pawnshop'
 		doc1.posting_date = self.date_loan_granted
+		doc1.branch = self.branch
 
 		row_values1 = doc1.append('accounts', {})
 		row_values1.account = "Pawned Items Inventory - NJ - TGP"
