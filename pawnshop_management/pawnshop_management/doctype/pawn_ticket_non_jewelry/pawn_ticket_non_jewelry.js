@@ -44,7 +44,20 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.update_fields_after_status_change_collect_pawn_ticket',
 				args: {
 					pawn_ticket_type: "Pawn Ticket Non Jewelry",
-					pawn_ticket_no: String(frm.doc.pawn_ticket)
+					pawn_ticket_no: String(frm.doc.pawn_ticket),
+					inventory_tracking_no: String(frm.doc.inventory_tracking_no)
+				},
+				callback: function(){
+					frm.refresh_field('change_status_date')
+				}
+			})
+		} else if (frm.selected_workflow_action === "Pull Out") {
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.update_fields_after_status_change_pull_out_pawn_ticket',
+				args: {
+					pawn_ticket_type: "Pawn Ticket Non Jewelry",
+					pawn_ticket_no: String(frm.doc.pawn_ticket),
+					inventory_tracking_no: String(frm.doc.inventory_tracking_no)
 				},
 				callback: function(){
 					frm.refresh_field('change_status_date')
@@ -109,10 +122,6 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 			}).then(r => {
 				show_tracking_no(frm)
 			})
-		})
-
-		frm.add_custom_button('Show Amended From', () => {
-			console.log(frm.doc.amended_from);
 		})
 		
 		frappe.call({

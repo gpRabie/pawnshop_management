@@ -56,7 +56,8 @@ class PawnTicketNonJewelry(Document):
 		doc1.voucher_type = 'Journal Entry'
 		doc1.company = 'TEST Garcia\'s Pawnshop'
 		doc1.posting_date = self.date_loan_granted
-		doc1.branch = self.branch
+		doc1.reference_doctype = "Pawn Ticket Non Jewelry"
+		doc1.reference_document = self.name
 
 		row_values1 = doc1.append('accounts', {})
 		row_values1.account = "Pawned Items Inventory - NJ - TGP"
@@ -85,4 +86,8 @@ class PawnTicketNonJewelry(Document):
 
 		doc1.save(ignore_permissions=True)
 		doc1.submit()
-	
+
+	def on_cancel(self):
+		name = frappe.db.get_value('Journal Entry', {'reference_document': self.name, "document_status": "Active"}, 'name')
+		frappe.db.set_value('Journal Entry', name, 'docstatus', 2)
+		frappe.db.commit()

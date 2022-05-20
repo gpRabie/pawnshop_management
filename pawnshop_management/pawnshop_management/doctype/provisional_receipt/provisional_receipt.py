@@ -151,7 +151,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
@@ -182,7 +183,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
@@ -214,7 +216,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
@@ -240,7 +243,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
@@ -277,7 +281,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
@@ -298,7 +303,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
@@ -340,7 +346,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
@@ -382,7 +389,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
@@ -412,7 +420,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
@@ -459,7 +468,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
@@ -490,7 +500,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			if self.bank == "BDO":
@@ -526,7 +537,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			if self.bank == "BDO":
@@ -563,7 +575,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			if self.bank == "BDO":
@@ -594,7 +607,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			if self.bank == "BDO":
@@ -636,7 +650,8 @@ class ProvisionalReceipt(Document):
 			doc1.voucher_type = 'Journal Entry'
 			doc1.company = 'TEST Garcia\'s Pawnshop'
 			doc1.posting_date = self.date_issued
-			doc1.branch = self.branch
+			doc1.reference_doctype = "Provisional Receipt"
+			doc1.reference_document = self.name
 
 			row_values1 = doc1.append('accounts', {})
 			if self.bank == "BDO":
