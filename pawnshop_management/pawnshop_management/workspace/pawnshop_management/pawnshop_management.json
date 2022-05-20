@@ -70,6 +70,24 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Jewelry Batch",
+   "link_to": "Jewelry Batch",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NJ Batch",
+   "link_to": "Non Jewelry Batch",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Jewelry Items",
    "link_to": "Jewelry Items",
    "link_type": "DocType",
@@ -165,7 +183,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-05-13 08:16:52.815681",
+ "modified": "2022-05-16 15:56:18.114347",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",

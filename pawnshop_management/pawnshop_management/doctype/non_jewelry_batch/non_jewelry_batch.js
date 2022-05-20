@@ -2,6 +2,39 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Non Jewelry Batch', {
+
+	before_workflow_action: function(frm){
+		if (frm.selected_workflow_action === "Collect") { // Change status
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_nj_batch.update_fields_after_status_change_collect_nj_batch',
+				args: {
+					inventory_tracing_no: String(frm.doc.name)
+				},
+				callback: function(){
+				}
+			})
+		} else if (frm.selected_workflow_action === "Redeem") {
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_nj_batch.status_change_date',
+				args: {
+					inventory_tracing_no: String(frm.doc.name)
+				},
+				callback: function(){
+				}
+			})
+		} else if (frm.selected_workflow_action === "Review") {
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_nj_batch.update_fields_after_status_change_review_nj_batch',
+				args: {
+					inventory_tracing_no: String(frm.doc.name)
+				},
+				callback: function(){
+
+				}
+			})
+		}
+	},
+	
 	onload_post_render: function(frm) {
 		if (frm.is_new) {
 			frappe.call({

@@ -21,7 +21,7 @@ def get_child_table():
     return items
 
 @frappe.whitelist()
-def update_fields_after_status_change_collect(pawn_ticket_type, pawn_ticket_no):
+def update_fields_after_status_change_collect_pawn_ticket(pawn_ticket_type, inventory_tracking_no, pawn_ticket_no):
     frappe.db.set_value(pawn_ticket_type, pawn_ticket_no, 'change_status_date', today())
     frappe.db.commit()
 
@@ -30,17 +30,35 @@ def update_fields_after_status_change_collect(pawn_ticket_type, pawn_ticket_no):
         for items in doc.get('non_jewelry_items'):
             frappe.db.set_value('Non Jewelry Items', items.item_no, 'workflow_state', 'Collected')
             frappe.db.commit()
+        frappe.db.set_value('Non Jewelry Batch', inventory_tracking_no, 'workflow_state', 'Expired')
+        frappe.db.commit()
 
 @frappe.whitelist()
-def update_fields_after_status_change_review(pawn_ticket_type, pawn_ticket_no):
+def update_fields_after_status_change_review_pawn_ticket(pawn_ticket_type, inventory_tracking_no, pawn_ticket_no):
     frappe.db.set_value(pawn_ticket_type, pawn_ticket_no, 'change_status_date', today())
     frappe.db.commit()
 
     doc = frappe.get_doc(pawn_ticket_type, pawn_ticket_no)
     if pawn_ticket_type == 'Pawn Ticket Non Jewelry':
         for items in doc.get('non_jewelry_items'):
-            frappe.db.set_value('Non Jewelry Items', items.item_no, 'workflow_state', 'Pawned')
+            frappe.db.set_value('Non Jewelry Items', items.item_no, 'workflow_state', 'Returned')
             frappe.db.commit()
+        frappe.db.set_value('Non Jewelry Batch', inventory_tracking_no, 'workflow_state', 'Returned')
+        frappe.db.commit()
+
+@frappe.whitelist()
+def update_fields_after_status_change_redeem_pawn_ticket(pawn_ticket_type, inventory_tracking_no, pawn_ticket_no):
+    frappe.db.set_value(pawn_ticket_type, pawn_ticket_no, 'change_status_date', today())
+    frappe.db.commit()
+
+    doc = frappe.get_doc(pawn_ticket_type, pawn_ticket_no)
+    if pawn_ticket_type == 'Pawn Ticket Non Jewelry':
+        for items in doc.get('non_jewelry_items'):
+            frappe.db.set_value('Non Jewelry Items', items.item_no, 'workflow_state', 'Redeemed')
+            frappe.db.commit()
+        frappe.db.set_value('Non Jewelry Batch', inventory_tracking_no, 'workflow_state', 'Redeemed')
+        frappe.db.commit()
+
 
 @frappe.whitelist()
 def increment_b_series(branch):

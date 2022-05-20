@@ -76,7 +76,14 @@ frappe.ui.form.on('Provisional Receipt', {
 		frm.set_query('pawn_ticket_no', () => {
 			return {
 				"filters": {
-					"workflow_state": "Active"
+					"workflow_state": 
+					[
+						'in',
+						[
+							'Active',
+							'Returned'
+						]
+					]
 				}
 			}
 		})
