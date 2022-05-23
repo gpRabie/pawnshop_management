@@ -26,30 +26,6 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "remove",
-  "modified": "2021-11-23 08:41:13.775954",
-  "name": "Rejected",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "style": "Danger",
-  "workflow_state_name": "Rejected"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2022-01-11 10:17:28.810257",
-  "name": "Active",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "style": "Success",
-  "workflow_state_name": "Active"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
   "icon": "",
   "modified": "2022-01-11 10:22:17.261397",
   "name": "Inactive",
@@ -87,30 +63,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2022-01-12 15:24:08.315251",
-  "name": "Pawned",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "style": "Success",
-  "workflow_state_name": "Pawned"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2022-01-12 15:24:34.473527",
-  "name": "Redeemed",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "style": "Warning",
-  "workflow_state_name": "Redeemed"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2022-01-12 15:26:25.798474",
   "name": "Collected",
   "parent": null,
@@ -118,18 +70,6 @@
   "parenttype": null,
   "style": "Inverse",
   "workflow_state_name": "Collected"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2022-01-26 10:33:11.636012",
-  "name": "Expired",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "style": "Inverse",
-  "workflow_state_name": "Expired"
  },
  {
   "docstatus": 0,
@@ -159,13 +99,61 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2022-02-08 16:46:47.678678",
+  "modified": "2022-05-19 11:50:46.997967",
+  "name": "Pulled Out",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Danger",
+  "workflow_state_name": "Pulled Out"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-01-12 15:24:08.315251",
+  "name": "Pawned",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Success",
+  "workflow_state_name": "Pawned"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "remove",
+  "modified": "2021-11-23 08:41:13.775954",
+  "name": "Rejected",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Danger",
+  "workflow_state_name": "Rejected"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-04-07 16:06:17.349104",
   "name": "Draft",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "style": "Warning",
+  "style": "Danger",
   "workflow_state_name": "Draft"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-01-12 15:24:34.473527",
+  "name": "Redeemed",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Warning",
+  "workflow_state_name": "Redeemed"
  },
  {
   "docstatus": 0,
@@ -178,5 +166,41 @@
   "parenttype": null,
   "style": "Primary",
   "workflow_state_name": "Renewed"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-05-12 16:57:51.449674",
+  "name": "Returned",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Primary",
+  "workflow_state_name": "Returned"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-01-26 10:33:11.636012",
+  "name": "Expired",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Inverse",
+  "workflow_state_name": "Expired"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2022-01-11 10:17:28.810257",
+  "name": "Active",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Success",
+  "workflow_state_name": "Active"
  }
 ]

@@ -138,7 +138,7 @@
   "doctype": "Workflow",
   "document_type": "Pawn Ticket Non Jewelry",
   "is_active": 1,
-  "modified": "2022-03-07 12:05:53.078905",
+  "modified": "2022-05-20 11:59:44.795535",
   "name": "Pawn Ticket Non Jewelry",
   "override_status": 0,
   "parent": null,
@@ -182,8 +182,8 @@
     "parentfield": "states",
     "parenttype": "Workflow",
     "state": "Redeemed",
-    "update_field": null,
-    "update_value": null
+    "update_field": "",
+    "update_value": ""
    },
    {
     "allow_edit": "Appraiser",
@@ -195,8 +195,8 @@
     "parentfield": "states",
     "parenttype": "Workflow",
     "state": "Expired",
-    "update_field": null,
-    "update_value": null
+    "update_field": "",
+    "update_value": ""
    },
    {
     "allow_edit": "Appraiser",
@@ -208,6 +208,32 @@
     "parentfield": "states",
     "parenttype": "Workflow",
     "state": "Renewed",
+    "update_field": "",
+    "update_value": ""
+   },
+   {
+    "allow_edit": "Vault Custodian",
+    "doc_status": "1",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Pawn Ticket Non Jewelry",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Returned",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Vault Custodian",
+    "doc_status": "1",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Pawn Ticket Non Jewelry",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Pulled Out",
     "update_field": null,
     "update_value": null
    },
@@ -271,6 +297,17 @@
     "state": "Active"
    },
    {
+    "action": "Cancel",
+    "allow_self_approval": 1,
+    "allowed": "Appraiser",
+    "condition": null,
+    "next_state": "Rejected",
+    "parent": "Pawn Ticket Non Jewelry",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Active"
+   },
+   {
     "action": "Review",
     "allow_self_approval": 1,
     "allowed": "Appraiser",
@@ -304,17 +341,6 @@
     "state": "Redeemed"
    },
    {
-    "action": "Close",
-    "allow_self_approval": 1,
-    "allowed": "Appraiser",
-    "condition": null,
-    "next_state": "Rejected",
-    "parent": "Pawn Ticket Non Jewelry",
-    "parentfield": "transitions",
-    "parenttype": "Workflow",
-    "state": "Expired"
-   },
-   {
     "action": "Review",
     "allow_self_approval": 1,
     "allowed": "Appraiser",
@@ -326,15 +352,48 @@
     "state": "Redeemed"
    },
    {
-    "action": "Review",
+    "action": "Pull Out",
     "allow_self_approval": 1,
-    "allowed": "Appraiser",
+    "allowed": "Vault Custodian",
     "condition": null,
-    "next_state": "Active",
+    "next_state": "Pulled Out",
     "parent": "Pawn Ticket Non Jewelry",
     "parentfield": "transitions",
     "parenttype": "Workflow",
     "state": "Expired"
+   },
+   {
+    "action": "Review",
+    "allow_self_approval": 1,
+    "allowed": "Vault Custodian",
+    "condition": null,
+    "next_state": "Returned",
+    "parent": "Pawn Ticket Non Jewelry",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Pulled Out"
+   },
+   {
+    "action": "Redeem",
+    "allow_self_approval": 1,
+    "allowed": "Appraiser",
+    "condition": null,
+    "next_state": "Redeemed",
+    "parent": "Pawn Ticket Non Jewelry",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Returned"
+   },
+   {
+    "action": "Pull Out",
+    "allow_self_approval": 1,
+    "allowed": "Vault Custodian",
+    "condition": null,
+    "next_state": "Pulled Out",
+    "parent": "Pawn Ticket Non Jewelry",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Returned"
    }
   ],
   "workflow_name": "Pawn Ticket Non Jewelry",
@@ -442,6 +501,306 @@
    }
   ],
   "workflow_name": "Pawn Ticket Jewelry",
+  "workflow_state_field": "workflow_state"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow",
+  "document_type": "Non Jewelry Items",
+  "is_active": 1,
+  "modified": "2022-05-20 15:35:35.235055",
+  "name": "Item Status",
+  "override_status": 0,
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "send_email_alert": 1,
+  "states": [
+   {
+    "allow_edit": "Appraiser",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Item Status",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Pawned",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Pawnshop Cashier",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Item Status",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Redeemed",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Appraiser",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Item Status",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Collected",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Vault Custodian",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Item Status",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Returned",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Vault Custodian",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Item Status",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Pulled Out",
+    "update_field": null,
+    "update_value": null
+   }
+  ],
+  "transitions": [
+   {
+    "action": "Redeem",
+    "allow_self_approval": 1,
+    "allowed": "All",
+    "condition": null,
+    "next_state": "Redeemed",
+    "parent": "Item Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Pawned"
+   },
+   {
+    "action": "Collect",
+    "allow_self_approval": 1,
+    "allowed": "All",
+    "condition": null,
+    "next_state": "Collected",
+    "parent": "Item Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Pawned"
+   },
+   {
+    "action": "Pull Out",
+    "allow_self_approval": 1,
+    "allowed": "Vault Custodian",
+    "condition": null,
+    "next_state": "Pulled Out",
+    "parent": "Item Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Collected"
+   },
+   {
+    "action": "Review",
+    "allow_self_approval": 1,
+    "allowed": "Vault Custodian",
+    "condition": null,
+    "next_state": "Returned",
+    "parent": "Item Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Pulled Out"
+   },
+   {
+    "action": "Pull Out",
+    "allow_self_approval": 1,
+    "allowed": "Vault Custodian",
+    "condition": null,
+    "next_state": "Pulled Out",
+    "parent": "Item Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Returned"
+   },
+   {
+    "action": "Redeem",
+    "allow_self_approval": 1,
+    "allowed": "Pawnshop Cashier",
+    "condition": null,
+    "next_state": "Redeemed",
+    "parent": "Item Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Returned"
+   }
+  ],
+  "workflow_name": "Item Status",
+  "workflow_state_field": "workflow_state"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow",
+  "document_type": "Non Jewelry Batch",
+  "is_active": 1,
+  "modified": "2022-05-20 15:36:07.794451",
+  "name": "Batch Status",
+  "override_status": 0,
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "send_email_alert": 1,
+  "states": [
+   {
+    "allow_edit": "Appraiser",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Batch Status",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Pawned",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Vault Custodian",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Batch Status",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Returned",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Pawnshop Cashier",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Batch Status",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Redeemed",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Vault Custodian",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Batch Status",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Expired",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Vault Custodian",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Batch Status",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Pulled Out",
+    "update_field": null,
+    "update_value": null
+   }
+  ],
+  "transitions": [
+   {
+    "action": "Redeem",
+    "allow_self_approval": 1,
+    "allowed": "Pawnshop Cashier",
+    "condition": null,
+    "next_state": "Redeemed",
+    "parent": "Batch Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Pawned"
+   },
+   {
+    "action": "Collect",
+    "allow_self_approval": 1,
+    "allowed": "Vault Custodian",
+    "condition": null,
+    "next_state": "Expired",
+    "parent": "Batch Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Pawned"
+   },
+   {
+    "action": "Review",
+    "allow_self_approval": 1,
+    "allowed": "Vault Custodian",
+    "condition": null,
+    "next_state": "Returned",
+    "parent": "Batch Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Expired"
+   },
+   {
+    "action": "Redeem",
+    "allow_self_approval": 1,
+    "allowed": "Pawnshop Cashier",
+    "condition": null,
+    "next_state": "Redeemed",
+    "parent": "Batch Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Returned"
+   },
+   {
+    "action": "Pull Out",
+    "allow_self_approval": 1,
+    "allowed": "Vault Custodian",
+    "condition": null,
+    "next_state": "Pulled Out",
+    "parent": "Batch Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Returned"
+   },
+   {
+    "action": "Review",
+    "allow_self_approval": 1,
+    "allowed": "Vault Custodian",
+    "condition": null,
+    "next_state": "Returned",
+    "parent": "Batch Status",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Pulled Out"
+   }
+  ],
+  "workflow_name": "Batch Status",
   "workflow_state_field": "workflow_state"
  }
 ]
