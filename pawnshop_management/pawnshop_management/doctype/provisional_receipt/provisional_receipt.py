@@ -156,6 +156,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Renewal"
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
@@ -188,6 +189,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Redemption"
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
@@ -221,6 +223,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Amortization"
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
@@ -248,6 +251,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Renewal w/ Amortization"
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
@@ -286,6 +290,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Interest Payment"
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
@@ -308,6 +313,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Renewal"
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
@@ -351,6 +357,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Redemption"
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
@@ -394,6 +401,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Amortization"
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
@@ -425,6 +433,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Renewal w/ Amortization"
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
@@ -473,6 +482,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Interest Payment"
 
 			row_values1 = doc1.append('accounts', {})
 			row_values1.account = "Cash in Bank - EW Cavite - NJ - TGP"
@@ -505,6 +515,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Renewal"
 
 			row_values1 = doc1.append('accounts', {})
 			if self.bank == "BDO":
@@ -542,6 +553,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Redemption"
 
 			row_values1 = doc1.append('accounts', {})
 			if self.bank == "BDO":
@@ -580,6 +592,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Amortization"
 
 			row_values1 = doc1.append('accounts', {})
 			if self.bank == "BDO":
@@ -612,6 +625,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Renewal w/ Amortization"
 
 			row_values1 = doc1.append('accounts', {})
 			if self.bank == "BDO":
@@ -655,6 +669,7 @@ class ProvisionalReceipt(Document):
 			doc1.posting_date = self.date_issued
 			doc1.reference_doctype = "Provisional Receipt"
 			doc1.reference_document = self.name
+			doc1.document_status = "Interest Payment"
 
 			row_values1 = doc1.append('accounts', {})
 			if self.bank == "BDO":

@@ -153,7 +153,7 @@
    "in_preview": 0,
    "in_standard_filter": 0,
    "insert_after": "posting_date",
-   "label": "Document Status",
+   "label": "Transaction ",
    "length": 0,
    "mandatory_depends_on": null,
    "modified": "2022-05-20 14:28:09.327037",

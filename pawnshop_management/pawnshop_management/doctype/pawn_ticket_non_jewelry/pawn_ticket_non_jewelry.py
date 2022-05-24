@@ -58,6 +58,7 @@ class PawnTicketNonJewelry(Document):
 		doc1.posting_date = self.date_loan_granted
 		doc1.reference_doctype = "Pawn Ticket Non Jewelry"
 		doc1.reference_document = self.name
+		doc1.document_status = "New Sangla"
 
 		row_values1 = doc1.append('accounts', {})
 		row_values1.account = "Pawned Items Inventory - NJ - TGP"

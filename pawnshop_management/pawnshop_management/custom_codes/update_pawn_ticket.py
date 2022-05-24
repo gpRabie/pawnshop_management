@@ -16,9 +16,34 @@ def update_pawn_tickets():
         #     print("True")
 
 @frappe.whitelist()
-def get_child_table():
-    items = frappe.get_doc('Pawn Ticket Non Jewelry', '6B')
-    return items
+def change_pawn_ticket_nj_status_to_expire():
+    expired_pt = frappe.db.get_all('Pawn Ticket Non Jewelry', 
+        filters={
+            'expiry_date': today()
+        },
+        fields=['name']
+    )
+
+    for i in range(len(expired_pt)):
+        frappe.db.set_value('Pawn Ticket Non Jewelry', expired_pt[i].name, 'workflow_state', 'Expired')
+        frappe.db.commit()
+        change_pt_inventory_batch_and_items('Pawn Ticket Non Jewelry', expired_pt[i].name)
+        
+
+def change_pt_inventory_batch_and_items(pawn_ticket_type, pawn_ticket):
+    doc = frappe.get_doc(pawn_ticket_type, pawn_ticket)
+    if pawn_ticket_type == 'Pawn Ticket Non Jewelry':
+        for items in doc.get('non_jewelry_items'):
+            frappe.db.set_value('Non Jewelry Items', items.item_no, 'workflow_state', 'Collected')
+            frappe.db.commit()
+        frappe.db.set_value('Non Jewelry Batch', doc.inventory_tracking_no, 'workflow_state', 'Expired')
+        frappe.db.commit()
+    elif pawn_ticket_type == 'Pawn Ticket Jewelry':
+        for items in doc.get('jewelry_items'):
+            frappe.db.set_value('Jewelry Items', items.item_no, 'workflow_state', 'Collected')
+            frappe.db.commit()
+        frappe.db.set_value('Jewelry Batch', doc.inventory_tracking_no, 'workflow_state', 'Expired')
+        frappe.db.commit()
 
 @frappe.whitelist()
 def update_fields_after_status_change_collect_pawn_ticket(pawn_ticket_type, inventory_tracking_no, pawn_ticket_no):
