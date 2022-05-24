@@ -22,14 +22,20 @@ class ProvisionalReceipt(Document):
 			self.amortization += self.additional_amortization
 
 		if self.transaction_type == "Renewal":
-				if self.pawn_ticket_no != "":
-					frappe.db.set_value('Pawn Ticket Non Jewelry', self.pawn_ticket_no, 'change_status_date', today())
-					frappe.db.commit()
+			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
+			frappe.db.commit()
+			if self.pawn_ticket_no != "":
+				frappe.db.set_value('Pawn Ticket Non Jewelry', self.pawn_ticket_no, 'change_status_date', today())
+				frappe.db.commit()
 		elif self.transaction_type == "Redemption":
+			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Redeemed')
+			frappe.db.commit()
 			if self.pawn_ticket_no != "":
 				frappe.db.set_value('Pawn Ticket Non Jewelry', self.pawn_ticket_no, 'change_status_date', today())
 				frappe.db.commit()
 		elif self.transaction_type == "Renewal w/ Amortization":
+			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
+			frappe.db.commit()
 			if self.pawn_ticket_no != "":
 				frappe.db.set_value('Pawn Ticket Non Jewelry', self.pawn_ticket_no, 'change_status_date', today())
 				frappe.db.commit()
@@ -74,8 +80,6 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.net_proceeds = previous_pawn_ticket.net_proceeds
 			new_pawn_ticket.save(ignore_permissions=True)
 			new_pawn_ticket.submit()
-			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
-			frappe.db.commit()
 
 		elif self.transaction_type == "Amortization":
 			interest_rate = frappe.get_doc('Pawnshop Management Settings')
@@ -139,8 +143,7 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.net_proceeds = self.principal_amount - self.additional_amortization - self.advance_interest
 			new_pawn_ticket.save(ignore_permissions=True)
 			new_pawn_ticket.submit()
-			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
-			frappe.db.commit()
+			
 
 
 
@@ -670,4 +673,3 @@ class ProvisionalReceipt(Document):
 
 			doc1.save(ignore_permissions=True)
 			doc1.submit()
-

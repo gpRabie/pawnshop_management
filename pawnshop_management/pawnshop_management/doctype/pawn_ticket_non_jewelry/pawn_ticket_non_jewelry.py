@@ -87,7 +87,7 @@ class PawnTicketNonJewelry(Document):
 		doc1.save(ignore_permissions=True)
 		doc1.submit()
 
-	def on_cancel(self):
+	def before_cancel(self):
 		name = frappe.db.get_value('Journal Entry', {'reference_document': self.name, "document_status": "Active"}, 'name')
 		frappe.db.set_value('Journal Entry', name, 'docstatus', 2)
 		frappe.db.commit()
