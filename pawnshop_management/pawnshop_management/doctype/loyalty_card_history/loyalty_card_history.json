@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-05-24 16:54:36.079989",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "business_line",
+  "transaction",
+  "pts_movement",
+  "encoder"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1,
+   "width": "150px"
+  },
+  {
+   "columns": 2,
+   "fieldname": "business_line",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Business Line",
+   "reqd": 1,
+   "width": "200px"
+  },
+  {
+   "columns": 2,
+   "fieldname": "transaction",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Transaction",
+   "width": "200px"
+  },
+  {
+   "columns": 1,
+   "fieldname": "pts_movement",
+   "fieldtype": "Float",
+   "label": "Pts. Movement",
+   "width": "100px"
+  },
+  {
+   "columns": 2,
+   "fieldname": "encoder",
+   "fieldtype": "Data",
+   "label": "Encoder",
+   "width": "200px"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-05-24 17:03:41.703262",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Loyalty Card History",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
