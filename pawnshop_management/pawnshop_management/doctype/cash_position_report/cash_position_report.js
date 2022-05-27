@@ -526,15 +526,19 @@ function total_cash_breakdown(frm) {
 			shortage_overage = total_cash_breakdown - ending_balance;
 			frm.set_value('shortage_overage', shortage_overage);
 			frm.refresh_field('shortage_overage');
+			total_cash_breakdown = total_cash_breakdown - shortage_overage
 		} else if (total_cash_breakdown < ending_balance) {
 			shortage_overage = total_cash_breakdown - ending_balance;
 			frm.set_value('shortage_overage', shortage_overage);
 			frm.refresh_field('shortage_overage');
-		}
+			total_cash_breakdown = total_cash_breakdown + shortage_overage
+		} 
 	} else {
 		frm.set_value('shortage_overage', 0.00);
 		frm.refresh_field('shortage_overage');
 	}
+
+	
 
 	frm.set_value('total_cash', total_cash_breakdown);
 	frm.refresh_field('total_cash');
