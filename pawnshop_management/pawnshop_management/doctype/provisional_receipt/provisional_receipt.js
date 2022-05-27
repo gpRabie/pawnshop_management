@@ -89,16 +89,9 @@ frappe.ui.form.on('Provisional Receipt', {
 		})
 
 		frm.add_custom_button('Test Button', () => {
-			// subtract_previous_interest_payment(frm)
-			// check_creditted_interest_payments(frm);
-			// show_previous_interest_payment(frm);
-			// show_payment_fields(frm)
-			// calculate_interest(frm)
-			// calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
-			// subtract_previous_interest_payment(frm);
-			frappe.call('pawnshop_management.pawnshop_management.custom_codes.log_in.show_ip', {
+			frappe.call('pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.change_pawn_ticket_nj_status_to_expire', {
 			}).then(r => {
-				console.log(r.message)
+				
 			})
 		})
 	},

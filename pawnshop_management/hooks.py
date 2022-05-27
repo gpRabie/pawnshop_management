@@ -98,6 +98,7 @@ app_license = "MIT"
 #	}
 # }
 
+
 # Scheduled Tasks
 # ---------------
 
@@ -118,6 +119,17 @@ app_license = "MIT"
 # 		"pawnshop_management.tasks.monthly"
 # 	]
 # }
+
+
+scheduler_events = {
+	"cron": {
+		"* * * * *":[
+			"pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.change_pawn_ticket_nj_status_to_expire"
+		]
+	}	
+}
+
+
 
 # Testing
 # -------

@@ -19,11 +19,11 @@ def update_pawn_tickets():
 def change_pawn_ticket_nj_status_to_expire():
     expired_pt = frappe.db.get_all('Pawn Ticket Non Jewelry', 
         filters={
-            'expiry_date': today()
+            'expiry_date': today(),
+            'workflow_state': "Active"
         },
         fields=['name']
     )
-
     for i in range(len(expired_pt)):
         frappe.db.set_value('Pawn Ticket Non Jewelry', expired_pt[i].name, 'workflow_state', 'Expired')
         frappe.db.commit()

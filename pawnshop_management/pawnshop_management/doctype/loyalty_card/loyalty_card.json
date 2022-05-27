@@ -30,6 +30,7 @@
    "options": "Customer"
   },
   {
+   "fetch_from": "customer_tracking_no.customer_name",
    "fieldname": "customer_name",
    "fieldtype": "Data",
    "label": "Customer Name"
@@ -53,7 +54,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-05-24 16:54:56.774563",
+ "modified": "2022-05-24 17:12:03.934209",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Loyalty Card",
