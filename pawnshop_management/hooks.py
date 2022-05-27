@@ -123,7 +123,7 @@ app_license = "MIT"
 
 scheduler_events = {
 	"cron": {
-		"* * * * *":[
+		"0 3 * * *":[
 			"pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.change_pawn_ticket_nj_status_to_expire"
 		]
 	}	
