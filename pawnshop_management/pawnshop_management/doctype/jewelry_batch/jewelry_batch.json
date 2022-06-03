@@ -8,6 +8,9 @@
  "engine": "InnoDB",
  "field_order": [
   "inventory_tracking_no",
+  "column_break_2",
+  "branch",
+  "section_break_4",
   "items"
  ],
  "fields": [
@@ -15,6 +18,7 @@
    "fieldname": "inventory_tracking_no",
    "fieldtype": "Data",
    "label": "Inventory Tracking No",
+   "read_only": 1,
    "unique": 1
   },
   {
@@ -22,11 +26,25 @@
    "fieldtype": "Table",
    "label": "Item(s)",
    "options": "Jewelry List"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-01 16:25:39.454049",
+ "modified": "2022-05-31 10:57:25.541081",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Batch",

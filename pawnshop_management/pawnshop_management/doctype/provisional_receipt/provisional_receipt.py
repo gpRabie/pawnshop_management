@@ -18,6 +18,10 @@ class ProvisionalReceipt(Document):
 				for items in doc.get('non_jewelry_items'):
 					frappe.db.set_value('Non Jewelry Items', items.item_no, 'workflow_state', 'Redeemed')
 					frappe.db.commit()
+			elif self.pawn_ticket_type == 'Pawn Ticket Jewelry':
+				for items in doc.get('jewelry_items'):
+					frappe.db.set_value('Jewelry Items', items.item_no, 'workflow_state', 'Redeemed')
+					frappe.db.commit()
 		elif self.transaction_type == "Amortization":
 			self.amortization += self.additional_amortization
 
@@ -25,19 +29,19 @@ class ProvisionalReceipt(Document):
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
 			frappe.db.commit()
 			if self.pawn_ticket_no != "":
-				frappe.db.set_value('Pawn Ticket Non Jewelry', self.pawn_ticket_no, 'change_status_date', today())
+				frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'change_status_date', today())
 				frappe.db.commit()
 		elif self.transaction_type == "Redemption":
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Redeemed')
 			frappe.db.commit()
 			if self.pawn_ticket_no != "":
-				frappe.db.set_value('Pawn Ticket Non Jewelry', self.pawn_ticket_no, 'change_status_date', today())
+				frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'change_status_date', today())
 				frappe.db.commit()
 		elif self.transaction_type == "Renewal w/ Amortization":
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Renewed')
 			frappe.db.commit()
 			if self.pawn_ticket_no != "":
-				frappe.db.set_value('Pawn Ticket Non Jewelry', self.pawn_ticket_no, 'change_status_date', today())
+				frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'change_status_date', today())
 				frappe.db.commit()
 
 	def on_submit(self):
@@ -70,10 +74,15 @@ class ProvisionalReceipt(Document):
 					new_pawn_ticket.append("jewelry_items", {
 						"item_no": previous_items[i].item_no,
 						"type": previous_items[i].type,
-						"brand": previous_items[i].brand,
-						"model": previous_items[i].model,
-						"model_number": previous_items[i].model_number,
-						"suggested_appraisal_value": previous_items[i].suggested_appraisal_value
+						"karat_category": previous_items[i].karat_category,
+						"karat": previous_items[i].karat,
+						"weight": previous_items[i].weight,
+						"color": previous_items[i].color,
+						"colors_if_multi": previous_items[i].colors_if_multi,
+						"additional_for_stone": previous_items[i].additional_for_stone,
+						"suggested_appraisal_value": previous_items[i].suggested_appraisal_value,
+						"desired_principal": previous_items[i].desired_principal,
+						"comments": previous_items[i].comments
 					})
 			new_pawn_ticket.desired_principal = previous_pawn_ticket.desired_principal
 			new_pawn_ticket.interest = previous_pawn_ticket.interest
@@ -133,10 +142,15 @@ class ProvisionalReceipt(Document):
 					new_pawn_ticket.append("jewelry_items", {
 						"item_no": previous_items[i].item_no,
 						"type": previous_items[i].type,
-						"brand": previous_items[i].brand,
-						"model": previous_items[i].model,
-						"model_number": previous_items[i].model_number,
-						"suggested_appraisal_value": previous_items[i].suggested_appraisal_value
+						"karat_category": previous_items[i].karat_category,
+						"karat": previous_items[i].karat,
+						"weight": previous_items[i].weight,
+						"color": previous_items[i].color,
+						"colors_if_multi": previous_items[i].colors_if_multi,
+						"additional_for_stone": previous_items[i].additional_for_stone,
+						"suggested_appraisal_value": previous_items[i].suggested_appraisal_value,
+						"desired_principal": previous_items[i].desired_principal,
+						"comments": previous_items[i].comments
 					})
 			new_pawn_ticket.desired_principal = self.principal_amount - self.additional_amortization
 			new_pawn_ticket.interest = self.advance_interest

@@ -9,10 +9,17 @@
  "field_order": [
   "branch",
   "series_section",
-  "b_series",
+  "a_series",
   "column_break_4",
+  "b_series",
+  "non_jewelry_series_section",
   "inventory_count",
-  "item_count"
+  "column_break_5",
+  "item_count",
+  "jewelry_series_section",
+  "jewelry_inventory_count",
+  "column_break_12",
+  "jewelry_item_count"
  ],
  "fields": [
   {
@@ -35,26 +42,62 @@
    "default": "0",
    "fieldname": "inventory_count",
    "fieldtype": "Int",
-   "label": "Inventory Count"
+   "label": "Non Jewelry Inventory Count"
   },
   {
    "default": "0",
    "fieldname": "item_count",
    "fieldtype": "Int",
-   "label": "Item Count"
+   "label": "Non Jewelry Item Count"
   },
   {
    "fieldname": "series_section",
    "fieldtype": "Section Break",
-   "label": "Series"
+   "label": "Category Series"
+  },
+  {
+   "default": "1",
+   "fieldname": "jewelry_item_count",
+   "fieldtype": "Int",
+   "label": "Jewelry Item Count"
+  },
+  {
+   "default": "1",
+   "fieldname": "jewelry_inventory_count",
+   "fieldtype": "Int",
+   "label": "Jewelry Inventory Count"
+  },
+  {
+   "default": "1",
+   "fieldname": "a_series",
+   "fieldtype": "Int",
+   "label": "A Series"
+  },
+  {
+   "fieldname": "non_jewelry_series_section",
+   "fieldtype": "Section Break",
+   "label": "Non Jewelry Series"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "jewelry_series_section",
+   "fieldtype": "Section Break",
+   "label": "Jewelry Series"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-04-12 15:25:56.638099",
+ "modified": "2022-05-30 15:09:33.251839",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
- "name": "Non Jewelry Naming Series",
+ "name": "Pawnshop Naming Series",
  "owner": "Administrator",
  "permissions": [
   {

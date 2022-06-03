@@ -517,7 +517,6 @@ function total_cash_breakdown(frm) {
 	let one_peso_coin = parseFloat(frm.doc.peso_php_coin);
 	let twenty_five_cents = parseFloat(frm.doc.twenty_five_cent_php_coin);
 	total_cash_breakdown = thousand_bill + five_hundred_bill + two_hundred_bill + one_hundred_bill + fifty_bill + twenty_bill + ten_peso_coin + five_peso_coin + one_peso_coin + twenty_five_cents;
-	console.log(total_cash_breakdown);
 
 	let ending_balance = parseFloat(frm.doc.ending_balance);
 	let shortage_overage = 0.00;
@@ -526,7 +525,7 @@ function total_cash_breakdown(frm) {
 			shortage_overage = total_cash_breakdown - ending_balance;
 			frm.set_value('shortage_overage', shortage_overage);
 			frm.refresh_field('shortage_overage');
-			total_cash_breakdown = total_cash_breakdown - shortage_overage
+			total_cash_breakdown = total_cash_breakdown + shortage_overage
 		} else if (total_cash_breakdown < ending_balance) {
 			shortage_overage = total_cash_breakdown - ending_balance;
 			frm.set_value('shortage_overage', shortage_overage);

@@ -124,7 +124,8 @@ app_license = "MIT"
 scheduler_events = {
 	"cron": {
 		"0 3 * * *":[
-			"pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.change_pawn_ticket_nj_status_to_expire"
+			"pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.change_pawn_ticket_nj_status_to_expire",
+			"pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.change_pawn_ticket_j_status_to_expire"
 		]
 	}	
 }
@@ -194,5 +195,10 @@ on_login = "pawnshop_management.pawnshop_management.custom_codes.log_in.post_log
 # 	"Workspace",
 # 	"Workflow State",
 # 	"Workflow",
-# 	"Non Jewelry Naming Series"
+# 	"Pawnshop Naming Series"
 # ]
+
+fixtures = [
+	"Workflow",
+	"Pawnshop Naming Series"
+]

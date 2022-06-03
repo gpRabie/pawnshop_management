@@ -668,37 +668,37 @@ function select_naming_series(frm) { //Select naming series with regards to the 
 
 function get_new_pawn_ticket_no(frm) {
 	if (frm.doc.branch == "Rabie's House") {
-		frappe.db.get_value("Non Jewelry Naming Series", "Rabie's House", "b_series")
+		frappe.db.get_value("Pawnshop Naming Series", "Rabie's House", "b_series")
 		.then(r => {
 			let current_count = r.message.b_series;
 			new_pawn_ticket_no(frm, "20-", current_count);
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
-		frappe.db.get_value("Non Jewelry Naming Series", "Garcia's Pawnshop - CC", "b_series")
+		frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - CC", "b_series")
 		.then(r => {
 			let current_count = r.message.b_series;
 			new_pawn_ticket_no(frm, "1-", current_count);
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
-		frappe.db.get_value("Non Jewelry Naming Series", "Garcia's Pawnshop - GTC", "b_series")
+		frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - GTC", "b_series")
 		.then(r => {
 			let current_count = r.message.b_series;
 			new_pawn_ticket_no(frm, "4-", current_count);
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
-		frappe.db.get_value("Non Jewelry Naming Series", "Garcia's Pawnshop - MOL", "b_series")
+		frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - MOL", "b_series")
 		.then(r => {
 			let current_count = r.message.b_series;
 			new_pawn_ticket_no(frm, "6-", current_count);
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
-		frappe.db.get_value("Non Jewelry Naming Series", "Garcia's Pawnshop - POB", "b_series")
+		frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - POB", "b_series")
 		.then(r => {
 			let current_count = r.message.b_series;
 			new_pawn_ticket_no(frm, "3-", current_count);
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
-		frappe.db.get_value("Non Jewelry Naming Series", "Garcia's Pawnshop - TNZ", "b_series")
+		frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - TNZ", "b_series")
 		.then(r => {
 			let current_count = r.message.b_series;
 			new_pawn_ticket_no(frm, "5-", current_count);

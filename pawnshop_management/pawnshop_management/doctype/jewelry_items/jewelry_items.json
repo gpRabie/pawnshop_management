@@ -13,7 +13,11 @@
   "weight",
   "karat",
   "karat_category",
+  "sizelength",
+  "selling_price",
+  "selling_price_per_gram",
   "column_break_6",
+  "branch",
   "additional_for_stone",
   "color",
   "colors_if_multi",
@@ -21,6 +25,8 @@
   "comments",
   "section_break_12",
   "appraisal_value",
+  "column_break_19",
+  "desired_principal",
   "appraisers_section",
   "main_appraiser",
   "column_break_16",
@@ -150,11 +156,45 @@
    "label": "Assistant Appraiser",
    "options": "User",
    "reqd": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "sizelength",
+   "fieldtype": "Float",
+   "label": "Size/Length"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "selling_price",
+   "fieldtype": "Currency",
+   "label": "Selling Price"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "selling_price_per_gram",
+   "fieldtype": "Currency",
+   "label": "Selling Price Per Gram"
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "desired_principal",
+   "fieldtype": "Currency",
+   "label": "Desired Principal",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-18 15:05:49.142090",
+ "modified": "2022-06-01 14:29:13.044053",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Items",

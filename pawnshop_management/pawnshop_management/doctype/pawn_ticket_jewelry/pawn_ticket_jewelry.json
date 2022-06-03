@@ -110,6 +110,7 @@
    "fieldname": "desired_principal",
    "fieldtype": "Currency",
    "label": "Desired Principal",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -138,12 +139,15 @@
   {
    "fieldname": "change_status_date",
    "fieldtype": "Date",
-   "label": "Change Status Date"
+   "label": "Change Status Date",
+   "read_only": 1
   },
   {
    "fieldname": "branch",
    "fieldtype": "Data",
-   "label": "Branch "
+   "label": "Branch ",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -154,7 +158,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-05-27 14:40:51.124043",
+ "modified": "2022-06-01 14:54:42.858527",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Jewelry",
