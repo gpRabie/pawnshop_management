@@ -39,10 +39,8 @@
   {
    "fieldname": "item_series",
    "fieldtype": "Select",
-   "hidden": 1,
    "label": "Series",
-   "options": "A\nB",
-   "read_only": 1
+   "options": "A\nB"
   },
   {
    "fieldname": "date_loan_granted",
@@ -158,7 +156,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-06-01 14:54:42.858527",
+ "modified": "2022-06-06 11:22:43.086869",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Jewelry",

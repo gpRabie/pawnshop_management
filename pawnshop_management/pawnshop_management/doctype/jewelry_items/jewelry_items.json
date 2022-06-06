@@ -167,18 +167,21 @@
    "default": "0.00",
    "fieldname": "sizelength",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Size/Length"
   },
   {
    "default": "0.00",
    "fieldname": "selling_price",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Selling Price"
   },
   {
    "default": "0.00",
    "fieldname": "selling_price_per_gram",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Selling Price Per Gram"
   },
   {
@@ -194,7 +197,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-06-01 14:29:13.044053",
+ "modified": "2022-06-03 12:04:45.803495",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Items",

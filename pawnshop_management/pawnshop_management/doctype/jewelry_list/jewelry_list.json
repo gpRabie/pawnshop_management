@@ -105,7 +105,7 @@
    "fieldname": "suggested_appraisal_value",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Suggested Appraisal Value",
+   "label": "AV",
    "read_only": 1,
    "width": "100px"
   },
@@ -120,7 +120,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-05-30 17:13:16.898539",
+ "modified": "2022-06-03 11:46:09.315028",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry List",
