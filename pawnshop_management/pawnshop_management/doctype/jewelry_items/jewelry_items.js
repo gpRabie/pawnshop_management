@@ -149,6 +149,7 @@ frappe.ui.form.on('Jewelry Items', {
 	branch: function(frm){
 		show_item_no(frm);
 	}
+
 });
 
 function show_item_no(frm) {
