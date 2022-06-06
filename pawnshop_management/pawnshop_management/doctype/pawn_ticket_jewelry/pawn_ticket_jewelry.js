@@ -331,6 +331,11 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 		show_tracking_no(frm)
 	},
 
+	item_series: function(frm){
+		show_tracking_no(frm);
+		console.log("A");
+	},
+
 	amended_from: function(frm){
 		show_tracking_no(frm)
 	}
@@ -364,10 +369,6 @@ frappe.ui.form.on('Jewelry List', {
 
 	jewelry_items_remove: function(frm, cdt, cdn){ //calculate appraisal value when removing items
 		set_total_appraised_amount(frm, cdt, cdn);
-	},
-
-	item_series: function(frm){
-		show_tracking_no(frm);
 	}
 });
 
