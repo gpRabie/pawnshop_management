@@ -333,7 +333,6 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 
 	item_series: function(frm){
 		show_tracking_no(frm);
-		console.log("A");
 	},
 
 	amended_from: function(frm){
@@ -347,7 +346,7 @@ frappe.ui.form.on('Jewelry List', {
 		if (frm.doc.jewelry_items.length > 1) {
 			for (let index = 0; index < table_length - 1; index++) {
 				if (frm.doc.jewelry_items[table_length-1].item_no == frm.doc.jewelry_items[index].item_no) {
-					console.log(frm.doc.jewelry_items.pop(table_length-1));
+					frm.doc.jewelry_items.pop(table_length-1);
 					frm.refresh_field('jewelry_items');
 					frappe.msgprint({
 						title:__('Notification'),
@@ -357,15 +356,23 @@ frappe.ui.form.on('Jewelry List', {
 					set_total_appraised_amount(frm, cdt, cdn);
 				}
 			}
-		}
-
-		// frappe.call('pawnshop_management.pawnshop_management.custom_codes.fetch_karats_for_jewelry.fetch_weight_of_karats_from_items', {
-		// 	item_no: frm.doc.item_no
-		// }).then(r => {
-		// 	console.log(r.message)
-		// })
-
+		}	
 	},
+
+	// item_no_add: function(frm, cdt, cdn){
+	// 	console.log(cdt);
+	// 	console.log(parseInt(frm.doc.jewelry_items.length));
+	// 	if (frm.doc.jewelry_items.length > 5) {
+	// 		// frm.doc.jewelry_items.pop(table_length-1);
+	// 		// frm.refresh_field('jewelry_items');
+	// 		// frappe.msgprint({
+	// 		// 	title:__('Notification'),
+	// 		// 	indicator:'red',
+	// 		// 	message: __('Number of items exceeds to 5')
+	// 		// });
+	// 		console.log("hi");
+	// 	}
+	// },
 
 	suggested_appraisal_value: function(frm, cdt, cdn){
 		set_total_appraised_amount(frm,cdt, cdn);
@@ -570,15 +577,12 @@ function show_tracking_no(frm){ //Sets inventory tracking number
 		}
 	} else if (frm.doc.branch == "Rabie's House") {
 		if (frm.doc.amended_from == null) {
-			console.log(frm.doc.item_series);
 			if (frm.doc.item_series == "A") {
 				frappe.db.get_value('Pawnshop Naming Series',"Rabie's House",['a_series', 'jewelry_inventory_count'])
 				.then(value => {
-					console.log(frm.doc.item_series);
 					let tracking_no = value.message;
 					let non_jewelry_count = parseInt(tracking_no.jewelry_inventory_count);
 					let new_ticket_no = parseInt(tracking_no.a_series);
-					console.log(new_ticket_no);
 					frm.set_value('pawn_ticket', "20-"+ new_ticket_no + frm.doc.item_series);
 					frm.set_value('inventory_tracking_no', "20-"+ non_jewelry_count + 'J');
 					frm.refresh_field('pawn_ticket');
@@ -586,7 +590,6 @@ function show_tracking_no(frm){ //Sets inventory tracking number
 			} else if (frm.doc.item_series == "B") {
 				frappe.db.get_value('Pawnshop Naming Series',"Rabie's House",['b_series', 'jewelry_inventory_count'])
 				.then(value => {
-					console.log(frm.doc.item_series);
 					let tracking_no = value.message;
 					let non_jewelry_count = parseInt(tracking_no.jewelry_inventory_count);
 					let new_ticket_no = parseInt(tracking_no.b_series);
@@ -597,13 +600,10 @@ function show_tracking_no(frm){ //Sets inventory tracking number
 			}
 		} else {
 			var previous_pt = String(frm.doc.amended_from);      //Naming for the next document created of amend
-			console.log(count_dash_characters(previous_pt));
 			if (count_dash_characters(previous_pt) < 2) {
-				console.log("Hi");
 				frm.set_value('pawn_ticket', frm.doc.amended_from + "-1");
 				frm.refresh_field('pawn_ticket');
 			} else {
-				console.log("Hello");
 				var index_of_last_dash_caharacter = parseInt(frm.doc.amended_from.lastIndexOf("-"))
 				var current_amend_count = frm.doc.amended_from.substr((index_of_last_dash_caharacter + 1))
 				var original_pt = frm.doc.amended_from.slice(0, parseInt(index_of_last_dash_caharacter))

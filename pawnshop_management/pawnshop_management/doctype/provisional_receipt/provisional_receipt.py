@@ -76,7 +76,7 @@ class ProvisionalReceipt(Document):
 						"type": previous_items[i].type,
 						"karat_category": previous_items[i].karat_category,
 						"karat": previous_items[i].karat,
-						"weight": previous_items[i].weight,
+						"total_weight": previous_items[i].total_weight,
 						"color": previous_items[i].color,
 						"colors_if_multi": previous_items[i].colors_if_multi,
 						"additional_for_stone": previous_items[i].additional_for_stone,

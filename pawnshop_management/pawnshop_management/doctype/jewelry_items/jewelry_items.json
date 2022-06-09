@@ -10,7 +10,7 @@
   "item_no",
   "batch_number",
   "type",
-  "weight",
+  "total_weight",
   "karat",
   "karat_category",
   "sizelength",
@@ -56,10 +56,11 @@
    "reqd": 1
   },
   {
+   "default": "Pt 800",
    "fieldname": "karat",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Karat",
-   "options": "Pt 800\nPt 850\nPt 900\nPt 950\n10KT\n14KT\n18KT\n21KT\n22KT\n23KT\n24KT(Bars and Coins)\n18KT Japan\n21KT Damascus",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -110,12 +111,6 @@
    "fieldname": "comments",
    "fieldtype": "Small Text",
    "label": "Comments"
-  },
-  {
-   "fieldname": "weight",
-   "fieldtype": "Float",
-   "label": "Weight(g)",
-   "reqd": 1
   },
   {
    "fieldname": "batch_number",
@@ -205,11 +200,18 @@
   {
    "fieldname": "section_break_17",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_weight",
+   "fieldtype": "Float",
+   "label": "Total Weight(g)",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-06-08 14:55:44.216909",
+ "modified": "2022-06-09 11:43:15.800234",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Items",

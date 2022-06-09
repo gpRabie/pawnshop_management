@@ -150,6 +150,32 @@ frappe.ui.form.on('Jewelry Items', {
 
 });
 
+frappe.ui.form.on('Jewelry Karat List', {
+	karat: function(frm, cdt, cdn){
+		console.log(frm.doc.karats.length);
+		if (frm.doc.karats.length> 1) {
+			frm.set_value('karat', 'Multiple Karat');
+			frm.refresh_field('karat')
+		} else {
+			frm.set_value('karat', frm.doc.karats[0].karat);
+			frm.refresh_field('karat')
+		}
+	},
+
+	weight: function(frm, cdt, cdn){
+		set_total_weight(frm, cdt, cdn)
+	}
+});
+
+function set_total_weight(frm, cdt, cdn) {
+	let total_weight = 0.00;
+	$.each(frm.doc.karats, function(index, item){
+		total_weight += parseFloat(item.weight);
+	});
+	frm.set_value('total_weight', total_weight)
+	frm.refresh_field('total_weight')
+}
+
 function show_item_no(frm) {
 	if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_value('Pawnshop Naming Series', "Garcia's Pawnshop - CC",['jewelry_item_count', 'jewelry_inventory_count'])
