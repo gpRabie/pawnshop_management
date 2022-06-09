@@ -63,7 +63,7 @@ class PawnTicketJewelry(Document):
 					"type": items[i].type,
 					"karat_category": items[i].karat_category,
 					"karat": items[i].karat,
-					"total_weight": items[i].total_weight,
+					"weight": items[i].total_weight,
 					"color": items[i].color,
 					"colors_if_multi": items[i].colors_if_multi,
 					"additional_for_stone": items[i].additional_for_stone,
