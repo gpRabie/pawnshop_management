@@ -359,11 +359,11 @@ frappe.ui.form.on('Jewelry List', {
 			}
 		}
 
-		frappe.call('pawnshop_management.pawnshop_management.custom_codes.fetch_karats_for_jewelry.fetch_weight_of_karats_from_items', {
-			item_no: frm.doc.item_no
-		}).then(r => {
-			console.log(r.message)
-		})
+		// frappe.call('pawnshop_management.pawnshop_management.custom_codes.fetch_karats_for_jewelry.fetch_weight_of_karats_from_items', {
+		// 	item_no: frm.doc.item_no
+		// }).then(r => {
+		// 	console.log(r.message)
+		// })
 
 	},
 
