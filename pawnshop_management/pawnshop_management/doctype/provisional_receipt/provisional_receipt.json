@@ -70,9 +70,9 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "hidden": 1,
    "label": "No",
-   "options": "No-1-.######\nNo-3-.######\nNo-4-.######\nNo-5-.######\nNo-6-.######\nNo-20-.######"
+   "options": "No-1-.######\nNo-3-.######\nNo-4-.######\nNo-5-.######\nNo-6-.######\nNo-20-.######",
+   "read_only": 1
   },
   {
    "fetch_from": "pawn_ticket_no.date_loan_granted",
@@ -250,7 +250,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-22 13:08:23.758590",
+ "modified": "2022-06-06 14:58:26.455162",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",

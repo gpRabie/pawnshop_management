@@ -1,0 +1,215 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:item_no",
+ "creation": "2022-06-07 16:05:55.239440",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_no",
+  "type",
+  "weight",
+  "karat",
+  "karat_category",
+  "sizelength",
+  "selling_price_per_gram",
+  "selling_price",
+  "column_break_9",
+  "branch",
+  "additional_for_stone",
+  "color",
+  "colors_if_multi",
+  "status",
+  "for_sale_in_branch",
+  "section_break_14",
+  "comments",
+  "section_break_16",
+  "appraisal_value",
+  "column_break_18",
+  "desired_principal",
+  "appraisers_section",
+  "main_appraiser",
+  "column_break_22",
+  "assistant_appriaser"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item No",
+   "options": "Jewelry Items",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fetch_from": "item_no.type",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Earrings\nBracelet\nNecklace\nRing\nBangles\nPendant\nEarcuff\nGold Coin",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "item_no.weight",
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight(g)"
+  },
+  {
+   "fetch_from": "item_no.karat",
+   "fieldname": "karat",
+   "fieldtype": "Select",
+   "label": "Karat",
+   "options": "10KT\n14KTC\n14KT\n18KT\n18KTC\n21KT\n22KT\n23KT\n24KT(Bars and Coins)"
+  },
+  {
+   "fetch_from": "item_no.karat_category",
+   "fieldname": "karat_category",
+   "fieldtype": "Select",
+   "label": "Karat Category",
+   "options": "Defective\nRegular\nSagad\n3.4g and Below",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sizelength",
+   "fieldtype": "Float",
+   "label": "Size/Length"
+  },
+  {
+   "fieldname": "selling_price",
+   "fieldtype": "Currency",
+   "label": "Selling Price"
+  },
+  {
+   "fieldname": "selling_price_per_gram",
+   "fieldtype": "Currency",
+   "label": "Selling Price Per Gram"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_no.branch",
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch Origin",
+   "options": "Branch"
+  },
+  {
+   "fetch_from": "item_no.additional_for_stone",
+   "fieldname": "additional_for_stone",
+   "fieldtype": "Small Text",
+   "label": "Additional for Stone",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "item_no.color",
+   "fieldname": "color",
+   "fieldtype": "Select",
+   "label": "Color",
+   "options": "Yellow Gold\nWhite Gold\nRose Gold\nMulti Colored",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "item_no.colors_if_multi",
+   "fieldname": "colors_if_multi",
+   "fieldtype": "Small Text",
+   "label": "Colors if Multi",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "item_no.comments",
+   "fieldname": "comments",
+   "fieldtype": "Small Text",
+   "label": "Comments",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "item_no.appraisal_value",
+   "fieldname": "appraisal_value",
+   "fieldtype": "Currency",
+   "label": "Appraisal Value",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_no.desired_principal",
+   "fieldname": "desired_principal",
+   "fieldtype": "Currency",
+   "label": "Desired Principal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "appraisers_section",
+   "fieldtype": "Section Break",
+   "label": "Appraisers"
+  },
+  {
+   "fetch_from": "item_no.main_appraiser",
+   "fieldname": "main_appraiser",
+   "fieldtype": "Data",
+   "label": "Main Appraiser",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_no.assistant_appraiser",
+   "fieldname": "assistant_appriaser",
+   "fieldtype": "Data",
+   "label": "Assistant Appriaser",
+   "read_only": 1
+  },
+  {
+   "fieldname": "for_sale_in_branch",
+   "fieldtype": "Link",
+   "label": "For Sale in Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-06-07 17:44:05.986951",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Subastado Jewelry Items",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

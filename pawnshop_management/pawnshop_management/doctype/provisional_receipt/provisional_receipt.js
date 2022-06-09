@@ -57,6 +57,17 @@ frappe.ui.form.on('Provisional Receipt', {
 				}
 			})
 		}
+		frm.add_custom_button('Skip PR No', () => {
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pr.increment_pr_no',
+				args: {
+					prefix: frm.doc.naming_series
+				},
+				callback: function(data){
+					console.log(data.message);
+				}
+			})
+		})
 		frm.toggle_display(['creditted'], frm.doc.transaction_type == 'Interest Payment');
 		frm.set_query('pawn_ticket_type', () => {
 			return {
@@ -142,13 +153,6 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	transaction_type: function(frm){
-		// show_payment_fields(frm);
-		// clear_all_payment_fields();
-		// frm.toggle_display(['new_pawn_ticket_no', 'advance_interest', 'interest_payment'], frm.doc.transaction_type == 'Renewal w/ Amortization');
-		// frm.toggle_display(['additional_amortization'], frm.doc.transaction_type == 'Amortization');
-		// frm.toggle_display(['advance_interest', 'discount'], frm.doc.transaction_type == 'Renewal');
-		// frm.toggle_display(['discount', 'interest_payment'], frm.doc.transaction_type == 'Redemption');
-		// select_transaction_type(frm)
 		if (frm.doc.transaction_type == "Amortization") {
 			clear_all_payment_fields();
 			show_payment_fields(frm);
@@ -358,10 +362,6 @@ function calculate_maturity_date_interest(frm) {
 		} else {
 			temp_interest = 0.00;
 		}
-
-		// if (frm.doc.transaction_type == "Renewal") {
-		// 	temp_interest += parseFloat(frm.doc.interest)
-		// }
 
 		frm.set_value('interest_payment', temp_interest - frm.doc.previous_interest_payment);
 		frm.refresh_field('interest_payment');

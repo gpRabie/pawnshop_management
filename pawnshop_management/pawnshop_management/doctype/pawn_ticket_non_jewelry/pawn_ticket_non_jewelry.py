@@ -80,10 +80,10 @@ class PawnTicketNonJewelry(Document):
 		row_values4.debit_in_account_currency = flt(15.00)
 		row_values4.credit_in_account_currency = flt(0)
 
-		row_values5 = doc1.append('accounts', {})
-		row_values5.account = "Service Charge - NJ - TGP"
-		row_values5.debit_in_account_currency = flt(0)
-		row_values5.credit_in_account_currency = flt(15)
+		# row_values5 = doc1.append('accounts', {})
+		# row_values5.account = "Service Charge - NJ - TGP"
+		# row_values5.debit_in_account_currency = flt(0)
+		# row_values5.credit_in_account_currency = flt(15)
 
 		doc1.save(ignore_permissions=True)
 		doc1.submit()

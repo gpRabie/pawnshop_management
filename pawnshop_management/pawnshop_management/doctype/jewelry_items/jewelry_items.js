@@ -7,51 +7,51 @@ frappe.ui.form.on('Jewelry Items', {
 		frm.disable_save();
 	},
 
-	before_workflow_action: function(frm){
-		if (frm.selected_workflow_action === "Collect") { // Change status
-			frappe.call({
-				method: 'pawnshop_management.pawnshop_management.custom_codes.update_j_batch.update_fields_after_status_change_collect_j_batch',
-				args: {
-					inventory_tracing_no: String(frm.doc.name)
-				},
-				callback: function(){
-				}
-			})
-		} else if (frm.selected_workflow_action === "Redeem") {
-			frappe.call({
-				method: 'pawnshop_management.pawnshop_management.custom_codes.update_j_batch.status_change_date',
-				args: {
-					inventory_tracing_no: String(frm.doc.name)
-				},
-				callback: function(){
-				}
-			})
-		} else if (frm.selected_workflow_action === "Review") {
-			frappe.call({
-				method: 'pawnshop_management.pawnshop_management.custom_codes.update_j_batch.update_fields_after_status_change_review_j_batch',
-				args: {
-					inventory_tracing_no: String(frm.doc.name)
-				},
-				callback: function(){
+	// before_workflow_action: function(frm){
+	// 	if (frm.selected_workflow_action === "Collect") { // Change status
+	// 		frappe.call({
+	// 			method: 'pawnshop_management.pawnshop_management.custom_codes.update_j_batch.update_fields_after_status_change_collect_j_batch',
+	// 			args: {
+	// 				inventory_tracing_no: String(frm.doc.name)
+	// 			},
+	// 			callback: function(){
+	// 			}
+	// 		})
+	// 	} else if (frm.selected_workflow_action === "Redeem") {
+	// 		frappe.call({
+	// 			method: 'pawnshop_management.pawnshop_management.custom_codes.update_j_batch.status_change_date',
+	// 			args: {
+	// 				inventory_tracing_no: String(frm.doc.name)
+	// 			},
+	// 			callback: function(){
+	// 			}
+	// 		})
+	// 	} else if (frm.selected_workflow_action === "Review") {
+	// 		frappe.call({
+	// 			method: 'pawnshop_management.pawnshop_management.custom_codes.update_j_batch.update_fields_after_status_change_review_j_batch',
+	// 			args: {
+	// 				inventory_tracing_no: String(frm.doc.name)
+	// 			},
+	// 			callback: function(){
 
-				}
-			})
-		} else if (frm.selected_workflow_action === "Pull Out") {
-			frappe.call({
-				method: 'pawnshop_management.pawnshop_management.custom_codes.update_j_batch.update_fields_after_status_change_review_j_batch',
-				args: {
-					inventory_tracing_no: String(frm.doc.name)
-				},
-				callback: function(){
-					frm.toggle_display(['sizelength', 'selling_price', 'selling_price_per_gram'], frm.doc.workflow_state === 'Pulled Out');
-				}
-			})
-		}
-	},
+	// 			}
+	// 		})
+	// 	} else if (frm.selected_workflow_action === "Pull Out") {
+	// 		frappe.call({
+	// 			method: 'pawnshop_management.pawnshop_management.custom_codes.update_j_batch.update_fields_after_status_change_review_j_batch',
+	// 			args: {
+	// 				inventory_tracing_no: String(frm.doc.name)
+	// 			},
+	// 			callback: function(){
+	// 				frm.toggle_display(['sizelength', 'selling_price', 'selling_price_per_gram'], frm.doc.workflow_state === 'Pulled Out');
+	// 			}
+	// 		})
+	// 	}
+	// },
 
 	refresh: function(frm){
-		console.log(frm.doc.workflow_state);
-		frm.toggle_display(['sizelength', 'selling_price', 'selling_price_per_gram'], frm.doc.workflow_state === 'Pulled Out');
+		frm.toggle_display(['sizelength', 'selling_price', 'selling_price_per_gram'], frm.doc.workflow_state === "Collected")
+		frm.toggle_display(['sizelength', 'selling_price', 'selling_price_per_gram'], frm.doc.workflow_state === "Pulled Out")
 		frappe.call({
 			method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
 			callback: function(data){
@@ -96,8 +96,6 @@ frappe.ui.form.on('Jewelry Items', {
 				}
 			};
 		});
-
-
 	},
 
 	assistant_appraiser: function(frm){

@@ -1,0 +1,42 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-06-08 14:50:58.585919",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "karat",
+  "weight"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "karat",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Karat",
+   "options": "Pt 800\nPt 850\nPt 900\nPt 950\n10KT\n14KT\n18KT\n21KT\n22KT\n23KT\n24KT(Bars and Coins)\n18KT Japan\n21KT Damascus",
+   "width": "200px"
+  },
+  {
+   "columns": 2,
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight(g)",
+   "width": "200px"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-06-08 14:57:00.514441",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "Jewelry Karat List",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -75,9 +75,12 @@ frappe.ui.form.on('Cash Position Report', {
 
 	branch: function(frm){
 		get_provisional_receipts_of_the_day(frm, frm.doc.date);
-		get_non_jewelry_of_the_day(frm, frm.doc.date)
-		get_gcash_provisional_receipt(frm, frm.doc.date)
+		get_non_jewelry_of_the_day(frm, frm.doc.date);
+		get_gcash_provisional_receipt(frm, frm.doc.date);
 		select_naming_series(frm);
+		get_jewelry_b_of_the_day(frm, frm.doc.date);
+		get_jewelry_a_of_the_day(frm, frm.doc.date);
+
 	},
 
 	date: function(frm){
@@ -374,7 +377,8 @@ function get_jewelry_a_of_the_day(frm, date_today=null) {
 		fields: ['net_proceeds'],
 		filters: {
 			date_loan_granted: date_today,
-			item_series: 'A'
+			item_series: 'A',
+			branch: frm.doc.branch
 		}
 	}).then(records => {
 		let temp_total = 0.00;
@@ -392,7 +396,8 @@ function get_jewelry_b_of_the_day(frm, date_today=null) {
 		fields: ['net_proceeds'],
 		filters: {
 			date_loan_granted: date_today,
-			item_series: 'B'
+			item_series: 'B',
+			branch: frm.doc.branch
 		}
 	}).then(records => {
 		let temp_total = 0.00;
