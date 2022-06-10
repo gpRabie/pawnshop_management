@@ -19,7 +19,7 @@ class CashPositionReport(Document):
 			row_values1.credit_in_account_currency = flt(0)
 
 			row_values2 = doc1.append('accounts', {})
-			row_values2.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values2.account = "Cash on Hand - Pawnshop - TGP"
 			row_values2.debit_in_account_currency = flt(0)
 			row_values2.credit_in_account_currency = flt(self.shortage_overage)
 
@@ -32,7 +32,7 @@ class CashPositionReport(Document):
 			doc1.posting_date = self.date
 
 			row_values1 = doc1.append('accounts', {})
-			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.account = "Cash on Hand - Pawnshop - TGP"
 			row_values1.debit_in_account_currency = flt(0)
 			row_values1.credit_in_account_currency = flt(abs(self.shortage_overage))
 

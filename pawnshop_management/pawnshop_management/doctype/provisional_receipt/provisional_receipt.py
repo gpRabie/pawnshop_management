@@ -173,7 +173,7 @@ class ProvisionalReceipt(Document):
 			doc1.document_status = "Renewal"
 
 			row_values1 = doc1.append('accounts', {})
-			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.account = "Cash on Hand - Pawnshop - TGP"
 			row_values1.debit_in_account_currency = flt(self.total)
 			row_values1.credit_in_account_currency = flt(0)
 			if self.interest_payment > 0:
@@ -206,7 +206,7 @@ class ProvisionalReceipt(Document):
 			doc1.document_status = "Redemption"
 
 			row_values1 = doc1.append('accounts', {})
-			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.account = "Cash on Hand - Pawnshop - TGP"
 			row_values1.debit_in_account_currency = flt(self.total)
 			row_values1.credit_in_account_currency = flt(0)
 
@@ -240,7 +240,7 @@ class ProvisionalReceipt(Document):
 			doc1.document_status = "Amortization"
 
 			row_values1 = doc1.append('accounts', {})
-			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.account = "Cash on Hand - Pawnshop - TGP"
 			row_values1.debit_in_account_currency = flt(self.total)
 			row_values1.credit_in_account_currency = flt(0)
 
@@ -268,7 +268,7 @@ class ProvisionalReceipt(Document):
 			doc1.document_status = "Renewal w/ Amortization"
 
 			row_values1 = doc1.append('accounts', {})
-			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.account = "Cash on Hand - Pawnshop - TGP"
 			row_values1.debit_in_account_currency = flt(self.total)
 			row_values1.credit_in_account_currency = flt(0)
 			
@@ -307,7 +307,7 @@ class ProvisionalReceipt(Document):
 			doc1.document_status = "Interest Payment"
 
 			row_values1 = doc1.append('accounts', {})
-			row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+			row_values1.account = "Cash on Hand - Pawnshop - TGP"
 			row_values1.debit_in_account_currency = flt(self.total)
 			row_values1.credit_in_account_currency = flt(0)
 

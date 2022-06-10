@@ -71,12 +71,12 @@ class PawnTicketNonJewelry(Document):
 		row_values2.credit_in_account_currency = flt(self.interest)
 
 		row_values3 = doc1.append('accounts', {})
-		row_values3.account = "Cash on Hand - Pawnshop - NJ - TGP"
+		row_values3.account = "Cash on Hand - Pawnshop - TGP"
 		row_values3.debit_in_account_currency = flt(0)
 		row_values3.credit_in_account_currency = flt(self.net_proceeds)
 
 		# row_values4 = doc1.append('accounts', {})
-		# row_values4.account = "Cash on Hand - Pawnshop - NJ - TGP"
+		# row_values4.account = "Cash on Hand - Pawnshop - TGP"
 		# row_values4.debit_in_account_currency = flt(15.00)
 		# row_values4.credit_in_account_currency = flt(0)
 

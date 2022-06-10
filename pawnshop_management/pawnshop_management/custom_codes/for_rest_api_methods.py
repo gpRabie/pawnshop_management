@@ -9,7 +9,7 @@ def create_journal_entry_nj_sales_cash(date, for_cash_on_hand_account, for_prend
     doc1.company = 'TEST Garcia\'s Pawnshop'
     doc1.posting_date = date
     row_values1 = doc1.append('accounts', {})
-    row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+    row_values1.account = "Cash on Hand - Pawnshop - TGP"
     row_values1.debit_in_account_currency = flt(for_cash_on_hand_account)
     row_values1.credit_in_account_currency = flt(0)
 
@@ -108,7 +108,7 @@ def create_journal_entry_nj_funds_from_VC(date, for_cash_on_hand_account, for_ca
     doc1.posting_date = date
 
     row_values1 = doc1.append('accounts', {})
-    row_values1.account = "Cash on Hand - Pawnshop - NJ - TGP"
+    row_values1.account = "Cash on Hand - Pawnshop - TGP"
     row_values1.debit_in_account_currency = flt(for_cash_on_hand_account)
     row_values1.credit_in_account_currency = flt(0)
 
