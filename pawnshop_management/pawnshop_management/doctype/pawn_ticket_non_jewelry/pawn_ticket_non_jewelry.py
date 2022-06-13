@@ -81,7 +81,7 @@ class PawnTicketNonJewelry(Document):
 		# row_values4.credit_in_account_currency = flt(0)
 
 		# row_values5 = doc1.append('accounts', {})
-		# row_values5.account = "Service Charge - NJ - TGP"
+		# row_values5.account = "Service Charge - TGP"
 		# row_values5.debit_in_account_currency = flt(0)
 		# row_values5.credit_in_account_currency = flt(15)
 
