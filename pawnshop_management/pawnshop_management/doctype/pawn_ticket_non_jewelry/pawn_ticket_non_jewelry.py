@@ -52,41 +52,41 @@ class PawnTicketNonJewelry(Document):
 				})
 			new_non_jewelry_batch.save(ignore_permissions=True)
 
-		doc1 = frappe.new_doc('Journal Entry')
-		doc1.voucher_type = 'Journal Entry'
-		doc1.company = 'TEST Garcia\'s Pawnshop'
-		doc1.posting_date = self.date_loan_granted
-		doc1.reference_doctype = "Pawn Ticket Non Jewelry"
-		doc1.reference_document = self.name
-		doc1.document_status = "New Sangla"
+		# doc1 = frappe.new_doc('Journal Entry')
+		# doc1.voucher_type = 'Journal Entry'
+		# doc1.company = 'TEST Garcia\'s Pawnshop'
+		# doc1.posting_date = self.date_loan_granted
+		# doc1.reference_doctype = "Pawn Ticket Non Jewelry"
+		# doc1.reference_document = self.name
+		# doc1.document_status = "New Sangla"
 
-		row_values1 = doc1.append('accounts', {})
-		row_values1.account = "Pawned Items Inventory - NJ - TGP"
-		row_values1.debit_in_account_currency = flt(self.desired_principal)
-		row_values1.credit_in_account_currency = flt(0)
+		# row_values1 = doc1.append('accounts', {})
+		# row_values1.account = "Pawned Items Inventory - NJ - TGP"
+		# row_values1.debit_in_account_currency = flt(self.desired_principal)
+		# row_values1.credit_in_account_currency = flt(0)
 
-		row_values2 = doc1.append('accounts', {})
-		row_values2.account = "Interest on Past Due Loans - NJ - TGP"
-		row_values2.debit_in_account_currency = flt(0)
-		row_values2.credit_in_account_currency = flt(self.interest)
+		# row_values2 = doc1.append('accounts', {})
+		# row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+		# row_values2.debit_in_account_currency = flt(0)
+		# row_values2.credit_in_account_currency = flt(self.interest)
 
-		row_values3 = doc1.append('accounts', {})
-		row_values3.account = "Cash on Hand - Pawnshop - TGP"
-		row_values3.debit_in_account_currency = flt(0)
-		row_values3.credit_in_account_currency = flt(self.net_proceeds)
+		# row_values3 = doc1.append('accounts', {})
+		# row_values3.account = "Cash on Hand - Pawnshop - TGP"
+		# row_values3.debit_in_account_currency = flt(0)
+		# row_values3.credit_in_account_currency = flt(self.net_proceeds)
 
-		# row_values4 = doc1.append('accounts', {})
-		# row_values4.account = "Cash on Hand - Pawnshop - TGP"
-		# row_values4.debit_in_account_currency = flt(15.00)
-		# row_values4.credit_in_account_currency = flt(0)
+		# # row_values4 = doc1.append('accounts', {})
+		# # row_values4.account = "Cash on Hand - Pawnshop - TGP"
+		# # row_values4.debit_in_account_currency = flt(15.00)
+		# # row_values4.credit_in_account_currency = flt(0)
 
-		# row_values5 = doc1.append('accounts', {})
-		# row_values5.account = "Service Charge - TGP"
-		# row_values5.debit_in_account_currency = flt(0)
-		# row_values5.credit_in_account_currency = flt(15)
+		# # row_values5 = doc1.append('accounts', {})
+		# # row_values5.account = "Service Charge - TGP"
+		# # row_values5.debit_in_account_currency = flt(0)
+		# # row_values5.credit_in_account_currency = flt(15)
 
-		doc1.save(ignore_permissions=True)
-		doc1.submit()
+		# doc1.save(ignore_permissions=True)
+		# doc1.submit()
 
 	def before_cancel(self):
 		name = frappe.db.get_value('Journal Entry', {'reference_document': self.name, "document_status": "Active"}, 'name')

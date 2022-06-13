@@ -7,6 +7,11 @@ frappe.ui.form.on('Jewelry Items', {
 		frm.disable_save();
 	},
 
+	validate: function(frm){
+		if (parseFloat(frm.doc.desired_principal) > parseFloat(frm.doc.appraisal_value)) {
+			frappe.throw(__('Desired principal is greater than appraisal value'));
+		}
+	},
 	// before_workflow_action: function(frm){
 	// 	if (frm.selected_workflow_action === "Collect") { // Change status
 	// 		frappe.call({
