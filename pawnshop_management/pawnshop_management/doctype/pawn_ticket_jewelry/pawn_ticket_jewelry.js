@@ -82,6 +82,9 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 	},
 
 	refresh: function(frm){
+		// frm.add_custom_button('Test', () => {
+		// 	console.log(frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[1]);
+		// })
 		if (frm.is_new()) {
 			// set_series(frm);
 			show_tracking_no(frm);
@@ -343,6 +346,7 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 frappe.ui.form.on('Jewelry List', {
 	item_no: function(frm, cdt, cdn){
 		let table_length = parseInt(frm.doc.jewelry_items.length)
+		console.log(table_length);
 		if (frm.doc.jewelry_items.length > 1) {
 			for (let index = 0; index < table_length - 1; index++) {
 				if (frm.doc.jewelry_items[table_length-1].item_no == frm.doc.jewelry_items[index].item_no) {
@@ -357,6 +361,10 @@ frappe.ui.form.on('Jewelry List', {
 				}
 			}
 		}	
+
+		// if (table_length > 4) {
+		// 	console.log(frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0])
+		// } 
 	},
 
 	// item_no_add: function(frm, cdt, cdn){
