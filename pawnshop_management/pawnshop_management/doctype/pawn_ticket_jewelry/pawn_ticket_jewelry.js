@@ -82,9 +82,9 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 	},
 
 	refresh: function(frm){
-		// frm.add_custom_button('Test', () => {
-		// 	console.log(frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[1]);
-		// })
+		frm.add_custom_button('Show User', () => {
+			console.log(frappe.session.user.role_profile_name);
+		})
 		if (frm.is_new()) {
 			// set_series(frm);
 			show_tracking_no(frm);
@@ -344,9 +344,9 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 });
 
 frappe.ui.form.on('Jewelry List', {
+
 	item_no: function(frm, cdt, cdn){
 		let table_length = parseInt(frm.doc.jewelry_items.length)
-		console.log(table_length);
 		if (frm.doc.jewelry_items.length > 1) {
 			for (let index = 0; index < table_length - 1; index++) {
 				if (frm.doc.jewelry_items[table_length-1].item_no == frm.doc.jewelry_items[index].item_no) {
@@ -362,11 +362,10 @@ frappe.ui.form.on('Jewelry List', {
 			}
 		}	
 
-		// if (table_length > 4) {
-		// 	console.log(frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0])
-		// } 
+		if (table_length > 4) {
+			frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "hidden";
+		}
 	},
-
 	// item_no_add: function(frm, cdt, cdn){
 	// 	console.log(cdt);
 	// 	console.log(parseInt(frm.doc.jewelry_items.length));
@@ -387,19 +386,23 @@ frappe.ui.form.on('Jewelry List', {
 	},
 
 	jewelry_items_remove: function(frm, cdt, cdn){ //calculate appraisal value when removing items
+		let table_length = parseInt(frm.doc.jewelry_items.length)
 		set_total_appraised_amount(frm, cdt, cdn);
+		if (table_length <= 4) {
+			frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "visible";
+		}
 	}
 });
 
 
 function set_series(frm) { //Set the pawn ticket series
-	if (frm.doc.desired_principal >= 1500 && frm.doc.desired_principal <= 10000) {
-		frm.set_value('item_series', 'A');
-		frm.refresh_field('item_series');
-	} else if ((frm.doc.desired_principal < 1500 || frm.doc.desired_principal > 10000)) {
-		frm.set_value('item_series', 'B');
-		frm.refresh_field('item_series');
-	}
+	// if (frm.doc.desired_principal >= 1500 && frm.doc.desired_principal <= 10000) {
+	// 	frm.set_value('item_series', 'A');
+	// 	frm.refresh_field('item_series');
+	// } else if ((frm.doc.desired_principal < 1500 || frm.doc.desired_principal > 10000)) {
+	// 	frm.set_value('item_series', 'B');
+	// 	frm.refresh_field('item_series');
+	// }
 	show_tracking_no(frm);
 }
 
