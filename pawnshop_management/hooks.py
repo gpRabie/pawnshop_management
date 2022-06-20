@@ -36,6 +36,9 @@ app_license = "MIT"
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
+doctype_list_js = {
+	"Pawn Ticket Jewelry" : "public/js/pawn_ticket_j_list.js"
+	}
 
 # Home Pages
 # ----------
@@ -198,3 +201,6 @@ on_login = "pawnshop_management.pawnshop_management.custom_codes.log_in.post_log
 # 	"Pawnshop Naming Series"
 # ]
 
+fixtures = [
+	"Workflow"
+]
