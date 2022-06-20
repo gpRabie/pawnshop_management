@@ -2,17 +2,6 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Pawn Ticket Jewelry', {
-	validate: function(frm, cdt, cdn){
-		var temp_principal = 0.0;
-		$.each(frm.doc.jewelry_items, function(index, item){
-			temp_principal += parseFloat(item.suggested_appraisal_value);
-		});
-
-		if (frm.doc.desired_principal > temp_principal) {
-			frappe.throw(__('Desired Principal is greater than the total value of items'));
-		}
-	},
-	
 	after_save: function(frm){
 		frm.set_df_property('customers_tracking_no', 'read_only', 1);
 	},
