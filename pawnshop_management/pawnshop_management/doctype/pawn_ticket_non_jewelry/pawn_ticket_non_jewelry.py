@@ -62,50 +62,50 @@ class PawnTicketNonJewelry(Document):
 
 		row_values1 = doc1.append('accounts', {})
 		if self.branch == "Garcia's Pawnshop - CC":
-			row_values1.account = "Pawned Items Inventory - NJ - CC - MPConso"
+			row_values1.account = "1615-001 - Pawned Items Inventory - NJ - CC - MPConso"
 		elif self.branch == "Garcia's Pawnshop - GTC":
-			row_values1.account = "Pawned Items Inventory - NJ - GTC - MPConso"
+			row_values1.account = "1615-002 - Pawned Items Inventory - NJ - GTC - MPConso"
 		elif self.branch == "Garcia's Pawnshop - MOL":
-			row_values1.account = "Pawned Items Inventory - NJ - MOL - MPConso"
+			row_values1.account = "1615-003 - Pawned Items Inventory - NJ - MOL - MPConso"
 		elif self.branch == "Garcia's Pawnshop - POB":
-			row_values1.account = "Pawned Items Inventory - NJ - POB - MPConso"
+			row_values1.account = "1615-004 - Pawned Items Inventory - NJ - POB - MPConso"
 		elif self.branch == "Garcia's Pawnshop - TNZ":
-			row_values1.account = "Pawned Items Inventory - NJ - TNZ - MPConso"
+			row_values1.account = "1615-005 - Pawned Items Inventory - NJ - TNZ - MPConso"
 		elif self.branch == "Rabie's House":
-			row_values1.account = "Pawned Items Inventory - NJ - CC - MPConso"
+			row_values1.account = "1615-001 - Pawned Items Inventory - NJ - CC - MPConso"
 
 		row_values1.debit_in_account_currency = flt(self.desired_principal)
 		row_values1.credit_in_account_currency = flt(0)
 
 		row_values2 = doc1.append('accounts', {})
 		if self.branch == "Garcia's Pawnshop - CC":
-			row_values2.account = "Interest on Past Due Loans - NJ - CC - MPConso"
+			row_values2.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 		elif self.branch == "Garcia's Pawnshop - GTC":
-			row_values2.account = "Interest on Past Due Loans - NJ - GTC - MPConso"
+			row_values2.account = "4113-002 - Interest on Past Due Loans - NJ - GTC - MPConso"
 		elif self.branch == "Garcia's Pawnshop - MOL":
-			row_values2.account = "Interest on Past Due Loans - NJ - MOL - MPConso"
+			row_values2.account = "4113-003 - Interest on Past Due Loans - NJ - MOL - MPConso"
 		elif self.branch == "Garcia's Pawnshop - POB":
-			row_values2.account = "Interest on Past Due Loans - NJ - POB - MPConso"
+			row_values2.account = "4113-004 - Interest on Past Due Loans - NJ - POB - MPConso"
 		elif self.branch == "Garcia's Pawnshop - TNZ":
-			row_values2.account = "Interest on Past Due Loans - NJ - TNZ - MPConso"
+			row_values2.account = "4113-005 - Interest on Past Due Loans - NJ - TNZ - MPConso"
 		elif self.branch == "Rabie's House":
-			row_values2.account = "Interest on Past Due Loans - NJ - CC - MPConso"
+			row_values2.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 		row_values2.debit_in_account_currency = flt(0)
 		row_values2.credit_in_account_currency = flt(self.interest)
 
 		row_values3 = doc1.append('accounts', {})
 		if self.branch == "Garcia's Pawnshop - CC":
-			row_values3.account = "Cash on Hand - Pawnshop - CC - MPConso"
+			row_values3.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 		elif self.branch == "Garcia's Pawnshop - GTC":
-			row_values3.account = "Cash on Hand - Pawnshop - GTC - MPConso"
+			row_values3.account = "1110-002 - Cash on Hand - Pawnshop - GTC - MPConso"
 		elif self.branch == "Garcia's Pawnshop - MOL":
-			row_values3.account = "Cash on Hand - Pawnshop - MOL - MPConso"
+			row_values3.account = "1110-003 - Cash on Hand - Pawnshop - MOL - MPConso"
 		elif self.branch == "Garcia's Pawnshop - POB":
-			row_values3.account = "Cash on Hand - Pawnshop - POB - MPConso"
+			row_values3.account = "1110-004 - Cash on Hand - Pawnshop - POB - MPConso"
 		elif self.branch == "Garcia's Pawnshop - TNZ":
-			row_values3.account = "Cash on Hand - Pawnshop - TNZ - MPConso"
+			row_values3.account = "1110-005 - Cash on Hand - Pawnshop - TNZ - MPConso"
 		elif self.branch == "Rabie's House":
-			row_values3.account = "Cash on Hand - Pawnshop - CC - MPConso"
+			row_values3.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 		row_values3.debit_in_account_currency = flt(0)
 		row_values3.credit_in_account_currency = flt(self.net_proceeds)
 

@@ -77,9 +77,9 @@ def create_journal_entry_nj_sales_bank_transfer(date, bank, total, for_prendas_d
     doc1.posting_date = date
     row_values1 = doc1.append('accounts', {})
     if bank == "BDO":
-        row_values1.account = "Cash in Bank - BDO SM Ros - Php - MPConso"
+        row_values1.account = "1215-000 - Cash in Bank - BDO SM Ros - Php - MPConso"
     elif bank == "BPI":
-        row_values1.account = "Cash in Bank - BPI Marquesa - MPConso"
+        row_values1.account = "1205-000 - Cash in Bank - BPI Marquesa - MPConso"
     elif bank == "EASTWEST":
         row_values1.account = "Cash in Bank - Eastwest PHP - CC - NJ - MPConso"
     row_values1.debit_in_account_currency = flt(total)

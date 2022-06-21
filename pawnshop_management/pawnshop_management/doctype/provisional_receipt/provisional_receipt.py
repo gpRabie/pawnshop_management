@@ -1418,50 +1418,50 @@ class ProvisionalReceipt(Document):
 				if self.interest_payment > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values2.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values2.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 				if flt(self.discount) > 0:
 					row_values4 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values4.account = "Discount - J - CC - MPConso"
+						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values4.account = "Discount - J - GTC - MPConso"
+						row_values4.account = "4120-002 - Discount - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values4.account = "Discount - J - MOL - MPConso"
+						row_values4.account = "4120-003 - Discount - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values4.account = "Discount - J - POB - MPConso"
+						row_values4.account = "4120-004 - Discount - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values4.account = "Discount - J - TNZ - MPConso"
+						row_values4.account = "4120-005 - Discount - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values4.account = "Discount - J - CC - MPConso"
+						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					row_values4.debit_in_account_currency = flt(self.discount)
 					row_values4.credit_in_account_currency = flt(0)
 
 				row_values3 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
 					row_values3.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "Interest on Loans and Advances - J - MOL - MPConso"
+					row_values3.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "Interest on Loans and Advances - J - POB - MPConso"
+					row_values3.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "Interest on Loans and Advances - J - TNZ - MPConso"
+					row_values3.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.advance_interest)
 
@@ -1496,50 +1496,50 @@ class ProvisionalReceipt(Document):
 				if flt(self.interest_payment) > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values2.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values2.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 				if flt(self.discount) > 0:
 					row_values4 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values4.account = "Discount - J - CC - MPConso"
+						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values4.account = "Discount - J - GTC - MPConso"
+						row_values4.account = "4120-002 - Discount - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values4.account = "Discount - J - MOL - MPConso"
+						row_values4.account = "4120-003 - Discount - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values4.account = "Discount - J - POB - MPConso"
+						row_values4.account = "4120-004 - Discount - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values4.account = "Discount - J - TNZ - MPConso"
+						row_values4.account = "4120-005 - Discount - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values4.account = "Discount - J - CC - MPConso"
+						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					row_values4.debit_in_account_currency = flt(self.discount)
 					row_values4.credit_in_account_currency = flt(0)
 
 				row_values3 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values3.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "Pawned Items Inventory - J - GTC - MPConso"
+					row_values3.account = "1610-002 - Pawned Items Inventory - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "Pawned Items Inventory - J - MOL - MPConso"
+					row_values3.account = "1610-003 - Pawned Items Inventory - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "Pawned Items Inventory - J - POB - MPConso"
+					row_values3.account = "1610-004 - Pawned Items Inventory - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "Pawned Items Inventory - J - TNZ - MPConso"
+					row_values3.account = "1610-005 - Pawned Items Inventory - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values3.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values3.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.principal_amount)
 
@@ -1574,33 +1574,33 @@ class ProvisionalReceipt(Document):
 				if self.interest_payment > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values2.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values2.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 				row_values3 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "Interest on Loans and Advances - J - GTC - MPConso"
+					row_values3.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "Interest on Loans and Advances - J - MOL - MPConso"
+					row_values3.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "Interest on Loans and Advances - J - POB - MPConso"
+					row_values3.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "Interest on Loans and Advances - J - TNZ - MPConso"
+					row_values3.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.total)
 
@@ -1635,66 +1635,66 @@ class ProvisionalReceipt(Document):
 				if self.interest_payment > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values2.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values2.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 				
 				row_values3 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "Interest on Loans and Advances - J - GTC - MPConso"
+					row_values3.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "Interest on Loans and Advances - J - MOL - MPConso"
+					row_values3.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "Interest on Loans and Advances - J - POB - MPConso"
+					row_values3.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "Interest on Loans and Advances - J - TNZ - MPConso"
+					row_values3.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.advance_interest)
 
 				row_values4 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values4.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values4.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values4.account = "Pawned Items Inventory - J - GTC - MPConso"
+					row_values4.account = "1610-002 - Pawned Items Inventory - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values4.account = "Pawned Items Inventory - J - MOL - MPConso"
+					row_values4.account = "1610-003 - Pawned Items Inventory - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values4.account = "Pawned Items Inventory - J - POB - MPConso"
+					row_values4.account = "1610-004 - Pawned Items Inventory - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values4.account = "Pawned Items Inventory - J - TNZ - MPConso"
+					row_values4.account = "1610-005 - Pawned Items Inventory - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values4.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values4.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				row_values4.debit_in_account_currency = flt(0)
 				row_values4.credit_in_account_currency = flt(self.additional_amortization)
 
 				if flt(self.discount) > 0:
 					row_values4 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values5.account = "Discount - J - CC - MPConso"
+						row_values5.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values5.account = "Discount - J - GTC - MPConso"
+						row_values5.account = "4120-002 - Discount - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values5.account = "Discount - J - MOL - MPConso"
+						row_values5.account = "4120-003 - Discount - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values5.account = "Discount - J - POB - MPConso"
+						row_values5.account = "4120-004 - Discount - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values5.account = "Discount - J - TNZ - MPConso"
+						row_values5.account = "4120-005 - Discount - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values5.account = "Discount - J - CC - MPConso"
+						row_values5.account = "4120-001 - Discount - J - CC - MPConso"
 					row_values4.debit_in_account_currency = flt(self.discount)
 					row_values4.credit_in_account_currency = flt(0)
 
@@ -1728,17 +1728,17 @@ class ProvisionalReceipt(Document):
 
 				row_values2 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+					row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+					row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
+					row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values2.account = "Interest on Past Due Loans - J - POB - MPConso"
+					row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values2.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+					row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+					row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 				row_values2.debit_in_account_currency = flt(0)
 				row_values2.credit_in_account_currency = flt(self.total)
 
@@ -1790,55 +1790,66 @@ class ProvisionalReceipt(Document):
 				if self.interest_payment > 0:
 					row_values3 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values3.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values3.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values3.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values3.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values3.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values3.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values3.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values3.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values3.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values3.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values3.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values3.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values3.debit_in_account_currency = flt(0)
 					row_values3.credit_in_account_currency = flt(self.interest_payment)
 
 				if flt(self.discount) > 0:
 					row_values6 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values6.account = "Discount - CC - MPConso"
+						row_values6.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values6.account = "Discount - POB - MPConso"
+						row_values6.account = "4120-004 - Discount - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values6.account = "Discount - MOL - MPConso"
+						row_values6.account = "4120-003 - Discount - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values6.account = "Discount - GTC - MPConso"
+						row_values6.account = "4120-002 - Discount - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values6.account = "Discount - TNZ - MPConso"
+						row_values6.account = "4120-005 - Discount - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values6.account = "Discount - CC - MPConso"
+						row_values6.account = "4120-001 - Discount - J - CC - MPConso"
 					row_values6.debit_in_account_currency = flt(self.discount)
 					row_values6.credit_in_account_currency = flt(0)
 				
 				row_values4 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values4.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values4.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values4.account = "Interest on Loans and Advances - J - GTC - MPConso"
+					row_values4.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values4.account = "Interest on Loans and Advances - J - MOL - MPConso"
+					row_values4.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values4.account = "Interest on Loans and Advances - J - POB - MPConso"
+					row_values4.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values4.account = "Interest on Loans and Advances - J - TNZ - MPConso"
+					row_values4.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values4.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values4.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				row_values4.debit_in_account_currency = flt(0)
 				row_values4.credit_in_account_currency = flt(self.advance_interest)
 				
 				row_values5 = doc1.append('accounts', {})
-				row_values5.account = "Withholding Tax Payable - Expanded - MPConso"
+				if self.branch == "Garcia's Pawnshop - CC":
+					row_values5.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
+				elif self.branch == "Garcia's Pawnshop - GTC":
+					row_values5.account = "2315-002 - Withholding Tax Payable - Expanded - GTC - MPConso"
+				elif self.branch == "Garcia's Pawnshop - MOL":
+					row_values5.account = "2315-003 - Withholding Tax Payable - Expanded - MOL - MPConso"
+				elif self.branch == "Garcia's Pawnshop - POB":
+					row_values5.account = "2315-004 - Withholding Tax Payable - Expanded - POB - MPConso"
+				elif self.branch == "Garcia's Pawnshop - TNZ":
+					row_values5.account = "2315-005 - Withholding Tax Payable - Expanded - TNZ - MPConso"
+				elif self.branch == "Rabie's House":
+					row_values5.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
 				row_values5.debit_in_account_currency = flt(0)
 				row_values5.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
@@ -1889,55 +1900,66 @@ class ProvisionalReceipt(Document):
 				if self.interest_payment > 0:
 					row_values4 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values4.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values4.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values4.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values4.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values4.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values4.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values4.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values4.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values4.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values4.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values4.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values4.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values4.debit_in_account_currency = flt(0)
 					row_values4.credit_in_account_currency = flt(self.interest_payment)
 
 				if flt(self.discount) > 0:
 					row_values7 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values7.account = "Discount - CC - MPConso"
+						row_values7.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values7.account = "Discount - POB - MPConso"
+						row_values7.account = "4120-004 - Discount - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values7.account = "Discount - MOL - MPConso"
+						row_values7.account = "4120-003 - Discount - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values7.account = "Discount - GTC - MPConso"
+						row_values7.account = "4120-002 - Discount - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values7.account = "Discount - TNZ - MPConso"
+						row_values7.account = "4120-005 - Discount - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values7.account = "Discount - CC - MPConso"
+						row_values7.account = "4120-001 - Discount - J - CC - MPConso"
 					row_values7.debit_in_account_currency = flt(self.discount)
 					row_values7.credit_in_account_currency = flt(0)
 
 				row_values5 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values5.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values5.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values5.account = "Pawned Items Inventory - J - GTC - MPConso"
+					row_values5.account = "1610-002 - Pawned Items Inventory - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values5.account = "Pawned Items Inventory - J - MOL - MPConso"
+					row_values5.account = "1610-003 - Pawned Items Inventory - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values5.account = "Pawned Items Inventory - J - POB - MPConso"
+					row_values5.account = "1610-004 - Pawned Items Inventory - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values5.account = "Pawned Items Inventory - J - TNZ - MPConso"
+					row_values5.account = "1610-005 - Pawned Items Inventory - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values5.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values5.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				row_values5.debit_in_account_currency = flt(0)
 				row_values5.credit_in_account_currency = flt(self.principal_amount)
 				
 				row_values6 = doc1.append('accounts', {})
-				row_values6.account = "Withholding Tax Payable - Expanded - MPConso"
+				if self.branch == "Garcia's Pawnshop - CC":
+					row_values6.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
+				elif self.branch == "Garcia's Pawnshop - GTC":
+					row_values6.account = "2315-002 - Withholding Tax Payable - Expanded - GTC - MPConso"
+				elif self.branch == "Garcia's Pawnshop - MOL":
+					row_values6.account = "2315-003 - Withholding Tax Payable - Expanded - MOL - MPConso"
+				elif self.branch == "Garcia's Pawnshop - POB":
+					row_values6.account = "2315-004 - Withholding Tax Payable - Expanded - POB - MPConso"
+				elif self.branch == "Garcia's Pawnshop - TNZ":
+					row_values6.account = "2315-005 - Withholding Tax Payable - Expanded - TNZ - MPConso"
+				elif self.branch == "Rabie's House":
+					row_values6.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
 				row_values6.debit_in_account_currency = flt(0)
 				row_values6.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
@@ -1987,22 +2009,33 @@ class ProvisionalReceipt(Document):
 
 				row_values5 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values5.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values5.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values5.account = "Pawned Items Inventory - J - GTC - MPConso"
+					row_values5.account = "1610-002 - Pawned Items Inventory - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values5.account = "Pawned Items Inventory - J - MOL - MPConso"
+					row_values5.account = "1610-003 - Pawned Items Inventory - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values5.account = "Pawned Items Inventory - J - POB - MPConso"
+					row_values5.account = "1610-004 - Pawned Items Inventory - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values5.account = "Pawned Items Inventory - J - TNZ - MPConso"
+					row_values5.account = "1610-005 - Pawned Items Inventory - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values5.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values5.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				row_values5.debit_in_account_currency = flt(0)
 				row_values5.credit_in_account_currency = flt(self.total)
 
 				row_values6 = doc1.append('accounts', {})
-				row_values6.account = "Withholding Tax Payable - Expanded - MPConso"
+				if self.branch == "Garcia's Pawnshop - CC":
+					row_values6.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
+				elif self.branch == "Garcia's Pawnshop - GTC":
+					row_values6.account = "2315-002 - Withholding Tax Payable - Expanded - GTC - MPConso"
+				elif self.branch == "Garcia's Pawnshop - MOL":
+					row_values6.account = "2315-003 - Withholding Tax Payable - Expanded - MOL - MPConso"
+				elif self.branch == "Garcia's Pawnshop - POB":
+					row_values6.account = "2315-004 - Withholding Tax Payable - Expanded - POB - MPConso"
+				elif self.branch == "Garcia's Pawnshop - TNZ":
+					row_values6.account = "2315-005 - Withholding Tax Payable - Expanded - TNZ - MPConso"
+				elif self.branch == "Rabie's House":
+					row_values6.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
 				row_values6.debit_in_account_currency = flt(0)
 				row_values6.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
@@ -2053,70 +2086,81 @@ class ProvisionalReceipt(Document):
 				if self.interest_payment > 0:
 					row_values4 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values4.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values4.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values4.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values4.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values4.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values4.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values4.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values4.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values4.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values4.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values4.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values4.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values4.debit_in_account_currency = flt(0)
 					row_values4.credit_in_account_currency = flt(self.interest_payment)
 
 				row_values5 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values5.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values5.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values5.account = "Pawned Items Inventory - J - GTC - MPConso"
+					row_values5.account = "1610-002 - Pawned Items Inventory - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values5.account = "Pawned Items Inventory - J - MOL - MPConso"
+					row_values5.account = "1610-003 - Pawned Items Inventory - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values5.account = "Pawned Items Inventory - J - POB - MPConso"
+					row_values5.account = "1610-004 - Pawned Items Inventory - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values5.account = "Pawned Items Inventory - J - TNZ - MPConso"
+					row_values5.account = "1610-005 - Pawned Items Inventory - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values5.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values5.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				row_values5.debit_in_account_currency = flt(0)
 				row_values5.credit_in_account_currency = flt(self.additional_amortization)
 
 				row_values6 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values6.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values6.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values6.account = "Interest on Loans and Advances - J - GTC - MPConso"
+					row_values6.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values6.account = "Interest on Loans and Advances - J - MOL - MPConso"
+					row_values6.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values6.account = "Interest on Loans and Advances - J - POB - MPConso"
+					row_values6.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values6.account = "Interest on Loans and Advances - J - TNZ - MPConso"
+					row_values6.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				row_values6.credit_in_account_currency = flt(self.advance_interest)
 
 				row_values7 = doc1.append('accounts', {})
-				row_values7.account = "Withholding Tax Payable - Expanded - MPConso"
+				if self.branch == "Garcia's Pawnshop - CC":
+					row_values7.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
+				elif self.branch == "Garcia's Pawnshop - GTC":
+					row_values7.account = "2315-002 - Withholding Tax Payable - Expanded - GTC - MPConso"
+				elif self.branch == "Garcia's Pawnshop - MOL":
+					row_values7.account = "2315-003 - Withholding Tax Payable - Expanded - MOL - MPConso"
+				elif self.branch == "Garcia's Pawnshop - POB":
+					row_values7.account = "2315-004 - Withholding Tax Payable - Expanded - POB - MPConso"
+				elif self.branch == "Garcia's Pawnshop - TNZ":
+					row_values7.account = "2315-005 - Withholding Tax Payable - Expanded - TNZ - MPConso"
+				elif self.branch == "Rabie's House":
+					row_values7.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
 				row_values7.debit_in_account_currency = flt(0)
 				row_values7.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
 				if flt(self.discount) > 0:
 					row_values8 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values8.account = "Discount - J - CC - MPConso"
+						row_values8.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values8.account = "Discount - J - GTC - MPConso"
+						row_values8.account = "4120-002 - Discount - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values8.account = "Discount - J - MOL - MPConso"
+						row_values8.account = "4120-003 - Discount - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values8.account = "Discount - J - POB - MPConso"
+						row_values8.account = "4120-004 - Discount - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values8.account = "Discount - J - TNZ - MPConso"
+						row_values8.account = "4120-005 - Discount - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values8.account == "Discount - J - CC - MPConso"
+						row_values8.account == "4120-001 - Discount - J - CC - MPConso"
 					row_values8.debit_in_account_currency = flt(self.discount)
 					row_values8.credit_in_account_currency = flt(0)
 
@@ -2166,22 +2210,33 @@ class ProvisionalReceipt(Document):
 
 				row_values4 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values4.account = "Interest on Past Due Loans - J - CC - MPConso"
+					row_values4.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values4.account = "Interest on Past Due Loans - J - GTC - MPConso"
+					row_values4.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values4.account = "Interest on Past Due Loans - J - MOL - MPConso"
+					row_values4.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values4.account = "Interest on Past Due Loans - J - POB - MPConso"
+					row_values4.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values4.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+					row_values4.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values4.account = "Interest on Past Due Loans - J - CC - MPConso"
+					row_values4.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 				row_values4.debit_in_account_currency = flt(0)
 				row_values4.credit_in_account_currency = flt(self.total)
 
 				row_values5 = doc1.append('accounts', {})
-				row_values5.account = "Withholding Tax Payable - Expanded - MPConso"
+				if self.branch == "Garcia's Pawnshop - CC":
+					row_values5.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
+				elif self.branch == "Garcia's Pawnshop - GTC":
+					row_values5.account = "2315-002 - Withholding Tax Payable - Expanded - GTC - MPConso"
+				elif self.branch == "Garcia's Pawnshop - MOL":
+					row_values5.account = "2315-003 - Withholding Tax Payable - Expanded - MOL - MPConso"
+				elif self.branch == "Garcia's Pawnshop - POB":
+					row_values5.account = "2315-004 - Withholding Tax Payable - Expanded - POB - MPConso"
+				elif self.branch == "Garcia's Pawnshop - TNZ":
+					row_values5.account = "2315-005 - Withholding Tax Payable - Expanded - TNZ - MPConso"
+				elif self.branch == "Rabie's House":
+					row_values5.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
 				row_values5.debit_in_account_currency = flt(0)
 				row_values5.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
@@ -2222,50 +2277,50 @@ class ProvisionalReceipt(Document):
 				if self.interest_payment > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values2.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values2.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 				row_values3 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "Interest on Loans and Advances - J - GTC - MPConso"
+					row_values3.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "Interest on Loans and Advances - J - MOL - MPConso"
+					row_values3.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "Interest on Loans and Advances - J - POB - MPConso"
+					row_values3.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "Interest on Loans and Advances - J - TNZ - MPConso"
+					row_values3.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.advance_interest)
 
 				if flt(self.discount) > 0:
 					row_values4 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values4.account = "Discount - J - CC - MPConso"
+						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values4.account = "Discount - J - GTC - MPConso"
+						row_values4.account = "4120-002 - Discount - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values4.account = "Discount - J - MOL - MPConso"
+						row_values4.account = "4120-003 - Discount - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values4.account = "Discount - J - POB - MPConso"
+						row_values4.account = "4120-004 - Discount - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values4.account = "Discount - J - TNZ - MPConso"
+						row_values4.account = "4120-005 - Discount - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values4.account = "Discount - J - CC - MPConso"
+						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					row_values4.debit_in_account_currency = flt(self.discount)
 					row_values4.credit_in_account_currency = flt(0)
 
@@ -2305,50 +2360,50 @@ class ProvisionalReceipt(Document):
 				if flt(self.interest_payment) > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values2.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values2.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 				row_values3 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values3.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "Pawned Items Inventory - J - GTC - MPConso"
+					row_values3.account = "1610-002 - Pawned Items Inventory - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "Pawned Items Inventory - J - MOL - MPConso"
+					row_values3.account = "1610-003 - Pawned Items Inventory - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "Pawned Items Inventory - J - POB - MPConso"
+					row_values3.account = "1610-004 - Pawned Items Inventory - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "Pawned Items Inventory - J - TNZ - MPConso"
+					row_values3.account = "1610-005 - Pawned Items Inventory - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values3.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values3.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.principal_amount)
 
 				if flt(self.discount) > 0:
 					row_values4 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values4.account = "Discount - J - CC - MPConso"
+						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values4.account = "Discount - J - GTC - MPConso"
+						row_values4.account = "4120-002 - Discount - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values4.account = "Discount - J - MOL - MPConso"
+						row_values4.account = "4120-003 - Discount - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values4.account = "Discount - J - POB - MPConso"
+						row_values4.account = "4120-004 - Discount - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values4.account = "Discount - J - TNZ - MPConso"
+						row_values4.account = "4120-005 - Discount - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values4.account = "Discount - J - CC - MPConso"
+						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					row_values4.debit_in_account_currency = flt(self.discount)
 					row_values4.credit_in_account_currency = flt(0)
 
@@ -2388,33 +2443,33 @@ class ProvisionalReceipt(Document):
 				if self.interest_payment > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values2.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values2.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 				row_values3 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values3.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "Pawned Items Inventory - J - GTC - MPConso"
+					row_values3.account = "1610-002 - Pawned Items Inventory - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "Pawned Items Inventory - J - MOL - MPConso"
+					row_values3.account = "1610-003 - Pawned Items Inventory - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "Pawned Items Inventory - J - POB - MPConso"
+					row_values3.account = "1610-004 - Pawned Items Inventory - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "Pawned Items Inventory - J - TNZ - MPConso"
+					row_values3.account = "1610-005 - Pawned Items Inventory - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values3.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values3.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.total)
 
@@ -2454,66 +2509,66 @@ class ProvisionalReceipt(Document):
 				if self.interest_payment > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
+						row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values2.account = "Interest on Past Due Loans - J - POB - MPConso"
+						row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values2.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+						row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 				row_values3 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "Interest on Loans and Advances - J - GTC - MPConso"
+					row_values3.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "Interest on Loans and Advances - J - MOL - MPConso"
+					row_values3.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "Interest on Loans and Advances - J - POB - MPConso"
+					row_values3.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "Interest on Loans and Advances - J - TNZ - MPConso"
+					row_values3.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values3.account = "Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.advance_interest)
 
 				row_values4 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values4.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values4.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values4.account = "Pawned Items Inventory - J - GTC - MPConso"
+					row_values4.account = "1610-002 - Pawned Items Inventory - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values4.account = "Pawned Items Inventory - J - MOL - MPConso"
+					row_values4.account = "1610-003 - Pawned Items Inventory - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values4.account = "Pawned Items Inventory - J - POB - MPConso"
+					row_values4.account = "1610-004 - Pawned Items Inventory - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values4.account = "Pawned Items Inventory - J - TNZ - MPConso"
+					row_values4.account = "1610-005 - Pawned Items Inventory - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values4.account = "Pawned Items Inventory - J - CC - MPConso"
+					row_values4.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				row_values4.debit_in_account_currency = flt(0)
 				row_values4.credit_in_account_currency = flt(self.additional_amortization)
 
 				if flt(self.discount) > 0:
 					row_values5 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
-						row_values5.account = "Discount - J - CC - MPConso"
+						row_values5.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values5.account = "Discount - J - GTC - MPConso"
+						row_values5.account = "4120-002 - Discount - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
-						row_values5.account = "Discount - J - MOL - MPConso"
+						row_values5.account = "4120-003 - Discount - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
-						row_values5.account = "Discount - J - POB - MPConso"
+						row_values5.account = "4120-004 - Discount - J - POB - MPConso"
 					elif self.branch == "Garcia's Pawnshop - TNZ":
-						row_values5.account = "Discount - J - TNZ - MPConso"
+						row_values5.account = "4120-005 - Discount - J - TNZ - MPConso"
 					elif self.branch == "Rabie's House":
-						row_values5.account = "Discount - J - CC - MPConso"
+						row_values5.account = "4120-001 - Discount - J - CC - MPConso"
 					row_values5.debit_in_account_currency = flt(self.discount)
 					row_values5.credit_in_account_currency = flt(0)
 
@@ -2552,17 +2607,17 @@ class ProvisionalReceipt(Document):
 				
 				row_values2 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
-					row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+					row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+					row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
+					row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values2.account = "Interest on Past Due Loans - J - POB - MPConso"
+					row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
 				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values2.account = "Interest on Past Due Loans - J - TNZ - MPConso"
+					row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
 				elif self.branch == "Rabie's House":
-					row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
+					row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 				row_values2.debit_in_account_currency = flt(0)
 				row_values2.credit_in_account_currency = flt(self.total)
 

@@ -33,17 +33,17 @@ class CashPositionReport(Document):
 
 			row_values2 = doc1.append('accounts', {})
 			if self.branch == "Garcia's Pawnshop - CC":
-				row_values2.account = "Cash on Hand - Pawnshop - CC - MPConso"
+				row_values2.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 			elif self.branch == "Garcia's Pawnshop - GTC":
-				row_values2.account = "Cash on Hand - Pawnshop - GTC - MPConso"
+				row_values2.account = "1110-002 - Cash on Hand - Pawnshop - GTC - MPConso"
 			elif self.branch == "Garcia's Pawnshop - MOL":
-				row_values2.account = "Cash on Hand - Pawnshop - MOL - MPConso"
+				row_values2.account = "1110-003 - Cash on Hand - Pawnshop - MOL - MPConso"
 			elif self.branch == "Garcia's Pawnshop - POB":
-				row_values2.account = "Cash on Hand - Pawnshop - POB - MPConso"
+				row_values2.account = "1110-004 - Cash on Hand - Pawnshop - POB - MPConso"
 			elif self.branch == "Garcia's Pawnshop - TNZ":
-				row_values2.account = "Cash on Hand - Pawnshop - TNZ - MPConso"
+				row_values2.account = "1110-005 - Cash on Hand - Pawnshop - TNZ - MPConso"
 			elif self.branch == "Rabie's House":
-				row_values2.account = "Cash on Hand - Pawnshop - CC - MPConso"
+				row_values2.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 			row_values2.debit_in_account_currency = flt(0)
 			row_values2.credit_in_account_currency = flt(self.shortage_overage)
 
@@ -59,17 +59,17 @@ class CashPositionReport(Document):
 
 			row_values1 = doc1.append('accounts', {})
 			if self.branch == "Garcia's Pawnshop - CC":
-				row_values1.account = "Cash on Hand - Pawnshop - CC - MPConso"
+				row_values1.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 			elif self.branch == "Garcia's Pawnshop - GTC":
-				row_values1.account = "Cash on Hand - Pawnshop - GTC - MPConso"
+				row_values1.account = "1110-002 - Cash on Hand - Pawnshop - GTC - MPConso"
 			elif self.branch == "Garcia's Pawnshop - MOL":
-				row_values1.account = "Cash on Hand - Pawnshop - MOL - MPConso"
+				row_values1.account = "1110-003 - Cash on Hand - Pawnshop - MOL - MPConso"
 			elif self.branch == "Garcia's Pawnshop - POB":
-				row_values1.account = "Cash on Hand - Pawnshop - POB - MPConso"
+				row_values1.account = "1110-004 - Cash on Hand - Pawnshop - POB - MPConso"
 			elif self.branch == "Garcia's Pawnshop - TNZ":
-				row_values1.account = "Cash on Hand - Pawnshop - TNZ - MPConso"
+				row_values1.account = "1110-005 - Cash on Hand - Pawnshop - TNZ - MPConso"
 			elif self.branch == "Rabie's House":
-				row_values1.account = "Cash on Hand - Pawnshop - CC - MPConso"
+				row_values1.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 			row_values1.debit_in_account_currency = flt(0)
 			row_values1.credit_in_account_currency = flt(abs(self.shortage_overage))
 
