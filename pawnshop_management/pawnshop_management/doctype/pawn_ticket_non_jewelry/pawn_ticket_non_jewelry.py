@@ -54,41 +54,75 @@ class PawnTicketNonJewelry(Document):
 
 		doc1 = frappe.new_doc('Journal Entry')
 		doc1.voucher_type = 'Journal Entry'
-		doc1.company = 'TEST Garcia\'s Pawnshop'
+		doc1.company = 'MP Consolidated'
 		doc1.posting_date = self.date_loan_granted
 		doc1.reference_doctype = "Pawn Ticket Non Jewelry"
 		doc1.reference_document = self.name
 		doc1.document_status = "New Sangla"
 
 		row_values1 = doc1.append('accounts', {})
-		row_values1.account = "Pawned Items Inventory - NJ - TGP"
+		if self.branch == "Garcia's Pawnshop - CC":
+			row_values1.account = "Pawned Items Inventory - NJ - CC - MPConso"
+		elif self.branch == "Garcia's Pawnshop - GTC":
+			row_values1.account = "Pawned Items Inventory - NJ - GTC - MPConso"
+		elif self.branch == "Garcia's Pawnshop - MOL":
+			row_values1.account = "Pawned Items Inventory - NJ - MOL - MPConso"
+		elif self.branch == "Garcia's Pawnshop - POB":
+			row_values1.account = "Pawned Items Inventory - NJ - POB - MPConso"
+		elif self.branch == "Garcia's Pawnshop - TNZ":
+			row_values1.account = "Pawned Items Inventory - NJ - TNZ - MPConso"
+		elif self.branch == "Rabie's House":
+			row_values1.account = "Pawned Items Inventory - NJ - CC - MPConso"
+
 		row_values1.debit_in_account_currency = flt(self.desired_principal)
 		row_values1.credit_in_account_currency = flt(0)
 
 		row_values2 = doc1.append('accounts', {})
-		row_values2.account = "Interest on Past Due Loans - NJ - TGP"
+		if self.branch == "Garcia's Pawnshop - CC":
+			row_values2.account = "Interest on Past Due Loans - NJ - CC - MPConso"
+		elif self.branch == "Garcia's Pawnshop - GTC":
+			row_values2.account = "Interest on Past Due Loans - NJ - GTC - MPConso"
+		elif self.branch == "Garcia's Pawnshop - MOL":
+			row_values2.account = "Interest on Past Due Loans - NJ - MOL - MPConso"
+		elif self.branch == "Garcia's Pawnshop - POB":
+			row_values2.account = "Interest on Past Due Loans - NJ - POB - MPConso"
+		elif self.branch == "Garcia's Pawnshop - TNZ":
+			row_values2.account = "Interest on Past Due Loans - NJ - TNZ - MPConso"
+		elif self.branch == "Rabie's House":
+			row_values2.account = "Interest on Past Due Loans - NJ - CC - MPConso"
 		row_values2.debit_in_account_currency = flt(0)
 		row_values2.credit_in_account_currency = flt(self.interest)
 
 		row_values3 = doc1.append('accounts', {})
-		row_values3.account = "Cash on Hand - Pawnshop - TGP"
+		if self.branch == "Garcia's Pawnshop - CC":
+			row_values3.account = "Cash on Hand - Pawnshop - CC - MPConso"
+		elif self.branch == "Garcia's Pawnshop - GTC":
+			row_values3.account = "Cash on Hand - Pawnshop - GTC - MPConso"
+		elif self.branch == "Garcia's Pawnshop - MOL":
+			row_values3.account = "Cash on Hand - Pawnshop - MOL - MPConso"
+		elif self.branch == "Garcia's Pawnshop - POB":
+			row_values3.account = "Cash on Hand - Pawnshop - POB - MPConso"
+		elif self.branch == "Garcia's Pawnshop - TNZ":
+			row_values3.account = "Cash on Hand - Pawnshop - TNZ - MPConso"
+		elif self.branch == "Rabie's House":
+			row_values3.account = "Cash on Hand - Pawnshop - CC - MPConso"
 		row_values3.debit_in_account_currency = flt(0)
 		row_values3.credit_in_account_currency = flt(self.net_proceeds)
 
 		# row_values4 = doc1.append('accounts', {})
-		# row_values4.account = "Cash on Hand - Pawnshop - TGP"
+		# row_values4.account = "Cash on Hand - Pawnshop - MPConso"
 		# row_values4.debit_in_account_currency = flt(15.00)
 		# row_values4.credit_in_account_currency = flt(0)
 
 		# row_values5 = doc1.append('accounts', {})
-		# row_values5.account = "Service Charge - TGP"
+		# row_values5.account = "Service Charge - MPConso"
 		# row_values5.debit_in_account_currency = flt(0)
 		# row_values5.credit_in_account_currency = flt(15)
 
 		doc1.save(ignore_permissions=True)
-		doc1.submit()
+		# doc1.submit()
 
-	def before_cancel(self):
-		name = frappe.db.get_value('Journal Entry', {'reference_document': self.name, "document_status": "Active"}, 'name')
-		frappe.db.set_value('Journal Entry', name, 'docstatus', 2)
-		frappe.db.commit()
+	# def before_cancel(self):
+	# 	name = frappe.db.get_value('Journal Entry', {'reference_document': self.name, "document_status": "Active"}, 'name')
+	# 	frappe.db.set_value('Journal Entry', name, 'docstatus', 2)
+	# 	frappe.db.commit()

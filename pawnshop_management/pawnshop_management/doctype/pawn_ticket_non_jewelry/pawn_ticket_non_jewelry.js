@@ -266,13 +266,20 @@ frappe.ui.form.on('Non Jewelry List', {
 				}
 			}
 		}
+		if (table_length > 0) {
+			frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "hidden";
+		}
 	},
 	suggested_appraisal_value: function(frm, cdt, cdn){
 		set_total_appraised_amount(frm,cdt, cdn);
 	},
 
 	non_jewelry_items_remove: function(frm, cdt, cdn){
+		let table_length = parseInt(frm.doc.jewelry_items.length)
 		set_total_appraised_amount(frm, cdt, cdn);
+		if (table_length <= 4) {
+			frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "visible";
+		}
 	}	
 });
 

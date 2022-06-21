@@ -44,6 +44,7 @@ frappe.ui.form.on('Jewelry Batch', {
 
 });
 
+
 function get_inventory_batch(frm) {
 	if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_value('Pawnshop Naming Series', 'Cavite City Branch',['jewelry_inventory_count'])
