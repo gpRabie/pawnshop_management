@@ -1360,7 +1360,7 @@ class ProvisionalReceipt(Document):
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "Cash on Hand - Pawnshop - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values1.account = "Cash on Hand - Pawnshop - GTC - MPConso"
+					row_values1.account = "1110-002 - Cash on Hand - Pawnshop - GTC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - MOL":
 					row_values1.account = "Cash on Hand - Pawnshop - MOL - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -1376,7 +1376,7 @@ class ProvisionalReceipt(Document):
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
-						row_values2.account = "Interest on Past Due Loans - J - GTC - MPConso"
+						row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - MOL":
 						row_values2.account = "Interest on Past Due Loans - J - MOL - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
