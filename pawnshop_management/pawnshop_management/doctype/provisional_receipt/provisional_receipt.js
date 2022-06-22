@@ -24,6 +24,7 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	refresh: function(frm) {
+		frm.toggle_display(['new_pawn_ticket_no'], frm.doc.docstatus == 1 && frm.doc.new_pawn_ticket_no != "")
 		if (frm.is_new()) {
 			frappe.call({
 				method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
