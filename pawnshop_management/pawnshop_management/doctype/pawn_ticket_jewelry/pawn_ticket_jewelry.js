@@ -351,24 +351,14 @@ frappe.ui.form.on('Jewelry List', {
 			}
 		}	
 
+		
+	},
+	jewelry_items_add: function(frm, cdt, cdn){
+		let table_length = parseInt(frm.doc.jewelry_items.length)
 		if (table_length > 4) {
 			frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "hidden";
 		}
 	},
-	// item_no_add: function(frm, cdt, cdn){
-	// 	console.log(cdt);
-	// 	console.log(parseInt(frm.doc.jewelry_items.length));
-	// 	if (frm.doc.jewelry_items.length > 5) {
-	// 		// frm.doc.jewelry_items.pop(table_length-1);
-	// 		// frm.refresh_field('jewelry_items');
-	// 		// frappe.msgprint({
-	// 		// 	title:__('Notification'),
-	// 		// 	indicator:'red',
-	// 		// 	message: __('Number of items exceeds to 5')
-	// 		// });
-	// 		console.log("hi");
-	// 	}
-	// },
 
 	suggested_appraisal_value: function(frm, cdt, cdn){
 		set_total_appraised_amount(frm,cdt, cdn);

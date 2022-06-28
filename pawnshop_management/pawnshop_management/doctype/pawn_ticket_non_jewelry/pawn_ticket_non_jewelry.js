@@ -81,6 +81,7 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	},
 
 	refresh: function(frm){
+		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "hidden";
 		if (frm.is_new()) {
 			frappe.call({
 				method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
@@ -265,22 +266,21 @@ frappe.ui.form.on('Non Jewelry List', {
 					set_total_appraised_amount(frm, cdt, cdn);
 				}
 			}
-		}
-		if (table_length > 0) {
-			frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "hidden";
-		}
+		}	
 	},
+
 	suggested_appraisal_value: function(frm, cdt, cdn){
 		set_total_appraised_amount(frm,cdt, cdn);
 	},
 
 	non_jewelry_items_remove: function(frm, cdt, cdn){
-		let table_length = parseInt(frm.doc.jewelry_items.length)
 		set_total_appraised_amount(frm, cdt, cdn);
-		if (table_length <= 4) {
-			frm.fields_dict["jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "visible";
-		}
-	}	
+		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "visible";
+	},
+
+	non_jewelry_items_add: function(frm, cdt, cdn){
+		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "hidden";
+	}
 });
 
 

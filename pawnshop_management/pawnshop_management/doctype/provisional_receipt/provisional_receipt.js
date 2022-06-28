@@ -93,7 +93,8 @@ frappe.ui.form.on('Provisional Receipt', {
 						'in',
 						[
 							'Active',
-							'Returned'
+							'Returned',
+							'Expired'
 						]
 					]
 				}
@@ -885,9 +886,9 @@ function calculate_new_interest(frm) {
 	} else {
 		frappe.db.get_single_value('Pawnshop Management Settings', 'jewelry_interest_rate')
 		.then(rate => {
-			// let new_interest = (parseFloat(frm.doc.principal_amount) - parseFloat(frm.doc.additional_amortization)) * (rate/100);
-			// frm.set_value('advance_interest', new_interest);
-			// frm.refresh_field('advance_interest');
+			let new_interest = (parseFloat(frm.doc.principal_amount) - parseFloat(frm.doc.additional_amortization)) * (rate/100);
+			frm.set_value('advance_interest', new_interest);
+			frm.refresh_field('advance_interest');
 		})
 	}
 }

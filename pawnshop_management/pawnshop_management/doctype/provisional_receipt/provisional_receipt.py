@@ -1392,15 +1392,15 @@ class ProvisionalReceipt(Document):
 		elif self.pawn_ticket_type == "Pawn Ticket Jewelry":  #Renewal Cash
 			# For Cash Accounts
 			if self.transaction_type == "Renewal" and self.mode_of_payment == "Cash":			
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Renewal"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Renewal"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1416,7 +1416,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = flt(self.total)
 				row_values1.credit_in_account_currency = flt(0)
 				if self.interest_payment > 0:
-					row_values2 = doc1.append('accounts', {})
+					row_values2 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1433,7 +1433,7 @@ class ProvisionalReceipt(Document):
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 				if flt(self.discount) > 0:
-					row_values4 = doc1.append('accounts', {})
+					row_values4 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1449,7 +1449,7 @@ class ProvisionalReceipt(Document):
 					row_values4.debit_in_account_currency = flt(self.discount)
 					row_values4.credit_in_account_currency = flt(0)
 
-				row_values3 = doc1.append('accounts', {})
+				row_values3 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1465,19 +1465,19 @@ class ProvisionalReceipt(Document):
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.advance_interest)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			elif self.transaction_type == "Redemption" and self.mode_of_payment == "Cash":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Redemption"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Redemption"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1494,7 +1494,7 @@ class ProvisionalReceipt(Document):
 				row_values1.credit_in_account_currency = flt(0)
 
 				if flt(self.interest_payment) > 0:
-					row_values2 = doc1.append('accounts', {})
+					row_values2 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1511,7 +1511,7 @@ class ProvisionalReceipt(Document):
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
 				if flt(self.discount) > 0:
-					row_values4 = doc1.append('accounts', {})
+					row_values4 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1527,7 +1527,7 @@ class ProvisionalReceipt(Document):
 					row_values4.debit_in_account_currency = flt(self.discount)
 					row_values4.credit_in_account_currency = flt(0)
 
-				row_values3 = doc1.append('accounts', {})
+				row_values3 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values3.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1543,19 +1543,19 @@ class ProvisionalReceipt(Document):
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.principal_amount)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			elif self.transaction_type == "Amortization" and self.mode_of_payment == "Cash":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Amortization"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Amortization"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1572,7 +1572,7 @@ class ProvisionalReceipt(Document):
 				row_values1.credit_in_account_currency = flt(0)
 
 				if self.interest_payment > 0:
-					row_values2 = doc1.append('accounts', {})
+					row_values2 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1588,7 +1588,7 @@ class ProvisionalReceipt(Document):
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
-				row_values3 = doc1.append('accounts', {})
+				row_values3 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1604,19 +1604,19 @@ class ProvisionalReceipt(Document):
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.total)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			elif self.transaction_type == "Renewal w/ Amortization" and self.mode_of_payment == "Cash":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Renewal w/ Amortization"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Renewal w/ Amortization"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1633,7 +1633,7 @@ class ProvisionalReceipt(Document):
 				row_values1.credit_in_account_currency = flt(0)
 				
 				if self.interest_payment > 0:
-					row_values2 = doc1.append('accounts', {})
+					row_values2 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1649,7 +1649,7 @@ class ProvisionalReceipt(Document):
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 				
-				row_values3 = doc1.append('accounts', {})
+				row_values3 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1665,7 +1665,7 @@ class ProvisionalReceipt(Document):
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.advance_interest)
 
-				row_values4 = doc1.append('accounts', {})
+				row_values4 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values4.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1682,7 +1682,7 @@ class ProvisionalReceipt(Document):
 				row_values4.credit_in_account_currency = flt(self.additional_amortization)
 
 				if flt(self.discount) > 0:
-					row_values4 = doc1.append('accounts', {})
+					row_values4 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values5.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1698,19 +1698,19 @@ class ProvisionalReceipt(Document):
 					row_values4.debit_in_account_currency = flt(self.discount)
 					row_values4.credit_in_account_currency = flt(0)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 				
 			elif self.transaction_type == "Interest Payment" and self.mode_of_payment == "Cash":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Interest Payment"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Interest Payment"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1726,7 +1726,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = flt(self.total)
 				row_values1.credit_in_account_currency = flt(0)
 
-				row_values2 = doc1.append('accounts', {})
+				row_values2 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1742,20 +1742,20 @@ class ProvisionalReceipt(Document):
 				row_values2.debit_in_account_currency = flt(0)
 				row_values2.credit_in_account_currency = flt(self.total)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			# J GCash Transactions	
 			elif self.transaction_type == "Renewal" and self.mode_of_payment == "GCash":			
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Renewal"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Renewal"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "1235-001 - Cash in Bank - Eastwest PHP - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -1771,7 +1771,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = (flt(self.total) - (flt(self.total) * 0.02)) + (((flt(self.total) * 0.02) / 1.12) * 0.02)
 				row_values1.credit_in_account_currency = flt(0)
 
-				row_values2 = doc1.append('accounts', {})
+				row_values2 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values2.account = "4122-001 - Discount - GCash - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -1788,7 +1788,7 @@ class ProvisionalReceipt(Document):
 				row_values2.credit_in_account_currency = flt(0)
 
 				if self.interest_payment > 0:
-					row_values3 = doc1.append('accounts', {})
+					row_values3 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values3.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1805,7 +1805,7 @@ class ProvisionalReceipt(Document):
 					row_values3.credit_in_account_currency = flt(self.interest_payment)
 
 				if flt(self.discount) > 0:
-					row_values6 = doc1.append('accounts', {})
+					row_values6 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values6.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
@@ -1821,7 +1821,7 @@ class ProvisionalReceipt(Document):
 					row_values6.debit_in_account_currency = flt(self.discount)
 					row_values6.credit_in_account_currency = flt(0)
 				
-				row_values4 = doc1.append('accounts', {})
+				row_values4 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values4.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1837,7 +1837,7 @@ class ProvisionalReceipt(Document):
 				row_values4.debit_in_account_currency = flt(0)
 				row_values4.credit_in_account_currency = flt(self.advance_interest)
 				
-				row_values5 = doc1.append('accounts', {})
+				row_values5 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values5.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1853,19 +1853,19 @@ class ProvisionalReceipt(Document):
 				row_values5.debit_in_account_currency = flt(0)
 				row_values5.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			elif self.transaction_type == "Redemption" and self.mode_of_payment == "GCash":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Redemption"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Redemption"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "1235-001 - Cash in Bank - Eastwest PHP - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -1881,7 +1881,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = (flt(self.total) - (flt(self.total) * 0.02)) + (((flt(self.total) * 0.02) / 1.12) * 0.02)
 				row_values1.credit_in_account_currency = flt(0)
 
-				row_values2 = doc1.append('accounts', {})
+				row_values2 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values2.account = "4122-001 - Discount - GCash - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -1898,7 +1898,7 @@ class ProvisionalReceipt(Document):
 				row_values2.credit_in_account_currency = flt(0)
 
 				if self.interest_payment > 0:
-					row_values4 = doc1.append('accounts', {})
+					row_values4 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values4.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1915,7 +1915,7 @@ class ProvisionalReceipt(Document):
 					row_values4.credit_in_account_currency = flt(self.interest_payment)
 
 				if flt(self.discount) > 0:
-					row_values7 = doc1.append('accounts', {})
+					row_values7 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values7.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - POB":
@@ -1931,7 +1931,7 @@ class ProvisionalReceipt(Document):
 					row_values7.debit_in_account_currency = flt(self.discount)
 					row_values7.credit_in_account_currency = flt(0)
 
-				row_values5 = doc1.append('accounts', {})
+				row_values5 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values5.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1947,7 +1947,7 @@ class ProvisionalReceipt(Document):
 				row_values5.debit_in_account_currency = flt(0)
 				row_values5.credit_in_account_currency = flt(self.principal_amount)
 				
-				row_values6 = doc1.append('accounts', {})
+				row_values6 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values6.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -1963,19 +1963,19 @@ class ProvisionalReceipt(Document):
 				row_values6.debit_in_account_currency = flt(0)
 				row_values6.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			elif self.transaction_type == "Amortization" and self.mode_of_payment == "GCash":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Amortization"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Amortization"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "1235-001 - Cash in Bank - Eastwest PHP - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -1991,7 +1991,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = (flt(self.total) - (flt(self.total) * 0.02)) + (((flt(self.total) * 0.02) / 1.12) * 0.02)
 				row_values1.credit_in_account_currency = flt(0)
 
-				row_values2 = doc1.append('accounts', {})
+				row_values2 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values2.account = "4122-001 - Discount - GCash - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -2007,7 +2007,7 @@ class ProvisionalReceipt(Document):
 				row_values2.debit_in_account_currency = (flt(self.total) * 0.02)
 				row_values2.credit_in_account_currency = flt(0)
 
-				row_values5 = doc1.append('accounts', {})
+				row_values5 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values5.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2023,7 +2023,7 @@ class ProvisionalReceipt(Document):
 				row_values5.debit_in_account_currency = flt(0)
 				row_values5.credit_in_account_currency = flt(self.total)
 
-				row_values6 = doc1.append('accounts', {})
+				row_values6 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values6.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2039,19 +2039,19 @@ class ProvisionalReceipt(Document):
 				row_values6.debit_in_account_currency = flt(0)
 				row_values6.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			elif self.transaction_type == "Renewal w/ Amortization" and self.mode_of_payment == "GCash":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Renewal w/ Amortization"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Renewal w/ Amortization"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "1235-001 - Cash in Bank - Eastwest PHP - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -2067,7 +2067,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = (flt(self.total) - (flt(self.total) * 0.02)) + (((flt(self.total) * 0.02) / 1.12) * 0.02)
 				row_values1.credit_in_account_currency = flt(0)
 
-				row_values2 = doc1.append('accounts', {})
+				row_values2 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "4122-001 - Discount - GCash - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -2084,7 +2084,7 @@ class ProvisionalReceipt(Document):
 				row_values2.credit_in_account_currency = flt(0)
 
 				if self.interest_payment > 0:
-					row_values4 = doc1.append('accounts', {})
+					row_values4 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values4.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2100,7 +2100,7 @@ class ProvisionalReceipt(Document):
 					row_values4.debit_in_account_currency = flt(0)
 					row_values4.credit_in_account_currency = flt(self.interest_payment)
 
-				row_values5 = doc1.append('accounts', {})
+				row_values5 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values5.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2116,7 +2116,7 @@ class ProvisionalReceipt(Document):
 				row_values5.debit_in_account_currency = flt(0)
 				row_values5.credit_in_account_currency = flt(self.additional_amortization)
 
-				row_values6 = doc1.append('accounts', {})
+				row_values6 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values6.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2131,7 +2131,7 @@ class ProvisionalReceipt(Document):
 					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				row_values6.credit_in_account_currency = flt(self.advance_interest)
 
-				row_values7 = doc1.append('accounts', {})
+				row_values7 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values7.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2148,7 +2148,7 @@ class ProvisionalReceipt(Document):
 				row_values7.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
 				if flt(self.discount) > 0:
-					row_values8 = doc1.append('accounts', {})
+					row_values8 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values8.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2164,19 +2164,19 @@ class ProvisionalReceipt(Document):
 					row_values8.debit_in_account_currency = flt(self.discount)
 					row_values8.credit_in_account_currency = flt(0)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 				
 			elif self.transaction_type == "Interest Payment" and self.mode_of_payment == "GCash":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Interest Payment"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Interest Payment"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "1235-001 - Cash in Bank - Eastwest PHP - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -2192,7 +2192,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = (flt(self.total) - (flt(self.total) * 0.02)) + (((flt(self.total) * 0.02) / 1.12) * 0.02)
 				row_values1.credit_in_account_currency = flt(0)
 
-				row_values2 = doc1.append('accounts', {})
+				row_values2 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values1.account = "4122-001 - Discount - GCash - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - POB":
@@ -2208,7 +2208,7 @@ class ProvisionalReceipt(Document):
 				row_values2.debit_in_account_currency = (flt(self.total) * 0.02)
 				row_values2.credit_in_account_currency = flt(0)
 
-				row_values4 = doc1.append('accounts', {})
+				row_values4 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values4.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2224,7 +2224,7 @@ class ProvisionalReceipt(Document):
 				row_values4.debit_in_account_currency = flt(0)
 				row_values4.credit_in_account_currency = flt(self.total)
 
-				row_values5 = doc1.append('accounts', {})
+				row_values5 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values5.account = "2315-001 - Withholding Tax Payable - Expanded - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2240,20 +2240,20 @@ class ProvisionalReceipt(Document):
 				row_values5.debit_in_account_currency = flt(0)
 				row_values5.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			# J Bank Transfer Transactions
 			elif self.transaction_type == "Renewal" and self.mode_of_payment == "Bank Transfer":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Renewal"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Renewal"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.bank == "BDO":
 					row_values1.account = "1215-000 - Cash in Bank - BDO SM Ros - Php - MPConso"
 				elif self.bank == "BPI":
@@ -2275,7 +2275,7 @@ class ProvisionalReceipt(Document):
 				row_values1.credit_in_account_currency = flt(0)
 
 				if self.interest_payment > 0:
-					row_values2 = doc1.append('accounts', {})
+					row_values2 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2291,7 +2291,7 @@ class ProvisionalReceipt(Document):
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
-				row_values3 = doc1.append('accounts', {})
+				row_values3 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2308,7 +2308,7 @@ class ProvisionalReceipt(Document):
 				row_values3.credit_in_account_currency = flt(self.advance_interest)
 
 				if flt(self.discount) > 0:
-					row_values4 = doc1.append('accounts', {})
+					row_values4 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2324,19 +2324,19 @@ class ProvisionalReceipt(Document):
 					row_values4.debit_in_account_currency = flt(self.discount)
 					row_values4.credit_in_account_currency = flt(0)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			elif self.transaction_type == "Redemption" and self.mode_of_payment == "Bank Transfer":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Redemption"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Redemption"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.bank == "BDO":
 					row_values1.account = "1215-000 - Cash in Bank - BDO SM Ros - Php - MPConso"
 				elif self.bank == "BPI":
@@ -2358,7 +2358,7 @@ class ProvisionalReceipt(Document):
 				row_values1.credit_in_account_currency = flt(0)
 
 				if flt(self.interest_payment) > 0:
-					row_values2 = doc1.append('accounts', {})
+					row_values2 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2374,7 +2374,7 @@ class ProvisionalReceipt(Document):
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
-				row_values3 = doc1.append('accounts', {})
+				row_values3 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values3.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2391,7 +2391,7 @@ class ProvisionalReceipt(Document):
 				row_values3.credit_in_account_currency = flt(self.principal_amount)
 
 				if flt(self.discount) > 0:
-					row_values4 = doc1.append('accounts', {})
+					row_values4 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values4.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2407,19 +2407,19 @@ class ProvisionalReceipt(Document):
 					row_values4.debit_in_account_currency = flt(self.discount)
 					row_values4.credit_in_account_currency = flt(0)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			elif self.transaction_type == "Amortization" and self.mode_of_payment == "Bank Transfer":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Amortization"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Amortization"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.bank == "BDO":
 					row_values1.account = "1215-000 - Cash in Bank - BDO SM Ros - Php - MPConso"
 				elif self.bank == "BPI":
@@ -2441,7 +2441,7 @@ class ProvisionalReceipt(Document):
 				row_values1.credit_in_account_currency = flt(0)
 				
 				if self.interest_payment > 0:
-					row_values2 = doc1.append('accounts', {})
+					row_values2 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2457,7 +2457,7 @@ class ProvisionalReceipt(Document):
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
-				row_values3 = doc1.append('accounts', {})
+				row_values3 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values3.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2473,19 +2473,19 @@ class ProvisionalReceipt(Document):
 				row_values3.debit_in_account_currency = flt(0)
 				row_values3.credit_in_account_currency = flt(self.total)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			elif self.transaction_type == "Renewal w/ Amortization" and self.mode_of_payment == "Bank Transfer":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Renewal w/ Amortization"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Renewal w/ Amortization"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.bank == "BDO":
 					row_values1.account = "1215-000 - Cash in Bank - BDO SM Ros - Php - MPConso"
 				elif self.bank == "BPI":
@@ -2507,7 +2507,7 @@ class ProvisionalReceipt(Document):
 				row_values1.credit_in_account_currency = flt(0)
 				
 				if self.interest_payment > 0:
-					row_values2 = doc1.append('accounts', {})
+					row_values2 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2523,23 +2523,25 @@ class ProvisionalReceipt(Document):
 					row_values2.debit_in_account_currency = flt(0)
 					row_values2.credit_in_account_currency = flt(self.interest_payment)
 
-				row_values3 = doc1.append('accounts', {})
-				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
-				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
-				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
-				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
-				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
-				elif self.branch == "Rabie's House":
-					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
-				row_values3.debit_in_account_currency = flt(0)
-				row_values3.credit_in_account_currency = flt(self.advance_interest)
+				if self.advance_interest > 0:
+					row_values3 = doc2.append('accounts', {})
+					if self.branch == "Garcia's Pawnshop - CC":
+						row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
+					elif self.branch == "Garcia's Pawnshop - GTC":
+						row_values3.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
+					elif self.branch == "Garcia's Pawnshop - MOL":
+						row_values3.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
+					elif self.branch == "Garcia's Pawnshop - POB":
+						row_values3.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
+					elif self.branch == "Garcia's Pawnshop - TNZ":
+						row_values3.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
+					elif self.branch == "Rabie's House":
+						row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
+					row_values3.debit_in_account_currency = flt(0)
+					row_values3.credit_in_account_currency = flt(self.advance_interest)
 
-				row_values4 = doc1.append('accounts', {})
+				
+				row_values4 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values4.account = "1610-001 - Pawned Items Inventory - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2556,7 +2558,7 @@ class ProvisionalReceipt(Document):
 				row_values4.credit_in_account_currency = flt(self.additional_amortization)
 
 				if flt(self.discount) > 0:
-					row_values5 = doc1.append('accounts', {})
+					row_values5 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values5.account = "4120-001 - Discount - J - CC - MPConso"
 					elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2572,19 +2574,19 @@ class ProvisionalReceipt(Document):
 					row_values5.debit_in_account_currency = flt(self.discount)
 					row_values5.credit_in_account_currency = flt(0)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 			elif self.transaction_type == "Interest Payment" and self.mode_of_payment == "Bank Transfer":
-				doc1 = frappe.new_doc('Journal Entry')
-				doc1.voucher_type = 'Journal Entry'
-				doc1.company = 'MP Consolidated'
-				doc1.posting_date = self.date_issued
-				doc1.reference_doctype = "Provisional Receipt"
-				doc1.reference_document = self.name
-				doc1.document_status = "Interest Payment"
+				doc2 = frappe.new_doc('Journal Entry')
+				doc2.voucher_type = 'Journal Entry'
+				doc2.company = 'MP Consolidated'
+				doc2.posting_date = self.date_issued
+				doc2.reference_doctype = "Provisional Receipt"
+				doc2.reference_document = self.name
+				doc2.document_status = "Interest Payment"
 
-				row_values1 = doc1.append('accounts', {})
+				row_values1 = doc2.append('accounts', {})
 				if self.bank == "BDO":
 					row_values1.account = "1215-000 - Cash in Bank - BDO SM Ros - Php - MPConso"
 				elif self.bank == "BPI":
@@ -2605,7 +2607,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = flt(self.total)
 				row_values1.credit_in_account_currency = flt(0)
 				
-				row_values2 = doc1.append('accounts', {})
+				row_values2 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
 					row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
 				elif self.branch == "Garcia's Pawnshop - GTC":
@@ -2621,7 +2623,7 @@ class ProvisionalReceipt(Document):
 				row_values2.debit_in_account_currency = flt(0)
 				row_values2.credit_in_account_currency = flt(self.total)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				doc2.save(ignore_permissions=True)
+				# doc2.submit()
 
 		
