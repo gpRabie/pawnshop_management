@@ -680,6 +680,7 @@ function get_new_pawn_ticket_no(frm) {
 					new_pawn_ticket_no(frm, "20-", current_count, 'A');
 				})
 			} else if (data.message.item_series == "B") {
+				console.log(data.message.item_series);
 				frappe.db.get_value("Pawnshop Naming Series", "Rabie's House", "b_series")
 				.then(r => {
 					let current_count = r.message.b_series;

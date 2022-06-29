@@ -67,6 +67,18 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 					frm.refresh_field('change_status_date')
 				}
 			})
+		} else if (frm.selected_workflow_action === "Renew") {
+			frappe.call({
+				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.update_fields_after_status_change_renew_pawn_ticket',
+				args: {
+					pawn_ticket_type: "Pawn Ticket Jewelry",
+					pawn_ticket_no: String(frm.doc.pawn_ticket),
+					inventory_tracking_no: String(frm.doc.inventory_tracking_no)
+				},
+				callback: function(){
+					frm.refresh_field('change_status_date')
+				}
+			})
 		}
 	},
 

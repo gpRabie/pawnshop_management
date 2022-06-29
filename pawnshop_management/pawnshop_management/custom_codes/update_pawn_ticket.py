@@ -117,6 +117,25 @@ def update_fields_after_status_change_redeem_pawn_ticket(pawn_ticket_type, inven
         frappe.db.commit()
 
 @frappe.whitelist()
+def update_fields_after_status_change_renew_pawn_ticket(pawn_ticket_type, inventory_tracking_no, pawn_ticket_no):
+    frappe.db.set_value(pawn_ticket_type, pawn_ticket_no, 'change_status_date', today())
+    frappe.db.commit()
+
+    doc = frappe.get_doc(pawn_ticket_type, pawn_ticket_no)
+    if pawn_ticket_type == 'Pawn Ticket Non Jewelry':
+        for items in doc.get('non_jewelry_items'):
+            frappe.db.set_value('Non Jewelry Items', items.item_no, 'workflow_state', 'Renewed')
+            frappe.db.commit()
+        frappe.db.set_value('Non Jewelry Batch', inventory_tracking_no, 'workflow_state', 'Renewed')
+        frappe.db.commit()
+    elif pawn_ticket_type == 'Pawn Ticket Jewelry':
+        for items in doc.get('jewelry_items'):
+            frappe.db.set_value('Jewelry Items', items.item_no, 'workflow_state', 'Renewed')
+            frappe.db.commit()
+        frappe.db.set_value('Jewelry Batch', inventory_tracking_no, 'workflow_state', 'Renewed')
+        frappe.db.commit()
+
+@frappe.whitelist()
 def update_fields_after_status_change_pull_out_pawn_ticket(pawn_ticket_type, inventory_tracking_no, pawn_ticket_no):
     frappe.db.set_value(pawn_ticket_type, pawn_ticket_no, 'change_status_date', today())
     frappe.db.commit()
