@@ -160,7 +160,6 @@ frappe.ui.form.on('Provisional Receipt', {
 			show_payment_fields(frm);
 			frm.set_df_property('interest_payment', 'hidden', 1);
 			frm.set_df_property('discount', 'hidden', 1);
-			frm.set_df_property('new_pawn_ticket_no', 'hidden', 1);
 			frm.set_df_property('advance_interest', 'hidden', 1);
 			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
 			select_transaction_type(frm)
@@ -169,7 +168,6 @@ frappe.ui.form.on('Provisional Receipt', {
 			show_payment_fields(frm);
 			// frm.set_df_property('interest_payment', 'hidden', 1);
 			frm.set_df_property('discount', 'hidden', 1);
-			frm.set_df_property('new_pawn_ticket_no', 'hidden', 1);
 			frm.set_df_property('additional_amortization', 'hidden', 1);
 			frm.set_df_property('advance_interest', 'hidden', 1);
 			select_transaction_type(frm);
@@ -177,7 +175,6 @@ frappe.ui.form.on('Provisional Receipt', {
 			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('additional_amortization', 'hidden', 1);
-			frm.set_df_property('new_pawn_ticket_no', 'hidden', 1);
 			frm.set_df_property('advance_interest', 'hidden', 1);
 			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
 			select_transaction_type(frm);
@@ -186,11 +183,13 @@ frappe.ui.form.on('Provisional Receipt', {
 			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('additional_amortization', 'hidden', 1);
+			frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type == 'Renewal' || frm.doc.transaction_type == 'Renewal w/ Amortization');
 			// frm.set_df_property('advance_interest', 'hidden', 1);
 			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
 			get_new_pawn_ticket_no(frm);
 			select_transaction_type(frm);
 		} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
+			frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type == 'Renewal' || frm.doc.transaction_type == 'Renewal w/ Amortization');
 			clear_all_payment_fields();
 			show_payment_fields(frm);
 			get_new_pawn_ticket_no(frm);
@@ -778,7 +777,7 @@ function get_new_pawn_ticket_no(frm) {
 }
 
 function new_pawn_ticket_no(frm, prefix, series_count, item_series) {
-	frm.set_df_property('new_pawn_ticket_no', 'hidden', 0);
+	// frm.set_df_property('new_pawn_ticket_no', 'hidden', 0);
 	frm.set_value('new_pawn_ticket_no', prefix + series_count + item_series)
 	frm.refresh_field('new_pawn_ticket_no')
 	// if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal") {
