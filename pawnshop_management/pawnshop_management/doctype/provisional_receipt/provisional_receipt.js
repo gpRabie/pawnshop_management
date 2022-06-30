@@ -788,28 +788,9 @@ function get_new_pawn_ticket_no(frm) {
 }
 
 function new_pawn_ticket_no(frm, prefix, series_count, item_series) {
-	// frm.set_df_property('new_pawn_ticket_no', 'hidden', 0);
 	frm.set_value('new_pawn_ticket_no', prefix + series_count + item_series)
 	frm.refresh_field('new_pawn_ticket_no')
-	// if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal") {
-	// 	frm.set_value('new_pawn_ticket_no', prefix + series_count + item_series)
-	// 	frm.refresh_field('new_pawn_ticket_no')
-	// } else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal") {
-	// 	frm.set_value('new_pawn_ticket_no',  prefix + series_count + "A")
-	// 	frm.refresh_field('new_pawn_ticket_no')
-	// } else if(frm.doc.transaction_type == "Renewal"){
-	// 	frm.set_value('new_pawn_ticket_no', prefix + series_count + "B")
-	// 	frm.refresh_field('new_pawn_ticket_no')
-	// } else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal w/ Amortization") {
-	// 	frm.set_value('new_pawn_ticket_no', prefix + series_count + "B")
-	// 	frm.refresh_field('new_pawn_ticket_no')
-	// } else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal w/ Amortization") {
-	// 	frm.set_value('new_pawn_ticket_no', prefix + series_count + "A")
-	// 	frm.refresh_field('new_pawn_ticket_no')
-	// } else if(frm.doc.transaction_type == "Renewal w/ Amortization"){
-	// 	frm.set_value('new_pawn_ticket_no', prefix + series_count + "B")
-	// 	frm.refresh_field('new_pawn_ticket_no')
-	// }
+	console.log(frm.doc.new_pawn_ticket_no);
 }
 
 function select_transaction_type(frm) {					// Sets all field values calculations
