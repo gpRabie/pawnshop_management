@@ -724,6 +724,7 @@ function get_new_pawn_ticket_no(frm) {
 					let current_count = r.message.a_series;
 					frm.set_value('new_pawn_ticket_no', "4-" + current_count + 'A')
 					frm.refresh_field('new_pawn_ticket_no')
+					console.log(frm.doc.new_pawn_ticket_no);
 				})
 			} else if (data.message.item_series == "B") {
 				frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - GTC", "b_series")
