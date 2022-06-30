@@ -24,7 +24,7 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	refresh: function(frm) {
-		frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type === "Renewal" || frm.doc.transaction_type === "Renewal w/ Amortization")
+		frm.toggle_display(['new_pawn_ticket_no'], (frm.doc.docstatus == 1 && frm.doc.new_pawn_ticket_no != ""))
 		if (frm.is_new()) {
 			frappe.call({
 				method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
@@ -183,13 +183,13 @@ frappe.ui.form.on('Provisional Receipt', {
 			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('additional_amortization', 'hidden', 1);
-			frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type === 'Renewal' || frm.doc.transaction_type === 'Renewal w/ Amortization');
+			frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type == 'Renewal' || frm.doc.transaction_type == 'Renewal w/ Amortization');
 			// frm.set_df_property('advance_interest', 'hidden', 1);
 			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
 			get_new_pawn_ticket_no(frm);
 			select_transaction_type(frm);
 		} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
-			frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type === 'Renewal' || frm.doc.transaction_type === 'Renewal w/ Amortization');
+			frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type == 'Renewal' || frm.doc.transaction_type == 'Renewal w/ Amortization');
 			clear_all_payment_fields();
 			show_payment_fields(frm);
 			get_new_pawn_ticket_no(frm);
@@ -722,10 +722,7 @@ function get_new_pawn_ticket_no(frm) {
 				frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - GTC", "a_series")
 				.then(r => {
 					let current_count = r.message.a_series;
-					frm.set_value('new_pawn_ticket_no', "4-" + current_count + 'A')
-					frm.refresh_field('new_pawn_ticket_no')
-					console.log(frm.doc.new_pawn_ticket_no);
-
+					new_pawn_ticket_no(frm, "4-", current_count, 'A');
 				})
 			} else if (data.message.item_series == "B") {
 				frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - GTC", "b_series")
@@ -791,9 +788,28 @@ function get_new_pawn_ticket_no(frm) {
 }
 
 function new_pawn_ticket_no(frm, prefix, series_count, item_series) {
+	// frm.set_df_property('new_pawn_ticket_no', 'hidden', 0);
 	frm.set_value('new_pawn_ticket_no', prefix + series_count + item_series)
 	frm.refresh_field('new_pawn_ticket_no')
-	console.log(frm.doc.new_pawn_ticket_no);
+	// if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal") {
+	// 	frm.set_value('new_pawn_ticket_no', prefix + series_count + item_series)
+	// 	frm.refresh_field('new_pawn_ticket_no')
+	// } else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal") {
+	// 	frm.set_value('new_pawn_ticket_no',  prefix + series_count + "A")
+	// 	frm.refresh_field('new_pawn_ticket_no')
+	// } else if(frm.doc.transaction_type == "Renewal"){
+	// 	frm.set_value('new_pawn_ticket_no', prefix + series_count + "B")
+	// 	frm.refresh_field('new_pawn_ticket_no')
+	// } else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry" && frm.doc.transaction_type == "Renewal w/ Amortization") {
+	// 	frm.set_value('new_pawn_ticket_no', prefix + series_count + "B")
+	// 	frm.refresh_field('new_pawn_ticket_no')
+	// } else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry" && (frm.doc.principal_amount >= 1500 && frm.doc.principal_amount <= 10000) && frm.doc.transaction_type == "Renewal w/ Amortization") {
+	// 	frm.set_value('new_pawn_ticket_no', prefix + series_count + "A")
+	// 	frm.refresh_field('new_pawn_ticket_no')
+	// } else if(frm.doc.transaction_type == "Renewal w/ Amortization"){
+	// 	frm.set_value('new_pawn_ticket_no', prefix + series_count + "B")
+	// 	frm.refresh_field('new_pawn_ticket_no')
+	// }
 }
 
 function select_transaction_type(frm) {					// Sets all field values calculations
