@@ -24,6 +24,7 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	refresh: function(frm) {
+		frm.toggle_enable(['auditor_checkbox'], frm.doc.auditor_checkbox == 0)
 		frm.toggle_display(['new_pawn_ticket_no'], (frm.doc.docstatus == 1 && frm.doc.new_pawn_ticket_no != ""))
 		if (frm.is_new()) {
 			frappe.call({
@@ -111,6 +112,10 @@ frappe.ui.form.on('Provisional Receipt', {
 
 	branch: function(frm){
 		select_naming_series(frm);
+	},
+
+	auditor_checkbox: function(frm){
+		frm.toggle_enable(['auditor_checkbox'], frm.doc.auditor_checkbox == 0)
 	},
 
 	date_issued: function(frm){
@@ -750,56 +755,80 @@ function get_new_pawn_ticket_no(frm) {
 		}
 
 	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
-		frappe.db.get_value("Pawn Ticket Jewelry", frm.doc.pawn_ticket_no, "item_series")
-		.then(data => {
-			if (data.message.item_series == "A") {
-				frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - MOL", "a_series")
-				.then(r => {
-					let current_count = r.message.a_series;
-					new_pawn_ticket_no(frm, "6-", current_count, 'A');
-				})
-			} else if (data.message.item_series == "B") {
-				frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - MOL", "b_series")
-				.then(r => {
-					let current_count = r.message.b_series;
-					new_pawn_ticket_no(frm, "6-", current_count, 'B');
-				})
-			}
-		})
+		if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
+			frappe.db.get_value("Pawn Ticket Jewelry", frm.doc.pawn_ticket_no, "item_series")
+			.then(data => {
+				if (data.message.item_series == "A") {
+					frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - MOL", "a_series")
+					.then(r => {
+						let current_count = r.message.a_series;
+						new_pawn_ticket_no(frm, "6-", current_count, 'A');
+					})
+				} else if (data.message.item_series == "B") {
+					frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - MOL", "b_series")
+					.then(r => {
+						let current_count = r.message.b_series;
+						new_pawn_ticket_no(frm, "6-", current_count, 'B');
+					})
+				}
+			})
+		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
+			frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - MOL", "b_series")
+			.then(r => {
+				let current_count = r.message.b_series;
+				new_pawn_ticket_no(frm, "6-", current_count, 'B');
+			})
+		}
 	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
-		frappe.db.get_value("Pawn Ticket Jewelry", frm.doc.pawn_ticket_no, "item_series")
-		.then(data => {
-			if (data.message.item_series == "A") {
-				frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - POB", "a_series")
-				.then(r => {
-					let current_count = r.message.a_series;
-					new_pawn_ticket_no(frm, "3-", current_count, 'A');
-				})
-			} else if (data.message.item_series == "B") {
-				frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - POB", "b_series")
-				.then(r => {
-					let current_count = r.message.b_series;
-					new_pawn_ticket_no(frm, "3-", current_count, 'B');
-				})
-			}
-		})
+		if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
+			frappe.db.get_value("Pawn Ticket Jewelry", frm.doc.pawn_ticket_no, "item_series")
+			.then(data => {
+				if (data.message.item_series == "A") {
+					frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - POB", "a_series")
+					.then(r => {
+						let current_count = r.message.a_series;
+						new_pawn_ticket_no(frm, "6-", current_count, 'A');
+					})
+				} else if (data.message.item_series == "B") {
+					frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - POB", "b_series")
+					.then(r => {
+						let current_count = r.message.b_series;
+						new_pawn_ticket_no(frm, "6-", current_count, 'B');
+					})
+				}
+			})
+		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
+			frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - POB", "b_series")
+			.then(r => {
+				let current_count = r.message.b_series;
+				new_pawn_ticket_no(frm, "6-", current_count, 'B');
+			})
+		}
 	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
-		frappe.db.get_value("Pawn Ticket Jewelry", frm.doc.pawn_ticket_no, "item_series")
-		.then(data => {
-			if (data.message.item_series == "A") {
-				frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - TNZ", "a_series")
-				.then(r => {
-					let current_count = r.message.a_series;
-					new_pawn_ticket_no(frm, "5-", current_count, 'A');
-				})
-			} else if (data.message.item_series == "B") {
-				frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - TNZ", "b_series")
-				.then(r => {
-					let current_count = r.message.b_series;
-					new_pawn_ticket_no(frm, "5-", current_count, 'B');
-				})
-			}
-		})
+		if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
+			frappe.db.get_value("Pawn Ticket Jewelry", frm.doc.pawn_ticket_no, "item_series")
+			.then(data => {
+				if (data.message.item_series == "A") {
+					frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - TNZ", "a_series")
+					.then(r => {
+						let current_count = r.message.a_series;
+						new_pawn_ticket_no(frm, "6-", current_count, 'A');
+					})
+				} else if (data.message.item_series == "B") {
+					frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - TNZ", "b_series")
+					.then(r => {
+						let current_count = r.message.b_series;
+						new_pawn_ticket_no(frm, "6-", current_count, 'B');
+					})
+				}
+			})
+		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
+			frappe.db.get_value("Pawnshop Naming Series", "Garcia's Pawnshop - TNZ", "b_series")
+			.then(r => {
+				let current_count = r.message.b_series;
+				new_pawn_ticket_no(frm, "6-", current_count, 'B');
+			})
+		}
 	}
 }
 

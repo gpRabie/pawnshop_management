@@ -130,6 +130,8 @@ class PawnTicketJewelry(Document):
 			row_values3.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 		row_values3.debit_in_account_currency = flt(0)
 		row_values3.credit_in_account_currency = flt(self.net_proceeds)
+		
+		doc1.save(ignore_permissions=True)
 
 	def before_cancel(self):
 		name = frappe.db.get_value('Journal Entry', {'reference_document': self.name, "document_status": "Active"}, 'name')
