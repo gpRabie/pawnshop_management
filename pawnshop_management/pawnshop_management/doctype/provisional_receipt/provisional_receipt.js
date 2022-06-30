@@ -680,27 +680,32 @@ function select_naming_series(frm) { //Select naming series with regards to the 
 
 function get_new_pawn_ticket_no(frm) {
 	if (frm.doc.branch == "Rabie's House") {
-		if (frm.doc.) {
-			
-		}
-		frappe.db.get_value("Pawn Ticket Jewelry", frm.doc.pawn_ticket_no, "item_series")
-		.then(data => {
-			console.log(data.message.item_series);
-			if (data.message.item_series == "A") {
-				frappe.db.get_value("Pawnshop Naming Series", "Rabie's House", "a_series")
-				.then(r => {
-					let current_count = r.message.a_series;
-					new_pawn_ticket_no(frm, "20-", current_count, 'A');
-				})
-			} else if (data.message.item_series == "B") {
+		if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
+			frappe.db.get_value("Pawn Ticket Jewelry", frm.doc.pawn_ticket_no, "item_series")
+			.then(data => {
 				console.log(data.message.item_series);
-				frappe.db.get_value("Pawnshop Naming Series", "Rabie's House", "b_series")
-				.then(r => {
-					let current_count = r.message.b_series;
-					new_pawn_ticket_no(frm, "20-", current_count, 'B');
-				})
-			}
-		})
+				if (data.message.item_series == "A") {
+					frappe.db.get_value("Pawnshop Naming Series", "Rabie's House", "a_series")
+					.then(r => {
+						let current_count = r.message.a_series;
+						new_pawn_ticket_no(frm, "20-", current_count, 'A');
+					})
+				} else if (data.message.item_series == "B") {
+					frappe.db.get_value("Pawnshop Naming Series", "Rabie's House", "b_series")
+					.then(r => {
+						let current_count = r.message.b_series;
+						new_pawn_ticket_no(frm, "20-", current_count, 'B');
+					})
+				}
+			})
+		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry") {
+			frappe.db.get_value("Pawnshop Naming Series", "Rabie's House", "b_series")
+			.then(r => {
+				let current_count = r.message.b_series;
+				new_pawn_ticket_no(frm, "20-", current_count, 'B');
+			})
+		}
+		
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_value("Pawn Ticket Jewelry", frm.doc.pawn_ticket_no, "item_series")
 		.then(data => {
