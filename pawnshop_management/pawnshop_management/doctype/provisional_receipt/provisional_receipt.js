@@ -24,7 +24,7 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	refresh: function(frm) {
-		frm.toggle_display(['new_pawn_ticket_no'], frm.doc.docstatus == 1 && frm.doc.new_pawn_ticket_no != "")
+		frm.toggle_display(['new_pawn_ticket_no'], (frm.doc.docstatus == 1 && frm.doc.new_pawn_ticket_no != "") || frm.doc.transaction_type == "Renewal" || frm.doc.transaction_type == "Renewal w/ Amortization")
 		if (frm.is_new()) {
 			frappe.call({
 				method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
@@ -641,13 +641,24 @@ function calculate_expiry_date_interest(frm) {
 
 function show_items(doctype, doc_name, doc_table_name = null) {
 	frappe.db.get_doc(doctype, doc_name).then(function(r){
-		var item_list = r.non_jewelry_items
-		for (let index = 0; index < item_list.length; index++) {
-			let childTable = cur_frm.add_child("items");
-			childTable.item_code = item_list[index].item_no;
-			childTable.description = item_list[index].model + ", " + item_list[index].model_number
+		if (doctype == "Pawn Ticket Non Jewelry") {
+			var item_list = r.non_jewelry_items
+			for (let index = 0; index < item_list.length; index++) {
+				let childTable = cur_frm.add_child("items");
+				childTable.item_code = item_list[index].item_no;
+				childTable.description = item_list[index].model + ", " + item_list[index].model_number
+			}
+			cur_frm.refresh_field('items')
+		} else if (doctype == "Pawn Ticket Jewelry") {
+			var item_list = r.jewelry_items
+			for (let index = 0; index < item_list.length; index++) {
+				let childTable = cur_frm.add_child("items");
+				childTable.item_code = item_list[index].item_no;
+				childTable.description = item_list[index].type + ", " + item_list[index].karat + ", " + item_list[index].karat_category + ", " + item_list[index].color;
+			}
+			cur_frm.refresh_field('items')
 		}
-		cur_frm.refresh_field('items')
+		
 	})
 }
 

@@ -16,6 +16,7 @@
   "sizelength",
   "selling_price",
   "selling_price_per_gram",
+  "densi",
   "column_break_6",
   "branch",
   "additional_for_stone",
@@ -207,11 +208,16 @@
    "label": "Total Weight(g)",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "densi",
+   "fieldtype": "Data",
+   "label": "Densi"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-06-09 11:43:15.800234",
+ "modified": "2022-06-30 12:36:04.763812",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Jewelry Items",

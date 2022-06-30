@@ -16,7 +16,7 @@
   "expiry_date",
   "principal_amount",
   "interest",
-  "creditted",
+  "auditor_checkbox",
   "column_break_10",
   "branch",
   "date_issued",
@@ -26,6 +26,7 @@
   "complete_name",
   "amortization",
   "previous_interest_payment",
+  "creditted",
   "redeemables_section",
   "items",
   "payments_section",
@@ -245,12 +246,18 @@
    "fieldtype": "Data",
    "label": "Branch",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "auditor_checkbox",
+   "fieldtype": "Check",
+   "label": "Audited"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-06 14:58:26.455162",
+ "modified": "2022-06-30 12:35:37.710416",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
