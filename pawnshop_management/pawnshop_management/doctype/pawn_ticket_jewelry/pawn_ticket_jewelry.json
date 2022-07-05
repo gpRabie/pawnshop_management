@@ -13,7 +13,6 @@
   "maturity_date",
   "expiry_date",
   "change_status_date",
-  "auditor_checkbox",
   "column_break_6",
   "branch",
   "customers_tracking_no",
@@ -147,12 +146,6 @@
    "label": "Branch ",
    "options": "Branch",
    "reqd": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "auditor_checkbox",
-   "fieldtype": "Check",
-   "label": "Audited"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -163,7 +156,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-06-30 12:33:49.935324",
+ "modified": "2022-07-01 17:26:18.995261",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Jewelry",

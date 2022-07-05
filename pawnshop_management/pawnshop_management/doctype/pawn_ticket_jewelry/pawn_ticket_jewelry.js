@@ -83,10 +83,6 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 	},
 
 	refresh: function(frm){
-		frm.toggle_enable(['auditor_checkbox'], frm.doc.auditor_checkbox == 1)
-		frm.add_custom_button('Show User', () => {
-			console.log(frappe.session.user.role_profile_name);
-		})
 		if (frm.is_new()) {
 			// set_series(frm);
 			show_tracking_no(frm);
@@ -312,10 +308,6 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 		if (frm.is_new() && frm.doc.amended_from == null) {
 			frm.set_value('date_loan_granted', frappe.datetime.nowdate())
 		}
-	},
-
-	auditor_checkbox: function(frm){
-		frm.toggle_enable(['auditor_checkbox'], frm.doc.auditor_checkbox == 1)
 	},
 
 	date_loan_granted: function(frm){

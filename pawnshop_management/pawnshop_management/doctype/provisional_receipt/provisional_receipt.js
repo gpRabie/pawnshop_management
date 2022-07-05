@@ -24,7 +24,6 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	refresh: function(frm) {
-		frm.toggle_enable(['auditor_checkbox'], frm.doc.auditor_checkbox == 0)
 		frm.toggle_display(['new_pawn_ticket_no'], (frm.doc.docstatus == 1 && frm.doc.new_pawn_ticket_no != ""))
 		if (frm.is_new()) {
 			frappe.call({
@@ -112,10 +111,6 @@ frappe.ui.form.on('Provisional Receipt', {
 
 	branch: function(frm){
 		select_naming_series(frm);
-	},
-
-	auditor_checkbox: function(frm){
-		frm.toggle_enable(['auditor_checkbox'], frm.doc.auditor_checkbox == 0)
 	},
 
 	date_issued: function(frm){

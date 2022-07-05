@@ -93,7 +93,6 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	},
 
 	refresh: function(frm){
-		frm.toggle_enable(['auditor_checkbox'], frm.doc.auditor_checkbox == 1)
 		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "hidden";
 		if (frm.is_new()) {
 			frappe.call({
@@ -130,13 +129,13 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 		}
 		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].innerHTML = "Add Item"	//Change "Add Row" button of jewelry_items table into "Add Item"
 
-		frm.add_custom_button('Skip Pawn Ticket No', () => {
-			frappe.call('pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.increment_b_series',{
-				branch: frm.doc.branch
-			}).then(r => {
-				show_tracking_no(frm)
-			})
-		})
+		// frm.add_custom_button('Skip Pawn Ticket No', () => {
+		// 	frappe.call('pawnshop_management.pawnshop_management.custom_codes.update_pawn_ticket.increment_b_series',{
+		// 		branch: frm.doc.branch
+		// 	}).then(r => {
+		// 		show_tracking_no(frm)
+		// 	})
+		// })
 		
 		frappe.call({
 			method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip_from_settings'
@@ -233,10 +232,6 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 		if (frm.is_new() && frm.doc.amended_from == null) {
 			frm.set_value('date_loan_granted', frappe.datetime.nowdate())
 		}
-	},
-
-	auditor_checkbox: function(frm){
-		frm.toggle_enable(['auditor_checkbox'], frm.doc.auditor_checkbox == 1)
 	},
 
 	date_loan_granted: function(frm){
