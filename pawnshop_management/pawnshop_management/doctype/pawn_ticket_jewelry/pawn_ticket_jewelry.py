@@ -53,26 +53,27 @@ class PawnTicketJewelry(Document):
 					settings.save(ignore_permissions=True)
 
 	def on_submit(self):
-		if frappe.db.exists('Jewelry Batch', self.inventory_tracking_no) != self.inventory_tracking_no: #Copies Items table from pawnt ticket to non jewelry batch doctype
-			new_jewelry_batch = frappe.new_doc('Jewelry Batch')
-			new_jewelry_batch.inventory_tracking_no = self.inventory_tracking_no
-			new_jewelry_batch.branch = self.branch
-			items = self.jewelry_items
-			for i in range(len(items)):
-				new_jewelry_batch.append('items', {
-					"item_no": items[i].item_no,
-					"type": items[i].type,
-					"karat_category": items[i].karat_category,
-					"karat": items[i].karat,
-					"weight": items[i].weight,
-					"color": items[i].color,
-					"colors_if_multi": items[i].colors_if_multi,
-					"additional_for_stone": items[i].additional_for_stone,
-					"suggested_appraisal_value": items[i].suggested_appraisal_value,
-					"desired_principal": items[i].desired_principal,
-					"comments": items[i].comments
-				})
-			new_jewelry_batch.save(ignore_permissions=True)
+		#Copies Items table from pawnt ticket to non jewelry batch doctype
+		new_jewelry_batch = frappe.new_doc('Jewelry Batch')
+		new_jewelry_batch.inventory_tracking_no = self.inventory_tracking_no
+		new_jewelry_batch.branch = self.branch
+		items = self.jewelry_items
+		for i in range(len(items)):
+			new_jewelry_batch.append('items', {
+				"item_no": items[i].item_no,
+				"type": items[i].type,
+				"karat_category": items[i].karat_category,
+				"karat": items[i].karat,
+				"weight": items[i].weight,
+				"color": items[i].color,
+				"colors_if_multi": items[i].colors_if_multi,
+				"additional_for_stone": items[i].additional_for_stone,
+				"suggested_appraisal_value": items[i].suggested_appraisal_value,
+				"desired_principal": items[i].desired_principal,
+				"comments": items[i].comments
+			})
+		print("Hello")
+		new_jewelry_batch.save(ignore_permissions=True)
 
 		# Journal Entry for Pawn Ticket Jewelry
 		doc1 = frappe.new_doc('Journal Entry')
