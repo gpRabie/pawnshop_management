@@ -3,7 +3,7 @@
 
 frappe.ui.form.on('Jewelry Items', {
 	onload: function(frm) {
-		if (!frm.is_new()) {
+		if (frm.is_new()) {
 			frm.set_value('main_appraiser', frappe.user_info().fullname);
 			frm.disable_save();
 		}

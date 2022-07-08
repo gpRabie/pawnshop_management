@@ -36,7 +36,7 @@ class PawnTicketNonJewelry(Document):
 					settings.save(ignore_permissions=True)
 
 	def on_submit(self):
-		if frappe.db.exists('Non Jewelry Batch', self.invetory_tracking_no) == None:	#Copies Items table from pawnt ticket to non jewelry batch doctype
+		if frappe.db.exists('Non Jewelry Batch', self.invetory_tracking_no) == "" or frappe.db.exists('Non Jewelry Batch', self.invetory_tracking_no) == None:	#Copies Items table from pawnt ticket to non jewelry batch doctype
 			new_non_jewelry_batch = frappe.new_doc('Non Jewelry Batch')
 			new_non_jewelry_batch.inventory_tracking_no = self.inventory_tracking_no
 			new_non_jewelry_batch.branch = self.branch
