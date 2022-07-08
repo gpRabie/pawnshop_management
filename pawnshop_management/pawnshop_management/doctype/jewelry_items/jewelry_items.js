@@ -3,8 +3,10 @@
 
 frappe.ui.form.on('Jewelry Items', {
 	onload: function(frm) {
-		frm.set_value('main_appraiser', frappe.user_info().fullname);
-		frm.disable_save();
+		if (!frm.is_new()) {
+			frm.set_value('main_appraiser', frappe.user_info().fullname);
+			frm.disable_save();
+		}
 	},
 
 	validate: function(frm){

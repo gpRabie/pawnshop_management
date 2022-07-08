@@ -36,21 +36,21 @@ class PawnTicketNonJewelry(Document):
 					settings.save(ignore_permissions=True)
 
 	def on_submit(self):
-		#Copies Items table from pawnt ticket to non jewelry batch doctype
-		new_non_jewelry_batch = frappe.new_doc('Non Jewelry Batch')
-		new_non_jewelry_batch.inventory_tracking_no = self.inventory_tracking_no
-		new_non_jewelry_batch.branch = self.branch
-		items = self.non_jewelry_items
-		for i in range(len(items)):
-			new_non_jewelry_batch.append('items', {
-				"item_no": items[i].item_no,
-				"type": items[i].type,
-				"brand": items[i].brand,
-				"model": items[i].model,
-				"model_number": items[i].model_number,
-				"suggested_appraisal_value": items[i].suggested_appraisal_value
-			})
-		new_non_jewelry_batch.save(ignore_permissions=True)
+		if frappe.db.exists('Non Jewelry Batch', self.invetory_tracking_no) == None:	#Copies Items table from pawnt ticket to non jewelry batch doctype
+			new_non_jewelry_batch = frappe.new_doc('Non Jewelry Batch')
+			new_non_jewelry_batch.inventory_tracking_no = self.inventory_tracking_no
+			new_non_jewelry_batch.branch = self.branch
+			items = self.non_jewelry_items
+			for i in range(len(items)):
+				new_non_jewelry_batch.append('items', {
+					"item_no": items[i].item_no,
+					"type": items[i].type,
+					"brand": items[i].brand,
+					"model": items[i].model,
+					"model_number": items[i].model_number,
+					"suggested_appraisal_value": items[i].suggested_appraisal_value
+				})
+			new_non_jewelry_batch.save(ignore_permissions=True)
 
 		doc1 = frappe.new_doc('Journal Entry')
 		doc1.voucher_type = 'Journal Entry'
