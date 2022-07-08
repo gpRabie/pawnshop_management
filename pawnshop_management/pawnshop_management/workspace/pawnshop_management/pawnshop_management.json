@@ -62,6 +62,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Audit Forms",
+   "link_to": "Audit Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Items",
    "link_type": "DocType",
    "onboard": 0,
@@ -181,9 +190,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PT Naming Series ",
+   "link_to": "Pawnshop Naming Series",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-05-16 15:56:18.114347",
+ "modified": "2022-07-07 13:40:16.190098",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -231,6 +249,12 @@
    "doc_view": "New",
    "label": "New Cash Position Report",
    "link_to": "Cash Position Report",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "New",
+   "label": "New Audit Form",
+   "link_to": "Audit Form",
    "type": "DocType"
   }
  ],

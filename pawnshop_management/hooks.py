@@ -38,7 +38,7 @@ app_license = "MIT"
 
 doctype_list_js = {
 	"Pawn Ticket Jewelry" : "public/js/pawn_ticket_j_list.js"
-	}
+}
 
 # Home Pages
 # ----------
@@ -200,4 +200,8 @@ on_login = "pawnshop_management.pawnshop_management.custom_codes.log_in.post_log
 # 	"Workflow",
 # 	"Pawnshop Naming Series"
 # ]
+
+fixtures = [
+	"Workspace"
+]
 

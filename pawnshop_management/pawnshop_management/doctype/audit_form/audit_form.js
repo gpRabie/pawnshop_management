@@ -17,6 +17,23 @@ frappe.ui.form.on('Audit Form', {
 					]
 				}
 			}
+		}),
+
+		frm.set_query('document_name', () => {
+			return {
+				filters: {
+					'workflow_state':
+					[
+						'in',
+						[
+							"Active",
+							"Redeemed",
+							"Expired",
+							"Renewed"
+						]
+					]
+				}
+			}
 		})
 	}
 });

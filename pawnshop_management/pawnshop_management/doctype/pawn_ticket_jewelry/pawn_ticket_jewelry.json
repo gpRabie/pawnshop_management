@@ -143,6 +143,10 @@
   {
    "fieldname": "branch",
    "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Branch ",
    "options": "Branch",
    "reqd": 1
@@ -156,7 +160,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-07-01 17:26:18.995261",
+ "modified": "2022-07-07 13:59:21.916090",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Jewelry",
