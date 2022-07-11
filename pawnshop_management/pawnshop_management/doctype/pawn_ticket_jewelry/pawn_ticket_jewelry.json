@@ -149,6 +149,7 @@
    "in_standard_filter": 1,
    "label": "Branch ",
    "options": "Branch",
+   "read_only": 1,
    "reqd": 1
   }
  ],
@@ -160,7 +161,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-07-07 13:59:21.916090",
+ "modified": "2022-07-08 18:01:38.389799",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Jewelry",

@@ -73,6 +73,13 @@ app_license = "MIT"
 # permission_query_conditions = {
 # 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
+
+permission_query_conditions = {
+	"Pawn Ticket Jewelry": "pawnshop_management.pawnshop_management.custom_codes.pawn_ticket_j_list_filter.filter_j_based_on_banch",
+	"Pawn Ticket Non Jewelry": "pawnshop_management.pawnshop_management.custom_codes.pawn_ticket_nj_list_filter.filter_nj_based_on_banch",
+	"Provisional Receipt": "pawnshop_management.pawnshop_management.custom_codes.pr_list_filter.filter_pr_based_on_banch",
+	"Cash Position Report": "pawnshop_management.pawnshop_management.custom_codes.cpr_list_filter.filter_cpr_based_on_banch"
+}
 #
 # has_permission = {
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
