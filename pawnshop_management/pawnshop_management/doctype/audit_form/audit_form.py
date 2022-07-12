@@ -21,29 +21,22 @@ class AuditForm(Document):
 	
 	def on_cancel(self):
 		if frappe.db.exists(self.document_type, self.document_name) == self.document_name:
-			try:
-				journal_entry = frappe.db.get_value('Journal Entry', {'reference_document': self.document_name}, 'name')
-				doc1 = frappe.get_doc('Journal Entry', journal_entry)
-				if doc1.docstatus != 1:
-					try:
-						doc1.workflow_state = "Draft"
-						doc1.save(ignore_permissions=True)
-					except:
-						frappe.msgprint(
-							msg="Journal Entry didn't reverted to Draft",
-							title='Something went wrong',
-							raise_exception=RuntimeError
-						)
-				else:
-					frappe.throw(
-						msg="Journal Entry is already submitted",
-						title='Error',
+			journal_entry = frappe.db.get_value('Journal Entry', {'reference_document': self.document_name}, 'name')
+			doc1 = frappe.get_doc('Journal Entry', journal_entry)
+			if doc1.docstatus != 1:
+				try:
+					doc1.workflow_state = "Draft"
+					doc1.save(ignore_permissions=True)
+				except:
+					frappe.msgprint(
+						msg="Journal Entry didn't reverted to Draft",
+						title='Something went wrong',
 						raise_exception=RuntimeError
 					)
-			except:
+			else:
 				frappe.throw(
-					msg="Journal Entry doesn't exist or document isn't linked to any journal entry",
+					msg="Journal Entry is already submitted",
 					title='Error',
-					raise_exception=FileNotFoundError
+					raise_exception=RuntimeError
 				)
 				
