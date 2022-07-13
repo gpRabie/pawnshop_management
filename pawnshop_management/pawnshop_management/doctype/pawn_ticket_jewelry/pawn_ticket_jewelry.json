@@ -15,6 +15,7 @@
   "change_status_date",
   "column_break_6",
   "branch",
+  "old_pawn_ticket",
   "customers_tracking_no",
   "customers_full_name",
   "section_break_9",
@@ -151,6 +152,12 @@
    "options": "Branch",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "old_pawn_ticket",
+   "fieldtype": "Data",
+   "label": "Old Pawn Ticket",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -161,7 +168,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-07-08 18:01:38.389799",
+ "modified": "2022-07-12 16:21:58.027752",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Jewelry",

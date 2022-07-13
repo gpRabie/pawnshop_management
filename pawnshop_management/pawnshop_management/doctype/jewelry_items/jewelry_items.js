@@ -152,6 +152,11 @@ frappe.ui.form.on('Jewelry Items', {
 
 	branch: function(frm){
 		show_item_no(frm);
+	},
+
+	appraisal_value: function(frm){
+		frm.set_value('desired_principal', parseFloat(frm.doc.appraisal_value))
+		frm.refresh_field('desired_principal')
 	}
 
 });

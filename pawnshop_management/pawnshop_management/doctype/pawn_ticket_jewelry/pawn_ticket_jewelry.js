@@ -308,6 +308,7 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 		if (frm.is_new() && frm.doc.amended_from == null) {
 			frm.set_value('date_loan_granted', frappe.datetime.nowdate())
 		}
+		show_tracking_no(frm);
 	},
 
 	date_loan_granted: function(frm){

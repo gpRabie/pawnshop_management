@@ -35,23 +35,23 @@ frappe.ui.form.on('Cash Position Report', {
 					})
 				}
 			})
-			frappe.db.get_list('Cash Position Report', {
-				fields: ['ending_balance', 'date', 'creation'],
-				filters: {
-					date: frappe.datetime.add_days(frm.doc.date, -1)
-				}
-			}).then(records => {
-				let latest_record = records[0]
-				for (let index = 0; index < records.length; index++) {
-					if (latest_record.creation < records[index].creation) {
-						latest_record = records[index]
-						console.log(latest_record);
-					}
-				}
-				frm.set_value('beginning_balance', 0.00)
-				frm.set_value('beginning_balance', latest_record.ending_balance)
-				frm.refresh_field('beginning_balance')
-			})
+			// frappe.db.get_list('Cash Position Report', {
+			// 	fields: ['ending_balance', 'date', 'creation'],
+			// 	filters: {
+			// 		date: frappe.datetime.add_days(frm.doc.date, -1)
+			// 	}
+			// }).then(records => {
+			// 	let latest_record = records[0]
+			// 	for (let index = 0; index < records.length; index++) {
+			// 		if (latest_record.creation < records[index].creation) {
+			// 			latest_record = records[index]
+			// 			console.log(latest_record);
+			// 		}
+			// 	}
+			// 	frm.set_value('beginning_balance', 0.00)
+			// 	frm.set_value('beginning_balance', latest_record.ending_balance)
+			// 	frm.refresh_field('beginning_balance')
+			// })
 		}
 		// frm.set_value('date', frappe.datetime.now_date())
 		frm.add_custom_button('Test', () => {
@@ -74,6 +74,7 @@ frappe.ui.form.on('Cash Position Report', {
 	},
 
 	branch: function(frm){
+		get_beginning_balance(frm)
 		get_provisional_receipts_of_the_day(frm, frm.doc.date);
 		get_non_jewelry_of_the_day(frm, frm.doc.date);
 		get_gcash_provisional_receipt(frm, frm.doc.date);
@@ -111,7 +112,6 @@ frappe.ui.form.on('Cash Position Report', {
 			frappe.throw("Cash on hand is not equal to the Ending Balance")
 		}
 	},
-
 
 	beginning_balance: function(frm){
 		frm.set_value('ending_balance', 0.00);
@@ -248,6 +248,17 @@ frappe.ui.form.on('Cash Position Report', {
 	}
 });
 
+function get_beginning_balance(frm) {
+	frappe.call('pawnshop_management.pawnshop_management.custom_codes.get_latest_cpr.get_latest_cpr', {
+		branch: frm.doc.branch
+	}).then(record => {
+		let beginning_balance = parseFloat(record.message);
+		frm.set_value('beginning_balance', 0.00);
+		frm.set_value('beginning_balance', beginning_balance);
+		frm.refresh_field('beginning_balance');
+	})
+}
+
 function calculate_total_in() {
 	var total_in = parseFloat(cur_frm.doc.provisional_receipts) + parseFloat(cur_frm.doc.selling) + parseFloat(cur_frm.doc.cash_from_vault);
 	return total_in;
@@ -378,7 +389,8 @@ function get_jewelry_a_of_the_day(frm, date_today=null) {
 		filters: {
 			date_loan_granted: date_today,
 			item_series: 'A',
-			branch: frm.doc.branch
+			branch: frm.doc.branch,
+			old_pawn_ticket: ''
 		}
 	}).then(records => {
 		let temp_total = 0.00;
@@ -397,7 +409,8 @@ function get_jewelry_b_of_the_day(frm, date_today=null) {
 		filters: {
 			date_loan_granted: date_today,
 			item_series: 'B',
-			branch: frm.doc.branch
+			branch: frm.doc.branch,
+			old_pawn_ticket: ''
 		}
 	}).then(records => {
 		let temp_total = 0.00;
@@ -415,7 +428,8 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 			fields: ['net_proceeds'],
 			filters: {
 				date_loan_granted: date_today,
-				branch: "Rabie's House"
+				branch: "Rabie's House",
+				old_pawn_ticket: ''
 			}
 		}).then(records => {
 			let temp_total = 0.00;

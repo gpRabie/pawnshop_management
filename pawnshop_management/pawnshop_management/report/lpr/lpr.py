@@ -6,7 +6,7 @@ from frappe import _
 def execute(filters=None):
 	columns, data = [], []
 	columns = get_columns()
-	data = frappe.get_all("Provisional Receipt", filters=filters, fields=['date_issued', 'complete_name', 'pawn_ticket_no', 'principal_amount', 'interest_payment'])
+	data = frappe.get_all("Provisional Receipt", filters={'pawn_ticket_no': ['like', '%A%']}, fields=['date_issued', 'complete_name', 'pawn_ticket_no', 'principal_amount', 'interest_payment'])
 	for i in range(len(data)):
 		cash_on_hand = 0.00
 		cash_on_hand = data[i]['principal_amount'] + data[i]['interest_payment']
