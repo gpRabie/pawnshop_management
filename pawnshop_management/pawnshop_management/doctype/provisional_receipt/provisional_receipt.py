@@ -469,7 +469,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = flt(self.total)
 				row_values1.credit_in_account_currency = flt(0)
 
-				if self.interest_payment > 0:
+				if self.additional_amortization > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
@@ -496,38 +496,38 @@ class ProvisionalReceipt(Document):
 						row_values2.branch = "Garcia's Pawnshop - CC"
 						row_values2.cost_center = "1 - Cavite City - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
-					row_values2.credit_in_account_currency = flt(self.interest_payment)
+					row_values2.credit_in_account_currency = flt(self.additional_amortization)
 
-				row_values3 = doc1.append('accounts', {})
-				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "4111-001 - Interest on Loans and Advances - NJ - CC - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - CC"
-					row_values3.cost_center = "1 - Cavite City - MPConso"
-				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "4111-002 - Interest on Loans and Advances - NJ - GTC - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - GTC"
-					row_values3.cost_center = "4 - Gen. Trias - MPConso"
-				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "4111-003 - Interest on Loans and Advances - NJ - MOL - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - MOL"
-					row_values3.cost_center = "6 - Molino - MPConso"
-				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "4111-004 - Interest on Loans and Advances - NJ - POB - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - POB"
-					row_values3.cost_center = "3 - Poblacion - MPConso"
-				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "4111-005 - Interest on Loans and Advances - NJ - TNZ - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - TNZ"
-					row_values3.cost_center = "5 - Tanza - MPConso"
-				elif self.branch == "Rabie's House":
-					row_values3.account = "4111-001 - Interest on Loans and Advances - NJ - CC - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - CC"
-					row_values3.cost_center = "1 - Cavite City - MPConso"
-				row_values3.debit_in_account_currency = flt(0)
-				row_values3.credit_in_account_currency = flt(self.total)
+				# row_values3 = doc1.append('accounts', {})
+				# if self.branch == "Garcia's Pawnshop - CC":
+				# 	row_values3.account = "4111-001 - Interest on Loans and Advances - NJ - CC - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - CC"
+				# 	row_values3.cost_center = "1 - Cavite City - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - GTC":
+				# 	row_values3.account = "4111-002 - Interest on Loans and Advances - NJ - GTC - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - GTC"
+				# 	row_values3.cost_center = "4 - Gen. Trias - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - MOL":
+				# 	row_values3.account = "4111-003 - Interest on Loans and Advances - NJ - MOL - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - MOL"
+				# 	row_values3.cost_center = "6 - Molino - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - POB":
+				# 	row_values3.account = "4111-004 - Interest on Loans and Advances - NJ - POB - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - POB"
+				# 	row_values3.cost_center = "3 - Poblacion - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - TNZ":
+				# 	row_values3.account = "4111-005 - Interest on Loans and Advances - NJ - TNZ - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - TNZ"
+				# 	row_values3.cost_center = "5 - Tanza - MPConso"
+				# elif self.branch == "Rabie's House":
+				# 	row_values3.account = "4111-001 - Interest on Loans and Advances - NJ - CC - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - CC"
+				# 	row_values3.cost_center = "1 - Cavite City - MPConso"
+				# row_values3.debit_in_account_currency = flt(0)
+				# row_values3.credit_in_account_currency = flt(self.total)
 
-				doc1.save(ignore_permissions=True)
-				# doc1.submit()
+				# doc1.save(ignore_permissions=True)
+				# # doc1.submit()
 
 			elif self.transaction_type == "Renewal w/ Amortization" and self.mode_of_payment == "Cash":
 				doc1 = frappe.new_doc('Journal Entry')
@@ -566,7 +566,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = flt(self.total)
 				row_values1.credit_in_account_currency = flt(0)
 				
-				if self.interest_payment > 0:
+				if self.additional_amortization > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
@@ -593,7 +593,7 @@ class ProvisionalReceipt(Document):
 						row_values2.branch = "Garcia's Pawnshop - CC"
 						row_values2.cost_center = "1 - Cavite City - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
-					row_values2.credit_in_account_currency = flt(self.interest_payment)
+					row_values2.credit_in_account_currency = flt(self.additional_amortization)
 				
 				row_values3 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":
@@ -2063,7 +2063,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = flt(self.total)
 				row_values1.credit_in_account_currency = flt(0)
 				
-				if self.interest_payment > 0:
+				if self.additional_amortization > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
@@ -2090,35 +2090,35 @@ class ProvisionalReceipt(Document):
 						row_values2.branch = "Garcia's Pawnshop - CC"
 						row_values2.cost_center = "1 - Cavite City - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
-					row_values2.credit_in_account_currency = flt(self.interest_payment)
+					row_values2.credit_in_account_currency = flt(self.additional_amortization)
 
-				row_values3 = doc1.append('accounts', {})
-				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "1615-001 - Pawned Items Inventory - NJ - CC - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - CC"
-					row_values3.cost_center = "1 - Cavite City - MPConso"
-				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "1615-002 - Pawned Items Inventory - NJ - GTC - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - GTC"
-					row_values3.cost_center = "4 - Gen. Trias - MPConso"
-				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "1615-003 - Pawned Items Inventory - NJ - MOL - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - MOL"
-					row_values3.cost_center = "6 - Molino - MPConso"
-				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "1615-004 - Pawned Items Inventory - NJ - POB - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - POB"
-					row_values3.cost_center = "3 - Poblacion - MPConso"
-				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "1615-005 - Pawned Items Inventory - NJ - TNZ - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - TNZ"
-					row_values3.cost_center = "5 - Tanza - MPConso"
-				elif self.branch == "Rabie's House":
-					row_values3.account = "1615-001 - Pawned Items Inventory - NJ - CC - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - CC"
-					row_values3.cost_center = "1 - Cavite City - MPConso"
-				row_values3.debit_in_account_currency = flt(0)
-				row_values3.credit_in_account_currency = flt(self.total)
+				# row_values3 = doc1.append('accounts', {})
+				# if self.branch == "Garcia's Pawnshop - CC":
+				# 	row_values3.account = "1615-001 - Pawned Items Inventory - NJ - CC - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - CC"
+				# 	row_values3.cost_center = "1 - Cavite City - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - GTC":
+				# 	row_values3.account = "1615-002 - Pawned Items Inventory - NJ - GTC - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - GTC"
+				# 	row_values3.cost_center = "4 - Gen. Trias - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - MOL":
+				# 	row_values3.account = "1615-003 - Pawned Items Inventory - NJ - MOL - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - MOL"
+				# 	row_values3.cost_center = "6 - Molino - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - POB":
+				# 	row_values3.account = "1615-004 - Pawned Items Inventory - NJ - POB - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - POB"
+				# 	row_values3.cost_center = "3 - Poblacion - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - TNZ":
+				# 	row_values3.account = "1615-005 - Pawned Items Inventory - NJ - TNZ - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - TNZ"
+				# 	row_values3.cost_center = "5 - Tanza - MPConso"
+				# elif self.branch == "Rabie's House":
+				# 	row_values3.account = "1615-001 - Pawned Items Inventory - NJ - CC - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - CC"
+				# 	row_values3.cost_center = "1 - Cavite City - MPConso"
+				# row_values3.debit_in_account_currency = flt(0)
+				# row_values3.credit_in_account_currency = flt(self.total)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -2743,7 +2743,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = flt(self.total)
 				row_values1.credit_in_account_currency = flt(0)
 
-				if self.interest_payment > 0:
+				if self.additional_amortization > 0:
 					row_values2 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
@@ -2770,35 +2770,35 @@ class ProvisionalReceipt(Document):
 						row_values2.branch = "Garcia's Pawnshop - CC"
 						row_values2.cost_center = "1 - Cavite City - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
-					row_values2.credit_in_account_currency = flt(self.interest_payment)
+					row_values2.credit_in_account_currency = flt(self.additional_amortization)
 
-				row_values3 = doc2.append('accounts', {})
-				if self.branch == "Garcia's Pawnshop - CC":
-					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - CC"
-					row_values3.cost_center = "1 - Cavite City - MPConso"
-				elif self.branch == "Garcia's Pawnshop - GTC":
-					row_values3.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - GTC"
-					row_values3.cost_center = "4 - Gen. Trias - MPConso"
-				elif self.branch == "Garcia's Pawnshop - MOL":
-					row_values3.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - MOL"
-					row_values3.cost_center = "6 - Molino - MPConso"
-				elif self.branch == "Garcia's Pawnshop - POB":
-					row_values3.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - POB"
-					row_values3.cost_center = "3 - Poblacion - MPConso"
-				elif self.branch == "Garcia's Pawnshop - TNZ":
-					row_values3.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - TNZ"
-					row_values3.cost_center = "5 - Tanza - MPConso"
-				elif self.branch == "Rabie's House":
-					row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
-					row_values3.branch = "Garcia's Pawnshop - CC"
-					row_values3.cost_center = "1 - Cavite City - MPConso"
-				row_values3.debit_in_account_currency = flt(0)
-				row_values3.credit_in_account_currency = flt(self.total)
+				# row_values3 = doc2.append('accounts', {})
+				# if self.branch == "Garcia's Pawnshop - CC":
+				# 	row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - CC"
+				# 	row_values3.cost_center = "1 - Cavite City - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - GTC":
+				# 	row_values3.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - GTC"
+				# 	row_values3.cost_center = "4 - Gen. Trias - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - MOL":
+				# 	row_values3.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - MOL"
+				# 	row_values3.cost_center = "6 - Molino - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - POB":
+				# 	row_values3.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - POB"
+				# 	row_values3.cost_center = "3 - Poblacion - MPConso"
+				# elif self.branch == "Garcia's Pawnshop - TNZ":
+				# 	row_values3.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - TNZ"
+				# 	row_values3.cost_center = "5 - Tanza - MPConso"
+				# elif self.branch == "Rabie's House":
+				# 	row_values3.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
+				# 	row_values3.branch = "Garcia's Pawnshop - CC"
+				# 	row_values3.cost_center = "1 - Cavite City - MPConso"
+				# row_values3.debit_in_account_currency = flt(0)
+				# row_values3.credit_in_account_currency = flt(self.total)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -4335,7 +4335,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = flt(self.total)
 				row_values1.credit_in_account_currency = flt(0)
 				
-				if self.interest_payment > 0:
+				if self.additional_amortization > 0:
 					row_values2 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
@@ -4362,7 +4362,7 @@ class ProvisionalReceipt(Document):
 						row_values2.branch = "Garcia's Pawnshop - CC"
 						row_values2.cost_center = "1 - Cavite City - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
-					row_values2.credit_in_account_currency = flt(self.interest_payment)
+					row_values2.credit_in_account_currency = flt(self.additional_amortization)
 
 				row_values3 = doc2.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":

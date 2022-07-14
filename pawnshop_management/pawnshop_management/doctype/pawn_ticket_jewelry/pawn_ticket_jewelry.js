@@ -83,6 +83,7 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 	},
 
 	refresh: function(frm){
+		frm.toggle_display(['old_pawn_ticket'], frm.doc.old_pawn_ticket != '')
 		if (frm.is_new()) {
 			// set_series(frm);
 			show_tracking_no(frm);
