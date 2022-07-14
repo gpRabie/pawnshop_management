@@ -52,6 +52,7 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.item_series = previous_pawn_ticket.item_series
 			new_pawn_ticket.pawn_ticket = self.new_pawn_ticket_no
 			new_pawn_ticket.date_loan_granted = self.date_issued
+			new_pawn_ticket.old_pawn_ticket = self.pawn_ticket_no
 			new_pawn_ticket.maturity_date = add_to_date(self.date_issued, days=30)
 			new_pawn_ticket.expiry_date = add_to_date(self.date_issued, days=120)
 			new_pawn_ticket.customers_tracking_no = previous_pawn_ticket.customers_tracking_no
@@ -120,6 +121,7 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.branch = self.branch
 			new_pawn_ticket.item_series = previous_pawn_ticket.item_series
 			new_pawn_ticket.date_loan_granted = self.date_issued
+			new_pawn_ticket.old_pawn_ticket = self.pawn_ticket_no
 			new_pawn_ticket.maturity_date = add_to_date(self.date_issued, days=30)
 			new_pawn_ticket.expiry_date = add_to_date(self.date_issued, days=120)
 			new_pawn_ticket.customers_tracking_no = previous_pawn_ticket.customers_tracking_no
