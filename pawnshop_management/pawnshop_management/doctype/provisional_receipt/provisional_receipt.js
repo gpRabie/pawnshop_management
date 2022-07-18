@@ -23,6 +23,13 @@ frappe.ui.form.on('Provisional Receipt', {
 		}
 	},
 
+	after_submit: function(frm){
+		if (frm.doc.discount != 0 || frm.doc.discount != null) {
+			frm.set_df_property('discount', 'hidden', 0)
+			frm.set_df_property('discount', 'read_only', 1)
+		}
+	},
+
 	refresh: function(frm) {
 		frm.toggle_display(['new_pawn_ticket_no'], (frm.doc.docstatus == 1 && frm.doc.new_pawn_ticket_no != ""))
 		if (frm.is_new()) {
@@ -58,17 +65,17 @@ frappe.ui.form.on('Provisional Receipt', {
 				}
 			})
 		}
-		frm.add_custom_button('Skip PR No', () => {
-			frappe.call({
-				method: 'pawnshop_management.pawnshop_management.custom_codes.update_pr.increment_pr_no',
-				args: {
-					prefix: frm.doc.naming_series
-				},
-				callback: function(data){
-					console.log(data.message);
-				}
-			})
-		})
+		// frm.add_custom_button('Skip PR No', () => {
+		// 	frappe.call({
+		// 		method: 'pawnshop_management.pawnshop_management.custom_codes.update_pr.increment_pr_no',
+		// 		args: {
+		// 			prefix: frm.doc.naming_series
+		// 		},
+		// 		callback: function(data){
+		// 			console.log(data.message);
+		// 		}
+		// 	})
+		// })
 		frm.toggle_display(['creditted'], frm.doc.transaction_type == 'Interest Payment');
 		frm.set_query('pawn_ticket_type', () => {
 			return {

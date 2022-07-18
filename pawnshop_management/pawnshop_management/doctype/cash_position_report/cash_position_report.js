@@ -390,7 +390,8 @@ function get_jewelry_a_of_the_day(frm, date_today=null) {
 			date_loan_granted: date_today,
 			item_series: 'A',
 			branch: frm.doc.branch,
-			old_pawn_ticket: ''
+			old_pawn_ticket: '',
+			docstatus: 1
 		}
 	}).then(records => {
 		let temp_total = 0.00;
@@ -410,7 +411,8 @@ function get_jewelry_b_of_the_day(frm, date_today=null) {
 			date_loan_granted: date_today,
 			item_series: 'B',
 			branch: frm.doc.branch,
-			old_pawn_ticket: ''
+			old_pawn_ticket: '',
+			docstatus: 1
 		}
 	}).then(records => {
 		let temp_total = 0.00;
