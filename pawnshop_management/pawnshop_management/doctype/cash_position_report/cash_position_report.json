@@ -43,6 +43,11 @@
   "total_cash",
   "column_break_29",
   "shortage_overage",
+  "daily_balance_section",
+  "additional_pawn",
+  "additional_redeem",
+  "column_break_40",
+  "additional_partial_payment",
   "amended_from"
  ],
  "fields": [
@@ -268,11 +273,41 @@
    "fieldname": "bank_transfer",
    "fieldtype": "Currency",
    "label": "Bank Transfer"
+  },
+  {
+   "fieldname": "daily_balance_section",
+   "fieldtype": "Section Break",
+   "label": "Daily Balance"
+  },
+  {
+   "default": "0",
+   "fieldname": "additional_pawn",
+   "fieldtype": "Currency",
+   "label": "Additional Pawn",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "additional_redeem",
+   "fieldtype": "Currency",
+   "label": "Additional Redeem",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_40",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "additional_partial_payment",
+   "fieldtype": "Currency",
+   "label": "Additional Partial Payment",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-14 09:27:20.909506",
+ "modified": "2022-07-19 10:16:42.517029",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",

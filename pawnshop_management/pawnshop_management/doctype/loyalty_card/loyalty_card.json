@@ -38,7 +38,8 @@
   {
    "fieldname": "points",
    "fieldtype": "Float",
-   "label": "Points"
+   "label": "Current Points",
+   "read_only": 1
   },
   {
    "fieldname": "history_section",
@@ -54,7 +55,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-05-24 17:12:03.934209",
+ "modified": "2022-07-19 16:38:41.706284",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Loyalty Card",

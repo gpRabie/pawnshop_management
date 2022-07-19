@@ -54,23 +54,23 @@ frappe.ui.form.on('Cash Position Report', {
 			// })
 		}
 		// frm.set_value('date', frappe.datetime.now_date())
-		frm.add_custom_button('Test', () => {
-			get_provisional_receipts_of_the_day(frm, '2022-02-09');
-			get_non_jewelry_of_the_day(frm, '2022-02-27')
-			frappe.db.get_list('Cash Position Report', {
-				fields: ['ending_balance', 'date', 'creation'],
-				filters: {
-					date: frm.doc.date
-				}
-			}).then(records => {
-				// for (let index = 0; index < records.length; index++) {
-				// 	console.log(records[index]);
-				// 	frm.set_value('beginning_balance',records[index].ending_balance);
-				// 	frm.refresh_field('beginning_balance');
-				// }
-				console.log(records[0]);
-			})
-		})
+		// frm.add_custom_button('Test', () => {
+		// 	get_provisional_receipts_of_the_day(frm, '2022-02-09');
+		// 	get_non_jewelry_of_the_day(frm, '2022-02-27')
+		// 	frappe.db.get_list('Cash Position Report', {
+		// 		fields: ['ending_balance', 'date', 'creation'],
+		// 		filters: {
+		// 			date: frm.doc.date
+		// 		}
+		// 	}).then(records => {
+		// 		// for (let index = 0; index < records.length; index++) {
+		// 		// 	console.log(records[index]);
+		// 		// 	frm.set_value('beginning_balance',records[index].ending_balance);
+		// 		// 	frm.refresh_field('beginning_balance');
+		// 		// }
+		// 		console.log(records[0]);
+		// 	})
+		// })
 	},
 
 	branch: function(frm){
@@ -81,7 +81,9 @@ frappe.ui.form.on('Cash Position Report', {
 		select_naming_series(frm);
 		get_jewelry_b_of_the_day(frm, frm.doc.date);
 		get_jewelry_a_of_the_day(frm, frm.doc.date);
-
+		get_additional_pawn_records(frm);
+		get_additional_redeem(frm);
+		get_additional_partial_payment(frm);
 	},
 
 	date: function(frm){
@@ -804,4 +806,88 @@ function get_bank_transfer_provisional_receipt(frm, date_today = null) {
 			frm.refresh_field('bank_transfer');
 		})
 	}
+}
+
+function get_additional_pawn_records(frm) {
+	frappe.db.get_list('Pawn Ticket Jewelry', {
+		fields: ['net_proceeds'],
+		filters: {
+			branch: frm.doc.branch,
+			docstatus: 1
+		}
+	}).then(records => {
+		let temp_total = 0.00;
+		frm.set_value('additional_pawn', 0.00);
+		for (let index = 0; index < records.length; index++) {
+			temp_total += parseFloat(records[index]);
+		}
+		get_additional_pawn_records_nj(frm, temp_total)
+	})
+}
+
+function get_additional_pawn_records_nj(frm, j_temp_total) {
+	frappe.db.get_list('Pawn Ticket Non Jewelry', {
+		fields: ['net_proceeds'],
+		filters: {
+			branch: frm.doc.branch,
+			docstatus: 1
+		}
+	}).then(records_nj => {
+		let nj_temp_total = 0.00;
+		let total = 0.00;
+		for (let index = 0; index < records_nj.length; index++) {
+			nj_temp_total += records_nj[index];
+		}
+		total = j_temp_total + nj_temp_total;
+		frm.set_value('additional_pawn', total);
+		frm.refresh_field('additional_pawn');
+	})
+}
+
+
+function get_additional_redeem(frm) {
+	frappe.db.get_list('Provisional Receipt', {
+		fields: ['total', 'additional_amortization', 'transaction_type'],
+		filters: {
+			transaction_type: [
+				'in',
+				[
+					'Redemption',
+					'Renewal',
+					'Renewal w/ Amortization'
+				]
+			],
+			branch: frm.doc.branch
+		}
+	}).then(records_pr => {
+		let temp_total = 0.00;
+		frm.set_value('additional_redeem', 0.00);
+		for (let index = 0; index < records_pr.length; index++) {
+			if (records_pr[index][2] != "Renewal w/ Amortization") {
+				temp_total += records_pr[index][0]
+			} else {
+				temp_total += parseFloat(records_pr[index][0]) - parseFloat(records_pr[index[1]])
+			}
+		}
+		frm.set_value('additional_redeem', temp_total);
+		frm.refresh_field('additional_redeem');
+	})
+}
+
+function get_additional_partial_payment(frm) {
+	frappe.db.get_list('Provisional Receipt', {
+		fields: ['total'],
+		filters:{
+			branch: frm.doc.branch,
+			transaction_type: 'Interest Payment'
+		}
+	}).then(records_pr => {
+		let temp_total = 0.00;
+		frm.set_value('additional_partial_payment', 0.00);
+		for (let index = 0; index < array.length; index++) {
+			temp_total += records_pr[index];
+		}
+		frm.set_value('additional_partial_payment', temp_total);
+		frm.refresh_field('additional_partial_payment');
+	})
 }
