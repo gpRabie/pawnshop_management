@@ -884,7 +884,7 @@ function get_additional_partial_payment(frm) {
 	}).then(records_pr => {
 		let temp_total = 0.00;
 		frm.set_value('additional_partial_payment', 0.00);
-		for (let index = 0; index < array.length; index++) {
+		for (let index = 0; index < records_pr.length; index++) {
 			temp_total += records_pr[index];
 		}
 		frm.set_value('additional_partial_payment', temp_total);
