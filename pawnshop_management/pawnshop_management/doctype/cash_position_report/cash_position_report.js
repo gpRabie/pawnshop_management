@@ -1266,6 +1266,7 @@ function get_additional_partial_payment(frm) {
 				docstatus: 1
 			}
 		}).then(records_pr => {
+			console.log(records_pr);
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
