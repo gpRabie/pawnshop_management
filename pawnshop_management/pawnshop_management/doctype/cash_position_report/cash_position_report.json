@@ -55,43 +55,50 @@
    "default": "0.00",
    "fieldname": "beginning_balance",
    "fieldtype": "Currency",
-   "label": "Beginning Balance"
+   "label": "Beginning Balance",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "provisional_receipts",
    "fieldtype": "Currency",
-   "label": "Provisional Receipts"
+   "label": "Provisional Receipts",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "selling",
    "fieldtype": "Currency",
-   "label": "Selling"
+   "label": "Selling",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "total_in",
    "fieldtype": "Currency",
-   "label": "Total IN"
+   "label": "Total IN",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "jewelry_a",
    "fieldtype": "Currency",
-   "label": "Jewelry A"
+   "label": "Jewelry A",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "jewelry_b",
    "fieldtype": "Currency",
-   "label": "Jewelry B"
+   "label": "Jewelry B",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "total_out",
    "fieldtype": "Currency",
-   "label": "Total OUT"
+   "label": "Total OUT",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_9",
@@ -110,7 +117,8 @@
    "default": "0.00",
    "fieldname": "net_cash",
    "fieldtype": "Currency",
-   "label": "Net Cash"
+   "label": "Net Cash",
+   "read_only": 1
   },
   {
    "default": "0.00",
@@ -133,13 +141,15 @@
    "default": "0.00",
    "fieldname": "cash_from_vault",
    "fieldtype": "Currency",
-   "label": "Cash From Vault"
+   "label": "Cash From Vault",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "cash_to_vault",
    "fieldtype": "Currency",
-   "label": "Cash To Vault"
+   "label": "Cash To Vault",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_27",
@@ -174,7 +184,8 @@
    "default": "0.00",
    "fieldname": "non_jewelry",
    "fieldtype": "Currency",
-   "label": "Non Jewelry"
+   "label": "Non Jewelry",
+   "read_only": 1
   },
   {
    "default": "0",
@@ -249,31 +260,36 @@
    "fieldname": "branch",
    "fieldtype": "Link",
    "label": "Branch",
-   "options": "Branch"
+   "options": "Branch",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "agreement_to_sell",
    "fieldtype": "Currency",
-   "label": "Agreement to Sell"
+   "label": "Agreement to Sell",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "acknowledgement_receipts",
    "fieldtype": "Currency",
-   "label": "Acknowledgement Receipts"
+   "label": "Acknowledgement Receipts",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "gcash",
    "fieldtype": "Currency",
-   "label": "Gcash"
+   "label": "Gcash",
+   "read_only": 1
   },
   {
    "default": "0.00",
    "fieldname": "bank_transfer",
    "fieldtype": "Currency",
-   "label": "Bank Transfer"
+   "label": "Bank Transfer",
+   "read_only": 1
   },
   {
    "fieldname": "daily_balance_section",
@@ -309,7 +325,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-20 15:20:19.829592",
+ "modified": "2022-07-20 17:45:08.692468",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",

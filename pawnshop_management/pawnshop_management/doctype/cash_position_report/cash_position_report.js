@@ -3,6 +3,25 @@
 
 frappe.ui.form.on('Cash Position Report', {
 	refresh: function(frm) {
+		let is_allowed = frappe.user_roles.includes('Administrator');
+		frm.toggle_enable(
+			[
+				'date', 
+				'branch', 
+				'beginning_balance', 
+				'provisional_receipts', 
+				'selling', 
+				'cash_from_vault', 
+				'jewelry_a', 
+				'jewelry_b', 
+				'non_jewelry', 
+				'cash_to_vault', 
+				'agreement_to_sell', 
+				'acknowledgement_receipts',
+				'gcash',
+				'bank_transfer'
+			],
+			 is_allowed);
 		if (frm.is_new()) {
 			frappe.call({
 				method: 'pawnshop_management.pawnshop_management.custom_codes.get_ip.get_ip',
@@ -45,7 +64,6 @@ frappe.ui.form.on('Cash Position Report', {
 			// 	for (let index = 0; index < records.length; index++) {
 			// 		if (latest_record.creation < records[index].creation) {
 			// 			latest_record = records[index]
-			// 			console.log(latest_record);
 			// 		}
 			// 	}
 			// 	frm.set_value('beginning_balance', 0.00)
@@ -64,11 +82,9 @@ frappe.ui.form.on('Cash Position Report', {
 		// 		}
 		// 	}).then(records => {
 		// 		// for (let index = 0; index < records.length; index++) {
-		// 		// 	console.log(records[index]);
 		// 		// 	frm.set_value('beginning_balance',records[index].ending_balance);
 		// 		// 	frm.refresh_field('beginning_balance');
 		// 		// }
-		// 		console.log(records[0]);
 		// 	})
 		// })
 	},
@@ -84,7 +100,6 @@ frappe.ui.form.on('Cash Position Report', {
 		get_additional_pawn_records(frm);
 		get_additional_redeem(frm);
 		get_additional_partial_payment(frm);
-		console.log("Branch");
 	},
 
 	date: function(frm){
@@ -1199,7 +1214,6 @@ function get_additional_partial_payment(frm) {
 				docstatus: 1
 			}
 		}).then(records_pr => {
-			console.log(records_pr);
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
@@ -1260,7 +1274,6 @@ function get_additional_partial_payment(frm) {
 			frm.refresh_field('additional_partial_payment');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
-		console.log("Garcia's Pawnshop - GTC");
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
 			filters:{
@@ -1269,13 +1282,11 @@ function get_additional_partial_payment(frm) {
 				docstatus: 1
 			}
 		}).then(records_pr => {
-			console.log(records_pr);
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
 				temp_total += parseFloat(records_pr[index].total);
 			}
-			console.log(temp_total);
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
 		})
