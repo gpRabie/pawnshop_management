@@ -3,16 +3,22 @@
 
 frappe.ui.form.on('Loyalty Card', {
 	onload: function(frm){
-		// frm.set_query('customer_tracking_no', () => {
-		// 	return {
-		// 		filters: {
-		// 			"loyalty_program": ""
-		// 		}
-		// 	}
-		// })
+		frm.set_query('customer_tracking_no', () => {
+			return {
+				filters: {
+					"loyalty_program": undefined
+				}
+			}
+		})
 	},
 
 	refresh: function(frm){
+		frm.add_custom_button('Test', () => {
+			frappe.call('pawnshop_management.pawnshop_management.custom_codes.test.get_loyalty_program')
+			.then(r => {
+				console.log(r.message);
+			})
+		})
 		frm.add_custom_button('Add Points', () => {
 			frappe.prompt([
 				{
