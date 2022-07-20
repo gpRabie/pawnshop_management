@@ -6,7 +6,7 @@ frappe.ui.form.on('Loyalty Card', {
 		frm.set_query('customer_tracking_no', () => {
 			return {
 				filters: {
-					"loyalty_program": undefined
+					enrolled: 0
 				}
 			}
 		})
