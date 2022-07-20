@@ -2,20 +2,125 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Loyalty Card', {
-	// refresh: function(frm) {
-	// 	frm.add_custom_button('Add/Subtract Points', () => {
-	// 		frappe.prompt({
-	// 			label: 'Add/Subtract Points',
-	// 			fielname: 'points_addition_subtraction',
-	// 			fieldtype: 'Float'
-	// 		}, (value) => {
-	// 			frm.add_child('points_movement', {
-	// 				date: frappe.utils.today(),
-	// 				business_line: 'Pawnshop',
-	// 				pts_movement: value.points_addition_subtraction,
-	// 				encoder: frappe.session.user
-	// 			})
-	// 		})
-	// 	})
-	// }
+	onload: function(frm){
+		// frm.set_query('customer_tracking_no', () => {
+		// 	return {
+		// 		filters: {
+		// 			"loyalty_program": ""
+		// 		}
+		// 	}
+		// })
+	},
+
+	refresh: function(frm){
+		frm.add_custom_button('Add Points', () => {
+			frappe.prompt([
+				{
+					label: 'Add Points',
+					fieldname: 'add_points',
+					fieldtype: 'Float'
+				},
+
+				{
+					label: 'Business Line',
+					fieldname: 'business',
+					fieldtype: 'Select',
+					options: [
+						"Pawnshop",
+						"Forex",
+						"Money Changer"
+					]
+				},
+
+				{
+					label: 'Transaction',
+					fieldname: 'business_transaction',
+					fieldtype: 'Select',
+					options: [
+						"",
+						"Sangla",
+						"Renewal",
+						"Redemption",
+						"Interest Payment",
+						"Renewal w/ Amortization"
+					]
+				}
+			], (values) => {
+				let current_points = frm.doc.points;
+				current_points += values.add_points;
+				frm.set_value('points', current_points)
+				frm.add_child('points_movement', {
+					date: frappe.datetime.nowdate(),
+					business_line: values.business,
+					transaction: values.business_transaction,
+					pts_movement: "+" + values.add_points,
+					encoder: frappe.session.user
+				})
+			})
+		})
+
+
+		frm.add_custom_button('Subtract Points', () => {
+			frappe.prompt([
+				{
+					label: 'Subtract Points',
+					fieldname: 'subtract_points',
+					fieldtype: 'Float'
+				},
+
+				{
+					label: 'Business Line',
+					fieldname: 'business',
+					fieldtype: 'Select',
+					options: [
+						"Pawnshop",
+						"Forex",
+						"Money Changer"
+					]
+				},
+
+				{
+					label: 'Transaction',
+					fieldname: 'business_transaction',
+					fieldtype: 'Select',
+					options: [
+						"",
+						"Sangla",
+						"Renewal",
+						"Redemption",
+						"Interest Payment",
+						"Renewal w/ Amortization"
+					]
+				}
+			], (values) => {
+				let current_points = frm.doc.points;
+				current_points -= values.subtract_points;
+				frm.set_value('points', current_points)
+				frm.add_child('points_movement', {
+					date: frappe.datetime.nowdate(),
+					business_line: values.business,
+					transaction: values.business_transaction,
+					pts_movement: "-" + values.subtract_points,
+					encoder: frappe.session.user
+				})
+			})
+		})
+	}
 });
+frappe.ui.form.on('Loyalty Card History', {
+	points_movement_add(frm, cdt, cdn){
+		frm.add_child('points_movement', {
+			date: frappe.datetime.nowdate(),
+			encoder: frappe.session.user
+		})
+		// let data = frm.doc.points_movement
+		// console.log(data);
+		// for (let index = 0; index < data.length; index++) {
+		// 	data[index].date = frappe.datetime.nowdate();
+		// 	console.log(frappe.datetime.nowdate());
+		// 	dataencoder = frappe.session.user;
+		// 	console.log(frappe.session.user);
+		// }
+		// frm.refresh_field('points_movement');
+	}
+})

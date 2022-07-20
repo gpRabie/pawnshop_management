@@ -20,7 +20,6 @@
    "in_list_view": 1,
    "label": "Date",
    "read_only": 1,
-   "reqd": 1,
    "width": "150px"
   },
   {
@@ -29,7 +28,6 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Business Line",
-   "reqd": 1,
    "width": "200px"
   },
   {
@@ -38,32 +36,29 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Transaction",
-   "options": "Sangla\nRenewal\nRedemption\nRenewal w/ Amortization",
-   "reqd": 1,
+   "options": "Sangla\nRenewal\nRedemption\nInterest Payment\nRenewal w/ Amortization",
    "width": "200px"
   },
   {
    "columns": 1,
    "fieldname": "pts_movement",
-   "fieldtype": "Float",
+   "fieldtype": "Data",
    "label": "Pts. Movement",
-   "reqd": 1,
    "width": "100px"
   },
   {
    "columns": 2,
    "fieldname": "encoder",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Encoder",
-   "read_only": 1,
-   "reqd": 1,
+   "options": "User",
    "width": "200px"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-07-19 17:18:31.394614",
+ "modified": "2022-07-20 12:44:08.376732",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Loyalty Card History",
