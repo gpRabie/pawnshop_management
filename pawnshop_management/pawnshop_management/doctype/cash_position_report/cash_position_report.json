@@ -247,8 +247,9 @@
   },
   {
    "fieldname": "branch",
-   "fieldtype": "Data",
-   "label": "Branch"
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
   },
   {
    "default": "0.00",
@@ -287,13 +288,14 @@
    "read_only": 1
   },
   {
-   "default": "0",
+   "default": "0.00",
    "fieldname": "additional_redeem",
    "fieldtype": "Currency",
    "label": "Additional Redeem",
    "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "column_break_40",
    "fieldtype": "Column Break"
   },
@@ -307,7 +309,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-19 10:16:42.517029",
+ "modified": "2022-07-20 15:20:19.829592",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",

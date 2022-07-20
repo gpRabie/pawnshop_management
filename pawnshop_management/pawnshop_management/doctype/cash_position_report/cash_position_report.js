@@ -809,20 +809,97 @@ function get_bank_transfer_provisional_receipt(frm, date_today = null) {
 }
 
 function get_additional_pawn_records(frm) {
-	frappe.db.get_list('Pawn Ticket Jewelry', {
-		fields: ['net_proceeds'],
-		filters: {
-			branch: frm.doc.branch,
-			docstatus: 1
-		}
-	}).then(records => {
-		let temp_total = 0.00;
-		frm.set_value('additional_pawn', 0.00);
-		for (let index = 0; index < records.length; index++) {
-			temp_total += parseFloat(records[index]);
-		}
-		get_additional_pawn_records_nj(frm, temp_total)
-	})
+	if (frm.doc.branch == "Rabie's House") {
+		frappe.db.get_list('Pawn Ticket Jewelry', {
+			fields: ['net_proceeds'],
+			filters: {
+				branch: "Rabie's House",
+				docstatus: 1
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('additional_pawn', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].net_proceeds);
+			}
+			get_additional_pawn_records_nj(frm, temp_total)
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
+		frappe.db.get_list('Pawn Ticket Jewelry', {
+			fields: ['net_proceeds'],
+			filters: {
+				branch: "Garcia's Pawnshop - TNZ",
+				docstatus: 1
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('additional_pawn', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].net_proceeds);
+			}
+			get_additional_pawn_records_nj(frm, temp_total)
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
+		frappe.db.get_list('Pawn Ticket Jewelry', {
+			fields: ['net_proceeds'],
+			filters: {
+				branch: "Garcia's Pawnshop - POB",
+				docstatus: 1
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('additional_pawn', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].net_proceeds);
+			}
+			get_additional_pawn_records_nj(frm, temp_total)
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
+		frappe.db.get_list('Pawn Ticket Jewelry', {
+			fields: ['net_proceeds'],
+			filters: {
+				branch: "Garcia's Pawnshop - MOL",
+				docstatus: 1
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('additional_pawn', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].net_proceeds);
+			}
+			get_additional_pawn_records_nj(frm, temp_total)
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
+		frappe.db.get_list('Pawn Ticket Jewelry', {
+			fields: ['net_proceeds'],
+			filters: {
+				branch: "Garcia's Pawnshop - GTC",
+				docstatus: 1
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('additional_pawn', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].net_proceeds);
+			}
+			get_additional_pawn_records_nj(frm, temp_total)
+		})
+	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
+		frappe.db.get_list('Pawn Ticket Jewelry', {
+			fields: ['net_proceeds'],
+			filters: {
+				branch: "Garcia's Pawnshop - CC",
+				docstatus: 1
+			}
+		}).then(records => {
+			let temp_total = 0.00;
+			frm.set_value('additional_pawn', 0.00);
+			for (let index = 0; index < records.length; index++) {
+				temp_total += parseFloat(records[index].net_proceeds);
+			}
+			get_additional_pawn_records_nj(frm, temp_total)
+		})
+	}
 }
 
 function get_additional_pawn_records_nj(frm, j_temp_total) {
@@ -837,7 +914,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			let nj_temp_total = 0.00;
 			let total = 0.00;
 			for (let index = 0; index < records_nj.length; index++) {
-				nj_temp_total += records_nj[index];
+				nj_temp_total += records_nj[index].net_proceeds;
 			}
 			total = j_temp_total + nj_temp_total;
 			frm.set_value('additional_pawn', total);
@@ -854,7 +931,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			let nj_temp_total = 0.00;
 			let total = 0.00;
 			for (let index = 0; index < records_nj.length; index++) {
-				nj_temp_total += records_nj[index];
+				nj_temp_total += records_nj[index].net_proceeds;
 			}
 			total = j_temp_total + nj_temp_total;
 			frm.set_value('additional_pawn', total);
@@ -871,7 +948,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			let nj_temp_total = 0.00;
 			let total = 0.00;
 			for (let index = 0; index < records_nj.length; index++) {
-				nj_temp_total += records_nj[index];
+				nj_temp_total += records_nj[index].net_proceeds;
 			}
 			total = j_temp_total + nj_temp_total;
 			frm.set_value('additional_pawn', total);
@@ -888,7 +965,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			let nj_temp_total = 0.00;
 			let total = 0.00;
 			for (let index = 0; index < records_nj.length; index++) {
-				nj_temp_total += records_nj[index];
+				nj_temp_total += records_nj[index].net_proceeds;
 			}
 			total = j_temp_total + nj_temp_total;
 			frm.set_value('additional_pawn', total);
@@ -905,7 +982,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			let nj_temp_total = 0.00;
 			let total = 0.00;
 			for (let index = 0; index < records_nj.length; index++) {
-				nj_temp_total += records_nj[index];
+				nj_temp_total += records_nj[index].net_proceeds;
 			}
 			total = j_temp_total + nj_temp_total;
 			frm.set_value('additional_pawn', total);
@@ -922,7 +999,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			let nj_temp_total = 0.00;
 			let total = 0.00;
 			for (let index = 0; index < records_nj.length; index++) {
-				nj_temp_total += records_nj[index];
+				nj_temp_total += records_nj[index].net_proceeds;
 			}
 			total = j_temp_total + nj_temp_total;
 			frm.set_value('additional_pawn', total);
@@ -953,10 +1030,10 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index][2] != "Renewal w/ Amortization") {
-					temp_total += records_pr[index][0]
+				if (records_pr[index].transaction_type != "Renewal w/ Amortization") {
+					temp_total += records_pr[index].total
 				} else {
-					temp_total += parseFloat(records_pr[index][0]) - parseFloat(records_pr[index[1]])
+					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -984,7 +1061,7 @@ function get_additional_redeem(frm) {
 				if (records_pr[index][2] != "Renewal w/ Amortization") {
 					temp_total += records_pr[index][0]
 				} else {
-					temp_total += parseFloat(records_pr[index][0]) - parseFloat(records_pr[index[1]])
+					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -1012,7 +1089,7 @@ function get_additional_redeem(frm) {
 				if (records_pr[index][2] != "Renewal w/ Amortization") {
 					temp_total += records_pr[index][0]
 				} else {
-					temp_total += parseFloat(records_pr[index][0]) - parseFloat(records_pr[index[1]])
+					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -1040,7 +1117,7 @@ function get_additional_redeem(frm) {
 				if (records_pr[index][2] != "Renewal w/ Amortization") {
 					temp_total += records_pr[index][0]
 				} else {
-					temp_total += parseFloat(records_pr[index][0]) - parseFloat(records_pr[index[1]])
+					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -1068,7 +1145,7 @@ function get_additional_redeem(frm) {
 				if (records_pr[index][2] != "Renewal w/ Amortization") {
 					temp_total += records_pr[index][0]
 				} else {
-					temp_total += parseFloat(records_pr[index][0]) - parseFloat(records_pr[index[1]])
+					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -1096,7 +1173,7 @@ function get_additional_redeem(frm) {
 				if (records_pr[index][2] != "Renewal w/ Amortization") {
 					temp_total += records_pr[index][0]
 				} else {
-					temp_total += parseFloat(records_pr[index][0]) - parseFloat(records_pr[index[1]])
+					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -1117,7 +1194,7 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += records_pr[index];
+				temp_total += records_pr[index].total;
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
@@ -1133,7 +1210,7 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += records_pr[index];
+				temp_total += records_pr[index].total;
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
@@ -1149,7 +1226,7 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += records_pr[index];
+				temp_total += records_pr[index].total;
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
@@ -1165,7 +1242,7 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += records_pr[index];
+				temp_total += records_pr[index].total;
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
@@ -1181,7 +1258,7 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += records_pr[index];
+				temp_total += records_pr[index].total;
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
@@ -1197,7 +1274,7 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += records_pr[index];
+				temp_total += records_pr[index].total;
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
