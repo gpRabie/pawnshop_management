@@ -1242,7 +1242,7 @@ function get_additional_partial_payment(frm) {
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
 		})
-	} else if ("Garcia's Pawnshop - MOL") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
 			filters:{
@@ -1259,7 +1259,7 @@ function get_additional_partial_payment(frm) {
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
 		})
-	} else if ("Garcia's Pawnshop - GTC") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		console.log("Garcia's Pawnshop - GTC");
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
@@ -1279,7 +1279,7 @@ function get_additional_partial_payment(frm) {
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
 		})
-	} else if ("Garcia's Pawnshop - CC") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
 			filters:{
