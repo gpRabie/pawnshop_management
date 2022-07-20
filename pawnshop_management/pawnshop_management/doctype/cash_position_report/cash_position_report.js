@@ -1024,7 +1024,8 @@ function get_additional_redeem(frm) {
 						'Renewal w/ Amortization'
 					]
 				],
-				branch: "Rabie's House"
+				branch: "Rabie's House",
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1052,7 +1053,8 @@ function get_additional_redeem(frm) {
 						'Renewal w/ Amortization'
 					]
 				],
-				branch: "Garcia's Pawnshop - TNZ"
+				branch: "Garcia's Pawnshop - TNZ",
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1080,7 +1082,8 @@ function get_additional_redeem(frm) {
 						'Renewal w/ Amortization'
 					]
 				],
-				branch: "Garcia's Pawnshop - POB"
+				branch: "Garcia's Pawnshop - POB",
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1108,7 +1111,8 @@ function get_additional_redeem(frm) {
 						'Renewal w/ Amortization'
 					]
 				],
-				branch: "Garcia's Pawnshop - MOL"
+				branch: "Garcia's Pawnshop - MOL",
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1136,7 +1140,8 @@ function get_additional_redeem(frm) {
 						'Renewal w/ Amortization'
 					]
 				],
-				branch: "Garcia's Pawnshop - GTC"
+				branch: "Garcia's Pawnshop - GTC",
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1164,7 +1169,8 @@ function get_additional_redeem(frm) {
 						'Renewal w/ Amortization'
 					]
 				],
-				branch: "Garcia's Pawnshop - CC"
+				branch: "Garcia's Pawnshop - CC",
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1188,7 +1194,8 @@ function get_additional_partial_payment(frm) {
 			fields: ['total'],
 			filters:{
 				branch: "Rabie's House",
-				transaction_type: 'Interest Payment'
+				transaction_type: 'Interest Payment',
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1204,7 +1211,8 @@ function get_additional_partial_payment(frm) {
 			fields: ['total'],
 			filters:{
 				branch: "Garcia's Pawnshop - TNZ",
-				transaction_type: 'Interest Payment'
+				transaction_type: 'Interest Payment',
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1220,7 +1228,8 @@ function get_additional_partial_payment(frm) {
 			fields: ['total'],
 			filters:{
 				branch: "Garcia's Pawnshop - POB",
-				transaction_type: 'Interest Payment'
+				transaction_type: 'Interest Payment',
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1236,7 +1245,8 @@ function get_additional_partial_payment(frm) {
 			fields: ['total'],
 			filters:{
 				branch: "Garcia's Pawnshop - MOL",
-				transaction_type: 'Interest Payment'
+				transaction_type: 'Interest Payment',
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1252,7 +1262,8 @@ function get_additional_partial_payment(frm) {
 			fields: ['total'],
 			filters:{
 				branch: "Garcia's Pawnshop - GTC",
-				transaction_type: 'Interest Payment'
+				transaction_type: 'Interest Payment',
+				docstatus: 1
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
