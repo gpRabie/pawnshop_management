@@ -1060,8 +1060,8 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index][2] != "Renewal w/ Amortization") {
-					temp_total += records_pr[index][0]
+				if (records_pr[index].transaction_type != "Renewal w/ Amortization") {
+					temp_total += records_pr[index].total
 				} else {
 					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
@@ -1089,8 +1089,8 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index][2] != "Renewal w/ Amortization") {
-					temp_total += records_pr[index][0]
+				if (records_pr[index].transaction_type != "Renewal w/ Amortization") {
+					temp_total += records_pr[index].total
 				} else {
 					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
@@ -1118,8 +1118,8 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index][2] != "Renewal w/ Amortization") {
-					temp_total += records_pr[index][0]
+				if (records_pr[index].transaction_type != "Renewal w/ Amortization") {
+					temp_total += records_pr[index].total
 				} else {
 					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
@@ -1147,8 +1147,8 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index][2] != "Renewal w/ Amortization") {
-					temp_total += records_pr[index][0]
+				if (records_pr[index].transaction_type != "Renewal w/ Amortization") {
+					temp_total += records_pr[index].total
 				} else {
 					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
@@ -1176,8 +1176,8 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index][2] != "Renewal w/ Amortization") {
-					temp_total += records_pr[index][0]
+				if (records_pr[index].transaction_type != "Renewal w/ Amortization") {
+					temp_total += records_pr[index].total
 				} else {
 					temp_total += parseFloat(records_pr[index].total) - parseFloat(records_pr[index].additional_amortization)
 				}
