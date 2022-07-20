@@ -84,6 +84,7 @@ frappe.ui.form.on('Cash Position Report', {
 		get_additional_pawn_records(frm);
 		get_additional_redeem(frm);
 		get_additional_partial_payment(frm);
+		console.log("Branch");
 	},
 
 	date: function(frm){
@@ -1259,6 +1260,7 @@ function get_additional_partial_payment(frm) {
 			frm.refresh_field('additional_partial_payment');
 		})
 	} else if ("Garcia's Pawnshop - GTC") {
+		console.log("Garcia's Pawnshop - GTC");
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
 			filters:{
@@ -1273,6 +1275,7 @@ function get_additional_partial_payment(frm) {
 			for (let index = 0; index < records_pr.length; index++) {
 				temp_total += parseFloat(records_pr[index].total);
 			}
+			console.log(temp_total);
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
 		})
