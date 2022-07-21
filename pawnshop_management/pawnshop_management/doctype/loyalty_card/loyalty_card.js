@@ -13,6 +13,7 @@ frappe.ui.form.on('Loyalty Card', {
 	},
 
 	refresh: function(frm){
+		frm.toggle_enable(['points_movement'], is_allowed);
 		frm.add_custom_button('Test', () => {
 			frappe.call('pawnshop_management.pawnshop_management.custom_codes.test.get_loyalty_program')
 			.then(r => {
@@ -113,20 +114,20 @@ frappe.ui.form.on('Loyalty Card', {
 		})
 	}
 });
-frappe.ui.form.on('Loyalty Card History', {
-	points_movement_add(frm, cdt, cdn){
-		frm.add_child('points_movement', {
-			date: frappe.datetime.nowdate(),
-			encoder: frappe.session.user
-		})
-		// let data = frm.doc.points_movement
-		// console.log(data);
-		// for (let index = 0; index < data.length; index++) {
-		// 	data[index].date = frappe.datetime.nowdate();
-		// 	console.log(frappe.datetime.nowdate());
-		// 	dataencoder = frappe.session.user;
-		// 	console.log(frappe.session.user);
-		// }
-		// frm.refresh_field('points_movement');
-	}
-})
+// frappe.ui.form.on('Loyalty Card History', {
+// 	points_movement_add(frm, cdt, cdn){
+// 		frm.add_child('points_movement', {
+// 			date: frappe.datetime.nowdate(),
+// 			encoder: frappe.session.user
+// 		})
+// 		// let data = frm.doc.points_movement
+// 		// console.log(data);
+// 		// for (let index = 0; index < data.length; index++) {
+// 		// 	data[index].date = frappe.datetime.nowdate();
+// 		// 	console.log(frappe.datetime.nowdate());
+// 		// 	dataencoder = frappe.session.user;
+// 		// 	console.log(frappe.session.user);
+// 		// }
+// 		// frm.refresh_field('points_movement');
+// 	}
+// })
