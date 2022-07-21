@@ -566,7 +566,7 @@ class ProvisionalReceipt(Document):
 				row_values1.debit_in_account_currency = flt(self.total)
 				row_values1.credit_in_account_currency = flt(0)
 				
-				if self.additional_amortization > 0:
+				if self.interest_payment > 0:
 					row_values2 = doc1.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values2.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
@@ -593,7 +593,7 @@ class ProvisionalReceipt(Document):
 						row_values2.branch = "Garcia's Pawnshop - CC"
 						row_values2.cost_center = "1 - Cavite City - MPConso"
 					row_values2.debit_in_account_currency = flt(0)
-					row_values2.credit_in_account_currency = flt(self.additional_amortization)
+					row_values2.credit_in_account_currency = flt(self.interest_payment)
 				
 				row_values3 = doc1.append('accounts', {})
 				if self.branch == "Garcia's Pawnshop - CC":

@@ -24,7 +24,6 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	refresh: function(frm) {
-		console.log(frm.doc.docstatus);
 		if ((frm.doc.discount != 0 || frm.doc.discount != null) && frm.doc.docstatus == 1) {
 			frm.set_df_property('discount', 'hidden', 0)
 			frm.set_df_property('discount', 'read_only', 1)
