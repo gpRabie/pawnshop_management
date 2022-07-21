@@ -1160,14 +1160,14 @@ function get_additional_redeem(frm) {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
 			filters: {
-				transaction_type: [
-					'in',
-					[
-						'Redemption',
-						'Renewal',
-						'Renewal w/ Amortization'
-					]
-				],
+				// transaction_type: [
+				// 	'in',
+				// 	[
+				// 		'Redemption',
+				// 		'Renewal',
+				// 		'Renewal w/ Amortization'
+				// 	]
+				// ],
 				branch: "Garcia's Pawnshop - GTC",
 				docstatus: 1,
 				date_issued: frappe.datetime.nowdate()
