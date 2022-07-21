@@ -12,9 +12,7 @@ frappe.ui.form.on('Cash Position Report', {
 				'provisional_receipts', 
 				'jewelry_a', 
 				'jewelry_b', 
-				'non_jewelry', 
-				'gcash',
-				'bank_transfer'
+				'non_jewelry'
 			],
 			 is_allowed);
 		if (frm.is_new()) {
