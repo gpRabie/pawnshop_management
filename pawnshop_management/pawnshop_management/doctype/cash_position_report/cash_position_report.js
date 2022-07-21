@@ -1072,7 +1072,6 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Interest Payment',
 						'Renewal w/ Amortization'
 					]
 				],
@@ -1104,7 +1103,6 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Interest Payment',
 						'Renewal w/ Amortization'
 					]
 				],
@@ -1136,7 +1134,6 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Interest Payment',
 						'Renewal w/ Amortization'
 					]
 				],
@@ -1168,7 +1165,6 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Interest Payment',
 						'Renewal w/ Amortization'
 					]
 				],
@@ -1204,7 +1200,6 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Interest Payment',
 						'Renewal w/ Amortization'
 					]
 				],
