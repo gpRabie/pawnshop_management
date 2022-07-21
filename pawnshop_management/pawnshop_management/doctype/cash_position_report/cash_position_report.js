@@ -1180,10 +1180,12 @@ function get_additional_redeem(frm) {
 				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 					console.log("Redemption");
-				} else if (records_pr[index].transaction_type == "Renewal") {
+				}  
+				if (records_pr[index].transaction_type == "Renewal") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
 					console.log("Renewal");
-				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+				}
+				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
 					console.log("Renewal w/ Amortization");
 				}
