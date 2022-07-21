@@ -13,13 +13,14 @@ frappe.ui.form.on('Loyalty Card', {
 	},
 
 	refresh: function(frm){
-		frm.toggle_enable(['points_movement'], is_allowed);
-		frm.add_custom_button('Test', () => {
-			frappe.call('pawnshop_management.pawnshop_management.custom_codes.test.get_loyalty_program')
-			.then(r => {
-				console.log(r.message);
-			})
-		})
+		let is_allowed = frappe.user_roles.includes('Administrator');
+		frm.toggle_enable(['points_movement', 'points'], is_allowed);
+		// frm.add_custom_button('Test', () => {
+		// 	frappe.call('pawnshop_management.pawnshop_management.custom_codes.test.get_loyalty_program')
+		// 	.then(r => {
+		// 		console.log(r.message);
+		// 	})
+		// })
 		frm.add_custom_button('Add Points', () => {
 			frappe.prompt([
 				{

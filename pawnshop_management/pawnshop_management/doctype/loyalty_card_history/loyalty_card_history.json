@@ -40,6 +40,7 @@
   },
   {
    "columns": 1,
+   "default": "0.0",
    "fieldname": "pts_movement",
    "fieldtype": "Data",
    "label": "Pts. Movement",
@@ -57,7 +58,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-07-21 10:43:11.361289",
+ "modified": "2022-07-21 10:57:28.055146",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Loyalty Card History",
