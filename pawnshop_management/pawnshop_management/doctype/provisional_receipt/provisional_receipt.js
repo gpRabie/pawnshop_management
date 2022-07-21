@@ -24,6 +24,7 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	refresh: function(frm) {
+		console.log(frm.doc.docstatus);
 		if ((frm.doc.discount != 0 || frm.doc.discount != null) && frm.doc.docstatus == 1) {
 			frm.set_df_property('discount', 'hidden', 0)
 			frm.set_df_property('discount', 'read_only', 1)
@@ -36,7 +37,6 @@ frappe.ui.form.on('Provisional Receipt', {
 		if ((frm.doc.additional_amortization != 0 || frm.doc.additional_amortization != null) && frm.doc.docstatus == 1) {
 			frm.set_df_property('additional_amortization', 'hidden', 0)
 		}
-		frm.toggle_display(['additional_amortization'], (frm.doc.docstatus == 1 && frm.doc.transaction_type == "Renewl w/ Amortization"))
 		frm.toggle_display(['new_pawn_ticket_no'], (frm.doc.docstatus == 1 && frm.doc.new_pawn_ticket_no != ""))
 		if (frm.is_new()) {
 			frappe.call({

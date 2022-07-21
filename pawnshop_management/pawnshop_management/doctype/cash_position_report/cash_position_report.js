@@ -1064,7 +1064,7 @@ function get_additional_redeem(frm) {
 				} else if (records_pr[index].transaction_type == "Renewal") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
 				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
-					// temp_total += parseFloat()
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -1072,7 +1072,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1091,9 +1091,11 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Redeem") {
+				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 				} else if (records_pr[index].transaction_type == "Renewal") {
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
 				}
 			}
@@ -1102,7 +1104,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if ("Garcia's Pawnshop - POB") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1121,9 +1123,11 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Redeem") {
+				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 				} else if (records_pr[index].transaction_type == "Renewal") {
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
 				}
 			}
@@ -1132,7 +1136,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1151,9 +1155,11 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Redeem") {
+				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 				} else if (records_pr[index].transaction_type == "Renewal") {
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
 				}
 			}
@@ -1162,7 +1168,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1181,9 +1187,11 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Redeem") {
+				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 				} else if (records_pr[index].transaction_type == "Renewal") {
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
 				}
 			}
@@ -1192,7 +1200,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1211,9 +1219,11 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Redeem") {
+				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 				} else if (records_pr[index].transaction_type == "Renewal") {
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
 				}
 			}
@@ -1226,10 +1236,11 @@ function get_additional_redeem(frm) {
 function get_additional_partial_payment(frm) {
 	if (frm.doc.branch == "Rabie's House") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total'],
+			fields: ['total' ,'additional_amortization', 'transaction_type'],
 			filters:{
 				branch: "Rabie's House",
 				transaction_type: [
+					'in',
 					[
 						'Interest Payment',
 						'Amortization',
@@ -1243,17 +1254,30 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += parseFloat(records_pr[index].total);
+				if (records_pr[index].transaction_type == "Interest Payment") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Amortization") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+					temp_total += parseFloat(records_pr[index].additional_amortization)
+				}
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total'],
+			fields: ['total' ,'additional_amortization', 'transaction_type'],
 			filters:{
 				branch: "Garcia's Pawnshop - TNZ",
-				transaction_type: 'Interest Payment',
+				transaction_type: [
+					'in',
+					[
+						'Interest Payment',
+						'Amortization',
+						'Renewal w/ Amortization'
+					]
+				],
 				docstatus: 1,
 				date_issued: frappe.datetime.nowdate()
 			}
@@ -1261,17 +1285,30 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += parseFloat(records_pr[index].total);
+				if (records_pr[index].transaction_type == "Interest Payment") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Amortization") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+					temp_total += parseFloat(records_pr[index].additional_amortization)
+				}
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total'],
+			fields: ['total' ,'additional_amortization', 'transaction_type'],
 			filters:{
 				branch: "Garcia's Pawnshop - POB",
-				transaction_type: 'Interest Payment',
+				transaction_type: [
+					'in',
+					[
+						'Interest Payment',
+						'Amortization',
+						'Renewal w/ Amortization'
+					]
+				],
 				docstatus: 1,
 				date_issued: frappe.datetime.nowdate()
 			}
@@ -1279,17 +1316,30 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += parseFloat(records_pr[index].total);
+				if (records_pr[index].transaction_type == "Interest Payment") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Amortization") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+					temp_total += parseFloat(records_pr[index].additional_amortization)
+				}
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total'],
+			fields: ['total' ,'additional_amortization', 'transaction_type'],
 			filters:{
 				branch: "Garcia's Pawnshop - MOL",
-				transaction_type: 'Interest Payment',
+				transaction_type: [
+					'in',
+					[
+						'Interest Payment',
+						'Amortization',
+						'Renewal w/ Amortization'
+					]
+				],
 				docstatus: 1,
 				date_issued: frappe.datetime.nowdate()
 			}
@@ -1297,7 +1347,13 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += parseFloat(records_pr[index].total);
+				if (records_pr[index].transaction_type == "Interest Payment") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Amortization") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+					temp_total += parseFloat(records_pr[index].additional_amortization)
+				}
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
@@ -1307,7 +1363,14 @@ function get_additional_partial_payment(frm) {
 			fields: ['total'],
 			filters:{
 				branch: "Garcia's Pawnshop - GTC",
-				transaction_type: 'Interest Payment',
+				transaction_type: [
+					'in',
+					[
+						'Interest Payment',
+						'Amortization',
+						'Renewal w/ Amortization'
+					]
+				],
 				docstatus: 1,
 				date_issued: frappe.datetime.nowdate()
 			}
@@ -1315,17 +1378,30 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += parseFloat(records_pr[index].total);
+				if (records_pr[index].transaction_type == "Interest Payment") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Amortization") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+					temp_total += parseFloat(records_pr[index].additional_amortization)
+				}
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total'],
+			fields: ['total' ,'additional_amortization', 'transaction_type'],
 			filters:{
 				branch: "Garcia's Pawnshop - CC",
-				transaction_type: 'Interest Payment',
+				transaction_type: [
+					'in',
+					[
+						'Interest Payment',
+						'Amortization',
+						'Renewal w/ Amortization'
+					]
+				],
 				docstatus: 1,
 				date_issued: frappe.datetime.nowdate()
 			}
@@ -1333,7 +1409,13 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				temp_total += parseFloat(records_pr[index].total);
+				if (records_pr[index].transaction_type == "Interest Payment") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Amortization") {
+					temp_total += parseFloat(records_pr[index].total);
+				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+					temp_total += parseFloat(records_pr[index].additional_amortization)
+				}
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
