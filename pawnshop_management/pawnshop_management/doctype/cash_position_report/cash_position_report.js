@@ -1032,6 +1032,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 
 
 function get_additional_redeem(frm) {
+	console.log("Additional Redeem");
 	if (frm.doc.branch == "Rabie's House") {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
@@ -1094,7 +1095,7 @@ function get_additional_redeem(frm) {
 			frm.set_value('additional_redeem', temp_total);
 			frm.refresh_field('additional_redeem');
 		})
-	} else if ("Garcia's Pawnshop - POB") {
+	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
 			filters: {
