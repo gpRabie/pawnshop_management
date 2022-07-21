@@ -64,6 +64,7 @@ frappe.ui.form.on('Loyalty Card', {
 					pts_movement: "+" + values.add_points,
 					encoder: frappe.session.user
 				})
+				frm.refresh_field('points_movement')
 			})
 		})
 
@@ -111,6 +112,7 @@ frappe.ui.form.on('Loyalty Card', {
 					pts_movement: "-" + values.subtract_points,
 					encoder: frappe.session.user
 				})
+				frm.refresh_field('points_movement')
 			})
 		})
 	}
