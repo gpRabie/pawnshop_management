@@ -1178,6 +1178,7 @@ function get_additional_redeem(frm) {
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
+			console.log(records_pr);
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
 				if (records_pr[index].transaction_type == "Redemption") {
@@ -1369,6 +1370,7 @@ function get_additional_partial_payment(frm) {
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
+			console.log();
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
 				if (records_pr[index].transaction_type == "Interest Payment") {
