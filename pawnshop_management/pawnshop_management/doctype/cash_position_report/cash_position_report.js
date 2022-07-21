@@ -1373,20 +1373,15 @@ function get_additional_partial_payment(frm) {
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
-			console.log();
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
 				if (records_pr[index].transaction_type == "Interest Payment") {
 					temp_total += parseFloat(records_pr[index].total);
-					console.log("Interest Payment");
 				} else if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total);
-					console.log("Amortization");
 				} else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].additional_amortization)
-					console.log("Renewal w/ Amortization");
 				}
-				console.log(temp_total);
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
