@@ -831,7 +831,7 @@ function get_additional_pawn_records(frm) {
 			filters: {
 				branch: "Rabie's House",
 				docstatus: 1,
-				date: frappe.utils.now_date()
+				date: frappe.utils.nowdate()
 			}
 		}).then(records => {
 			let temp_total = 0.00;
