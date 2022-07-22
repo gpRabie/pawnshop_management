@@ -113,27 +113,27 @@ class PawnTicketJewelry(Document):
 
 		row_values2 = doc1.append('accounts', {})
 		if self.branch == "Garcia's Pawnshop - CC":
-			row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
+			row_values2.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 			row_values2.branch = "Garcia's Pawnshop - CC"
 			row_values2.cost_center = "1 - Cavite City - MPConso"
 		elif self.branch == "Garcia's Pawnshop - GTC":
-			row_values2.account = "4112-002 - Interest on Past Due Loans - J - GTC - MPConso"
+			row_values2.account = "4110-002 - Interest on Loans and Advances - J - GTC - MPConso"
 			row_values2.branch = "Garcia's Pawnshop - GTC"
 			row_values2.cost_center = "4 - Gen. Trias - MPConso"
 		elif self.branch == "Garcia's Pawnshop - MOL":
-			row_values2.account = "4112-003 - Interest on Past Due Loans - J - MOL - MPConso"
+			row_values2.account = "4110-003 - Interest on Loans and Advances - J - MOL - MPConso"
 			row_values2.branch = "Garcia's Pawnshop - MOL"
 			row_values2.cost_center = "6 - Molino - MPConso"
 		elif self.branch == "Garcia's Pawnshop - POB":
-			row_values2.account = "4112-004 - Interest on Past Due Loans - J - POB - MPConso"
+			row_values2.account = "4110-004 - Interest on Loans and Advances - J - POB - MPConso"
 			row_values2.branch = "Garcia's Pawnshop - POB"
 			row_values2.cost_center = "3 - Poblacion - MPConso"
 		elif self.branch == "Garcia's Pawnshop - TNZ":
-			row_values2.account = "4112-005 - Interest on Past Due Loans - J - TNZ - MPConso"
+			row_values2.account = "4110-005 - Interest on Loans and Advances - J - TNZ - MPConso"
 			row_values2.branch = "Garcia's Pawnshop - TNZ"
 			row_values2.cost_center = "5 - Tanza - MPConso"
 		elif self.branch == "Rabie's House":
-			row_values2.account = "4112-001 - Interest on Past Due Loans - J - CC - MPConso"
+			row_values2.account = "4110-001 - Interest on Loans and Advances - J - CC - MPConso"
 			row_values2.branch = "Garcia's Pawnshop - CC"
 			row_values2.cost_center = "1 - Cavite City - MPConso"
 		row_values2.debit_in_account_currency = flt(0)

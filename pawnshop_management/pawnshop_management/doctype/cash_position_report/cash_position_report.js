@@ -1243,7 +1243,6 @@ function get_additional_partial_payment(frm) {
 				transaction_type: [
 					'in',
 					[
-						'Interest Payment',
 						'Amortization',
 						'Renewal w/ Amortization'
 					]
@@ -1255,9 +1254,6 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Interest Payment") {
-					temp_total += parseFloat(records_pr[index].total);
-				}
 				if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total);
 				}
@@ -1276,7 +1272,6 @@ function get_additional_partial_payment(frm) {
 				transaction_type: [
 					'in',
 					[
-						'Interest Payment',
 						'Amortization',
 						'Renewal w/ Amortization'
 					]
@@ -1288,9 +1283,6 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Interest Payment") {
-					temp_total += parseFloat(records_pr[index].total);
-				}
 				if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total);
 				}
@@ -1309,7 +1301,6 @@ function get_additional_partial_payment(frm) {
 				transaction_type: [
 					'in',
 					[
-						'Interest Payment',
 						'Amortization',
 						'Renewal w/ Amortization'
 					]
@@ -1321,9 +1312,6 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Interest Payment") {
-					temp_total += parseFloat(records_pr[index].total);
-				}
 				if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total);
 				}
@@ -1342,7 +1330,6 @@ function get_additional_partial_payment(frm) {
 				transaction_type: [
 					'in',
 					[
-						'Interest Payment',
 						'Amortization',
 						'Renewal w/ Amortization'
 					]
@@ -1354,9 +1341,6 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Interest Payment") {
-					temp_total += parseFloat(records_pr[index].total);
-				}
 				if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total);
 				}
@@ -1375,7 +1359,6 @@ function get_additional_partial_payment(frm) {
 				transaction_type: [
 					'in',
 					[
-						'Interest Payment',
 						'Amortization',
 						'Renewal w/ Amortization'
 					]
@@ -1387,9 +1370,6 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Interest Payment") {
-					temp_total += parseFloat(records_pr[index].total);
-				}
 				if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total);
 				}
@@ -1408,7 +1388,6 @@ function get_additional_partial_payment(frm) {
 				transaction_type: [
 					'in',
 					[
-						'Interest Payment',
 						'Amortization',
 						'Renewal w/ Amortization'
 					]
@@ -1420,9 +1399,7 @@ function get_additional_partial_payment(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Interest Payment") {
-					temp_total += parseFloat(records_pr[index].total);
-				}
+				
 				if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total);
 				}
