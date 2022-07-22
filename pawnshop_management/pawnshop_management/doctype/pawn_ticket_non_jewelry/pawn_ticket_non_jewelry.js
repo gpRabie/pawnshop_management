@@ -228,7 +228,9 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	},
 
 	branch: function(frm){
-		show_tracking_no(frm);
+		if (frm.is_new()){
+			show_tracking_no(frm);
+		}	
 		if (frm.is_new() && frm.doc.amended_from == null) {
 			frm.set_value('date_loan_granted', frappe.datetime.nowdate())
 		}
@@ -243,7 +245,9 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	},
 
 	desired_principal: function(frm, cdt, cdn) {
-		show_tracking_no(frm);
+		if (frm.is_new()){
+			show_tracking_no(frm);
+		}	
 		frm.refresh_fields('pawn_ticket');
 		set_item_interest(frm)
 	},
@@ -253,11 +257,15 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	},
 
 	customers_tracking_no: function(frm){
-		show_tracking_no(frm)
+		if (frm.is_new()){
+			show_tracking_no(frm);
+		}	
 	},
 
 	amended_from: function(frm){
-		show_tracking_no(frm)
+		if (frm.is_new()){
+			show_tracking_no(frm);
+		}	
 	}
 
 });
