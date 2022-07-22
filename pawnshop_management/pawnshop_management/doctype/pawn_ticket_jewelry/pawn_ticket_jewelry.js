@@ -309,7 +309,9 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 		if (frm.is_new() && frm.doc.amended_from == null) {
 			frm.set_value('date_loan_granted', frappe.datetime.nowdate())
 		}
-		show_tracking_no(frm);
+		if (frm.is_new()){
+			show_tracking_no(frm);
+		}
 	},
 
 	date_loan_granted: function(frm){
@@ -335,7 +337,9 @@ frappe.ui.form.on('Pawn Ticket Jewelry', {
 	},
 
 	item_series: function(frm){
-		show_tracking_no(frm);
+		if (frm.is_new()){
+			show_tracking_no(frm);
+		}		
 	},
 
 	amended_from: function(frm){
@@ -386,14 +390,9 @@ frappe.ui.form.on('Jewelry List', {
 
 
 function set_series(frm) { //Set the pawn ticket series
-	// if (frm.doc.desired_principal >= 1500 && frm.doc.desired_principal <= 10000) {
-	// 	frm.set_value('item_series', 'A');
-	// 	frm.refresh_field('item_series');
-	// } else if ((frm.doc.desired_principal < 1500 || frm.doc.desired_principal > 10000)) {
-	// 	frm.set_value('item_series', 'B');
-	// 	frm.refresh_field('item_series');
-	// }
-	show_tracking_no(frm);
+	if (frm.is_new()){
+		show_tracking_no(frm);
+	}	
 }
 
 function show_tracking_no(frm){ //Sets inventory tracking number
