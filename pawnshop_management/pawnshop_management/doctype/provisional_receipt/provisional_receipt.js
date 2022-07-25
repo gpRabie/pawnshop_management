@@ -29,10 +29,6 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_df_property('discount', 'read_only', 1)
 		}
 
-		// if ((frm.doc.advance_interest != 0 || frm.doc.advance_interest != null) && frm.doc.docstatus == 1) {
-		// 	frm.set_df_property('advance_interest', 'hidden', 0)
-		// }
-
 		if ((frm.doc.additional_amortization != 0 || frm.doc.additional_amortization != null) && frm.doc.docstatus == 1) {
 			frm.set_df_property('additional_amortization', 'hidden', 0)
 		}

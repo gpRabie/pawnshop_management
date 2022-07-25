@@ -236,7 +236,7 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Bank",
-   "options": "BPI\nBDO\nEast West Cavite Branch"
+   "options": "BPI\nBDO\nEast West"
   },
   {
    "fieldname": "branch",
@@ -248,7 +248,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-07-19 10:57:50.445861",
+ "modified": "2022-07-25 13:25:29.558746",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
