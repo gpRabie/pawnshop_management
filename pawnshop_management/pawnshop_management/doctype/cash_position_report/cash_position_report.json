@@ -69,8 +69,7 @@
    "default": "0.00",
    "fieldname": "selling",
    "fieldtype": "Currency",
-   "label": "Selling",
-   "read_only": 1
+   "label": "Selling"
   },
   {
    "default": "0.00",
@@ -141,15 +140,13 @@
    "default": "0.00",
    "fieldname": "cash_from_vault",
    "fieldtype": "Currency",
-   "label": "Cash From Vault",
-   "read_only": 1
+   "label": "Cash From Vault"
   },
   {
    "default": "0.00",
    "fieldname": "cash_to_vault",
    "fieldtype": "Currency",
-   "label": "Cash To Vault",
-   "read_only": 1
+   "label": "Cash To Vault"
   },
   {
    "fieldname": "section_break_27",
@@ -267,29 +264,25 @@
    "default": "0.00",
    "fieldname": "agreement_to_sell",
    "fieldtype": "Currency",
-   "label": "Agreement to Sell",
-   "read_only": 1
+   "label": "Agreement to Sell"
   },
   {
    "default": "0.00",
    "fieldname": "acknowledgement_receipts",
    "fieldtype": "Currency",
-   "label": "Acknowledgement Receipts",
-   "read_only": 1
+   "label": "Acknowledgement Receipts"
   },
   {
    "default": "0.00",
    "fieldname": "gcash",
    "fieldtype": "Currency",
-   "label": "Gcash",
-   "read_only": 1
+   "label": "Gcash"
   },
   {
    "default": "0.00",
    "fieldname": "bank_transfer",
    "fieldtype": "Currency",
-   "label": "Bank Transfer",
-   "read_only": 1
+   "label": "Bank Transfer"
   },
   {
    "fieldname": "daily_balance_section",
@@ -325,7 +318,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-20 17:45:08.692468",
+ "modified": "2022-07-25 13:31:31.802821",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",
