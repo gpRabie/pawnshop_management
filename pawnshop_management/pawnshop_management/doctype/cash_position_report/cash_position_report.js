@@ -96,7 +96,7 @@ frappe.ui.form.on('Cash Position Report', {
 	},
 
 	date: function(frm){
-		get_additional_redeem(frm);
+		// get_additional_redeem(frm);
 	},
 
 	validate: function(frm){
