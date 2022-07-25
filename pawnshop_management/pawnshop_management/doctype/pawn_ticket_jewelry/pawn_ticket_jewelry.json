@@ -18,6 +18,7 @@
   "old_pawn_ticket",
   "customers_tracking_no",
   "customers_full_name",
+  "created_by_pr",
   "section_break_9",
   "inventory_tracking_no",
   "jewelry_items",
@@ -158,6 +159,12 @@
    "fieldtype": "Data",
    "label": "Old Pawn Ticket",
    "read_only": 1
+  },
+  {
+   "fieldname": "created_by_pr",
+   "fieldtype": "Data",
+   "label": "Created By PR ",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -168,7 +175,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-07-12 16:21:58.027752",
+ "modified": "2022-07-25 12:20:30.961965",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Jewelry",

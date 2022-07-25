@@ -58,6 +58,7 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.customers_tracking_no = previous_pawn_ticket.customers_tracking_no
 			new_pawn_ticket.customers_full_name = previous_pawn_ticket.customers_full_name
 			new_pawn_ticket.inventory_tracking_no = previous_pawn_ticket.inventory_tracking_no
+			new_pawn_ticket.created_by_pr = self.name
 			if self.pawn_ticket_type == "Pawn Ticket Non Jewelry":
 				previous_items = previous_pawn_ticket.non_jewelry_items
 				for i in range(len(previous_items)):
@@ -127,6 +128,7 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.customers_tracking_no = previous_pawn_ticket.customers_tracking_no
 			new_pawn_ticket.customers_full_name = previous_pawn_ticket.customers_full_name
 			new_pawn_ticket.inventory_tracking_no = previous_pawn_ticket.inventory_tracking_no
+			new_pawn_ticket.created_by_pr = self.name
 			if self.pawn_ticket_type == "Pawn Ticket Non Jewelry":
 				previous_items = previous_pawn_ticket.non_jewelry_items
 				for i in range(len(previous_items)):

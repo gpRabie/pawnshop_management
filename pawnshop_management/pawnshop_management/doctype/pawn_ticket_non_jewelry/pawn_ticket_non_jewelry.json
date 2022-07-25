@@ -18,6 +18,7 @@
   "old_pawn_ticket",
   "customers_tracking_no",
   "customers_full_name",
+  "created_by_pr",
   "section_break_9",
   "inventory_tracking_no",
   "non_jewelry_items",
@@ -160,6 +161,11 @@
    "fieldtype": "Data",
    "label": "Old Pawn Ticket",
    "read_only": 1
+  },
+  {
+   "fieldname": "created_by_pr",
+   "fieldtype": "Data",
+   "label": "Created by PR"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -170,7 +176,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-07-12 16:20:56.721690",
+ "modified": "2022-07-25 12:12:47.611564",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Non Jewelry",
