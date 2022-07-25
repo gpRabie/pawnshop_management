@@ -96,26 +96,7 @@ frappe.ui.form.on('Cash Position Report', {
 	},
 
 	date: function(frm){
-		// get_provisional_receipts_of_the_day(frm, frm.doc.date);
-		// get_non_jewelry_of_the_day(frm, frm.doc.date)
-		// select_naming_series(frm);
-		// get_gcash_provisional_receipt(frm, frm.doc.date)
-		// frappe.db.get_list('Cash Position Report', {
-		// 	fields: ['ending_balance', 'date', 'creation'],
-		// 	filters: {
-		// 		date: frappe.datetime.add_days(frm.doc.date, -1)
-		// 	}
-		// }).then(records => {
-		// 	let latest_record = records[0]
-		// 	for (let index = 0; index < records.length; index++) {
-		// 		if (latest_record.creation < records[index].creation) {
-		// 			latest_record = records[index]
-		// 		}
-		// 	}
-		// 	frm.set_value('beginning_balance', 0.00)
-		// 	frm.set_value('beginning_balance', latest_record.ending_balance)
-		// 	frm.refresh_field('beginning_balance')
-		// })
+		get_additional_redeem(frm);
 	},
 
 	validate: function(frm){
@@ -1057,7 +1038,7 @@ function get_additional_redeem(frm) {
 					temp_total += parseFloat(records_pr[index].total)
 				}
 				 if (records_pr[index].transaction_type == "Renewal") {
-					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
 				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
@@ -1090,7 +1071,7 @@ function get_additional_redeem(frm) {
 					temp_total += parseFloat(records_pr[index].total)
 				}
 				 if (records_pr[index].transaction_type == "Renewal") {
-					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
 				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
@@ -1123,7 +1104,7 @@ function get_additional_redeem(frm) {
 					temp_total += parseFloat(records_pr[index].total)
 				}
 				 if (records_pr[index].transaction_type == "Renewal") {
-					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
 				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
@@ -1156,7 +1137,7 @@ function get_additional_redeem(frm) {
 					temp_total += parseFloat(records_pr[index].total)
 				}
 				 if (records_pr[index].transaction_type == "Renewal") {
-					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
 				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
@@ -1189,7 +1170,7 @@ function get_additional_redeem(frm) {
 					temp_total += parseFloat(records_pr[index].total)
 				}  
 				if (records_pr[index].transaction_type == "Renewal") {
-					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
 				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
@@ -1222,7 +1203,7 @@ function get_additional_redeem(frm) {
 					temp_total += parseFloat(records_pr[index].total)
 				}
 				 if (records_pr[index].transaction_type == "Renewal") {
-					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
 				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].advance_interest) + parseFloat(records_pr[index].principal_amount)
