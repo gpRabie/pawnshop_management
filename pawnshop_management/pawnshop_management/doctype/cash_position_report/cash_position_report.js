@@ -1166,11 +1166,13 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				if (records_pr[index].transaction_type == "Redemption") {
-					temp_total += parseFloat(records_pr[index].total)
-				} //else if (records_pr[index].transaction_type == "Renewal") {
-				// 	temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
-				// } else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+				// if (records_pr[index].transaction_type == "Redemption") {
+				// 	temp_total += parseFloat(records_pr[index].total)
+				// }else 
+				if (records_pr[index].transaction_type == "Renewal") {
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
+				} 
+				// else if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 				// 	temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				// }
 			}
