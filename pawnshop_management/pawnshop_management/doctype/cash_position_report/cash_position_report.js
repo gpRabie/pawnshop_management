@@ -1334,7 +1334,7 @@ function get_additional_partial_payment(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total'],
+			fields: ['total', 'additional_amortization'],
 			filters:{
 				branch: "Garcia's Pawnshop - GTC",
 				transaction_type: [
