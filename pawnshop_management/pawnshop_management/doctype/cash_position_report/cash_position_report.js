@@ -1354,13 +1354,13 @@ function get_additional_partial_payment(frm) {
 			for (let index = 0; index < records_pr.length; index++) {
 				if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total);
+					console.log('hello');
 				}
 				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].additional_amortization)
 				}
 			}
 			frm.set_value('additional_partial_payment', temp_total);
-			console.log(frm.doc.additional_partial_payment);
 			frm.refresh_field('additional_partial_payment');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
