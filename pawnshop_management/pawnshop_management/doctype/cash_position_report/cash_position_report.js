@@ -1245,6 +1245,8 @@ function get_additional_partial_payment(frm) {
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
+			frm.set_value('additional_redeem', parseFloat(frm.doc.additional_redeem) - temp_total);
+			frm.refresh_field('additional_redeem');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
 		frappe.db.get_list('Provisional Receipt', {
@@ -1274,6 +1276,8 @@ function get_additional_partial_payment(frm) {
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
+			frm.set_value('additional_redeem', parseFloat(frm.doc.additional_redeem) - temp_total);
+			frm.refresh_field('additional_redeem');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
 		frappe.db.get_list('Provisional Receipt', {
@@ -1303,6 +1307,8 @@ function get_additional_partial_payment(frm) {
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
+			frm.set_value('additional_redeem', parseFloat(frm.doc.additional_redeem) - temp_total);
+			frm.refresh_field('additional_redeem');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frappe.db.get_list('Provisional Receipt', {
@@ -1332,10 +1338,12 @@ function get_additional_partial_payment(frm) {
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
+			frm.set_value('additional_redeem', parseFloat(frm.doc.additional_redeem) - temp_total);
+			frm.refresh_field('additional_redeem');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization'],
+			fields: ['total' ,'additional_amortization', 'transaction_type'],
 			filters:{
 				branch: "Garcia's Pawnshop - GTC",
 				transaction_type: [
@@ -1354,7 +1362,6 @@ function get_additional_partial_payment(frm) {
 			for (let index = 0; index < records_pr.length; index++) {
 				if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total);
-					console.log('hello');
 				}
 				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].additional_amortization)
@@ -1362,6 +1369,8 @@ function get_additional_partial_payment(frm) {
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
+			frm.set_value('additional_redeem', parseFloat(frm.doc.additional_redeem) - temp_total);
+			frm.refresh_field('additional_redeem');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_list('Provisional Receipt', {
@@ -1392,6 +1401,8 @@ function get_additional_partial_payment(frm) {
 			}
 			frm.set_value('additional_partial_payment', temp_total);
 			frm.refresh_field('additional_partial_payment');
+			frm.set_value('additional_redeem', parseFloat(frm.doc.additional_redeem) - temp_total);
+			frm.refresh_field('additional_redeem');
 		})
 	}
 	
