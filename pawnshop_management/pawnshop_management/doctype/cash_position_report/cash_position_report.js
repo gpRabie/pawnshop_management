@@ -1023,7 +1023,8 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization'
+						'Renewal w/ Amortization',
+						'Interest Payment'
 					]
 				],
 				branch: "Rabie's House",
@@ -1056,7 +1057,8 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization'
+						'Renewal w/ Amortization',
+						'Interest Payment'
 					]
 				],
 				branch: "Garcia's Pawnshop - TNZ",
@@ -1089,7 +1091,8 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization'
+						'Renewal w/ Amortization',
+						'Interest Payment'
 					]
 				],
 				branch: "Garcia's Pawnshop - POB",
@@ -1122,7 +1125,8 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization'
+						'Renewal w/ Amortization',
+						'Interest Payment'
 					]
 				],
 				branch: "Garcia's Pawnshop - MOL",
@@ -1155,7 +1159,8 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization'
+						'Renewal w/ Amortization',
+						'Interest Payment'
 					]
 				],
 				branch: "Garcia's Pawnshop - GTC",
@@ -1166,13 +1171,12 @@ function get_additional_redeem(frm) {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
-				// if (records_pr[index].transaction_type == "Redemption") {
-				// 	temp_total += parseFloat(records_pr[index].total)
-				// }else 
-				// if (records_pr[index].transaction_type == "Renewal") {
-				// 	temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
-				// } 
-				//else 
+				if (records_pr[index].transaction_type == "Redemption") {
+					temp_total += parseFloat(records_pr[index].total)
+				}
+				if (records_pr[index].transaction_type == "Renewal") {
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
+				} 
 				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
@@ -1189,7 +1193,8 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization'
+						'Renewal w/ Amortization',
+						'Interest Payment'
 					]
 				],
 				branch: "Garcia's Pawnshop - CC",

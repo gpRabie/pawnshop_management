@@ -6,30 +6,18 @@ from frappe.utils import today
 
 def execute(filters=None):
 	columns, data = [], []
-	date = ""
 	columns = get_columns()
-	data = frappe.get_all('Pawn Ticket Jewelry', 
-		filters= {
-			'date_loan_granted': ['<', today()]
-		},
-		fields=['date_loan_granted', 'name']
-	)
-	for i in range(len(data)):
-		pass
-		
-	for i in range(len(data)):
-		data[i]['in_count'] = frappe.db.count('Pawn Ticket Jewelry', 
-			{'date_loan_granted': data[i]['date_loan_granted'], 'workflow_state': 'Active'}
-	)
-	for i in range(len(data)):
-		data[i]['out_count'] = frappe.db.count('Pawn Ticket Jewelry', 
-			{'date_loan_granted': data[i]['date_loan_granted'], 'workflow_state': 'Redeemed'}
-	)
+	data2 = frappe.get_all('Pawn Ticket Jewelry', fields=['date_loan_granted'])
+	for i in range(len(data2)):
+		if not date_has_duplicate(data2[i]['date_loan_granted']):
+			in_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Active'})
 
-	for i in range(len(data)):
-		data[i]['total_count'] = frappe.db.count('Pawn Ticket Jewelry', 
-			{'workflow_state':['Active', 'Expired']}
-	)
+			out_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Redeemed'})
+
+			total_count = data2[i]['total_count'] = frappe.db.count('Pawn Ticket Jewelry', {'workflow_state':['Active', 'Expired']})
+
+			data.append({'date_loan_granted': data2[i]['date_loan_granted'], 'in_count': int(in_count), 'out_count': int(out_count), 'total_count': int(total_count)})
+			print(data)
 	return columns, data
 
 
@@ -65,7 +53,16 @@ def get_columns():
 	]
 	return columns
 
-def check_date_uplicate(data):
-	pass
-	# for dates in data:
-	# 	if dates['date_loan_granted'] 
+def date_has_duplicate(date):
+	has_duplicate = False
+	data = frappe.get_all('Pawn Ticket Jewelry', 
+		filters= {
+			'date_loan_granted': ['<', today()]
+		},
+		fields=['date_loan_granted']
+	)
+	for date_loan_granted in data:
+		if date_loan_granted['date_loan_granted'] == date:
+			has_duplicate = True
+			return has_duplicate
+	return has_duplicate
