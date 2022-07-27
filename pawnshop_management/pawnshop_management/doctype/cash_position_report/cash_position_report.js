@@ -96,7 +96,9 @@ frappe.ui.form.on('Cash Position Report', {
 	},
 
 	date: function(frm){
-		// get_additional_redeem(frm);
+		get_additional_pawn_records(frm);
+		get_additional_redeem(frm);
+		get_additional_partial_payment(frm);
 	},
 
 	validate: function(frm){
@@ -805,7 +807,7 @@ function get_additional_pawn_records(frm) {
 			filters: {
 				branch: "Rabie's House",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records => {
 			let temp_total = 0.00;
@@ -821,7 +823,7 @@ function get_additional_pawn_records(frm) {
 			filters: {
 				branch: "Garcia's Pawnshop - TNZ",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records => {
 			let temp_total = 0.00;
@@ -837,7 +839,7 @@ function get_additional_pawn_records(frm) {
 			filters: {
 				branch: "Garcia's Pawnshop - POB",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records => {
 			let temp_total = 0.00;
@@ -853,7 +855,7 @@ function get_additional_pawn_records(frm) {
 			filters: {
 				branch: "Garcia's Pawnshop - MOL",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records => {
 			let temp_total = 0.00;
@@ -869,7 +871,7 @@ function get_additional_pawn_records(frm) {
 			filters: {
 				branch: "Garcia's Pawnshop - GTC",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records => {
 			let temp_total = 0.00;
@@ -885,7 +887,7 @@ function get_additional_pawn_records(frm) {
 			filters: {
 				branch: "Garcia's Pawnshop - CC",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records => {
 			let temp_total = 0.00;
@@ -905,7 +907,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			filters: {
 				branch: "Rabie's House",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_nj => {
 			let nj_temp_total = 0.00;
@@ -923,7 +925,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			filters: {
 				branch: "Garcia's Pawnshop - TNZ",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_nj => {
 			let nj_temp_total = 0.00;
@@ -941,7 +943,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			filters: {
 				branch: "Garcia's Pawnshop - POB",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_nj => {
 			let nj_temp_total = 0.00;
@@ -959,7 +961,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			filters: {
 				branch: "Garcia's Pawnshop - MOL",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_nj => {
 			let nj_temp_total = 0.00;
@@ -977,7 +979,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			filters: {
 				branch: "Garcia's Pawnshop - GTC",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_nj => {
 			let nj_temp_total = 0.00;
@@ -995,7 +997,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			filters: {
 				branch: "Garcia's Pawnshop - CC",
 				docstatus: 1,
-				date_loan_granted: frappe.datetime.nowdate()
+				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_nj => {
 			let nj_temp_total = 0.00;
@@ -1027,7 +1029,7 @@ function get_additional_redeem(frm) {
 				],
 				branch: "Rabie's House",
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1060,7 +1062,7 @@ function get_additional_redeem(frm) {
 				],
 				branch: "Garcia's Pawnshop - TNZ",
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1093,7 +1095,7 @@ function get_additional_redeem(frm) {
 				],
 				branch: "Garcia's Pawnshop - POB",
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1126,7 +1128,7 @@ function get_additional_redeem(frm) {
 				],
 				branch: "Garcia's Pawnshop - MOL",
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1159,7 +1161,7 @@ function get_additional_redeem(frm) {
 				],
 				branch: "Garcia's Pawnshop - GTC",
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1192,7 +1194,7 @@ function get_additional_redeem(frm) {
 				],
 				branch: "Garcia's Pawnshop - CC",
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1228,7 +1230,7 @@ function get_additional_partial_payment(frm) {
 					]
 				],
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1257,7 +1259,7 @@ function get_additional_partial_payment(frm) {
 					]
 				],
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1286,7 +1288,7 @@ function get_additional_partial_payment(frm) {
 					]
 				],
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1315,7 +1317,7 @@ function get_additional_partial_payment(frm) {
 					]
 				],
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1344,7 +1346,7 @@ function get_additional_partial_payment(frm) {
 					]
 				],
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
@@ -1373,7 +1375,7 @@ function get_additional_partial_payment(frm) {
 					]
 				],
 				docstatus: 1,
-				date_issued: frappe.datetime.nowdate()
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
