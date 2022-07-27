@@ -1023,9 +1023,7 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization',
-						'Interest Payment'
-					]
+						'Renewal w/ Amortization'					]
 				],
 				branch: "Rabie's House",
 				docstatus: 1,
@@ -1057,8 +1055,7 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization',
-						'Interest Payment'
+						'Renewal w/ Amortization'
 					]
 				],
 				branch: "Garcia's Pawnshop - TNZ",
@@ -1091,8 +1088,7 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization',
-						'Interest Payment'
+						'Renewal w/ Amortization'
 					]
 				],
 				branch: "Garcia's Pawnshop - POB",
@@ -1125,8 +1121,7 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization',
-						'Interest Payment'
+						'Renewal w/ Amortization'
 					]
 				],
 				branch: "Garcia's Pawnshop - MOL",
@@ -1159,8 +1154,7 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization',
-						'Interest Payment'
+						'Renewal w/ Amortization'
 					]
 				],
 				branch: "Garcia's Pawnshop - GTC",
@@ -1193,8 +1187,7 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization',
-						'Interest Payment'
+						'Renewal w/ Amortization'
 					]
 				],
 				branch: "Garcia's Pawnshop - CC",
