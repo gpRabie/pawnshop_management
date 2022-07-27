@@ -1018,7 +1018,7 @@ function get_additional_redeem(frm) {
 	
 	if (frm.doc.branch == "Rabie's House") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1050,7 +1050,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - TNZ") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1083,7 +1083,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - POB") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1116,7 +1116,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1149,7 +1149,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1182,7 +1182,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'interest_payment', 'advance_interest', 'principal_amount', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'principal_amount', 'transaction_type'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1360,6 +1360,7 @@ function get_additional_partial_payment(frm) {
 				}
 			}
 			frm.set_value('additional_partial_payment', temp_total);
+			console.log(frm.doc.additional_partial_payment);
 			frm.refresh_field('additional_partial_payment');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
