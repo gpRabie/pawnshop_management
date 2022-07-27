@@ -1350,7 +1350,6 @@ function get_additional_partial_payment(frm) {
 			}
 		}).then(records_pr => {
 			let temp_total = 0.00;
-			console.log('Hello');
 			frm.set_value('additional_partial_payment', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
 				if (records_pr[index].transaction_type == "Amortization") {
