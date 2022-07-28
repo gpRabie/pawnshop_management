@@ -166,6 +166,24 @@
   },
   {
    "hidden": 0,
+   "is_query_report": 0,
+   "label": "Vault Custodian Report",
+   "link_to": "Vault Custodian Jewelry Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Vault Custodian Non Jewelry Report",
+   "link_to": "Vault Custodian Non Jewelry Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
    "icon": "",
    "is_query_report": 0,
    "label": "Settings",
@@ -227,7 +245,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-07-21 10:53:54.489815",
+ "modified": "2022-07-28 10:56:06.768082",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
