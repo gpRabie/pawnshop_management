@@ -24,7 +24,7 @@ def execute(filters=None):
 		data_nj[i]['description'] = description
 	data.append(data_nj)
 
-	return columns, data
+	return columns, data_nj
 
 def get_columns():
 	columns = [
