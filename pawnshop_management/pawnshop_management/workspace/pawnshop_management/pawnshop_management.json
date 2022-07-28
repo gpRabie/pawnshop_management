@@ -149,7 +149,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "LER",
+   "label": "LER A Series",
    "link_to": "LER",
    "link_type": "Report",
    "onboard": 0,
@@ -158,7 +158,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "LPR",
+   "label": "LPR A Series",
    "link_to": "LPR",
    "link_type": "Report",
    "onboard": 0,
@@ -167,7 +167,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Vault Custodian Report",
+   "label": "Vault Custodian Jewelry Report",
    "link_to": "Vault Custodian Jewelry Report",
    "link_type": "Report",
    "onboard": 0,
@@ -245,7 +245,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-07-28 10:56:06.768082",
+ "modified": "2022-07-28 11:14:55.471160",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",

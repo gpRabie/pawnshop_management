@@ -7,14 +7,20 @@ from frappe import _ # _ for to set the string into literal string
 def execute(filters=None):
 	columns, data = [], []
 	columns = get_columns()
-	data = frappe.get_all("Pawn Ticket Non Jewelry", filters=filters, fields=['pawn_ticket', 'customers_tracking_no', 'customers_full_name', 'inventory_tracking_no', 'desired_principal', 'date_loan_granted', 'expiry_date', 'workflow_state', 'change_status_date'])
+	data = frappe.get_all("Pawn Ticket Jewelry", filters=filters, fields=['pawn_ticket', 'customers_tracking_no', 'customers_full_name', 'inventory_tracking_no', 'desired_principal', 'date_loan_granted', 'expiry_date', 'workflow_state', 'change_status_date', 'comments'])
 	for i in range(len(data)):
 		description = ""
-		details = frappe.db.get_list("Non Jewelry List", filters={'parent': data[i]['pawn_ticket']}, fields=['item_no', 'type', 'brand', 'model', 'model_number'])
+		details = frappe.db.get_list("Jewelry List", filters={'parent': data[i]['pawn_ticket']}, fields=['item_no', 'type', 'karat_category', 'karat', 'weight', 'color', 'colors_if_multi', 'additional_for_stone'])
 		customer = frappe.get_doc('Customer', data[i]['customers_tracking_no'])
 		data[i]['contact_no'] = customer.mobile_no
 		for j in range(len(details)):
-			description += details[j]["item_no"] + ", " + details[j]["type"] + ", " + details[j]["brand"] + ", " + details[j]["model"] + ", " + details[j]["model_number"] + "; "
+			if details[j]["colors_if_multi"] == None:
+				details[j]["colors_if_multi"] = ''
+
+			if details[j]['additional_for_stone'] == None:
+				details[j]['additional_for_stone'] = ''
+				
+			description += str(details[j]["item_no"]) + ", " + details[j]["type"] + ", " + str(details[j]["karat_category"]) + ", " + str(details[j]["karat"]) + ", " + str(details[j]["weight"]) + ", " + str(details[j]["color"]) + ", " + str(details[j]["colors_if_multi"]) + ", " + str(details[j]["additional_for_stone"]) + "; "
 		data[i]['description'] = description
 	return columns, data
 
@@ -24,7 +30,7 @@ def get_columns():
 			'fieldname': 'pawn_ticket',
 			'label': _('Pawn Ticket'),
 			'fieldtype': 'Link',
-			'options': 'Pawn Ticket Non Jewelry',
+			'options': 'Pawn Ticket Jewelry',
 			'width': 100
 		},
 
@@ -47,7 +53,7 @@ def get_columns():
 			'fieldname': 'inventory_tracking_no',
 			'label': _('Inventory Tracking No'),
 			'fieldtype': 'Link',
-			'options': 'Non Jewelry Batch',
+			'options': 'Jewelry Batch',
 			'width': 100
 		},
 

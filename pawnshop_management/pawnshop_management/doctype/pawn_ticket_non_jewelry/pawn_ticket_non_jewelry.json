@@ -26,7 +26,8 @@
   "desired_principal",
   "interest",
   "net_proceeds",
-  "amended_from"
+  "amended_from",
+  "comments"
  ],
  "fields": [
   {
@@ -166,6 +167,11 @@
    "fieldname": "created_by_pr",
    "fieldtype": "Data",
    "label": "Created by PR"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Small Text",
+   "label": "Comments"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -176,7 +182,7 @@
    "link_fieldname": "inventory_tracking_no"
   }
  ],
- "modified": "2022-07-25 12:12:47.611564",
+ "modified": "2022-07-28 14:08:02.983786",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawn Ticket Non Jewelry",

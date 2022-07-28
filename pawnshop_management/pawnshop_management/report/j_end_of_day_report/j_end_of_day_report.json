@@ -1,0 +1,30 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2022-07-28 13:53:17.160316",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Non Jewelry Report",
+ "modified": "2022-07-28 13:53:17.160316",
+ "modified_by": "Administrator",
+ "module": "Pawnshop Management",
+ "name": "J End of Day Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Pawn Ticket Jewelry",
+ "report_name": "J End of Day Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Appraiser"
+  },
+  {
+   "role": "Pawnshop Cashier"
+  }
+ ]
+}
