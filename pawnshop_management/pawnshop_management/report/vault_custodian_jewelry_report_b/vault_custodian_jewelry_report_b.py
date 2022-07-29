@@ -22,7 +22,7 @@ def execute(filters=None):
 			total_renewed = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': ['<=', data2[i]['date_loan_granted']], 'item_series': 'B', 'workflow_state':'Renewed'})
 
 			in_for_today = in_count_of_the_day_active - renewed_count_of_the_day
-			total = total_count_active + total_count_expire - total_renewed
+			total = total_count_active + total_count_expire
 
 			total_in_for_today = round_up_to_zero(in_for_today)
 			total_pt_count = round_up_to_zero(total)
