@@ -254,7 +254,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-07-28 16:00:19.555634",
+ "modified": "2022-07-29 12:18:23.320195",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -276,8 +276,32 @@
   },
   {
    "doc_view": "Report Builder",
-   "label": "NJ End of the Day Report",
+   "label": "NJ End of Day Report",
    "link_to": "NJ End of the Day Repor",
+   "type": "Report"
+  },
+  {
+   "doc_view": "Report Builder",
+   "label": "VC Jewelry Report A",
+   "link_to": "Vault Custodian Jewelry Report A",
+   "type": "Report"
+  },
+  {
+   "doc_view": "Report Builder",
+   "label": "VC Jewelry Report A",
+   "link_to": "Vault Custodian Jewelry Report B",
+   "type": "Report"
+  },
+  {
+   "doc_view": "Report Builder",
+   "label": "VC Non Jewelry Report",
+   "link_to": "Vault Custodian Non Jewelry Report",
+   "type": "Report"
+  },
+  {
+   "doc_view": "Report Builder",
+   "label": "J End of Day Report",
+   "link_to": "J End of Day Report",
    "type": "Report"
   },
   {
