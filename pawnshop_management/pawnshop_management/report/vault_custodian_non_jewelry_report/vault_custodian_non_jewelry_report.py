@@ -25,7 +25,7 @@ def execute(filters=None):
 			total_in_for_today = round_up_to_zero(in_for_today)
 			total_pt_count = round_up_to_zero(total)
 
-			data.append({'date_loan_granted': data2[i]['date_loan_granted'], 'in_count': in_count, 'out_count': out_count, 'total_count':total_count})
+			data.append({'date_loan_granted': data2[i]['date_loan_granted'], 'in_count': total_in_for_today, 'out_count': out_count, 'total_count':total_pt_count})
 	return columns, data
 
 
@@ -68,3 +68,9 @@ def date_has_duplicate(date, data):
 			has_duplicate = True
 			return has_duplicate
 	return has_duplicate
+
+def round_up_to_zero(num):
+	if int(num) < 0:
+		num = 0
+		return num
+	return num

@@ -25,7 +25,7 @@ def execute(filters=None):
 			total_in_for_today = round_up_to_zero(in_for_today)
 			total_pt_count = round_up_to_zero(total)
 
-			data.append({'date_loan_granted': data2[i]['date_loan_granted'], 'in_count': total_pt_count, 'out_count': out_count, 'total_count':total_in_for_today})
+			data.append({'date_loan_granted': data2[i]['date_loan_granted'], 'in_count': total_in_for_today, 'out_count': out_count, 'total_count':total_pt_count})
 	return columns, data
 
 
