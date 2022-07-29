@@ -13,7 +13,7 @@ def execute(filters=None):
 			
 			renewed_count_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Renewed', 'item_series': 'B'})
 
-			out_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Redeemed', 'item_series': 'B'})
+			out_count = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': data2[i]['date_loan_granted'], 'workflow_state': 'Redeemed', 'item_series': 'B'})
 
 			total_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': ['<=', data2[i]['date_loan_granted']], 'item_series': 'B', 'workflow_state':['in',['Active', 'Expired']]})
 
