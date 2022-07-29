@@ -9,13 +9,23 @@ def execute(filters=None):
 	data2 = frappe.get_all('Pawn Ticket Non Jewelry', fields=['date_loan_granted'], order_by='date_loan_granted desc',)
 	for i in range(len(data2)):
 		if not date_has_duplicate(data2[i]['date_loan_granted'], data):
-			in_count = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Active'})
+			renewed_count_of_the_day = frappe.db.count('Pawn Ticket Non Jewelry', {'change_status_date': data2[i]['date_loan_granted'], 'workflow_state': 'Renewed'})
 
 			out_count = frappe.db.count('Pawn Ticket Non Jewelry', {'change_status_date': data2[i]['date_loan_granted'], 'workflow_state': 'Redeemed'})
 
-			total_count = data2[i]['total_count'] = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': ['<=', data2[i]['date_loan_granted']], 'workflow_state':'Active'})
+			total_count_active = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': ['<=', data2[i]['date_loan_granted']], 'workflow_state': 'Active'})
 
-			data.append({'date_loan_granted': data2[i]['date_loan_granted'], 'in_count': in_count, 'out_count': out_count, 'total_count':total_count})
+			total_count_expire = frappe.db.count('Pawn Ticket Non Jewelry', {'change_status_date': ['<=', data2[i]['date_loan_granted']], 'workflow_state': 'Expired'})
+
+			total_renewed = frappe.db.count('Pawn Ticket Non Jewelry', {'change_status_date': ['<=', data2[i]['date_loan_granted']], 'workflow_state':'Renewed'})
+
+			in_for_today = total_count_active + total_count_expire - renewed_count_of_the_day
+			total = total_count_active + total_count_expire - total_renewed
+
+			total_in_for_today = round_up_to_zero(in_for_today)
+			total_pt_count = round_up_to_zero(total)
+
+			data.append({'date_loan_granted': data2[i]['date_loan_granted'], 'in_count': total_in_for_today, 'out_count': out_count, 'total_count':total_pt_count})
 	return columns, data
 
 
@@ -58,3 +68,9 @@ def date_has_duplicate(date, data):
 			has_duplicate = True
 			return has_duplicate
 	return has_duplicate
+
+def round_up_to_zero(num):
+	if int(num) < 0:
+		num = 0
+		return num
+	return num
