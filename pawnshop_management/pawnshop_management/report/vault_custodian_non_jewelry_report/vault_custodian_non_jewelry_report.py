@@ -6,7 +6,7 @@ import frappe
 def execute(filters=None):
 	columns, data = [], []
 	columns = get_columns()
-	data2 = frappe.get_all('Pawn Ticket Non Jewelry', fields=['date_loan_granted'], order_by='date_loan_granted desc',)
+	data2 = frappe.get_all('Pawn Ticket Non Jewelry', filters={'created_by_pr': None}, fields=['date_loan_granted'], order_by='date_loan_granted desc')
 	for i in range(len(data2)):
 		if not date_has_duplicate(data2[i]['date_loan_granted'], data):
 			in_count = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Active', 'created_by_pr': None})
