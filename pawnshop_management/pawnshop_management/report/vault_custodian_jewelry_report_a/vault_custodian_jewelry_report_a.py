@@ -6,14 +6,14 @@ import frappe
 def execute(filters=None):
 	columns, data = [], []
 	columns = get_columns()
-	data2 = frappe.get_all('Pawn Ticket Jewelry', filters={'item_series': 'A', 'created_by_pr':['not like', '%No%']}, fields=['date_loan_granted'], order_by='date_loan_granted desc')
+	data2 = frappe.get_all('Pawn Ticket Jewelry', filters={'item_series': 'A', 'change_status_date':None}, fields=['date_loan_granted'], order_by='date_loan_granted desc')
 	for i in range(len(data2)):
 		if not date_has_duplicate(data2[i]['date_loan_granted'], data):
-			in_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Active', 'item_series': 'A', 'created_by_pr': ['not like', '%No%']})
+			in_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Active', 'item_series': 'A', 'change_status_date': None})
 
 			out_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Redeemed', 'item_series': 'A'})
 
-			total_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': ['<=', data2[i]['date_loan_granted']], 'item_series': 'A', 'workflow_state':['in',['Active', 'Expired']], 'created_by_pr': ['not like', '%No%']})
+			total_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': ['<=', data2[i]['date_loan_granted']], 'item_series': 'A', 'workflow_state':['in',['Active', 'Expired']], 'change_status_date': None})
 
 			data.append({'date_loan_granted': data2[i]['date_loan_granted'], 'in_count': in_count, 'out_count': out_count, 'total_count':total_count})
 	return columns, data
@@ -58,3 +58,6 @@ def date_has_duplicate(date, data):
 			has_duplicate = True
 			return has_duplicate
 	return has_duplicate
+
+# def count_in(name):
+# 	if frappe.db.exists('Pawn Ticket Jewelry', name):
