@@ -8,7 +8,10 @@ def execute(filters=None):
 	columns = get_columns()
 	data2 = frappe.get_all('Pawn Ticket Jewelry', filters={'item_series': 'A'}, fields=['date_loan_granted'], order_by='date_loan_granted desc')
 	for i in range(len(data2)):
-		if not date_has_duplicate(data2[i]['date_loan_granted'], data):			
+		if not date_has_duplicate(data2[i]['date_loan_granted'], data):	
+
+			in_count_of_the_day_active = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Active', 'item_series': 'A'})
+
 			renewed_count_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': data2[i]['date_loan_granted'], 'workflow_state': 'Renewed', 'item_series': 'A'})
 
 			out_count = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': data2[i]['date_loan_granted'], 'workflow_state': 'Redeemed', 'item_series': 'A'})
@@ -19,7 +22,7 @@ def execute(filters=None):
 
 			total_renewed = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': ['<=', data2[i]['date_loan_granted']], 'item_series': 'A', 'workflow_state':'Renewed'})
 
-			in_for_today = total_count_active + total_count_expire - renewed_count_of_the_day
+			in_for_today = in_count_of_the_day_active - renewed_count_of_the_day
 			total = total_count_active + total_count_expire - total_renewed
 
 			total_in_for_today = round_up_to_zero(in_for_today)
