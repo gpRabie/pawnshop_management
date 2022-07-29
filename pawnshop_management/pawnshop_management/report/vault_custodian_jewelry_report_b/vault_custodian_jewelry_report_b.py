@@ -13,7 +13,7 @@ def execute(filters=None):
 
 			out_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Redeemed', 'item_series': 'B'})
 
-			total_count = data2[i]['total_count'] = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': ['<=', data2[i]['date_loan_granted']], 'item_series': 'B', 'workflow_state':'Active'})
+			total_count = data2[i]['total_count'] = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': ['<=', data2[i]['date_loan_granted']], 'item_series': 'B', 'workflow_state':['in',['Active', 'Expired']]})
 
 			data.append({'date_loan_granted': data2[i]['date_loan_granted'], 'in_count': in_count, 'out_count': out_count, 'total_count':total_count})
 	return columns, data
