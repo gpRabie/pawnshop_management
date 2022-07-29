@@ -9,9 +9,9 @@ def execute(filters=None):
 	data2 = frappe.get_all('Pawn Ticket Jewelry', filters={'item_series': 'A'}, fields=['date_loan_granted'], order_by='date_loan_granted desc',)
 	for i in range(len(data2)):
 		if not date_has_duplicate(data2[i]['date_loan_granted'], data):
-			in_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Active'})
+			in_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Active', 'item_series': 'A'})
 
-			out_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Redeemed'})
+			out_count = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Redeemed', 'item_series': 'A'})
 
 			total_count = data2[i]['total_count'] = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': ['<=', data2[i]['date_loan_granted']], 'item_series': 'A', 'workflow_state':'Active'})
 
