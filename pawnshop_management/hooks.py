@@ -210,7 +210,9 @@ fixtures = [
 	"Workflow State",
 	"Workflow",
 	"Pawnshop Naming Series",
-	"Branch IP Addressing"
+	"Branch IP Addressing",
+	"Company",
+	"Branch"
 ]
 
 
