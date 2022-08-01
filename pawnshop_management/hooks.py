@@ -205,14 +205,18 @@ on_login = "pawnshop_management.pawnshop_management.custom_codes.log_in.post_log
 # 	"Pawnshop Naming Series"
 # ]
 
+# fixtures = [
+# 	"Workspace",
+# 	"Workflow State",
+# 	"Workflow",
+# 	"Pawnshop Naming Series",
+# 	"Branch IP Addressing",
+# 	"Company",
+# 	"Branch"
+# ]
+
 fixtures = [
-	"Workspace",
-	"Workflow State",
-	"Workflow",
-	"Pawnshop Naming Series",
-	"Branch IP Addressing",
-	"Company",
-	"Branch"
+	"Company"
 ]
 
 
