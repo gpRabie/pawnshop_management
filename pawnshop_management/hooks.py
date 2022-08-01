@@ -216,7 +216,11 @@ on_login = "pawnshop_management.pawnshop_management.custom_codes.log_in.post_log
 # ]
 
 fixtures = [
-	"Company"
+	"Workflow State",
+	"Workflow Transition",
+	"Workflow Action",
+	"Workflow Action Master",
+	"Workflow"
 ]
 
 
