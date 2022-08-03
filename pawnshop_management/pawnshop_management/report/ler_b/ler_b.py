@@ -11,5 +11,5 @@ def execute(filters=None):
 def get_data():
 	data = """
 	SELECT 
-		`tabPaw
+		`tabPawn Ticket
 	"""

@@ -37,6 +37,12 @@ frappe.ui.form.on('Inventory Count', {
 					})
 				}
 			})
+
+
 		}
 	}
 });
+
+function name(params) {
+	
+}
