@@ -1,19 +1,33 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "INV.#####",
  "creation": "2022-08-01 13:33:59.541776",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "date",
-  "in",
-  "out",
-  "total",
-  "column_break_5",
+  "column_break_2",
   "branch",
-  "returned",
-  "pulled_out"
+  "section_break_4",
+  "in_count_a",
+  "out_count_a",
+  "returned_a",
+  "pulled_out_a",
+  "total_a",
+  "column_break_5",
+  "in_count_b",
+  "out_count_b",
+  "returned_b",
+  "pulled_out_b",
+  "total_b",
+  "column_break_13",
+  "in_count_nj",
+  "out_count_nj",
+  "returned_nj",
+  "pulled_out_nj",
+  "total_nj"
  ],
  "fields": [
   {
@@ -23,27 +37,6 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Date",
-   "read_only": 1
-  },
-  {
-   "fieldname": "in",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "IN",
-   "read_only": 1
-  },
-  {
-   "fieldname": "out",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "OUT",
-   "read_only": 1
-  },
-  {
-   "fieldname": "total",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Total",
    "read_only": 1
   },
   {
@@ -59,23 +52,119 @@
    "read_only": 1
   },
   {
-   "fieldname": "returned",
+   "fieldname": "in_count_a",
    "fieldtype": "Int",
    "in_list_view": 1,
-   "label": "Returned",
+   "label": "IN(A)",
    "read_only": 1
   },
   {
-   "fieldname": "pulled_out",
+   "default": "0",
+   "fieldname": "returned_a",
    "fieldtype": "Int",
    "in_list_view": 1,
-   "label": "Pulled Out",
+   "label": "Returned(A)",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "pulled_out_a",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Pulled Out(A)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_a",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total(A)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_13",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "returned_b",
+   "fieldtype": "Int",
+   "label": "Returned(B)"
+  },
+  {
+   "default": "0",
+   "fieldname": "pulled_out_b",
+   "fieldtype": "Int",
+   "label": "Pulled Out(B)"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_b",
+   "fieldtype": "Int",
+   "label": "Total(B)"
+  },
+  {
+   "default": "0",
+   "fieldname": "returned_nj",
+   "fieldtype": "Int",
+   "label": "Returned(NJ)"
+  },
+  {
+   "default": "0",
+   "fieldname": "pulled_out_nj",
+   "fieldtype": "Int",
+   "label": "Pulled Out(NJ)"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_nj",
+   "fieldtype": "Int",
+   "label": "Total(NJ)"
+  },
+  {
+   "fieldname": "out_count_a",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "OUT(A)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "out_count_b",
+   "fieldtype": "Int",
+   "label": "OUT(B)"
+  },
+  {
+   "default": "0",
+   "fieldname": "out_count_nj",
+   "fieldtype": "Int",
+   "label": "OUT(NJ)"
+  },
+  {
+   "default": "0",
+   "fieldname": "in_count_b",
+   "fieldtype": "Int",
+   "label": "IN(B)"
+  },
+  {
+   "default": "0",
+   "fieldname": "in_count_nj",
+   "fieldtype": "Int",
+   "label": "IN(NJ)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-08-01 14:10:22.203751",
+ "modified": "2022-08-03 15:57:15.626720",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Inventory Count",

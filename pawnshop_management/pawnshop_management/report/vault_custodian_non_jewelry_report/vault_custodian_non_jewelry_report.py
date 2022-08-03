@@ -6,44 +6,49 @@ import frappe
 def execute(filters=None):
 	columns, data = [], []
 	columns = get_columns()
-	data2 = frappe.get_all('Pawn Ticket Non Jewelry', fields=['date_loan_granted'], order_by='date_loan_granted desc',)
-	for i in range(len(data2)):
-		if not date_has_duplicate(data2[i]['date_loan_granted'], data):
-			in_count = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Active'})
-
-			out_count = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': data2[i]['date_loan_granted'], 'workflow_state': 'Redeemed'})
-
-			total_count = data2[i]['total_count'] = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': ['<=', data2[i]['date_loan_granted']], 'workflow_state':'Active'})
-
-			data.append({'date_loan_granted': data2[i]['date_loan_granted'], 'in_count': in_count, 'out_count': out_count, 'total_count':total_count})
+	data = frappe.get_all('Inventory Count', fields=['date', 'in_count_nj', 'out_count_nj', 'returned_nj', 'pulled_out_nj', 'total_nj'], order_by='date desc',)
 	return columns, data
 
 
 def get_columns():
 	columns = [
 		{
-			'fieldname': 'date_loan_granted',
+			'fieldname': 'date',
 			'label': 'Date',
 			'fieldtype': 'Date',
 			'width': 200
 		},
 
 		{
-			'fieldname': 'in_count',
+			'fieldname': 'in_count_nj',
 			'label': 'IN',
 			'fieldtype': 'Int',
 			'width': 100
 		},
 
 		{
-			'fieldname': 'out_count',
+			'fieldname': 'out_count_nj',
 			'label': 'OUT',
 			'fieldtype': 'Int',
 			'width': 100
 		},
 
 		{
-			'fieldname': 'total_count',
+			'fieldname': 'returned_nj',
+			'label': 'Returned',
+			'fieldtype': 'Int',
+			'width': 100
+		},
+
+		{
+			'fieldname': 'pulled_out_nj',
+			'label': 'Pulled Out',
+			'fieldtype': 'Int',
+			'width': 100
+		},
+
+		{
+			'fieldname': 'total_nj',
 			'label': 'Total',
 			'fieldtype': 'Int',
 			'width': 100
@@ -51,10 +56,3 @@ def get_columns():
 	]
 	return columns
 
-def date_has_duplicate(date, data):
-	has_duplicate = False
-	for i in range(len(data)):
-		if str(data[i]['date_loan_granted']) == str(date):
-			has_duplicate = True
-			return has_duplicate
-	return has_duplicate
