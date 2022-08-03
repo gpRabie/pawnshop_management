@@ -1025,9 +1025,7 @@ function get_additional_redeem(frm) {
 					[
 						'Redemption',
 						'Renewal',
-						'Renewal w/ Amortization',
-						'Amortization'
-					]
+						'Renewal w/ Amortization'					]
 				],
 				branch: "Rabie's House",
 				docstatus: 1,
@@ -1040,15 +1038,11 @@ function get_additional_redeem(frm) {
 				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 				}
-				if (records_pr[index].transaction_type == "Renewal") {
+				 if (records_pr[index].transaction_type == "Renewal") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
-				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
-				}
-
-				if (records_pr[index].transaction_type == "Amortization") {
-					temp_total += parseFloat(records_pr[index].total)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -1077,15 +1071,11 @@ function get_additional_redeem(frm) {
 				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 				}
-				if (records_pr[index].transaction_type == "Renewal") {
+				 if (records_pr[index].transaction_type == "Renewal") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
-				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
-				}
-
-				if (records_pr[index].transaction_type == "Amortization") {
-					temp_total += parseFloat(records_pr[index].total)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -1114,15 +1104,11 @@ function get_additional_redeem(frm) {
 				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 				}
-				if (records_pr[index].transaction_type == "Renewal") {
+				 if (records_pr[index].transaction_type == "Renewal") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
-				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
-				}
-
-				if (records_pr[index].transaction_type == "Amortization") {
-					temp_total += parseFloat(records_pr[index].total)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -1151,15 +1137,11 @@ function get_additional_redeem(frm) {
 				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 				}
-				if (records_pr[index].transaction_type == "Renewal") {
+				 if (records_pr[index].transaction_type == "Renewal") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
-				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
-				}
-
-				if (records_pr[index].transaction_type == "Amortization") {
-					temp_total += parseFloat(records_pr[index].total)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
@@ -1194,10 +1176,6 @@ function get_additional_redeem(frm) {
 				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
-
-				if (records_pr[index].transaction_type == "Amortization") {
-					temp_total += parseFloat(records_pr[index].total)
-				}
 			}
 			frm.set_value('additional_redeem', temp_total);
 			frm.refresh_field('additional_redeem');
@@ -1225,15 +1203,11 @@ function get_additional_redeem(frm) {
 				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total)
 				}
-				if (records_pr[index].transaction_type == "Renewal") {
+				 if (records_pr[index].transaction_type == "Renewal") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
 				}
-				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
+				 if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
-				}
-
-				if (records_pr[index].transaction_type == "Amortization") {
-					temp_total += parseFloat(records_pr[index].total)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
