@@ -7,15 +7,18 @@ from frappe import _ # _ for to set the string into literal string
 def execute(filters=None):
 	columns, data = [], []
 	columns = get_columns()
-	data = frappe.get_all("Pawn Ticket Non Jewelry", filters=filters, fields=['pawn_ticket', 'customers_tracking_no', 'customers_full_name', 'inventory_tracking_no', 'desired_principal', 'date_loan_granted', 'expiry_date', 'workflow_state', 'change_status_date'])
+	data = frappe.get_all("Pawn Ticket Non Jewelry", filters=filters, fields=['pawn_ticket', 'customers_tracking_no', 'customers_full_name', 'inventory_tracking_no', 'desired_principal', 'date_loan_granted', 'expiry_date', 'workflow_state', 'change_status_date', '_comments'])
+	comments = string_extractor
 	for i in range(len(data)):
 		description = ""
+		comments = string_extractor(data[i]["_comments"])
 		details = frappe.db.get_list("Non Jewelry List", filters={'parent': data[i]['pawn_ticket']}, fields=['item_no', 'type', 'brand', 'model', 'model_number'])
 		customer = frappe.get_doc('Customer', data[i]['customers_tracking_no'])
 		data[i]['contact_no'] = customer.mobile_no
 		for j in range(len(details)):
 			description += details[j]["item_no"] + ", " + details[j]["type"] + ", " + details[j]["brand"] + ", " + details[j]["model"] + ", " + details[j]["model_number"] + "; "
 		data[i]['description'] = description
+		data[i]['comments'] = comments
 	return columns, data
 
 def get_columns():
@@ -94,6 +97,13 @@ def get_columns():
 		},
 
 		{
+			'fieldname': '_comments',
+			'label': _('Comments'),
+			'fieldtype': 'Small Text',
+			'width': 300
+		},
+
+		{
 			'fieldname': 'comments',
 			'label': _('Comments'),
 			'fieldtype': 'Small Text',
@@ -102,3 +112,13 @@ def get_columns():
 		
 	]
 	return columns
+
+def string_extractor(string=None):
+	new_string = ""
+	if string == None:
+		return new_string
+	else:
+		first = string.rindex("<p>") + 3
+		last = string.rindex("</p>")
+		new_string = string[first:last]
+	return new_string

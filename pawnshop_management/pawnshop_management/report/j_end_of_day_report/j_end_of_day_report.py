@@ -1,15 +1,19 @@
 # Copyright (c) 2013, Rabie Moses Santillan and contributors
 # For license information, please see license.txt
 
+from hashlib import new
+from tokenize import String
+from unittest.util import strclass
 import frappe
 from frappe import _ # _ for to set the string into literal string
 
 def execute(filters=None):
 	columns, data = [], []
 	columns = get_columns()
-	data = frappe.get_all("Pawn Ticket Jewelry", filters=filters, fields=['pawn_ticket', 'customers_tracking_no', 'customers_full_name', 'inventory_tracking_no', 'desired_principal', 'date_loan_granted', 'expiry_date', 'workflow_state', 'change_status_date', 'comments'])
+	data = frappe.get_all("Pawn Ticket Jewelry", filters=filters, fields=['pawn_ticket', 'customers_tracking_no', 'customers_full_name', 'inventory_tracking_no', 'desired_principal', 'date_loan_granted', 'expiry_date', 'workflow_state', 'change_status_date', '_comments'])
 	for i in range(len(data)):
 		description = ""
+		comments = string_extractor(data[i]["_comments"])
 		details = frappe.db.get_list("Jewelry List", filters={'parent': data[i]['pawn_ticket']}, fields=['item_no', 'type', 'karat_category', 'karat', 'weight', 'color', 'colors_if_multi', 'additional_for_stone'])
 		customer = frappe.get_doc('Customer', data[i]['customers_tracking_no'])
 		data[i]['contact_no'] = customer.mobile_no
@@ -22,6 +26,7 @@ def execute(filters=None):
 				
 			description += str(details[j]["item_no"]) + ", " + details[j]["type"] + ", " + str(details[j]["karat_category"]) + ", " + str(details[j]["karat"]) + ", " + str(details[j]["weight"]) + ", " + str(details[j]["color"]) + ", " + str(details[j]["colors_if_multi"]) + ", " + str(details[j]["additional_for_stone"]) + "; "
 		data[i]['description'] = description
+		data[i]["comments"] = comments
 	return columns, data
 
 def get_columns():
@@ -108,3 +113,13 @@ def get_columns():
 		
 	]
 	return columns
+
+def string_extractor(string=None):
+	new_string = ""
+	if string == None:
+		return new_string
+	else:
+		first = string.rindex("<p>") + 3
+		last = string.rindex("</p>")
+		new_string = string[first:last]
+	return new_string

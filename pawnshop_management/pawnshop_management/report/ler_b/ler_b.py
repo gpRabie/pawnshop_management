@@ -11,5 +11,5 @@ def execute(filters=None):
 def get_data():
 	data = """
 	SELECT 
-		`tabPawn Ticket
+		`tabPawn Ticket Jewelry`.date_loan_granted as "
 	"""
