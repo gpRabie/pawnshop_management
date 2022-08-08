@@ -457,7 +457,9 @@ function get_non_jewelry_of_the_day(frm, date_today=null) {
 			fields: ['net_proceeds'],
 			filters: {
 				date_loan_granted: date_today,
-				branch: "Garcia's Pawnshop - GTC"
+				branch: "Garcia's Pawnshop - GTC",
+				old_pawn_ticket: '',
+				docstatus: 1
 			}
 		}).then(records => {
 			let temp_total = 0.00;
