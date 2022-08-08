@@ -114,7 +114,7 @@ def get_columns():
 
 def string_extractor(string=""):
 	new_string = ""
-	if '<p>' in string and '</p>' in string:
+	if '<p>' in string and '</p>' in string and string != "":
 		first = string.rindex("<p>") + 3
 		last = string.rindex("</p>")
 		new_string = string[first:last]
