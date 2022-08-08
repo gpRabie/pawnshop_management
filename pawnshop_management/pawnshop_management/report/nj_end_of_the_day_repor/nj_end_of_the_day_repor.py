@@ -112,7 +112,7 @@ def get_columns():
 	]
 	return columns
 
-def string_extractor(string=None):
+def string_extractor(string=""):
 	new_string = ""
 	if '<p>' in string and '</p>' in string:
 		first = string.rindex("<p>") + 3
