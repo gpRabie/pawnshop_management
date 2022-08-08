@@ -118,7 +118,7 @@ def string_extractor(string=None):
 	if string == None:
 		return new_string
 	else:
-		first = string.rindex("<p>") + 3
-		last = string.rindex("</p>")
+		first = string.rfind("<p>") + 3
+		last = string.rfind("</p>")
 		new_string = string[first:last]
 	return new_string
