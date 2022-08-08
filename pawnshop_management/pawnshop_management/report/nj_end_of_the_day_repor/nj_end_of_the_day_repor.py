@@ -97,13 +97,6 @@ def get_columns():
 		},
 
 		{
-			'fieldname': '_comments',
-			'label': _('Comments'),
-			'fieldtype': 'Small Text',
-			'width': 300
-		},
-
-		{
 			'fieldname': 'comments',
 			'label': _('Comments'),
 			'fieldtype': 'Small Text',
