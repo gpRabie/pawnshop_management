@@ -24,7 +24,7 @@ frappe.ui.form.on('Loyalty Card', {
 		frm.add_custom_button('Add Points', () => {
 			frappe.prompt([
 				{
-					label: 'Magdagdag tayo ng Pts',
+					label: 'Add Points',
 					fieldname: 'add_points',
 					fieldtype: 'Float'
 				},
