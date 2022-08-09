@@ -2,7 +2,10 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Inventory Count', {
-	// refresh: function(frm) {
+	refresh: function(frm) {
+		nj_total_active = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': ['<=', "2022-08-08"], 'workflow_state': ['in', ['Active', 'Expired', 'Returned']], 'branch': "Garcia's Pawnshop - GTC"})
+		frm.set_value('total_nj', nj_total_active)
+		frm.refresh_field('total_nj')
 	// 	let is_allowed = frappe.user_roles.includes('Administrator');
 	// 	frm.toggle_enable(['date', 'branch'], is_allowed);
 	// 	if (frm.is_new()) {
@@ -40,7 +43,7 @@ frappe.ui.form.on('Inventory Count', {
 
 
 	// 	}
-	// },
+	}
 
 	// branch: function(frm){
 	// 	get_jewelry_a_count(frm)

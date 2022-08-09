@@ -254,7 +254,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-07-29 12:18:23.320195",
+ "modified": "2022-08-09 11:52:38.704728",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -278,6 +278,12 @@
    "doc_view": "Report Builder",
    "label": "NJ End of Day Report",
    "link_to": "NJ End of the Day Repor",
+   "type": "Report"
+  },
+  {
+   "doc_view": "Report Builder",
+   "label": "J End of The Day Report",
+   "link_to": "J End of Day Report",
    "type": "Report"
   },
   {

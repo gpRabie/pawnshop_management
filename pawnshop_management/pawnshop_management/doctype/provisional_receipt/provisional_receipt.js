@@ -24,6 +24,8 @@ frappe.ui.form.on('Provisional Receipt', {
 	},
 
 	refresh: function(frm) {
+		let is_allowed = frappe.user_roles.includes('Administrator');
+		frm.toggle_enable(['date_loan_granted' ,'expiry_date', 'maturity_date'], is_allowed);
 		if ((frm.doc.discount != 0 || frm.doc.discount != null) && frm.doc.docstatus == 1) {
 			frm.set_df_property('discount', 'hidden', 0)
 			frm.set_df_property('discount', 'read_only', 1)
@@ -650,7 +652,7 @@ function calculate_expiry_date_interest(frm) {
 		// if (frm.doc.transaction_type == "Renewal") {
 		// 	temp_interest += parseFloat(frm.doc.interest)
 		// }
-		frm.set_value('interest_payment', temp_interest - frm.doc.previous_interest_payment)
+		frm.set_value('interest_payment', temp_interest - frm.doc.interest)
 		frm.refresh_field('interest_payment')
 	});
 }

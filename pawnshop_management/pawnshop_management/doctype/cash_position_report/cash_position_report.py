@@ -51,7 +51,7 @@ class CashPositionReport(Document):
 		invetory_count_doc.out_count_nj = nj_out_count
 		invetory_count_doc.returned_nj = nj_returned_of_the_day
 		invetory_count_doc.pulled_out_nj = nj_pulled_out_of_the_day
-		invetory_count_doc.total = nj_total_active
+		invetory_count_doc.total_nj = nj_total_active
 		invetory_count_doc.save(ignore_permissions=True)
 
 	def before_save(self):

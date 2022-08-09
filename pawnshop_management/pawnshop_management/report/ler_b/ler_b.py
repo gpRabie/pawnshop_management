@@ -2,25 +2,36 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 
 def execute(filters=None):
 	columns, data = [], []
 	columns = get_columns()
-	data1 = frappe.get_all("Pawn Ticket Jewelry", filters={'item_series': 'B', 'docstatus': 1}, fields=['pawn_ticket', 'date_loan_granted', 'customers_full_name', 'pawn_ticket', 'desired_principal', 'interest', 'net_proceeds'])
-	for i in range(len(data)):
-		description = ""
-		details = frappe.db.get_list("Jewelry List", filters={'parent': data[i]['pawn_ticket']}, fields=['item_no', 'type', 'karat_category', 'karat', 'weight', 'color'])
-		for j in range(len(details)):
-			description += details[j]["item_no"] + ", " + details[j]["type"] + ", " + details[j]["karat_category"] + ", " + details[j]["karat"] + ", " + str(details[j]["weight"]) + ", " + details[j]["color"] + "; "
-		data[i]['description'] = description
+	data = get_data()
+	# data1 = frappe.get_all("Pawn Ticket Jewelry", filters={'item_series': 'B', 'docstatus': 1}, fields=['pawn_ticket', 'date_loan_granted', 'customers_full_name', 'pawn_ticket', 'desired_principal', 'interest', 'net_proceeds'])
+	# for i in range(len(data)):
+	# 	description = ""
+	# 	details = frappe.db.get_list("Jewelry List", filters={'parent': data[i]['pawn_ticket']}, fields=['item_no', 'type', 'karat_category', 'karat', 'weight', 'color'])
+	# 	for j in range(len(details)):
+	# 		description += details[j]["item_no"] + ", " + details[j]["type"] + ", " + details[j]["karat_category"] + ", " + details[j]["karat"] + ", " + str(details[j]["weight"]) + ", " + details[j]["color"] + "; "
+	# 	data[i]['description'] = description
 	return columns, data
 
 
 def get_data():
 	data = """
 		SELECT 
-			`tabPawn Ticket Jewelry`.`date_loan_granted` as "Date:Date/Date:200"
-
+			`tabPawn Ticket Jewelry`.`date_loan_granted` as "Date:Date:200"
+			`tabPawn Ticket Jewelry`.`customers_full_name` as "Customer Name:Data:200"
+			`tabPawn Ticket Jewelry`.`pawn_ticket` as "P.T.:Link:150"
+			`tabPawn Ticket Jewelry`.`desired_principal` as "Principal:Currency:100"
+			`tabPawn Ticket Jewelry`.`interest` as "Interest:Currency:100"
+			`tabPawn Ticket Jewelry`.`net_proceeds` as "Net Proceeds:Currency:100"
+		FROM
+			`tabPawnTicket Jewelry`
+		WHERE
+			`tabPawnTicket Jewelry`.docstatus=1
+			AND `tabPawnTicket Jewelry`.item_series="B"
 	"""
 
 def get_columns():
