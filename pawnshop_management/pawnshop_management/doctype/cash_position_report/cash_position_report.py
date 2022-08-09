@@ -53,7 +53,7 @@ class CashPositionReport(Document):
 		invetory_count_doc.pulled_out_nj = nj_pulled_out_of_the_day
 		invetory_count_doc.total_nj = nj_total_active
 		invetory_count_doc.save(ignore_permissions=True)
-
+# Added Comment
 	def before_save(self):
 		if self.shortage_overage > 0:
 			doc1 = frappe.new_doc('Journal Entry')
