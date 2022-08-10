@@ -53,7 +53,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Type",
-   "options": "Earrings\nBracelet\nNecklace\nRing\nBangles\nPendant\nEarcuff\nGold Coin",
+   "options": "Earrings\nBracelet\nNecklace\nRing\nBangles\nPendant\nEarcuff\nGold Coin\nAnklet",
    "reqd": 1
   },
   {
@@ -70,7 +70,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Karat Category",
-   "options": "Defective\nRegular\nSagad\n3.4g and Below",
+   "options": "Defective\nRegular\nSagad",
    "reqd": 1
   },
   {
