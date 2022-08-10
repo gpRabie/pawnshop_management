@@ -198,12 +198,9 @@ on_login = "pawnshop_management.pawnshop_management.custom_codes.log_in.post_log
 # 	"pawnshop_management.auth.validate"
 # ]
 
-# fixtures = [
-# 	"Workspace",
-# 	"Workflow State",
-# 	"Workflow",
-# 	"Pawnshop Naming Series"
-# ]
+fixtures = [
+	"Workflow"
+]
 
 # fixtures = [
 # 	"Workspace",
