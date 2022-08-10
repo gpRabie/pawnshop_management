@@ -652,7 +652,11 @@ function calculate_expiry_date_interest(frm) {
 		// if (frm.doc.transaction_type == "Renewal") {
 		// 	temp_interest += parseFloat(frm.doc.interest)
 		// }
-		frm.set_value('interest_payment', temp_interest - frm.doc.interest)
+		if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
+			frm.set_value('interest_payment', (temp_interest + frm.doc.advance_interest))
+		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry") {
+			frm.set_value('interest_payment', (temp_interest + frm.doc.advance_interest) - frm.doc.interest)
+		}
 		frm.refresh_field('interest_payment')
 	});
 }

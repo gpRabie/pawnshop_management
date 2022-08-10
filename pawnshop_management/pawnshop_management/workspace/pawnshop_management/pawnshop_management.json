@@ -254,7 +254,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-08-09 11:52:38.704728",
+ "modified": "2022-08-10 11:40:02.573210",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -294,7 +294,7 @@
   },
   {
    "doc_view": "Report Builder",
-   "label": "VC Jewelry Report A",
+   "label": "VC Jewelry Report B",
    "link_to": "Vault Custodian Jewelry Report B",
    "type": "Report"
   },
