@@ -292,7 +292,11 @@ function calculate_interest(frm) {
 	if (date_today > frm.doc.maturity_date && date_today < frm.doc.expiry_date) {
 		calculate_maturity_date_interest(frm);
 	} else if (date_today >= frm.doc.expiry_date) {
-		calculate_expiry_date_interest(frm);
+		if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
+			calculate_expiry_date_interest_jewelry(frm);
+		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry") {
+			calculate_expiry_date_interest_non_jewelry(frm);
+		}
 	}
 }
 
@@ -662,7 +666,7 @@ function calculate_expiry_date_interest_jewelry(frm) {
 }
 
 
-function calculate_expiry_date_interest_jewelry(frm) {
+function calculate_expiry_date_interest_non_jewelry(frm) {
 	frappe.db.get_doc('Holiday List', 'No Operations').then(function(r){
 		var holidays_list = r.holidays;
 		var holidays_before_expiry_date = null;
