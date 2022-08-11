@@ -613,6 +613,7 @@ function calculate_expiry_date_interest(frm) {
 				if (date_today > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
 					console.log("C1-1");
 					temp_interest = initial_interest + (temp_interest * multiplier);
+					console.log(multiplier);
 				} else {
 					console.log("C1-2");
 					multiplier = multiplier - 1;
@@ -620,6 +621,7 @@ function calculate_expiry_date_interest(frm) {
 						multiplier = 0;
 					}
 					temp_interest = initial_interest + (temp_interest * (multiplier));
+					console.log(multiplier);
 				}
 			} else if (frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 1) == holidays_before_expiry_date) {
 				console.log("D1");
