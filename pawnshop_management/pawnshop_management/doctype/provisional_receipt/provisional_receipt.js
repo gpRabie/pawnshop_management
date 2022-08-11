@@ -562,7 +562,12 @@ function calculate_expiry_date_interest(frm) {
 	frappe.db.get_doc('Holiday List', 'No Operations').then(function(r){
 		var holidays_list = r.holidays;
 		var holidays_before_expiry_date = null;
-		var initial_interest = parseFloat(frm.doc.interest) * 3;
+		var initial_interest = parseFloat(frm.doc.interest);
+		if (Math.abs(frappe.datetime.get_day_diff(frm.doc.date_loan_granted, frm.doc.expiry_date)) == 90) {
+			initial_interest *= 2
+		} else if (Math.abs(frappe.datetime.get_day_diff(frm.doc.date_loan_granted, frm.doc.expiry_date)) == 120) {
+			initial_interest *= 3
+		}
 		var temp_expiry_date = expiry_date(frm)
 		var multiplier = expiry_interest_multiplier(frm);
 		var temp_interest = frm.doc.interest
@@ -656,11 +661,7 @@ function calculate_expiry_date_interest(frm) {
 		// if (frm.doc.transaction_type == "Renewal") {
 		// 	temp_interest += parseFloat(frm.doc.interest)
 		// }
-		if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
-			frm.set_value('interest_payment', (temp_interest + frm.doc.advance_interest))
-		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry") {
-			frm.set_value('interest_payment', (temp_interest + frm.doc.advance_interest) - frm.doc.interest)
-		}
+		frm.set_value('interest_payment', temp_interest + frm.doc.advance_interest)
 		frm.refresh_field('interest_payment')
 	});
 }
