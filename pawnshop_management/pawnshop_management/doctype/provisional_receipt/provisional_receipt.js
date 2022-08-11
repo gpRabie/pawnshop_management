@@ -292,11 +292,7 @@ function calculate_interest(frm) {
 	if (date_today > frm.doc.maturity_date && date_today < frm.doc.expiry_date) {
 		calculate_maturity_date_interest(frm);
 	} else if (date_today >= frm.doc.expiry_date) {
-		if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
-			calculate_expiry_date_interest_jewelry(frm);
-		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry") {
-			calculate_expiry_date_interest_non_jewelry(frm);
-		}
+		calculate_expiry_date_interest(frm);
 	}
 }
 
@@ -562,7 +558,7 @@ function expiry_date(frm) {
 	}
 }
 
-function calculate_expiry_date_interest_jewelry(frm) {
+function calculate_expiry_date_interest(frm) {
 	frappe.db.get_doc('Holiday List', 'No Operations').then(function(r){
 		var holidays_list = r.holidays;
 		var holidays_before_expiry_date = null;
@@ -624,7 +620,6 @@ function calculate_expiry_date_interest_jewelry(frm) {
 						multiplier = 0;
 					}
 					temp_interest = initial_interest + (temp_interest * (multiplier));
-
 				}
 			} else if (frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 1) == holidays_before_expiry_date) {
 				console.log("D1");
@@ -663,110 +658,6 @@ function calculate_expiry_date_interest_jewelry(frm) {
 			frm.set_value('interest_payment', (temp_interest + frm.doc.advance_interest))
 		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry") {
 			frm.set_value('interest_payment', (temp_interest + frm.doc.advance_interest) - frm.doc.interest)
-		}
-		frm.refresh_field('interest_payment')
-	});
-}
-
-
-function calculate_expiry_date_interest_non_jewelry(frm) {
-	frappe.db.get_doc('Holiday List', 'No Operations').then(function(r){
-		var holidays_list = r.holidays;
-		var holidays_before_expiry_date = null;
-		var initial_interest = parseFloat(frm.doc.interest) * 2;
-		var temp_expiry_date = expiry_date(frm)
-		var multiplier = expiry_interest_multiplier(frm);
-		var temp_interest = frm.doc.interest
-		var date_today = frm.doc.date_issued; //frappe.datetime.get_today();
-
-		for (let index = 0; index < holidays_list.length; index++) {
-			
-			if (holidays_list[index].holiday_date == temp_expiry_date.previous_expiry_date) {
-				holidays_before_expiry_date = holidays_list[index].holiday_date
-				break
-			} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 1)) {
-				holidays_before_expiry_date = holidays_list[index].holiday_date
-				break
-			} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 2)) {
-				holidays_before_expiry_date = holidays_list[index].holiday_date
-				break
-			} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
-				holidays_before_expiry_date = holidays_list[index].holiday_date
-				break
-			}
-		}
-
-		if (date_today > frm.doc.expiry_date) {
-			if (temp_expiry_date.previous_expiry_date == holidays_before_expiry_date) {
-				console.log("A1");
-				if (date_today > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
-					temp_interest = initial_interest + (temp_interest * multiplier);
-				} else {
-					multiplier = multiplier - 1;
-					if (multiplier < 0) {
-						multiplier = 0;
-					}
-					temp_interest = initial_interest + (temp_interest * (multiplier));
-				}
-			} else if(frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3) == holidays_before_expiry_date){
-				console.log("B1");
-				if (date_today > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
-					temp_interest = initial_interest + (temp_interest * multiplier);
-				} else {
-					multiplier = multiplier - 1;
-					if (multiplier < 0) {
-						multiplier = 0;
-					}
-					temp_interest = initial_interest + (temp_interest * (multiplier));
-				}
-			} else if (frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 2) == holidays_before_expiry_date) {
-				console.log("C1");
-				if (date_today > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
-					temp_interest = initial_interest + (temp_interest * multiplier);
-				} else {
-					multiplier = multiplier - 1;
-					if (multiplier < 0) {
-						multiplier = 0;
-					}
-					temp_interest = initial_interest + (temp_interest * (multiplier));
-				}
-			} else if (frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 1) == holidays_before_expiry_date) {
-				console.log("D1");
-				if (date_today > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 3)) {
-					console.log("D1-1");
-					temp_interest = initial_interest + (temp_interest * multiplier);
-				} else {
-					multiplier = multiplier - 1;
-					console.log("D1-2");
-					if (multiplier < 0) {
-						multiplier = 0;
-					}
-					temp_interest = initial_interest + (temp_interest * (multiplier));
-				}
-			} else {
-				console.log("E1");
-				if (date_today > frappe.datetime.add_days(temp_expiry_date.previous_expiry_date, 2)) {
-					console.log("E1-1");
-					temp_interest = initial_interest + (temp_interest * (multiplier));
-				} else {
-					multiplier = multiplier - 1;
-					console.log("E1-2");
-					if (multiplier < 0) {
-						multiplier = 0;
-					}
-					temp_interest = initial_interest + (temp_interest * multiplier);
-				}
-			}
-		} else {
-			temp_interest = initial_interest;
-		}
-		// if (frm.doc.transaction_type == "Renewal") {
-		// 	temp_interest += parseFloat(frm.doc.interest)
-		// }
-		if (frm.doc.pawn_ticket_type == "Pawn Ticket Jewelry") {
-			frm.set_value('interest_payment', (temp_interest + frm.doc.advance_interest))
-		} else if (frm.doc.pawn_ticket_type == "Pawn Ticket Non Jewelry") {
-			frm.set_value('interest_payment', (temp_interest + frm.doc.advance_interest))
 		}
 		frm.refresh_field('interest_payment')
 	});
