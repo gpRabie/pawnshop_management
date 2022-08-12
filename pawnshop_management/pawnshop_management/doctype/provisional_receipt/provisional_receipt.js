@@ -507,10 +507,10 @@ function expiry_interest_multiplier(frm) {
 			}
 		}
 	}
-	return multiplier
+	return multiplier - 1
 }
 
-function expiry_date(frm) {
+function expiry_date(frm) {			//
 	var actual_current_date = frm.doc.date_issued; //frappe.datetime.get_today();
 	var actual_previous_expiry_date = frm.doc.expiry_date;
 	var actual_current_expiry_date = frm.doc.expiry_date;

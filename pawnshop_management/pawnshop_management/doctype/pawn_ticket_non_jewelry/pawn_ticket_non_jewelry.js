@@ -93,6 +93,8 @@ frappe.ui.form.on('Pawn Ticket Non Jewelry', {
 	},
 
 	refresh: function(frm){
+		let is_allowed = frappe.user_roles.includes('Administrator');
+		frm.toggle_enable(['date_loan_granted'], is_allowed)
 		frm.fields_dict["non_jewelry_items"].grid.grid_buttons.find(".grid-add-row")[0].style.visibility = "hidden";
 		if (frm.is_new()) {
 			frappe.call({

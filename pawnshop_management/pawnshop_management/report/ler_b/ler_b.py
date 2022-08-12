@@ -19,20 +19,36 @@ def execute(filters=None):
 
 
 def get_data():
-	data = """
+	data = frappe.db.sql("""
 		SELECT 
-			`tabPawn Ticket Jewelry`.`date_loan_granted` as "Date:Date:200"
-			`tabPawn Ticket Jewelry`.`customers_full_name` as "Customer Name:Data:200"
-			`tabPawn Ticket Jewelry`.`pawn_ticket` as "P.T.:Link:150"
-			`tabPawn Ticket Jewelry`.`desired_principal` as "Principal:Currency:100"
-			`tabPawn Ticket Jewelry`.`interest` as "Interest:Currency:100"
-			`tabPawn Ticket Jewelry`.`net_proceeds` as "Net Proceeds:Currency:100"
-		FROM
-			`tabPawnTicket Jewelry`
-		WHERE
-			`tabPawnTicket Jewelry`.docstatus=1
-			AND `tabPawnTicket Jewelry`.item_series="B"
-	"""
+			date_loan_granted, 
+			pawn_ticket,
+			customers_full_name, 
+			desired_principal, 
+			interest, 
+			net_proceeds 
+		FROM 
+			`tabPawn Ticket Non Jewelry`
+		UNION
+		SELECT 
+			date_loan_granted, 
+			pawn_ticket,
+			customers_full_name, 
+			desired_principal, 
+			interest, 
+			net_proceeds 
+		FROM 
+			`tabPawn Ticket Jewelry`
+		WHERE 
+			docstatus=1 
+		AND 
+			item_series="B";
+	""", as_dict=1)
+
+	for r in data:
+		try:
+			description = frappe.get_doc('Jewelry List', r.pa)
+	return data
 
 def get_columns():
 	columns = [
