@@ -291,8 +291,10 @@ function calculate_interest(frm) {
 	var date_today = frm.doc.date_issued;											//frappe.datetime.get_today()
 	if (date_today > frm.doc.maturity_date && date_today < frm.doc.expiry_date) {
 		calculate_maturity_date_interest(frm);
+		console.log("F1");
 	} else if (date_today >= frm.doc.expiry_date) {
 		calculate_expiry_date_interest(frm);
+		console.log("F2");
 	}
 }
 
@@ -507,11 +509,12 @@ function expiry_interest_multiplier(frm) {
 			}
 		}
 	}
-	return multiplier - 1
+	
+	return multiplier
 }
 
-function expiry_date(frm) {			//
-	var actual_current_date = frm.doc.date_issued; //frappe.datetime.get_today();
+function expiry_date(frm) {			// To determin if the current date is really to be taken as the expiry date or the previous expiry date
+	var actual_current_date = frm.doc.date_issued;
 	var actual_previous_expiry_date = frm.doc.expiry_date;
 	var actual_current_expiry_date = frm.doc.expiry_date;
 	var previous_expiry_date = actual_previous_expiry_date.split("-");
@@ -597,7 +600,7 @@ function calculate_expiry_date_interest(frm) {
 					temp_interest = initial_interest + (temp_interest * multiplier);
 				} else {
 					multiplier = multiplier - 1;
-					if (multiplier < 0) {
+					if (multiplier <= 0) {
 						multiplier = 0;
 					}
 					temp_interest = initial_interest + (temp_interest * (multiplier));
@@ -608,7 +611,7 @@ function calculate_expiry_date_interest(frm) {
 					temp_interest = initial_interest + (temp_interest * multiplier);
 				} else {
 					multiplier = multiplier - 1;
-					if (multiplier < 0) {
+					if (multiplier <= 0) {
 						multiplier = 0;
 					}
 					temp_interest = initial_interest + (temp_interest * (multiplier));
@@ -622,7 +625,7 @@ function calculate_expiry_date_interest(frm) {
 				} else {
 					console.log("C1-2");
 					multiplier = multiplier - 1;
-					if (multiplier < 0) {
+					if (multiplier <= 0) {
 						multiplier = 0;
 					}
 					temp_interest = initial_interest + (temp_interest * (multiplier));
@@ -636,7 +639,7 @@ function calculate_expiry_date_interest(frm) {
 				} else {
 					multiplier = multiplier - 1;
 					console.log("D1-2");
-					if (multiplier < 0) {
+					if (multiplier <= 0) {
 						multiplier = 0;
 					}
 					temp_interest = initial_interest + (temp_interest * (multiplier));
@@ -649,19 +652,19 @@ function calculate_expiry_date_interest(frm) {
 				} else {
 					multiplier = multiplier - 1;
 					console.log("E1-2");
-					if (multiplier < 0) {
+					if (multiplier <= 0) {
 						multiplier = 0;
 					}
 					temp_interest = initial_interest + (temp_interest * multiplier);
 				}
+				console.log("The multiplier is " + multiplier);
+				console.log("The interest is " + temp_interest);
 			}
 		} else {
 			temp_interest = initial_interest;
 		}
-		// if (frm.doc.transaction_type == "Renewal") {
-		// 	temp_interest += parseFloat(frm.doc.interest)
-		// }
-		frm.set_value('interest_payment', temp_interest + frm.doc.advance_interest)
+		console.log("Ineterest for Renewal: " + temp_interest);
+		frm.set_value('interest_payment', temp_interest)
 		frm.refresh_field('interest_payment')
 	});
 }
@@ -907,9 +910,9 @@ function select_transaction_type(frm) {					// Sets all field values calculation
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		frm.set_value('interest_payment', parseFloat(frm.doc.interest_payment));
 		frm.refresh_field('interest_payment');
+		show_previous_interest_payment(frm);
 		frm.set_value('advance_interest', parseFloat(frm.doc.interest));
 		frm.refresh_field('advance_interest');
-		show_previous_interest_payment(frm);
 		frm.set_value('total', parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest));
 		frm.refresh_field('total');
 		console.log(parseFloat(frm.doc.interest_payment));
