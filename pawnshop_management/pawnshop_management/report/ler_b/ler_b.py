@@ -48,13 +48,18 @@ def get_data():
 
 	for i in range(len(data)):
 		try:
-			doc = frappe.get_doc('Jewelry List', data[i].parent)
-			description = doc.item_no + ", " + doc.type + ", " + doc.karat_category + ", " + str(doc.karat) + ", " + str(doc.weight) + ", " + doc.color + "; "
-			data[i]["description"] = description
+			doc = frappe.db.get_value('Jewelry List', {'parent': data[i].parent}, ['item_no', 'type', 'karat_category', 'karat', 'weight,', 'color'], as_dict=1)
+			description = ""
+			for r in doc:
+				description = doc.item_no + ", " + doc.type + ", " + doc.karat_category + ", " + str(doc.karat) + ", " + str(doc.weight) + ", " + doc.color + "; "
+				data[i]["description"] = description
 		except:
-			doc = frappe.get_doc('Non Jewelry List', data[i].parent)
-			description = doc.item_no + ", " + doc.type + ", " + doc.brand + ", " + str(doc.model) + ", " + str(doc.model_number) + "; "
-			data[i]["description"] = description
+			doc = frappe.db.get_value('Non Jewelry List', {'parent': data[i].parent}, ['item_no', 'type', 'brand', 'model', 'model_number'], as_dict=1)
+			description = ""
+			for r in doc:
+				description += r.item_no + ", " + r.type + ", " + r.brand + ", " + str(r.model) + ", " + str(r.model_number) + "; "
+				data[i]["description"] = description
+
 	return data
 
 def get_columns():
