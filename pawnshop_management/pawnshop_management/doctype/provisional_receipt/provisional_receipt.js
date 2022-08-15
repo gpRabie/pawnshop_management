@@ -25,7 +25,7 @@ frappe.ui.form.on('Provisional Receipt', {
 
 	refresh: function(frm) {
 		let is_allowed = frappe.user_roles.includes('Administrator');
-		frm.toggle_enable(['date_loan_granted' ,'expiry_date', 'maturity_date'], is_allowed);
+		frm.toggle_enable(['date_loan_granted' ,'expiry_date', 'maturity_date', 'branch'], is_allowed);
 		if ((frm.doc.discount != 0 || frm.doc.discount != null) && frm.doc.docstatus == 1) {
 			frm.set_df_property('discount', 'hidden', 0)
 			frm.set_df_property('discount', 'read_only', 1)
