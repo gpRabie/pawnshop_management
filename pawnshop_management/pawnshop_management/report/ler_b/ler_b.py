@@ -19,6 +19,7 @@ def execute(filters=None):
 
 
 def get_data():
+	
 	data = frappe.db.sql("""
 		SELECT 
 			date_loan_granted, 
@@ -45,9 +46,15 @@ def get_data():
 			item_series="B";
 	""", as_dict=1)
 
-	for r in data:
+	for i in range(len(data)):
 		try:
-			description = frappe.get_doc('Jewelry List', r.pa)
+			doc = frappe.get_doc('Jewelry List', data[i].parent)
+			description = doc.item_no + ", " + doc.type + ", " + doc.karat_category + ", " + str(doc.karat) + ", " + str(doc.weight) + ", " + doc.color + "; "
+			data[i]["description"] = description
+		except:
+			doc = frappe.get_doc('Non Jewelry List', data[i].parent)
+			description = doc.item_no + ", " + doc.type + ", " + doc.brand + ", " + str(doc.model) + ", " + str(doc.model_number) + "; "
+			data[i]["description"] = description
 	return data
 
 def get_columns():
