@@ -25,7 +25,6 @@
   "complete_name",
   "amortization",
   "previous_interest_payment",
-  "creditted",
   "redeemables_section",
   "items",
   "payments_section",
@@ -215,15 +214,6 @@
    "read_only": 1
   },
   {
-   "allow_on_submit": 1,
-   "default": "0",
-   "fieldname": "creditted",
-   "fieldtype": "Check",
-   "hidden": 1,
-   "label": "Creditted",
-   "read_only": 1
-  },
-  {
    "default": "Cash",
    "fieldname": "mode_of_payment",
    "fieldtype": "Select",
@@ -249,7 +239,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-08-15 15:01:59.794573",
+ "modified": "2022-08-17 16:06:22.359061",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",

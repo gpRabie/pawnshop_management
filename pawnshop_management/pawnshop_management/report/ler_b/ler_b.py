@@ -8,13 +8,24 @@ def execute(filters=None):
 	columns, data = [], []
 	columns = get_columns()
 	data = get_data()
-	# data1 = frappe.get_all("Pawn Ticket Jewelry", filters={'item_series': 'B', 'docstatus': 1}, fields=['pawn_ticket', 'date_loan_granted', 'customers_full_name', 'pawn_ticket', 'desired_principal', 'interest', 'net_proceeds'])
-	# for i in range(len(data)):
-	# 	description = ""
-	# 	details = frappe.db.get_list("Jewelry List", filters={'parent': data[i]['pawn_ticket']}, fields=['item_no', 'type', 'karat_category', 'karat', 'weight', 'color'])
-	# 	for j in range(len(details)):
-	# 		description += details[j]["item_no"] + ", " + details[j]["type"] + ", " + details[j]["karat_category"] + ", " + details[j]["karat"] + ", " + str(details[j]["weight"]) + ", " + details[j]["color"] + "; "
-	# 	data[i]['description'] = description
+	# data = frappe.db.get_all("Pawn Ticket Jewelry", filters={'item_series': 'B', 'docstatus': 1}, fields=['pawn_ticket', 'date_loan_granted', 'customers_full_name', 'desired_principal', 'interest', 'net_proceeds'])
+	# # for i in range(len(data)):
+	# # 	description = ""
+	# # 	details = frappe.db.get_list("Jewelry List", filters={'parent': data[i]['pawn_ticket']}, fields=['item_no', 'type', 'karat_category', 'karat', 'weight', 'color'])
+	# # 	for j in range(len(details)):
+	# # 		description += details[j]["item_no"] + ", " + details[j]["type"] + ", " + details[j]["karat_category"] + ", " + details[j]["karat"] + ", " + str(details[j]["weight"]) + ", " + details[j]["color"] + "; "
+	# # 	data[i]['description'] = description
+
+	# data_nj = frappe.db.get_all("Pawn Ticket Non Jewelry", filters={'docstatus': 1}, fields=['pawn_ticket', 'date_loan_granted', 'customers_full_name', 'desired_principal', 'interest', 'net_proceeds'])
+	# # for i in range(len(data_nj)):
+	# # 	description = ""
+	# # 	details_nj = frappe.db.get_list("Non Jewelry List", filters={'parent': data_nj[i]['pawn_ticket']}, fields=['item_no', 'type', 'brand', 'model', 'model_number'])
+	# # 	for j in range(len(details_nj)):
+	# # 		description = details_nj[j]["item_no"] + ", " + details_nj[j]["type"] + ", " + details_nj[j]["brand"] + ", " + details_nj[j]["model"] + ", " + details_nj[j]["model_number"] + "; "
+	# # 	data_nj[i]['description'] = description
+
+	# data.insert(-1, data_nj)
+
 	return columns, data
 
 
@@ -27,7 +38,8 @@ def get_data():
 			customers_full_name, 
 			desired_principal, 
 			interest, 
-			net_proceeds 
+			net_proceeds,
+			inventory_tracking_no 
 		FROM 
 			`tabPawn Ticket Non Jewelry`
 		UNION
@@ -37,7 +49,8 @@ def get_data():
 			customers_full_name, 
 			desired_principal, 
 			interest, 
-			net_proceeds 
+			net_proceeds,
+			inventory_tracking_no
 		FROM 
 			`tabPawn Ticket Jewelry`
 		WHERE 
@@ -46,19 +59,23 @@ def get_data():
 			item_series="B";
 	""", as_dict=1)
 
+	 
+
 	for i in range(len(data)):
-		try:
-			doc = frappe.db.get_value('Jewelry List', {'parent': data[i].parent}, ['item_no', 'type', 'karat_category', 'karat', 'weight,', 'color'], as_dict=1)
-			description = ""
-			for r in doc:
-				description = doc.item_no + ", " + doc.type + ", " + doc.karat_category + ", " + str(doc.karat) + ", " + str(doc.weight) + ", " + doc.color + "; "
-				data[i]["description"] = description
-		except:
-			doc = frappe.db.get_value('Non Jewelry List', {'parent': data[i].parent}, ['item_no', 'type', 'brand', 'model', 'model_number'], as_dict=1)
-			description = ""
-			for r in doc:
-				description += r.item_no + ", " + r.type + ", " + r.brand + ", " + str(r.model) + ", " + str(r.model_number) + "; "
-				data[i]["description"] = description
+		if "NJ" in data[i]['inventory_tracking_no']:
+			doc2 = frappe.db.get_list('Non Jewelry List', filters={'parent': data[i].pawn_ticket, 'parenttype': 'Pawn Ticket Non Jewelry'}, fields=['item_no', 'type', 'brand', 'model', 'model_number'])
+			for j in range(len(doc2)):
+				description = ""
+				description = str(doc2[j]['item_no'])+ ", " + str(doc2[j]['type']) + ", " + str(doc2[j]['brand']) + ", " + str(doc2[j]['model']) + ", " + str(doc2[j]['model_number']) + "; "
+				if description != []:
+					data[i]["description"] = description
+		# else:
+		# 	doc1 = frappe.db.get_list('Jewelry List', filters={'parent': data[i].pawn_ticket, 'parenttype': 'Pawn Ticket Jewelry'}, fields=['item_no', 'type', 'karat_category', 'karat', 'weight,', 'color'])
+		# 	for j in range(len(doc1)):
+		# 		description = ""
+		# 		description = str(doc1[j]['item_no']) + ", " + str(doc1[j]['type']) + ", " + str(doc1[j]['karat_category']) + ", " + str(doc1[j]['karat']) + ", " + str(doc1[j]['weight']) + ", " + str(doc1[j]['color']) + "; "
+		# 		if description != []:
+		# 			data[i]["description"] = description
 
 	return data
 
