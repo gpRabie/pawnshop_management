@@ -42,6 +42,8 @@ def get_data():
 			inventory_tracking_no
 		FROM 
 			`tabPawn Ticket Non Jewelry`
+		WHERE
+			workflow_state="Active"
 		UNION
 		SELECT 
 			date_loan_granted, 
@@ -54,8 +56,6 @@ def get_data():
 		FROM 
 			`tabPawn Ticket Jewelry`
 		WHERE 
-			docstatus=1 
-		AND 
 			item_series="B"
 		AND
 			workflow_state="Active";
