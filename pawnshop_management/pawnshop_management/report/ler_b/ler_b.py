@@ -56,7 +56,9 @@ def get_data():
 		WHERE 
 			docstatus=1 
 		AND 
-			item_series="B";
+			item_series="B"
+		AND
+			workflow_state="Active";
 	""", as_dict=1)
 
 	 
