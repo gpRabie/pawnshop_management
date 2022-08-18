@@ -17,11 +17,11 @@ frappe.ui.form.on('Provisional Receipt', {
 		}
 	},
 
-	before_submit: function(frm){
-		if (frm.doc.transaction_type != "Interest Payment") {
-			check_creditted_interest_payments(frm);
-		}
-	},
+	// before_submit: function(frm){
+	// 	if (frm.doc.transaction_type != "Interest Payment") {
+	// 		check_creditted_interest_payments(frm);
+	// 	}
+	// },
 
 	refresh: function(frm) {
 		let is_allowed = frappe.user_roles.includes('Administrator');
