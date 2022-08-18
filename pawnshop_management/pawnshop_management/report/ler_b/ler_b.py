@@ -65,14 +65,12 @@ def get_data():
 
 	for i in range(len(data)):
 		if frappe.db.exists("Pawn Ticket Non Jewelry", data[i].pawn_ticket) == data[i].pawn_ticket:
-			log(data[i].pawn_ticket + " is " + "Non Jewelry")
 			doc2 = frappe.db.get_list('Non Jewelry List', filters={'parent': data[i].pawn_ticket, 'parenttype': 'Pawn Ticket Non Jewelry'}, fields=['item_no', 'type', 'brand', 'model', 'model_number'])
 			for j in range(len(doc2)):
 				description = ""
 				description = str(doc2[j]['item_no'])+ ", " + str(doc2[j]['type']) + ", " + str(doc2[j]['brand']) + ", " + str(doc2[j]['model']) + ", " + str(doc2[j]['model_number']) + "; "
 				data[i]["description"] = description
 		else:
-			log(data[i].pawn_ticket + " is " + "Jewelry")
 			doc1 = frappe.db.get_list('Jewelry List', filters={'parent': data[i].pawn_ticket, 'parenttype': 'Pawn Ticket Jewelry'}, fields=['item_no', 'type', 'karat_category', 'karat', 'weight', 'color'])
 			for j in range(len(doc1)):
 				description = ""
