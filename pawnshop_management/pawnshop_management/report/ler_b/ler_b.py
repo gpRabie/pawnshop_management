@@ -64,7 +64,7 @@ def get_data():
 	 
 
 	for i in range(len(data)):
-		if "NJ" in data[i]['inventory_tracking_no']:
+		if "NJ" in data[i]['inventory_tracking_no'] or "B" in data[i]['inventory_tracking_no'] or "A" in data[i]['inventory_tracking_no']:
 			doc2 = frappe.db.get_list('Non Jewelry List', filters={'parent': data[i].pawn_ticket, 'parenttype': 'Pawn Ticket Non Jewelry'}, fields=['item_no', 'type', 'brand', 'model', 'model_number'])
 			for j in range(len(doc2)):
 				description = ""
