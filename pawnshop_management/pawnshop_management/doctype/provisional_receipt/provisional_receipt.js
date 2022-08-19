@@ -358,9 +358,12 @@ function calculate_maturity_date_interest(frm) {
 			} else if (frappe.datetime.add_days(temp_maturity_date.previous_maturity_date, 2) == holidays_before_expiry_date) {
 				console.log("SC3");
 				if (date_today > frappe.datetime.add_days(temp_maturity_date.previous_maturity_date, 3)) {
-					temp_interest = temp_interest * multiplier;
+					console.log("SC3-1");
+					console.log(multiplier);
+					temp_interest = temp_interest * (multiplier + 1);
 				} else {
-					temp_interest = temp_interest * (multiplier - 1);
+					console.log("SC3-2");
+					temp_interest = temp_interest * (multiplier);
 					if (temp_interest < 0) {
 						temp_interest = 0.00
 					}
@@ -487,6 +490,8 @@ function maturity_interest_multiplier(frm) {
 			if (actual_current_date > actual_original_maturity_date) {
 				console.log("B2-1");
 				multiplier = Math.abs(parseInt(temp_maturity_date[1]) - parseInt(maturity_date[1]));
+				console.log("Temp Maturity Date: " + maturity_date_of_the_month(frm).previous_maturity_date);
+				console.log("Maturity Date: " + frm.doc.maturity_date);
 			} else {
 				console.log("B2-2");
 				multiplier = Math.abs(parseInt(temp_maturity_date[1]) - parseInt(maturity_date[1]));
