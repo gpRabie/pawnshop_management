@@ -254,7 +254,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-08-10 11:40:02.573210",
+ "modified": "2022-08-19 13:35:47.919280",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Pawnshop Management",
@@ -264,14 +264,26 @@
  "shortcuts": [
   {
    "doc_view": "Report Builder",
-   "label": "LER",
+   "label": "LER A",
    "link_to": "LER",
    "type": "Report"
   },
   {
+   "doc_view": "",
+   "label": "LER B",
+   "link_to": "LER B",
+   "type": "Report"
+  },
+  {
    "doc_view": "Report Builder",
-   "label": "LPR",
+   "label": "LPR A",
    "link_to": "LPR",
+   "type": "Report"
+  },
+  {
+   "doc_view": "Report Builder",
+   "label": "LPR B",
+   "link_to": "LPR B",
    "type": "Report"
   },
   {
