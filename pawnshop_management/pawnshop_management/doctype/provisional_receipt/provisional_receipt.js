@@ -349,6 +349,7 @@ function calculate_maturity_date_interest(frm) {
 					temp_interest = temp_interest * multiplier;
 				} else {
 					console.log("SC2-2");
+					console.log(multiplier);
 					temp_interest = temp_interest * (multiplier - 1);
 					if (temp_interest < 0) {
 						temp_interest = 0.00
