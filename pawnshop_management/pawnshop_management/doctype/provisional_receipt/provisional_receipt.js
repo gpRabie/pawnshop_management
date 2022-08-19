@@ -167,15 +167,16 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.refresh_field('transaction_type');
 			console.log("Welcome");
 		}
-		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
+		clear_all_payment_fields();
 		show_previous_interest_payment(frm);
+		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
 		select_transaction_type(frm)
 		calculate_interest(frm);
 	},
 
 	transaction_type: function(frm){
+		clear_all_payment_fields();
 		if (frm.doc.transaction_type == "Amortization") {
-			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('interest_payment', 'hidden', 1);
 			frm.set_df_property('discount', 'hidden', 1);
@@ -183,7 +184,6 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
 			select_transaction_type(frm)
 		} else if(frm.doc.transaction_type == "Interest Payment") {
-			clear_all_payment_fields();
 			show_payment_fields(frm);
 			// frm.set_df_property('interest_payment', 'hidden', 1);
 			frm.set_df_property('discount', 'hidden', 1);
@@ -191,7 +191,6 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_df_property('advance_interest', 'hidden', 1);
 			select_transaction_type(frm);
 		} else if(frm.doc.transaction_type == "Redemption") {
-			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('additional_amortization', 'hidden', 1);
 			frm.set_df_property('advance_interest', 'hidden', 1);
@@ -199,7 +198,6 @@ frappe.ui.form.on('Provisional Receipt', {
 			select_transaction_type(frm);
 
 		} else if (frm.doc.transaction_type == "Renewal") {
-			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('additional_amortization', 'hidden', 1);
 			frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type == 'Renewal' || frm.doc.transaction_type == 'Renewal w/ Amortization');
@@ -209,7 +207,6 @@ frappe.ui.form.on('Provisional Receipt', {
 			select_transaction_type(frm);
 		} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
 			frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type == 'Renewal' || frm.doc.transaction_type == 'Renewal w/ Amortization');
-			clear_all_payment_fields();
 			show_payment_fields(frm);
 			get_new_pawn_ticket_no(frm);
 			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
@@ -234,7 +231,7 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_value('total', (parseFloat(frm.doc.additional_amortization) + parseFloat(frm.doc.interest_payment) + parseFloat(frm.doc.advance_interest)) - parseFloat(frm.doc.discount) - parseFloat(frm.doc.previous_interest_payment));
 			frm.refresh_field('total');
 		} else if (frm.doc.transaction_type == "Amortization") {
-			frm.set_value('total', parseFloat(frm.doc.additional_amortization) - parseFloat(frm.doc.previous_interest_payment));
+			frm.set_value('total', parseFloat(frm.doc.additional_amortization));
 			frm.refresh_field('total');
 		}
 	},
@@ -349,11 +346,11 @@ function calculate_maturity_date_interest(frm) {
 					temp_interest = temp_interest * multiplier;
 				} else {
 					console.log("SC2-2");
-					console.log(multiplier);
-					temp_interest = temp_interest * (multiplier);
-					if (temp_interest < 0) {
-						temp_interest = 0.00
-					}
+					console.log(temp_maturity_date.previous_maturity_date);
+					temp_interest = temp_interest * (multiplier - 1);
+					// if (temp_interest < 0) {
+					// 	temp_interest = 0.00
+					// }
 				}
 			} else if (frappe.datetime.add_days(temp_maturity_date.previous_maturity_date, 2) == holidays_before_expiry_date) {
 				console.log("SC3");
@@ -392,6 +389,7 @@ function calculate_maturity_date_interest(frm) {
 			console.log("SC6");
 			temp_interest = 0.00;
 		}
+		console.log(multiplier);
 		console.log(temp_interest);
 		frm.set_value('interest_payment', temp_interest);
 		frm.refresh_field('interest_payment');
@@ -422,21 +420,28 @@ function maturity_date_of_the_month(frm) {
 	var current_maturity_date_day = current_maturity_date.split("-");
 
 	if (current_date[0] > maturity_date[0]){
+		console.log("MD1");
 		if (current_date[2] > maturity_date[2]) {
 			current_maturity_date = frappe.datetime.add_months(frm.doc.maturity_date, month_difference);
 			previous_maturity_date = frappe.datetime.add_months(current_maturity_date, -1);
 		}
 	} else if (current_date[0] == maturity_date[0]) {
+		console.log("MD2");
 		if (current_date[1] > maturity_date[1]) {
+			console.log("MD2-1");
 			if (current_date[2] > current_maturity_date_day[2]) {
+				console.log("MD2-1-1");
 				current_maturity_date = frappe.datetime.add_months(frm.doc.maturity_date, month_difference + 1);
-				previous_maturity_date = frappe.datetime.add_months(current_maturity_date, -1);
+				previous_maturity_date = current_maturity_date
 			} else {
+				console.log("MD2-1-2");
 				current_maturity_date = frappe.datetime.add_months(frm.doc.maturity_date, month_difference);
 				previous_maturity_date = frappe.datetime.add_months(current_maturity_date, -1);
 			}
 		} else if(current_date[1] == maturity_date[1]){
+			console.log("MD2-2");
 			if (current_date[2] > current_maturity_date_day[2]) {
+				console.log("MD2-2-1");
 				current_maturity_date = frappe.datetime.add_months(frm.doc.maturity_date, month_difference + 1);
 				previous_maturity_date = frappe.datetime.add_months(current_maturity_date, -1);
 			} 
