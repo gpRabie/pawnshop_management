@@ -9,7 +9,7 @@ from frappe.model.document import Document
 from frappe.utils import flt
 
 class ProvisionalReceipt(Document):
-	def before_submit(self):
+	def after_submit(self):
 		if self.transaction_type == "Redemption":
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Redeemed')
 			frappe.db.commit()
@@ -3015,7 +3015,7 @@ class ProvisionalReceipt(Document):
 				row_values3.credit_in_account_currency = flt(self.advance_interest)
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -3296,7 +3296,7 @@ class ProvisionalReceipt(Document):
 				# row_values3.credit_in_account_currency = flt(self.total)
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -3479,7 +3479,7 @@ class ProvisionalReceipt(Document):
 					row_values5.credit_in_account_currency = flt(0)
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -3576,7 +3576,7 @@ class ProvisionalReceipt(Document):
 				row_values2.credit_in_account_currency = flt(self.total)
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -3788,7 +3788,7 @@ class ProvisionalReceipt(Document):
 				row_values5.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -4000,7 +4000,7 @@ class ProvisionalReceipt(Document):
 
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -4153,7 +4153,7 @@ class ProvisionalReceipt(Document):
 				row_values6.credit_in_account_currency = ((flt(self.total) * 0.02) / 1.12) * 0.02
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -4391,7 +4391,7 @@ class ProvisionalReceipt(Document):
 					row_values8.credit_in_account_currency = flt(0)
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -4766,7 +4766,7 @@ class ProvisionalReceipt(Document):
 					row_values4.credit_in_account_currency = flt(0)
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -4987,7 +4987,7 @@ class ProvisionalReceipt(Document):
 					row_values4.credit_in_account_currency = flt(0)
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -5179,7 +5179,7 @@ class ProvisionalReceipt(Document):
 				row_values3.credit_in_account_currency = flt(self.total)
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -5430,7 +5430,7 @@ class ProvisionalReceipt(Document):
 					row_values5.credit_in_account_currency = flt(0)
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
@@ -5593,7 +5593,7 @@ class ProvisionalReceipt(Document):
 				row_values2.credit_in_account_currency = flt(self.total)
 
 				if self.previous_interest_payment > 0:
-					row_values9 = doc1.append('accounts', {})
+					row_values9 = doc2.append('accounts', {})
 					if self.branch == "Garcia's Pawnshop - CC":
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
