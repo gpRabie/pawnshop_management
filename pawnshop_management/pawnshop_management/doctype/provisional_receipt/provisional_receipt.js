@@ -474,7 +474,7 @@ function maturity_interest_multiplier(frm) {
 			console.log("B2");
 			if (actual_current_date > actual_original_maturity_date) {
 				console.log("B2-1");
-				multiplier = Math.abs(parseInt(temp_maturity_date[1]) - parseInt(maturity_date[1]));
+				multiplier = Math.abs(parseInt(temp_maturity_date[1]) - parseInt(maturity_date[1])) + 1;
 			} else {
 				console.log("B2-2");
 				multiplier = Math.abs(parseInt(temp_maturity_date[1]) - parseInt(maturity_date[1]));
