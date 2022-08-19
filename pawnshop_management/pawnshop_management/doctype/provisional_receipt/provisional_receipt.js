@@ -386,9 +386,10 @@ function calculate_maturity_date_interest(frm) {
 				}
 			}
 		} else {
+			console.log("SC6");
 			temp_interest = 0.00;
 		}
-
+		console.log(temp_interest);
 		frm.set_value('interest_payment', temp_interest);
 		frm.refresh_field('interest_payment');
 	});
