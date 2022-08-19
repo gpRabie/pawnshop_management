@@ -389,7 +389,7 @@ function calculate_maturity_date_interest(frm) {
 			temp_interest = 0.00;
 		}
 
-		frm.set_value('interest_payment', temp_interest - frm.doc.previous_interest_payment);
+		frm.set_value('interest_payment', temp_interest);
 		frm.refresh_field('interest_payment');
 	});
 }
@@ -474,7 +474,7 @@ function maturity_interest_multiplier(frm) {
 			console.log("B2");
 			if (actual_current_date > actual_original_maturity_date) {
 				console.log("B2-1");
-				multiplier = Math.abs(parseInt(temp_maturity_date[1]) - parseInt(maturity_date[1])) + 1;
+				multiplier = Math.abs(parseInt(temp_maturity_date[1]) - parseInt(maturity_date[1]));
 			} else {
 				console.log("B2-2");
 				multiplier = Math.abs(parseInt(temp_maturity_date[1]) - parseInt(maturity_date[1]));
