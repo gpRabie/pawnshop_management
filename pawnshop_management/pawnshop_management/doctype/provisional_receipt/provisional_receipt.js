@@ -345,8 +345,10 @@ function calculate_maturity_date_interest(frm) {
 			} else if (frappe.datetime.add_days(temp_maturity_date.previous_maturity_date, 3) == holidays_before_expiry_date) {
 				console.log("SC2");
 				if (date_today > frappe.datetime.add_days(temp_maturity_date.previous_maturity_date, 3)) {
+					console.log("SC2-1");
 					temp_interest = temp_interest * multiplier;
 				} else {
+					console.log("SC2-2");
 					temp_interest = temp_interest * (multiplier - 1);
 					if (temp_interest < 0) {
 						temp_interest = 0.00
