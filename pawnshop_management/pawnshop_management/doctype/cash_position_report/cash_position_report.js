@@ -93,6 +93,7 @@ frappe.ui.form.on('Cash Position Report', {
 		get_additional_pawn_records(frm);
 		get_additional_redeem(frm);
 		get_additional_partial_payment(frm);
+		get_total_discount(frm);
 	},
 
 	date: function(frm){
@@ -1015,6 +1016,37 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 	
 }
 
+function get_total_discount(frm) {
+
+	if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
+		frappe.db.get_list('Provisional Receipt', {
+			fields: ['total', 'additional_amortization', 'interest_payment', 'principal_amount', 'transaction_type', 'discount'],
+			filters: {
+				transaction_type: [
+					'in',
+					[
+						'Redemption',
+						'Renewal',
+						'Renewal w/ Amortization',
+						'Amortization'
+					]
+				],
+				branch: "Garcia's Pawnshop - GTC",
+				docstatus: 1,
+				date_issued: frm.doc.date //frappe.datetime.nowdate()
+			}
+		}).then(records_pr => {
+			let temp_total = 0.00;
+			
+			for (let index = 0; index < records_pr.length; index++) {
+					temp_total += parseFloat(records_pr[index].discount)
+			}
+			frm.set_value('total_discount', temp_total);
+			frm.refresh_field('total_discount');
+		})
+	}
+}
+
 
 function get_additional_redeem(frm) {
 	
@@ -1189,16 +1221,16 @@ function get_additional_redeem(frm) {
 			frm.set_value('additional_redeem', 0.00);
 			for (let index = 0; index < records_pr.length; index++) {
 				if (records_pr[index].transaction_type == "Redemption") {
-					temp_total += parseFloat(records_pr[index].total)
+					temp_total += parseFloat(records_pr[index].total) + parseFloat(records_pr[index].discount)
 				}
 				if (records_pr[index].transaction_type == "Renewal") {
-					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount ) + parseFloat(records_pr[index].discount)
 				} 
 				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
-					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount)
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount) + parseFloat(records_pr[index].discount)
 				}
 				if (records_pr[index].transaction_type == "Amortization") {
-					temp_total += parseFloat(records_pr[index].total)
+					temp_total += parseFloat(records_pr[index].total) + parseFloat(records_pr[index].discount)
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);

@@ -48,6 +48,7 @@
   "additional_redeem",
   "column_break_40",
   "additional_partial_payment",
+  "total_discount",
   "amended_from"
  ],
  "fields": [
@@ -314,11 +315,18 @@
    "fieldtype": "Currency",
    "label": "Additional Partial Payment",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_discount",
+   "fieldtype": "Currency",
+   "label": "Total Discount",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-25 13:31:31.802821",
+ "modified": "2022-08-19 14:37:14.904534",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Cash Position Report",
