@@ -331,8 +331,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -486,8 +486,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -612,8 +612,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# # doc1.submit()
@@ -892,8 +892,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -1104,8 +1104,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -1316,8 +1316,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -1469,8 +1469,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -1708,8 +1708,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -1861,8 +1861,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -2083,8 +2083,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -2304,8 +2304,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -2496,8 +2496,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -2745,8 +2745,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -2883,8 +2883,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
@@ -3040,8 +3040,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -3195,8 +3195,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -3321,8 +3321,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -3504,8 +3504,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -3601,8 +3601,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -3813,8 +3813,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -4025,8 +4025,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -4178,8 +4178,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -4416,8 +4416,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -4569,8 +4569,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -4791,8 +4791,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -5012,8 +5012,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -5204,8 +5204,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -5455,8 +5455,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
@@ -5618,8 +5618,8 @@ class ProvisionalReceipt(Document):
 						row_values9.account = "4113-001 - Interest on Past Due Loans - NJ - CC - MPConso"
 						row_values9.branch = "Garcia's Pawnshop - CC"
 						row_values9.cost_center = "1 - Cavite City - MPConso"
-					row_values9.debit_in_account_currency = flt(0)
-					row_values9.credit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.debit_in_account_currency = flt(self.previous_interest_payment)
+					row_values9.credit_in_account_currency = flt(0)
 
 				doc2.save(ignore_permissions=True)
 				# doc2.submit()
