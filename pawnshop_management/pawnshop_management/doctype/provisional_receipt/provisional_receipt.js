@@ -167,16 +167,15 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.refresh_field('transaction_type');
 			console.log("Welcome");
 		}
-		clear_all_payment_fields();
-		show_previous_interest_payment(frm);
 		calculate_total_amortization(frm, frm.doc.pawn_ticket_type, frm.doc.pawn_ticket_no);
+		show_previous_interest_payment(frm);
 		select_transaction_type(frm)
 		calculate_interest(frm);
 	},
 
 	transaction_type: function(frm){
-		clear_all_payment_fields();
 		if (frm.doc.transaction_type == "Amortization") {
+			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('interest_payment', 'hidden', 1);
 			frm.set_df_property('discount', 'hidden', 1);
@@ -184,6 +183,7 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
 			select_transaction_type(frm)
 		} else if(frm.doc.transaction_type == "Interest Payment") {
+			clear_all_payment_fields();
 			show_payment_fields(frm);
 			// frm.set_df_property('interest_payment', 'hidden', 1);
 			frm.set_df_property('discount', 'hidden', 1);
@@ -191,6 +191,7 @@ frappe.ui.form.on('Provisional Receipt', {
 			frm.set_df_property('advance_interest', 'hidden', 1);
 			select_transaction_type(frm);
 		} else if(frm.doc.transaction_type == "Redemption") {
+			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('additional_amortization', 'hidden', 1);
 			frm.set_df_property('advance_interest', 'hidden', 1);
@@ -198,6 +199,7 @@ frappe.ui.form.on('Provisional Receipt', {
 			select_transaction_type(frm);
 
 		} else if (frm.doc.transaction_type == "Renewal") {
+			clear_all_payment_fields();
 			show_payment_fields(frm);
 			frm.set_df_property('additional_amortization', 'hidden', 1);
 			frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type == 'Renewal' || frm.doc.transaction_type == 'Renewal w/ Amortization');
@@ -207,6 +209,7 @@ frappe.ui.form.on('Provisional Receipt', {
 			select_transaction_type(frm);
 		} else if (frm.doc.transaction_type == "Renewal w/ Amortization") {
 			frm.toggle_display(['new_pawn_ticket_no'], frm.doc.transaction_type == 'Renewal' || frm.doc.transaction_type == 'Renewal w/ Amortization');
+			clear_all_payment_fields();
 			show_payment_fields(frm);
 			get_new_pawn_ticket_no(frm);
 			frm.set_df_property('number_of_months_to_pay_in_advance', 'hidden', 1);
