@@ -467,7 +467,7 @@ function maturity_date_of_the_month(frm) {
 
 
 function maturity_interest_multiplier(frm) {
-	var temp_maturity_date = maturity_date_of_the_month(frm).previous_maturity_date.split("-");
+	var temp_maturity_date = maturity_date_of_the_month(frm).current_maturity_date.split("-");
 	var maturity_date = frm.doc.maturity_date.split("-");
 	var multiplier = 0;
 	var current_date = frm.doc.date_issued.split("-");//frappe.datetime.get_today().split("-");
@@ -490,7 +490,7 @@ function maturity_interest_multiplier(frm) {
 			if (actual_current_date > actual_original_maturity_date) {
 				console.log("B2-1");
 				multiplier = Math.abs(parseInt(temp_maturity_date[1]) - parseInt(maturity_date[1]));
-				console.log("Temp Maturity Date: " + maturity_date_of_the_month(frm).previous_maturity_date);
+				console.log("Current Maturity Date: " + maturity_date_of_the_month(frm).current_maturity_date);
 				console.log("Maturity Date: " + frm.doc.maturity_date);
 			} else {
 				console.log("B2-2");
