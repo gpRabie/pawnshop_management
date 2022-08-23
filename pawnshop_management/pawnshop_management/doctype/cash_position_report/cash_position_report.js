@@ -1044,7 +1044,12 @@ function get_total_discount(frm) {
 			frm.set_value('total_discount', temp_total);
 			frm.refresh_field('total_discount');
 		})
-	}
+	} else {
+			let temp_total = 0.00;
+			frm.set_value('total_discount', temp_total);
+			frm.refresh_field('total_discount');
+
+			}
 }
 
 
@@ -1201,7 +1206,7 @@ function get_additional_redeem(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total', 'additional_amortization', 'interest_payment', 'principal_amount', 'transaction_type'],
+			fields: ['total', 'additional_amortization', 'interest_payment', 'principal_amount', 'transaction_type', 'discount'],
 			filters: {
 				transaction_type: [
 					'in',
@@ -1222,15 +1227,19 @@ function get_additional_redeem(frm) {
 			for (let index = 0; index < records_pr.length; index++) {
 				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total) + parseFloat(records_pr[index].discount)
+					console.log(temp_total);
 				}
 				if (records_pr[index].transaction_type == "Renewal") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount ) + parseFloat(records_pr[index].discount)
+					console.log(temp_total);
 				} 
 				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount) + parseFloat(records_pr[index].discount)
+					console.log(temp_total);
 				}
 				if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total) + parseFloat(records_pr[index].discount)
+					console.log(temp_total);
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
