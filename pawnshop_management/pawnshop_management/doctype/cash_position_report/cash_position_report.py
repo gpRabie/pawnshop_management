@@ -12,24 +12,24 @@ class CashPositionReport(Document):
 		a_renewed_count_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': self.date, 'workflow_state': 'Renewed', 'item_series': 'A', 'branch': self.branch})
 		a_in_count = a_in_count_of_the_day - a_renewed_count_of_the_day
 		a_out_count = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': self.date, 'workflow_state': 'Redeemed', 'item_series': 'A', 'branch': self.branch})
-		a_pulled_out_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': self.date, 'item_series': 'A', 'workflow_state': 'Pulled Out', 'branch': self.branch})
-		a_returned_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': self.date, 'item_series': 'A', 'workflow_state': 'Returned', 'branch': self.branch})
+		a_pulled_out_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': self.date, 'item_series': 'A', 'workflow_state': 'Pulled Out', 'branch': self.branch})
+		a_returned_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': self.date, 'item_series': 'A', 'workflow_state': 'Returned', 'branch': self.branch})
 		a_total_active = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': ['<=', self.date], 'item_series': 'A', 'workflow_state': ['in', ['Active', 'Expired', 'Returned']], 'branch': self.branch})
 
 		b_in_count_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': self.date ,'item_series': 'B', 'workflow_state': 'Active', 'branch': self.branch})
 		b_renewed_count_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': self.date, 'workflow_state': 'Renewed', 'item_series': 'B', 'branch': self.branch})
 		b_in_count = b_in_count_of_the_day - b_renewed_count_of_the_day
 		b_out_count = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': self.date, 'workflow_state': 'Redeemed', 'item_series': 'B', 'branch': self.branch})
-		b_pulled_out_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': self.date, 'item_series': 'B', 'workflow_state': 'Pulled Out', 'branch': self.branch})
-		b_returned_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': self.date, 'item_series': 'B', 'workflow_state': 'Returned', 'branch': self.branch})
+		b_pulled_out_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': self.date, 'item_series': 'B', 'workflow_state': 'Pulled Out', 'branch': self.branch})
+		b_returned_of_the_day = frappe.db.count('Pawn Ticket Jewelry', {'change_status_date': self.date, 'item_series': 'B', 'workflow_state': 'Returned', 'branch': self.branch})
 		b_total_active = frappe.db.count('Pawn Ticket Jewelry', {'date_loan_granted': ['<=', self.date], 'item_series': 'B', 'workflow_state': ['in', ['Active', 'Expired', 'Returned']], 'branch': self.branch})
 
 		nj_in_count_of_the_day = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': self.date , 'workflow_state': 'Active', 'branch': self.branch})
 		nj_renewed_count_of_the_day = frappe.db.count('Pawn Ticket Non Jewelry', {'change_status_date': self.date, 'workflow_state': 'Renewed', 'branch': self.branch})
 		nj_in_count = nj_in_count_of_the_day - nj_renewed_count_of_the_day
 		nj_out_count = frappe.db.count('Pawn Ticket Non Jewelry', {'change_status_date': self.date, 'workflow_state': 'Redeemed', 'branch': self.branch})
-		nj_pulled_out_of_the_day = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': self.date, 'workflow_state': 'Pulled Out', 'branch': self.branch})
-		nj_returned_of_the_day = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': self.date, 'workflow_state': 'Returned', 'branch': self.branch})
+		nj_pulled_out_of_the_day = frappe.db.count('Pawn Ticket Non Jewelry', {'change_status_date': self.date, 'workflow_state': 'Pulled Out', 'branch': self.branch})
+		nj_returned_of_the_day = frappe.db.count('Pawn Ticket Non Jewelry', {'change_status_date': self.date, 'workflow_state': 'Returned', 'branch': self.branch})
 		nj_total_active = frappe.db.count('Pawn Ticket Non Jewelry', {'date_loan_granted': ['<=', self.date], 'workflow_state': ['in', ['Active', 'Expired', 'Returned']], 'branch': self.branch})
 
 		invetory_count_doc = frappe.new_doc('Inventory Count')
