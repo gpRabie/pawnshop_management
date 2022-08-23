@@ -9,8 +9,8 @@ from frappe.model.document import Document
 from frappe.utils import flt
 
 class ProvisionalReceipt(Document):
-	def after_submit(self):
-		if self.transaction_type == "Redemption":
+	def on_submit(self):
+		if self.transaction_type == "Redemption":				# Change status of the current PT
 			frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'workflow_state', 'Redeemed')
 			frappe.db.commit()
 			doc = frappe.get_doc(self.pawn_ticket_type, self.pawn_ticket_no)
@@ -44,7 +44,6 @@ class ProvisionalReceipt(Document):
 				frappe.db.set_value(self.pawn_ticket_type, self.pawn_ticket_no, 'change_status_date', today())
 				frappe.db.commit()
 
-	def on_submit(self):
 		if self.transaction_type == "Renewal": # Create New Pawn Ticket
 			previous_pawn_ticket = frappe.get_doc(self.pawn_ticket_type, self.pawn_ticket_no)
 			new_pawn_ticket = frappe.new_doc(self.pawn_ticket_type)
