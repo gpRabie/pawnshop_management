@@ -439,8 +439,8 @@ function maturity_date_of_the_month(frm) {
 			console.log("MD2-1");
 			if (current_date[2] > current_maturity_date_day[2]) {
 				console.log("MD2-1-1");
-				current_maturity_date = frappe.datetime.add_months(frm.doc.maturity_date, month_difference + 1);
 				previous_maturity_date = current_maturity_date
+				current_maturity_date = frappe.datetime.add_months(frm.doc.maturity_date, month_difference + 1);
 			} else {
 				console.log("MD2-1-2");
 				current_maturity_date = frappe.datetime.add_months(frm.doc.maturity_date, month_difference);
