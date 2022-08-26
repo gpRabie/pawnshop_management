@@ -34,6 +34,10 @@
   "advance_interest",
   "number_of_months_to_pay_in_advance",
   "total",
+  "column_break_28",
+  "cash",
+  "gcash_amount_payment",
+  "bank_payment",
   "amended_from"
  ],
  "fields": [
@@ -218,7 +222,7 @@
    "fieldname": "mode_of_payment",
    "fieldtype": "Select",
    "label": "Mode of Payment",
-   "options": "Cash\nBank Transfer\nGCash"
+   "options": "Cash\nBank Transfer\nGCash\nCash & GCash\nCash & Bank Transfer\nGCash & Bank Transfer"
   },
   {
    "default": "BPI",
@@ -234,12 +238,37 @@
    "label": "Branch",
    "options": "Branch",
    "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "cash",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Cash"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "gcash_amount_payment",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Gcash"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "bank_payment",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Bank Payment"
+  },
+  {
+   "fieldname": "column_break_28",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-08-17 16:06:22.359061",
+ "modified": "2022-08-22 12:03:22.978633",
  "modified_by": "Administrator",
  "module": "Pawnshop Management",
  "name": "Provisional Receipt",
