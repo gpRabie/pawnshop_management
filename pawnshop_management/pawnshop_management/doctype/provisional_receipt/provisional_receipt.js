@@ -433,33 +433,6 @@ function calculate_maturity_date_interest(frm) {
 // }
 
 
-function tawad_date_generator(frm) {
-	var holiday = frappe.db.get_doc('Holiday List', 'No Operations').then(function(r){
-			var holidays_list = r.holidays;
-			var holidays_before_expiry_date = null;
-			var temp_maturity_date = maturity_date_of_the_month(frm)
-			// var multiplier = maturity_interest_multiplier(frm);
-			// var temp_interest = frm.doc.interest;
-			// var date_today = frm.doc.date_issued; 										//frappe.datetime.get_today();
-
-			for (let index = 0; index < holidays_list.length; index++) {				// Check if maturity date is a holiday
-				if (holidays_list[index].holiday_date == temp_maturity_date.previous_maturity_date) {
-					holidays_before_expiry_date = holidays_list[index].holiday_date
-					break
-				} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_maturity_date.previous_maturity_date, 1)) {
-					holidays_before_expiry_date = holidays_list[index].holiday_date
-					break
-				} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_maturity_date.previous_maturity_date, 2)) {
-					holidays_before_expiry_date = holidays_list[index].holiday_date
-					break
-				} else if (holidays_list[index].holiday_date == frappe.datetime.add_days(temp_maturity_date.previous_maturity_date, 3)) {
-					holidays_before_expiry_date = holidays_list[index].holiday_date
-					break
-				}
-			}
-		})
-}
-
 function calculate_date_difference(current_date, due_date) {
 	var date_today = current_date.split("-");
 	var date_today_year = parseInt(date_today[0]);
