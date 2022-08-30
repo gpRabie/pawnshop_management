@@ -2887,6 +2887,71 @@ class ProvisionalReceipt(Document):
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
+			# NEW
+			# if self.transaction_type == "Renewal" and self.mode_of_payment == "Cash & GCash":
+			# 	doc1 = frappe.new_doc('Journal Entry')
+			# 	doc1.voucher_type = 'Journal Entry'
+			# 	doc1.company = 'MP Consolidated'
+			# 	doc1.posting_date = self.date_issued
+			# 	doc1.reference_doctype = "Provisional Receipt"
+			# 	doc1.reference_document = self.name
+			# 	doc1.document_status = "Renewal"
+
+			# 	row_values1 = doc1.append('accounts', {})
+			# 	if self.branch == "Garcia's Pawnshop - CC":
+			# 		row_values1.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
+			# 		row_values1.branch = "Garcia's Pawnshop - CC"
+			# 		row_values1.cost_center = "1 - Cavite City - MPConso"
+			# 	elif self.branch == "Garcia's Pawnshop - GTC":
+			# 		row_values1.account = "1110-002 - Cash on Hand - Pawnshop - GTC - MPConso"
+			# 		row_values1.branch = "Garcia's Pawnshop - GTC"
+			# 		row_values1.cost_center = "4 - Gen. Trias - MPConso"
+			# 	elif self.branch == "Garcia's Pawnshop - MOL":
+			# 		row_values1.account = "1110-003 - Cash on Hand - Pawnshop - MOL - MPConso"
+			# 		row_values1.branch = "Garcia's Pawnshop - MOL"
+			# 		row_values1.cost_center = "6 - Molino - MPConso"
+			# 	elif self.branch == "Garcia's Pawnshop - POB":
+			# 		row_values1.account = "1110-004 - Cash on Hand - Pawnshop - POB - MPConso"
+			# 		row_values1.branch = "Garcia's Pawnshop - POB"
+			# 		row_values1.cost_center = "3 - Poblacion - MPConso"
+			# 	elif self.branch == "Garcia's Pawnshop - TNZ":
+			# 		row_values1.account = "1110-005 - Cash on Hand - Pawnshop - TNZ - MPConso"
+			# 		row_values1.branch = "Garcia's Pawnshop - TNZ"
+			# 		row_values1.cost_center = "5 - Tanza - MPConso"
+			# 	elif self.branch == "Rabie's House":
+			# 		row_values1.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
+			# 		row_values1.branch = "Garcia's Pawnshop - CC"
+			# 		row_values1.cost_center = "1 - Cavite City - MPConso" 
+			# 	row_values1.debit_in_account_currency = flt(self.cash)
+			# 	row_values1.credit_in_account_currency = flt(0)
+
+			# 	row_values2 = doc1.append('accounts', {})
+			# 	if self.branch == "Garcia's Pawnshop - CC":
+			# 		row_values2.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
+			# 		row_values2.branch = "Garcia's Pawnshop - CC"
+			# 		row_values2.cost_center = "1 - Cavite City - MPConso"
+			# 	elif self.branch == "Garcia's Pawnshop - GTC":
+			# 		row_values2.account = "1110-002 - Cash on Hand - Pawnshop - GTC - MPConso"
+			# 		row_values2.branch = "Garcia's Pawnshop - GTC"
+			# 		row_values2.cost_center = "4 - Gen. Trias - MPConso"
+			# 	elif self.branch == "Garcia's Pawnshop - MOL":
+			# 		row_values2.account = "1110-003 - Cash on Hand - Pawnshop - MOL - MPConso"
+			# 		row_values2.branch = "Garcia's Pawnshop - MOL"
+			# 		row_values2.cost_center = "6 - Molino - MPConso"
+			# 	elif self.branch == "Garcia's Pawnshop - POB":
+			# 		row_values2.account = "1110-004 - Cash on Hand - Pawnshop - POB - MPConso"
+			# 		row_values2.branch = "Garcia's Pawnshop - POB"
+			# 		row_values2.cost_center = "3 - Poblacion - MPConso"
+			# 	elif self.branch == "Garcia's Pawnshop - TNZ":
+			# 		row_values2.account = "1110-005 - Cash on Hand - Pawnshop - TNZ - MPConso"
+			# 		row_values2.branch = "Garcia's Pawnshop - TNZ"
+			# 		row_values2.cost_center = "5 - Tanza - MPConso"
+			# 	elif self.branch == "Rabie's House":
+			# 		row_values2.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
+			# 		row_values2.branch = "Garcia's Pawnshop - CC"
+			# 		row_values2.cost_center = "1 - Cavite City - MPConso" 
+			# 	row_values2.debit_in_account_currency = flt(self.cash)
+			# 	row_values2.credit_in_account_currency = flt(0)
 
 		# Journal Entry Creation for Jewelry
 		elif self.pawn_ticket_type == "Pawn Ticket Jewelry":  #Renewal Cash
