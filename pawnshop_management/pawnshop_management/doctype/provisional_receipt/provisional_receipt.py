@@ -2887,6 +2887,7 @@ class ProvisionalReceipt(Document):
 
 				doc1.save(ignore_permissions=True)
 				# doc1.submit()
+			# NEW
 			# if self.transaction_type == "Renewal" and self.mode_of_payment == "Cash & GCash":
 			# 	doc1 = frappe.new_doc('Journal Entry')
 			# 	doc1.voucher_type = 'Journal Entry'
