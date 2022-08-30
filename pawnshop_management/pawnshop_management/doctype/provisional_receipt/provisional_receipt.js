@@ -387,9 +387,9 @@ function calculate_maturity_date_interest(frm) {
 			}
 		}
 
-		if (multiplier <= 0) {
-			multiplier = 1
-		}
+		// if (multiplier <= 0) {
+		// 	multiplier = 1
+		// }
 
 		console.log("Previous Maturity Date: " + temp_maturity_date.previous_maturity_date);
 
@@ -402,6 +402,7 @@ function calculate_maturity_date_interest(frm) {
 		}
 
 		if (date_today > frm.doc.maturity_date) {
+			console.log("Maturity date: " + temp_maturity_date.previous_maturity_date);
 			console.log("SC1");
 			if (temp_maturity_date.previous_maturity_date <= date_today && tawad_until_date >= date_today) {
 				console.log("SC1-1");
@@ -533,9 +534,8 @@ function maturity_date_of_the_month(frm) {
 		console.log("MD2");
 		if (current_date[1] > maturity_date[1]) {
 			console.log("MD2-1");
-			if (current_date[2] > current_maturity_date_day[2]) {
+			if (current_date[2] >= current_maturity_date_day[2]) {
 				console.log("MD2-1-1");
-				console.log(current_maturity_date_day);
 				previous_maturity_date = current_maturity_date
 				current_maturity_date = frappe.datetime.add_months(frm.doc.maturity_date, month_difference + 1);
 			} else {
@@ -553,11 +553,6 @@ function maturity_date_of_the_month(frm) {
 		} 
 	}
 
-	
-	// if (current_maturity_date > cur_frm.doc.expiry_date) {
-	// 	current_maturity_date = frappe.datetime.add_days(current_maturity_date, parseInt(maturity_date[2])*-1)
-	// 	current_maturity_date = frappe.datetime.add_days(current_maturity_date, parseInt(expiry_date[2]))
-	// }
 	return {
 		'previous_maturity_date': previous_maturity_date,
 		'current_maturity_date': current_maturity_date
