@@ -881,6 +881,7 @@ function get_additional_pawn_records(frm) {
 			frm.set_value('additional_pawn', 0.00);
 			for (let index = 0; index < records.length; index++) {
 				temp_total += parseFloat(records[index].net_proceeds);
+				console.log(temp_total);
 			}
 			get_additional_pawn_records_nj(frm, temp_total)
 		})
@@ -1229,19 +1230,15 @@ function get_additional_redeem(frm) {
 			for (let index = 0; index < records_pr.length; index++) {
 				if (records_pr[index].transaction_type == "Redemption") {
 					temp_total += parseFloat(records_pr[index].total) + parseFloat(records_pr[index].discount)
-					console.log(temp_total);
 				}
 				if (records_pr[index].transaction_type == "Renewal") {
 					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount ) + parseFloat(records_pr[index].discount)
-					console.log(temp_total);
 				} 
 				if (records_pr[index].transaction_type == "Renewal w/ Amortization") {
-					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount) + parseFloat(records_pr[index].discount)
-					console.log(temp_total);
+					temp_total += parseFloat(records_pr[index].interest_payment) + parseFloat(records_pr[index].principal_amount) + parseFloat(records_pr[index].discount)	
 				}
 				if (records_pr[index].transaction_type == "Amortization") {
 					temp_total += parseFloat(records_pr[index].total) + parseFloat(records_pr[index].discount)
-					console.log(temp_total);
 				}
 			}
 			frm.set_value('additional_redeem', temp_total);
