@@ -978,25 +978,33 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			frm.refresh_field('additional_pawn');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
-		frappe.db.get_all('Pawn Ticket Non Jewelry', {
-			fields: ['net_proceeds'],
-			filters: {
-				branch: "Garcia's Pawnshop - GTC",
-				docstatus: 1,
-				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
-			}
-		}).then(records_nj => {
-			let nj_temp_total = 0.00;
-			let total = 0.00;
-			for (let index = 0; index < records_nj.message.length; index++) {
-				nj_temp_total += records_nj[index].net_proceeds;
-			}
-			total = j_temp_total + nj_temp_total;
-			console.log(j_temp_total);
-			console.log(nj_temp_total);
-			frm.set_value('additional_pawn', total);
+		// frappe.db.get_all('Pawn Ticket Non Jewelry', {
+		// 	fields: ['net_proceeds'],
+		// 	filters: {
+		// 		branch: "Garcia's Pawnshop - GTC",
+		// 		docstatus: 1,
+		// 		date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
+		// 	}
+		// }).then(records_nj => {
+		// 	let nj_temp_total = 0.00;
+		// 	let total = 0.00;
+		// 	for (let index = 0; index < records_nj.message.length; index++) {
+		// 		nj_temp_total += records_nj[index].net_proceeds;
+		// 	}
+		// 	total = j_temp_total + nj_temp_total;
+		// 	console.log(j_temp_total);
+		// 	console.log(nj_temp_total);
+		// 	frm.set_value('additional_pawn', total);
+		// 	frm.refresh_field('additional_pawn');
+		// })
+
+		frappe.call('pawnshop_management.pawnshop_management.custom_codes.daily_balance.get_all_additional_pawn', {
+			date: frm.doc.date_issued
+		}).then(r => {
+			frm.set_value('additional_pawn', r.message);
 			frm.refresh_field('additional_pawn');
 		})
+		
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_list('Pawn Ticket Non Jewelry', {
 			fields: ['net_proceeds'],
