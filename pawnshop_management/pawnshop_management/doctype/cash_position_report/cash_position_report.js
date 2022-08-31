@@ -869,22 +869,22 @@ function get_additional_pawn_records(frm) {
 			get_additional_pawn_records_nj(frm, temp_total)
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
-		frappe.db.get_all('Pawn Ticket Jewelry', {
-			fields: ['net_proceeds'],
-			filters: {
-				branch: "Garcia's Pawnshop - GTC",
-				docstatus: 1,
-				date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
-			}
-		}).then(records => {
-			let temp_total = 0.00;
-			frm.set_value('additional_pawn', 0.00);
-			for (let index = 0; index < records.message.length; index++) {
-				temp_total += parseFloat(records[index].net_proceeds);
-				console.log(temp_total);
-			}
-			get_additional_pawn_records_nj(frm, temp_total)
-		})
+		// frappe.db.get_all('Pawn Ticket Jewelry', {
+		// 	fields: ['net_proceeds'],
+		// 	filters: {
+		// 		branch: "Garcia's Pawnshop - GTC",
+		// 		docstatus: 1,
+		// 		date_loan_granted: frm.doc.date //frappe.datetime.nowdate()
+		// 	}
+		// }).then(records => {
+		// 	let temp_total = 0.00;
+		// 	frm.set_value('additional_pawn', 0.00);
+		// 	for (let index = 0; index < records.message.length; index++) {
+		// 		temp_total += parseFloat(records[index].net_proceeds);
+		// 		console.log(temp_total);
+		// 	}
+		// 	get_additional_pawn_records_nj(frm, temp_total)
+		// })
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_list('Pawn Ticket Jewelry', {
 			fields: ['net_proceeds'],
