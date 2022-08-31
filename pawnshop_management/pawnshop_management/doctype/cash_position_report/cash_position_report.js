@@ -869,7 +869,7 @@ function get_additional_pawn_records(frm) {
 			get_additional_pawn_records_nj(frm, temp_total)
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
-		frappe.db.get_list('Pawn Ticket Jewelry', {
+		frappe.db.get_all('Pawn Ticket Jewelry', {
 			fields: ['net_proceeds'],
 			filters: {
 				branch: "Garcia's Pawnshop - GTC",
@@ -978,7 +978,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 			frm.refresh_field('additional_pawn');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
-		frappe.db.get_list('Pawn Ticket Non Jewelry', {
+		frappe.db.get_all('Pawn Ticket Non Jewelry', {
 			fields: ['net_proceeds'],
 			filters: {
 				branch: "Garcia's Pawnshop - GTC",
