@@ -870,7 +870,7 @@ function get_additional_pawn_records(frm) {
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
 		frappe.call('pawnshop_management.pawnshop_management.custom_codes.daily_balance.get_all_additional_pawn', {
-			date: "2022-08-27" //frm.doc.date_issued
+			date: frm.doc.date
 		}).then(r => {
 			console.log(r.message)
 			frm.set_value('additional_pawn', r.message);
