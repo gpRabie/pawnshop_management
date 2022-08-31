@@ -869,6 +869,13 @@ function get_additional_pawn_records(frm) {
 			get_additional_pawn_records_nj(frm, temp_total)
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
+		frappe.call('pawnshop_management.pawnshop_management.custom_codes.daily_balance.get_all_additional_pawn', {
+			date: frm.doc.date_issued
+		}).then(r => {
+			console.log(r.message)
+			frm.set_value('additional_pawn', r.message);
+			frm.refresh_field('additional_pawn');
+		})
 		// frappe.db.get_all('Pawn Ticket Jewelry', {
 		// 	fields: ['net_proceeds'],
 		// 	filters: {
@@ -997,14 +1004,6 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 		// 	frm.set_value('additional_pawn', total);
 		// 	frm.refresh_field('additional_pawn');
 		// })
-
-		frappe.call('pawnshop_management.pawnshop_management.custom_codes.daily_balance.get_all_additional_pawn', {
-			date: frm.doc.date_issued
-		}).then(r => {
-			console.log(r.message)
-			frm.set_value('additional_pawn', r.message);
-			frm.refresh_field('additional_pawn');
-		})
 		
 	} else if (frm.doc.branch == "Garcia's Pawnshop - CC") {
 		frappe.db.get_list('Pawn Ticket Non Jewelry', {
