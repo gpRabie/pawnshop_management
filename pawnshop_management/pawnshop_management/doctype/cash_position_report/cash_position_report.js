@@ -991,6 +991,8 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 				nj_temp_total += records_nj[index].net_proceeds;
 			}
 			total = j_temp_total + nj_temp_total;
+			console.log(j_temp_total);
+			console.log(nj_temp_total);
 			frm.set_value('additional_pawn', total);
 			frm.refresh_field('additional_pawn');
 		})
