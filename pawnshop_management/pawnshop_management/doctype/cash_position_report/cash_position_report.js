@@ -1001,6 +1001,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 		frappe.call('pawnshop_management.pawnshop_management.custom_codes.daily_balance.get_all_additional_pawn', {
 			date: frm.doc.date_issued
 		}).then(r => {
+			console.log(r.message)
 			frm.set_value('additional_pawn', r.message);
 			frm.refresh_field('additional_pawn');
 		})
