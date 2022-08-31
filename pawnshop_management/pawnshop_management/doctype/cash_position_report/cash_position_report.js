@@ -879,7 +879,7 @@ function get_additional_pawn_records(frm) {
 		}).then(records => {
 			let temp_total = 0.00;
 			frm.set_value('additional_pawn', 0.00);
-			for (let index = 0; index < records.length; index++) {
+			for (let index = 0; index < records.message.length; index++) {
 				temp_total += parseFloat(records[index].net_proceeds);
 				console.log(temp_total);
 			}
@@ -988,7 +988,7 @@ function get_additional_pawn_records_nj(frm, j_temp_total) {
 		}).then(records_nj => {
 			let nj_temp_total = 0.00;
 			let total = 0.00;
-			for (let index = 0; index < records_nj.length; index++) {
+			for (let index = 0; index < records_nj.message.length; index++) {
 				nj_temp_total += records_nj[index].net_proceeds;
 			}
 			total = j_temp_total + nj_temp_total;
