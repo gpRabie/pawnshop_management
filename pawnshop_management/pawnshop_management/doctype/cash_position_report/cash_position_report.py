@@ -121,21 +121,21 @@ class CashPositionReport(Document):
 			row_values1.debit_in_account_currency = flt(0)
 			row_values1.credit_in_account_currency = flt(abs(self.shortage_overage))
 
-			# row_values2 = doc1.append('accounts', {})
-			# if self.branch == "Garcia's Pawnshop - CC":
-			# 	row_values2.account = "Cash/Shortage Overage - Pawnshop - CC - MPConso"
-			# elif self.branch == "Garcia's Pawnshop - GTC":
-			# 	row_values2.account = "Cash Shortage / Overage - Pawnshop - GTC"
-			# elif self.branch == "Garcia's Pawnshop - MOL":
-			# 	row_values2.account = "Cash/Shortage Overage - Pawnshop - MOL - MPConso"
-			# elif self.branch == "Garcia's Pawnshop - POB":
-			# 	row_values2.account = "Cash/Shortage Overage - Pawnshop - POB - MPConso"
-			# elif self.branch == "Garcia's Pawnshop - TNZ":
-			# 	row_values2.account = "Cash/Shortage Overage - Pawnshop - TNZ - MPConso"
-			# elif self.branch == "Rabie's House":
-			# 	row_values2.account = "Cash/Shortage Overage - Pawnshop - CC - MPConso"
-			# row_values2.debit_in_account_currency = flt(abs(self.shortage_overage))
-			# row_values2.credit_in_account_currency = flt(0)
+			row_values2 = doc1.append('accounts', {})
+			if self.branch == "Garcia's Pawnshop - CC":
+				row_values2.account = "Cash/Shortage Overage - Pawnshop - CC - MPConso"
+			elif self.branch == "Garcia's Pawnshop - GTC":
+				row_values2.account = "5300-002 - Cash Shortage / Overage - Pawnshop - GTC - MPConso"
+			elif self.branch == "Garcia's Pawnshop - MOL":
+				row_values2.account = "Cash/Shortage Overage - Pawnshop - MOL - MPConso"
+			elif self.branch == "Garcia's Pawnshop - POB":
+				row_values2.account = "Cash/Shortage Overage - Pawnshop - POB - MPConso"
+			elif self.branch == "Garcia's Pawnshop - TNZ":
+				row_values2.account = "Cash/Shortage Overage - Pawnshop - TNZ - MPConso"
+			elif self.branch == "Rabie's House":
+				row_values2.account = "Cash/Shortage Overage - Pawnshop - CC - MPConso"
+			row_values2.debit_in_account_currency = flt(abs(self.shortage_overage))
+			row_values2.credit_in_account_currency = flt(0)
 
 			doc1.save(ignore_permissions=True)
 			doc1.submit()
