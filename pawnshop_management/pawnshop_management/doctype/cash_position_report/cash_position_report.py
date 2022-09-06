@@ -125,7 +125,7 @@ class CashPositionReport(Document):
 			if self.branch == "Garcia's Pawnshop - CC":
 				row_values2.account = "Cash/Shortage Overage - Pawnshop - CC - MPConso"
 			elif self.branch == "Garcia's Pawnshop - GTC":
-				row_values2.account = "Cash/Shortage Overage - Pawnshop - GTC - MPConso"
+				row_values2.account = "Cash Shortage / Overage - Pawnshop - GTC"
 			elif self.branch == "Garcia's Pawnshop - MOL":
 				row_values2.account = "Cash/Shortage Overage - Pawnshop - MOL - MPConso"
 			elif self.branch == "Garcia's Pawnshop - POB":
