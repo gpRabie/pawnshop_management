@@ -239,7 +239,7 @@ frappe.ui.form.on('Cash Position Report', {
 	},
 
 	shortage_overage: function(frm){
-		total_cash_breakdown(frm);
+		//total_cash_breakdown(frm);
 	}
 });
 
