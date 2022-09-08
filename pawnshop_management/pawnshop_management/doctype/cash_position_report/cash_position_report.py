@@ -86,8 +86,8 @@ class CashPositionReport(Document):
 				row_values2.account = "1110-001 - Cash on Hand - Pawnshop - CC - MPConso"
 			elif self.branch == "Garcia's Pawnshop - GTC":
 				row_values2.account = "1110-002 - Cash on Hand - Pawnshop - GTC - MPConso"
-				row_values1.branch = "Garcia's Pawnshop - GTC"
-				row_values1.cost_center = "4 - Gen. Trias - MPConso"
+				row_values2.branch = "Garcia's Pawnshop - GTC"
+				row_values2.cost_center = "4 - Gen. Trias - MPConso"
 			elif self.branch == "Garcia's Pawnshop - MOL":
 				row_values2.account = "1110-003 - Cash on Hand - Pawnshop - MOL - MPConso"
 			elif self.branch == "Garcia's Pawnshop - POB":
@@ -132,8 +132,8 @@ class CashPositionReport(Document):
 				row_values2.account = "Cash/Shortage Overage - Pawnshop - CC - MPConso"
 			elif self.branch == "Garcia's Pawnshop - GTC":
 				row_values2.account = "5300-002 - Cash Shortage / Overage - Pawnshop - GTC - MPConso"
-				row_values1.branch = "Garcia's Pawnshop - GTC"
-				row_values1.cost_center = "4 - Gen. Trias - MPConso"
+				row_values2.branch = "Garcia's Pawnshop - GTC"
+				row_values2.cost_center = "4 - Gen. Trias - MPConso"
 			elif self.branch == "Garcia's Pawnshop - MOL":
 				row_values2.account = "Cash/Shortage Overage - Pawnshop - MOL - MPConso"
 			elif self.branch == "Garcia's Pawnshop - POB":
