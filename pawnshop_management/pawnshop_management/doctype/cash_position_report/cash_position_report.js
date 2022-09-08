@@ -1245,7 +1245,8 @@ function get_additional_redeem(frm) {
 				branch: "Garcia's Pawnshop - GTC",
 				docstatus: 1,
 				date_issued: frm.doc.date //frappe.datetime.nowdate()
-			}
+			},
+			limit: 500
 		}).then(records_pr => {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
