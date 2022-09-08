@@ -109,11 +109,7 @@ frappe.ui.form.on('Cash Position Report', {
 		// 	frappe.throw("Cash on hand is not equal to the Ending Balance")
 		// }
 
-		frappe.msgprint(
-			msg='Submitted',
-			title='Successful'
-			//,raise_exception=FileNotFoundError
-		)
+		frappe.msgprint(__('CPR saved'));
 		
 	},
 
