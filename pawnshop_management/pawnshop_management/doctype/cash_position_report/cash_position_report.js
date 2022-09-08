@@ -106,6 +106,13 @@ frappe.ui.form.on('Cash Position Report', {
 		// if (frm.doc.total_cash != frm.doc.ending_balance) {
 		// 	frappe.throw("Cash on hand is not equal to the Ending Balance")
 		// }
+
+		frappe.msgprint(
+			msg='Submitted',
+			title='Successful'
+			//,raise_exception=FileNotFoundError
+		)
+		
 	},
 
 	beginning_balance: function(frm){
@@ -308,22 +315,31 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 			frm.refresh_field('provisional_receipts');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
-		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total'],
-			filters: {
-				date_issued: date_today,
-				docstatus: 1,
-				branch: "Garcia's Pawnshop - GTC"
-			}
-		}).then(records => {
-			let temp_total = 0.00;
-			frm.set_value('provisional_receipts', 0.00);
-			for (let index = 0; index < records.length; index++) {
-				temp_total += parseFloat(records[index].total)
-			}
-			frm.set_value('provisional_receipts', temp_total);
+
+		frappe.call('pawnshop_management.pawnshop_management.custom_codes.daily_balance.get_all_PR_total', {
+			date: frm.doc.date,
+			branch: frm.doc.branch
+		}).then(r => {
+			console.log(r.message)
+			frm.set_value('provisional_receipts', r.message);
 			frm.refresh_field('provisional_receipts');
 		})
+		// frappe.db.get_list('Provisional Receipt', {
+		// 	fields: ['total'],
+		// 	filters: {
+		// 		date_issued: date_today,
+		// 		docstatus: 1,
+		// 		branch: "Garcia's Pawnshop - GTC"
+		// 	}
+		// }).then(records => {
+		// 	let temp_total = 0.00;
+		// 	frm.set_value('provisional_receipts', 0.00);
+		// 	for (let index = 0; index < records.length; index++) {
+		// 		temp_total += parseFloat(records[index].total)
+		// 	}
+		// 	frm.set_value('provisional_receipts', temp_total);
+		// 	frm.refresh_field('provisional_receipts');
+		// })
 	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
