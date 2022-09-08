@@ -22,6 +22,7 @@ def get_all_additional_pawn(date):
         sum += record
     return sum
 
+@frappe.whitelist()
 def get_all_PR_total(date, branch):
 
     total_pr = frappe.db.get_all('Provisional Receipt', filters={
