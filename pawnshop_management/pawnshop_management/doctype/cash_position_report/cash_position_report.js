@@ -103,9 +103,9 @@ frappe.ui.form.on('Cash Position Report', {
 	},
 
 	validate: function(frm){
-		if (frm.doc.total_cash != frm.doc.ending_balance) {
-			frappe.throw("Cash on hand is not equal to the Ending Balance")
-		}
+		// if (frm.doc.total_cash != frm.doc.ending_balance) {
+		// 	frappe.throw("Cash on hand is not equal to the Ending Balance")
+		// }
 	},
 
 	beginning_balance: function(frm){
@@ -239,7 +239,7 @@ frappe.ui.form.on('Cash Position Report', {
 	},
 
 	shortage_overage: function(frm){
-		total_cash_breakdown(frm);
+		//total_cash_breakdown(frm);
 	}
 });
 

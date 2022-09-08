@@ -53,13 +53,13 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.date_loan_granted = self.date_issued
 			new_pawn_ticket.old_pawn_ticket = self.pawn_ticket_no
 			new_pawn_ticket.maturity_date = add_to_date(self.date_issued, days=30)
-			new_pawn_ticket.expiry_date = add_to_date(self.date_issued, days=120)
 			new_pawn_ticket.customers_tracking_no = previous_pawn_ticket.customers_tracking_no
 			new_pawn_ticket.customers_full_name = previous_pawn_ticket.customers_full_name
 			new_pawn_ticket.inventory_tracking_no = previous_pawn_ticket.inventory_tracking_no
 			new_pawn_ticket.created_by_pr = self.name
 			if self.pawn_ticket_type == "Pawn Ticket Non Jewelry":
 				previous_items = previous_pawn_ticket.non_jewelry_items
+				new_pawn_ticket.expiry_date = add_to_date(self.date_issued, days=90)
 				for i in range(len(previous_items)):
 					new_pawn_ticket.append("non_jewelry_items", {
 						"item_no": previous_items[i].item_no,
@@ -71,6 +71,7 @@ class ProvisionalReceipt(Document):
 					})
 			elif self.pawn_ticket_type == "Pawn Ticket Jewelry":
 				previous_items = previous_pawn_ticket.jewelry_items
+				new_pawn_ticket.expiry_date = add_to_date(self.date_issued, days=120)
 				for i in range(len(previous_items)):
 					new_pawn_ticket.append("jewelry_items", {
 						"item_no": previous_items[i].item_no,
@@ -123,13 +124,13 @@ class ProvisionalReceipt(Document):
 			new_pawn_ticket.date_loan_granted = self.date_issued
 			new_pawn_ticket.old_pawn_ticket = self.pawn_ticket_no
 			new_pawn_ticket.maturity_date = add_to_date(self.date_issued, days=30)
-			new_pawn_ticket.expiry_date = add_to_date(self.date_issued, days=120)
 			new_pawn_ticket.customers_tracking_no = previous_pawn_ticket.customers_tracking_no
 			new_pawn_ticket.customers_full_name = previous_pawn_ticket.customers_full_name
 			new_pawn_ticket.inventory_tracking_no = previous_pawn_ticket.inventory_tracking_no
 			new_pawn_ticket.created_by_pr = self.name
 			if self.pawn_ticket_type == "Pawn Ticket Non Jewelry":
 				previous_items = previous_pawn_ticket.non_jewelry_items
+				new_pawn_ticket.expiry_date = add_to_date(self.date_issued, days=90)
 				for i in range(len(previous_items)):
 					new_pawn_ticket.append("non_jewelry_items", {
 						"item_no": previous_items[i].item_no,
@@ -141,6 +142,7 @@ class ProvisionalReceipt(Document):
 					})
 			elif self.pawn_ticket_type == "Pawn Ticket Jewelry":
 				previous_items = previous_pawn_ticket.jewelry_items
+				new_pawn_ticket.expiry_date = add_to_date(self.date_issued, days=120)
 				for i in range(len(previous_items)):
 					new_pawn_ticket.append("jewelry_items", {
 						"item_no": previous_items[i].item_no,
