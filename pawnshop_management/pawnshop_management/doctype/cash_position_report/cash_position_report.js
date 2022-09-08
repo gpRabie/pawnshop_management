@@ -12,7 +12,9 @@ frappe.ui.form.on('Cash Position Report', {
 				'provisional_receipts', 
 				'jewelry_a', 
 				'jewelry_b', 
-				'non_jewelry'
+				'non_jewelry',
+				'additional_redeem',
+				'additional_pawn'
 			],
 			 is_allowed);
 		if (frm.is_new()) {
@@ -106,6 +108,9 @@ frappe.ui.form.on('Cash Position Report', {
 		// if (frm.doc.total_cash != frm.doc.ending_balance) {
 		// 	frappe.throw("Cash on hand is not equal to the Ending Balance")
 		// }
+
+		frappe.msgprint(__('CPR saved'));
+		
 	},
 
 	beginning_balance: function(frm){
@@ -308,22 +313,31 @@ function get_provisional_receipts_of_the_day(frm, date_today = null) {
 			frm.refresh_field('provisional_receipts');
 		})
 	} else if (frm.doc.branch == "Garcia's Pawnshop - GTC") {
-		frappe.db.get_list('Provisional Receipt', {
-			fields: ['total'],
-			filters: {
-				date_issued: date_today,
-				docstatus: 1,
-				branch: "Garcia's Pawnshop - GTC"
-			}
-		}).then(records => {
-			let temp_total = 0.00;
-			frm.set_value('provisional_receipts', 0.00);
-			for (let index = 0; index < records.length; index++) {
-				temp_total += parseFloat(records[index].total)
-			}
-			frm.set_value('provisional_receipts', temp_total);
+
+		frappe.call('pawnshop_management.pawnshop_management.custom_codes.daily_balance.get_all_PR_total', {
+			date: frm.doc.date,
+			branch: frm.doc.branch
+		}).then(r => {
+			console.log(r.message)
+			frm.set_value('provisional_receipts', r.message);
 			frm.refresh_field('provisional_receipts');
 		})
+		// frappe.db.get_list('Provisional Receipt', {
+		// 	fields: ['total'],
+		// 	filters: {
+		// 		date_issued: date_today,
+		// 		docstatus: 1,
+		// 		branch: "Garcia's Pawnshop - GTC"
+		// 	}
+		// }).then(records => {
+		// 	let temp_total = 0.00;
+		// 	frm.set_value('provisional_receipts', 0.00);
+		// 	for (let index = 0; index < records.length; index++) {
+		// 		temp_total += parseFloat(records[index].total)
+		// 	}
+		// 	frm.set_value('provisional_receipts', temp_total);
+		// 	frm.refresh_field('provisional_receipts');
+		// })
 	} else if (frm.doc.branch == "Garcia's Pawnshop - MOL") {
 		frappe.db.get_list('Provisional Receipt', {
 			fields: ['total'],
@@ -543,12 +557,10 @@ function total_cash_breakdown(frm) {
 			shortage_overage = total_cash_breakdown - ending_balance;
 			frm.set_value('shortage_overage', shortage_overage);
 			frm.refresh_field('shortage_overage');
-			total_cash_breakdown = total_cash_breakdown + shortage_overage
 		} else if (total_cash_breakdown < ending_balance) {
 			shortage_overage = total_cash_breakdown - ending_balance;
 			frm.set_value('shortage_overage', shortage_overage);
 			frm.refresh_field('shortage_overage');
-			total_cash_breakdown = total_cash_breakdown + shortage_overage
 		} 
 	} else {
 		frm.set_value('shortage_overage', 0.00);
@@ -1231,7 +1243,8 @@ function get_additional_redeem(frm) {
 				branch: "Garcia's Pawnshop - GTC",
 				docstatus: 1,
 				date_issued: frm.doc.date //frappe.datetime.nowdate()
-			}
+			},
+			limit: 500
 		}).then(records_pr => {
 			let temp_total = 0.00;
 			frm.set_value('additional_redeem', 0.00);
